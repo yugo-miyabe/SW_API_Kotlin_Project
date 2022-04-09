@@ -1,7 +1,5 @@
 # スターウォーズのAPIアプリ
 
-https://developer.android.com/studio
-
 ## 開発環境
 [![AndroidStudio](https://img.shields.io/badge/Android%20Studio-Bumblebee%20%7C%202021.1.1%20Patch%203-blue)](https://developer.android.com/studio/)
 
