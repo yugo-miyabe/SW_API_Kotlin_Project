@@ -14,4 +14,16 @@ API:https://swapi.dev/
 * 最小API Level:23
 * ターゲットAPI Level:31
 
+## 使用ライブラリ
+|ライブラリ名|バージョン|用途|
+|--|--|--|
+| kotlin-serialization | 1.3.1 | jsonコンバーター |
+| Retrofit | 2.9.0 | 通信ライブラリ |
+| | | |
+| | | |
+| | | |
+| | | |
+
+
+
 ## プロジェクト構成
