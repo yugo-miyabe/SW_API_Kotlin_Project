@@ -1,6 +1,6 @@
 package com.sw.sw_api_kotlin_project.api
 
-enum class ApiErrorType {
+enum class APIErrorType {
     /** ネットワーク異常 */
     NetworkError,
 
