@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,20 +42,29 @@ class APIRootFragment : BaseFragment() {
         Log.d("debug", "テスト")
         viewModel.getAPIRootURL()
 
-
     }
 
     override fun addObservers() {
         super.addObservers()
 
-        viewModel.isAPISuccess.observe(viewLifecycleOwner) {
-            if (it) {
-                val adapter = APIRootAdapter(viewModel.apiRootURL.value!!)
-                val recyclerView = view?.findViewById<RecyclerView>(R.id.home_recycler)
-                recyclerView!!.adapter = adapter
-                recyclerView.layoutManager = LinearLayoutManager(context)
+        viewModel.apiRootURL.observe(viewLifecycleOwner) {
+            val adapter = APIRootAdapter(it) { url ->
+                adapterOnClick(url)
             }
+            val recyclerView = view?.findViewById<RecyclerView>(R.id.home_recycler)
+            recyclerView!!.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(context)
         }
+    }
+
+    private fun adapterOnClick(url: String) {
+        val fragment = PeopleListFragment()
+        val activity: AppCompatActivity = context as AppCompatActivity
+        activity.supportFragmentManager
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.container, fragment)
+            .commit()
     }
 
 
