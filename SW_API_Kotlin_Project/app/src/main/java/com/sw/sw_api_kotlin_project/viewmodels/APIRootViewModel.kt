@@ -37,8 +37,8 @@ class APIRootViewModel(private val apiRepository: APIRepository) : ViewModel() {
         }
     }
 
+    // TODO 要修正
     private fun getUrlList(apiRootURL: APIRoot): List<String> {
-        
         return listOf(
             apiRootURL.peopleUrl,
             apiRootURL.planetsUrl,
@@ -46,7 +46,7 @@ class APIRootViewModel(private val apiRepository: APIRepository) : ViewModel() {
             apiRootURL.speciesUrl,
             apiRootURL.vehiclesUrl,
             apiRootURL.starshipsUrl
-        );
+        )
     }
 }
 
