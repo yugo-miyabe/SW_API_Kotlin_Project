@@ -14,4 +14,8 @@ object Constants {
         "a",
         "b",
     )
+    val test_2 :List<String> = listOf(
+        "c",
+        "d",
+    )
 }
