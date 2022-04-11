@@ -9,4 +9,9 @@ object Constants {
         "vehicles",
         "starships"
     )
+
+    val test_1 :List<String> = listOf(
+        "a",
+        "b",
+    )
 }
