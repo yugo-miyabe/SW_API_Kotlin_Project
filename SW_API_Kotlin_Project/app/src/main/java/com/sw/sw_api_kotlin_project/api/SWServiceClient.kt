@@ -9,7 +9,7 @@ class SWServiceClient {
     companion object {
         fun getService(): SWService {
             val builder = Retrofit.Builder()
-                .baseUrl("https://swapi.dev/")
+                .baseUrl("https://swapi.dev/api/")
                 .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
                 .build()
             return builder.create(SWService::class.java)
