@@ -3,7 +3,7 @@ package com.sw.sw_api_kotlin_project.activities
 import android.os.Bundle
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseActivity
-import com.sw.sw_api_kotlin_project.fragments.HomeFragment
+import com.sw.sw_api_kotlin_project.fragments.APIRootFragment
 
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +14,7 @@ class MainActivity : BaseActivity() {
     override fun initViews() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.container, HomeFragment())
+            .replace(R.id.container, APIRootFragment())
             .commit()
     }
 
