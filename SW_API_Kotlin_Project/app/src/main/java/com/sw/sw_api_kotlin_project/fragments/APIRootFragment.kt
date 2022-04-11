@@ -39,9 +39,7 @@ class APIRootFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("debug", "テスト")
         viewModel.getAPIRootURL()
-
     }
 
     override fun addObservers() {

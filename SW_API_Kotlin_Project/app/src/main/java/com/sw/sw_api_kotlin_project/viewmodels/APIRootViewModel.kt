@@ -22,7 +22,6 @@ class APIRootViewModel(private val apiRepository: APIRepository) : ViewModel() {
             val response = api.apiRoot()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
-                    //_apiRootURL.value = result.data
                     _apiRootURL.value = getUrlList(result.data)
                     _isAPISuccess.value = true
                 }
