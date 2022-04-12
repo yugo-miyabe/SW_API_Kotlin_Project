@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SW_API_Kotlin_Project</string>
+
+    <!-- People  -->
+    <string name="height">height</string>
+    <string name="mass">mass</string>
 </resources>
