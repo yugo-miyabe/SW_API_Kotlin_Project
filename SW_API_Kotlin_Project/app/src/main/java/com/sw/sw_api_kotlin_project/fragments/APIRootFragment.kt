@@ -1,7 +1,6 @@
 package com.sw.sw_api_kotlin_project.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.APIRootAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.repository.APIRepository
+import com.sw.sw_api_kotlin_project.utils.Constants
 import com.sw.sw_api_kotlin_project.viewmodels.APIRootViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.APIRootViewModelFactory
 
@@ -39,17 +39,15 @@ class APIRootFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("debug", "テスト")
         viewModel.getAPIRootURL()
-
     }
 
     override fun addObservers() {
         super.addObservers()
 
         viewModel.apiRootURL.observe(viewLifecycleOwner) {
-            val adapter = APIRootAdapter(it) { url ->
-                adapterOnClick(url)
+            val adapter = APIRootAdapter(it) { fragment_key ->
+                adapterOnClick(fragment_key)
             }
             val recyclerView = view?.findViewById<RecyclerView>(R.id.home_recycler)
             recyclerView!!.adapter = adapter
@@ -57,8 +55,9 @@ class APIRootFragment : BaseFragment() {
         }
     }
 
-    private fun adapterOnClick(url: String) {
-        val fragment = PeopleListFragment()
+    private fun adapterOnClick(keyFragment: String) {
+        //　TODO キャスト対応
+        val fragment = Constants.FRAGMENT_LIST[keyFragment]!!
         val activity: AppCompatActivity = context as AppCompatActivity
         activity.supportFragmentManager
             .beginTransaction()
@@ -66,6 +65,5 @@ class APIRootFragment : BaseFragment() {
             .replace(R.id.container, fragment)
             .commit()
     }
-
 
 }

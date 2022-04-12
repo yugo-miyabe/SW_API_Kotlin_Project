@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.utils.Constants
 
-class APIRootAdapter(private val apiRootList: List<String>, private val onClick: (String) -> Unit) :
+class APIRootAdapter(
+    private val apiRootList: List<String>,
+    private val onClick: (String) -> Unit
+) :
     RecyclerView.Adapter<APIRootAdapter.ViewHolder>() {
 
     class ViewHolder(private val view: View, private val onClick: (String) -> Unit) :
@@ -19,7 +22,7 @@ class APIRootAdapter(private val apiRootList: List<String>, private val onClick:
             val viewText = "$text:$url"
             textView.text = viewText
             view.setOnClickListener {
-                onClick(url)
+                onClick(text)
             }
         }
     }
@@ -32,7 +35,10 @@ class APIRootAdapter(private val apiRootList: List<String>, private val onClick:
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(apiRootList[position], Constants.API_ROOT_LIST[position])
+        holder.bind(
+            apiRootList[position],
+            Constants.API_ROOT_LIST[position]
+        )
     }
 
     override fun getItemCount() = apiRootList.size
