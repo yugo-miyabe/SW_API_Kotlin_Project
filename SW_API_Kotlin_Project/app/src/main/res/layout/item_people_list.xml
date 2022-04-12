@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/full_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/height"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/full_name"
         tools:text="height:172" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_marginStart="12dp"
         android:text="@string/mass"
         app:layout_constraintStart_toEndOf="@id/height"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/full_name"
         tools:text="mass:77" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
