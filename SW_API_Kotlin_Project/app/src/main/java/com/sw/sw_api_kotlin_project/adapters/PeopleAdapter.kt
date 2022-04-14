@@ -11,15 +11,17 @@ import com.sw.sw_api_kotlin_project.model.peple.Result
 class PeopleAdapter(private val peopleList: List<Result>) :
     RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
-    class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val fullName = view.findViewById<TextView>(R.id.full_name)
         private val height = view.findViewById<TextView>(R.id.height)
         private val mass = view.findViewById<TextView>(R.id.mass)
 
         fun bind(people: Result) {
+            val heightText = "height:$people.height"
+            val massText = "mass:$people.mass"
             fullName.text = people.name
-            height.text = "height:" + people.height
-            mass.text = "mass" + people.mass
+            height.text = heightText
+            mass.text = massText
         }
     }
 
