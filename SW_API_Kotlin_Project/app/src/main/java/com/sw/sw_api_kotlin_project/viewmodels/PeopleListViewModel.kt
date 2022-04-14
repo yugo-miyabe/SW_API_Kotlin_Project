@@ -38,7 +38,7 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
 class PeopleListViewModelFactory(private val apiRepository: APIRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(APIRootViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(PeopleListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return PeopleListViewModel(apiRepository) as T
         }
