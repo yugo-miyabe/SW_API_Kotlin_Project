@@ -27,6 +27,7 @@ class APIRootViewModel(private val apiRepository: APIRepository) : BaseViewModel
                     _isAPISuccess.value = true
                 }
                 is Result.Error -> {
+                    // TODO エラーハンドリング
                     result.type
                     _isAPISuccess.value = false
                 }
