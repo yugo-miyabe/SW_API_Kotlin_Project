@@ -18,8 +18,8 @@ class PeopleAdapter(private val peopleList: List<Result>) :
 
         fun bind(people: Result) {
             fullName.text = people.name
-            height.text = people.height
-            mass.text = people.mass
+            height.text = "height:" + people.height
+            mass.text = "mass" + people.mass
         }
     }
 
