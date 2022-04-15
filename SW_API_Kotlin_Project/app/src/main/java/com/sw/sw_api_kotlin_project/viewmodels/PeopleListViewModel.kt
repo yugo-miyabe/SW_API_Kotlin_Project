@@ -6,30 +6,26 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.APIRoot
+import com.sw.sw_api_kotlin_project.model.peple.People
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
-class APIRootViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _isAPISuccess = MutableLiveData<Boolean>()
-    val isAPISuccess = _isAPISuccess
-    private val _apiRootURL = MutableLiveData<List<String>>()
-    val apiRootURL = _apiRootURL
+class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
+    private val _people = MutableLiveData<People>()
+    val people = _people
 
-    fun getAPIRootURL() {
+    fun getPeopleAPI() {
         viewModelScope.launch {
             val api = SWServiceClient.getService()
-            val response = api.apiRoot()
+            val response = api.people()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
-                    _apiRootURL.value = getUrlList(result.data)
-                    _isAPISuccess.value = true
+                    _people.value = result.data
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
-                    _isAPISuccess.value = false
                 }
                 else -> {
                     // 何もしない
@@ -37,27 +33,14 @@ class APIRootViewModel(private val apiRepository: APIRepository) : BaseViewModel
             }
         }
     }
-
-    // TODO 要修正
-    private fun getUrlList(apiRootURL: APIRoot): List<String> {
-        return listOf(
-            apiRootURL.peopleUrl,
-            apiRootURL.planetsUrl,
-            apiRootURL.filmsUrl,
-            apiRootURL.speciesUrl,
-            apiRootURL.vehiclesUrl,
-            apiRootURL.starshipsUrl
-        )
-    }
-
 }
 
-class APIRootViewModelFactory(private val apiRepository: APIRepository) :
+class PeopleListViewModelFactory(private val apiRepository: APIRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(APIRootViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(PeopleListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return APIRootViewModel(apiRepository) as T
+            return PeopleListViewModel(apiRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
