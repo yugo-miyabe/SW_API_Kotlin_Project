@@ -1,12 +1,12 @@
 package com.sw.sw_api_kotlin_project.api
 
 import com.sw.sw_api_kotlin_project.model.APIRoot
-import com.sw.sw_api_kotlin_project.model.films.Films
-import com.sw.sw_api_kotlin_project.model.peple.People
-import com.sw.sw_api_kotlin_project.model.planet.Planet
-import com.sw.sw_api_kotlin_project.model.species.Species
-import com.sw.sw_api_kotlin_project.model.starships.Starships
-import com.sw.sw_api_kotlin_project.model.vehicles.Vehicles
+import com.sw.sw_api_kotlin_project.model.films.FilmsRoot
+import com.sw.sw_api_kotlin_project.model.peple.PeopleRoot
+import com.sw.sw_api_kotlin_project.model.planet.PlanetRoot
+import com.sw.sw_api_kotlin_project.model.species.SpeciesRoot
+import com.sw.sw_api_kotlin_project.model.starships.StarshipsRoot
+import com.sw.sw_api_kotlin_project.model.vehicles.VehiclesRoot
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -23,36 +23,36 @@ interface SWService {
      * 登場人物取得
      */
     @GET("people/")
-    suspend fun people(): Response<People>
+    suspend fun people(): Response<PeopleRoot>
 
     /**
      * 映画情報取得
      */
     @GET("films/")
-    suspend fun films(): Response<Films>
+    suspend fun films(): Response<FilmsRoot>
 
     /**
      * 惑星取得
      */
     @GET("planets/")
-    suspend fun planets(): Response<Planet>
+    suspend fun planets(): Response<PlanetRoot>
 
     /**
      * 種族取得
      */
     @GET("species/")
-    suspend fun species(): Response<Species>
+    suspend fun species(): Response<SpeciesRoot>
 
     /**
      * 宇宙船取得
      */
     @GET("starships/")
-    suspend fun starships(): Response<Starships>
+    suspend fun starships(): Response<StarshipsRoot>
 
     /**
      * 車両取得
      */
     @GET("vehicles/")
-    suspend fun vehicles(): Response<Vehicles>
+    suspend fun vehicles(): Response<VehiclesRoot>
 
 }

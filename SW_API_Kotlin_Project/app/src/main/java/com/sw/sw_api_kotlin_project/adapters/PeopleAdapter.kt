@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.peple.Result
+import com.sw.sw_api_kotlin_project.model.peple.People
 
-class PeopleAdapter(private val peopleList: List<Result>) :
+class PeopleAdapter(private val peopleList: List<People>) :
     RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -16,7 +16,7 @@ class PeopleAdapter(private val peopleList: List<Result>) :
         private val height = view.findViewById<TextView>(R.id.height)
         private val mass = view.findViewById<TextView>(R.id.mass)
 
-        fun bind(people: Result) {
+        fun bind(people: People) {
             val heightText = "height:$people.height"
             val massText = "mass:$people.mass"
             fullName.text = people.name

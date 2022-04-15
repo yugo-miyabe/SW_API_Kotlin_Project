@@ -45,7 +45,7 @@ class PeopleListFragment : BaseFragment() {
     override fun addObservers() {
         super.addObservers()
         viewModel.people.observe(viewLifecycleOwner) {
-            val adapter = PeopleAdapter(it.results)
+            val adapter = PeopleAdapter(it.people)
             val recyclerView = view?.findViewById<RecyclerView>(R.id.people_recycler)
             recyclerView!!.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(context)
