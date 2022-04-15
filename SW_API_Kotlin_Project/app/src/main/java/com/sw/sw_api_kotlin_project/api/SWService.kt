@@ -1,7 +1,7 @@
 package com.sw.sw_api_kotlin_project.api
 
 import com.sw.sw_api_kotlin_project.model.APIRoot
-import com.sw.sw_api_kotlin_project.model.films.Films
+import com.sw.sw_api_kotlin_project.model.films.FilmsRoot
 import com.sw.sw_api_kotlin_project.model.peple.People
 import com.sw.sw_api_kotlin_project.model.planet.Planet
 import com.sw.sw_api_kotlin_project.model.species.Species
@@ -29,7 +29,7 @@ interface SWService {
      * 映画情報取得
      */
     @GET("films/")
-    suspend fun films(): Response<Films>
+    suspend fun films(): Response<FilmsRoot>
 
     /**
      * 惑星取得
