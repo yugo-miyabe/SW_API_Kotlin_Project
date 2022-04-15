@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.peple.People
+import com.sw.sw_api_kotlin_project.model.peple.PeopleRoot
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _people = MutableLiveData<People>()
+    private val _people = MutableLiveData<PeopleRoot>()
     val people = _people
 
     fun getPeopleAPI() {
