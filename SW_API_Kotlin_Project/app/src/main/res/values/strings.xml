@@ -13,5 +13,9 @@
     <string name="title">タイトル:</string>
     <string name="director">監督:</string>
     <string name="producer">プロデューサー:</string>
+    <!-- 種族リスト -->
+    <string name="species_name">種族名:</string>
+    <string name="classification">分類:</string>
+    <string name="average_height">平均身長:</string>
 
 </resources>
