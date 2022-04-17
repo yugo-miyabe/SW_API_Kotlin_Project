@@ -4,7 +4,6 @@
     <!-- 登場人物リスト  -->
     <string name="height">身長</string>
     <string name="mass">体重</string>
-
     <!-- 惑星リスト -->
     <string name="planet_name">惑星名:</string>
     <string name="climate">気候:</string>
@@ -17,5 +16,9 @@
     <string name="species_name">種族名:</string>
     <string name="classification">分類:</string>
     <string name="average_height">平均身長:</string>
+    <!-- 車両リスト -->
+    <string name="vehicles_name">車両名:</string>
+    <string name="model_name">モデル名:</string>
+    <string name="manufacturer_name">メーカー名:</string>
 
 </resources>
