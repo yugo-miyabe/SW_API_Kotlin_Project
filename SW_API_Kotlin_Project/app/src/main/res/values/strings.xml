@@ -7,4 +7,7 @@
     <string name="title">タイトル:</string>
     <string name="director">監督:</string>
     <string name="producer">プロデューサー:</string>
+    <string name="planet_name">惑星名:</string>
+    <string name="climate">気候:</string>
+    <string name="terrain">地形:</string>
 </resources>

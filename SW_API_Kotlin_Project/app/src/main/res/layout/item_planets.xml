@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/planet_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/planet_name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/planet_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/planet_name_label"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tatooine" />
+
+    <TextView
+        android:id="@+id/climate_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/climate"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/planet_name_label" />
+
+    <TextView
+        android:id="@+id/climate_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/climate_label"
+        app:layout_constraintTop_toBottomOf="@+id/planet_name_text"
+        tools:text="arid" />
+
+    <TextView
+        android:id="@+id/terrain_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/terrain"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/climate_name" />
+
+    <TextView
+        android:id="@+id/terrain_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/terrain_label"
+        app:layout_constraintTop_toBottomOf="@+id/climate_name"
+        tools:text="desert" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
