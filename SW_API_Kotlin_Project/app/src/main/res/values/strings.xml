@@ -2,6 +2,9 @@
     <string name="app_name">SW_API_Kotlin_Project</string>
 
     <!-- People  -->
-    <string name="height">height</string>
-    <string name="mass">mass</string>
+    <string name="height">身長</string>
+    <string name="mass">体重</string>
+    <string name="title">タイトル:</string>
+    <string name="director">監督:</string>
+    <string name="producer">プロデューサー:</string>
 </resources>

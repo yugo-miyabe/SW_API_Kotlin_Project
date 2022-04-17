@@ -10,7 +10,6 @@ import com.sw.sw_api_kotlin_project.model.vehicles.VehiclesRoot
 import retrofit2.Response
 import retrofit2.http.GET
 
-
 interface SWService {
 
     /**

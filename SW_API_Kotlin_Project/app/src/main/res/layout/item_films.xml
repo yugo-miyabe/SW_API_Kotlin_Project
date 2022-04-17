@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/title"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/move_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/title_label"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="A New Hope" />
+
+    <TextView
+        android:id="@+id/director_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/director"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_label" />
+
+    <TextView
+        android:id="@+id/director_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/director_label"
+        app:layout_constraintTop_toBottomOf="@+id/move_name"
+        tools:text="George Lucas" />
+
+    <TextView
+        android:id="@+id/producer_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/producer"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/director_label" />
+
+    <TextView
+        android:id="@+id/producer_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/producer_label"
+        app:layout_constraintTop_toBottomOf="@+id/director_name"
+        tools:text="Gary Kurtz, Rick McCallum" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
