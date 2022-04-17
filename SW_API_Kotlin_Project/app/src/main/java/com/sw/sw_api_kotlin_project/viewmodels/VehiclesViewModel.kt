@@ -15,7 +15,7 @@ class VehiclesViewModel(private val apiRepository: APIRepository) : BaseViewMode
     private val _vehicle = MutableLiveData<VehiclesRoot>()
     val vehicle = _vehicle
 
-    fun getPeopleAPI() {
+    fun getVehiclesAPI() {
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.vehicles()
