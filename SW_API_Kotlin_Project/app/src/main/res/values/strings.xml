@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">SW_API_Kotlin_Project</string>
 
-    <!-- People  -->
+    <!-- 登場人物リスト  -->
     <string name="height">身長</string>
     <string name="mass">体重</string>
-    <string name="title">タイトル:</string>
-    <string name="director">監督:</string>
-    <string name="producer">プロデューサー:</string>
+
+    <!-- 惑星リスト -->
     <string name="planet_name">惑星名:</string>
     <string name="climate">気候:</string>
     <string name="terrain">地形:</string>
+    <!-- 映画リスト -->
+    <string name="title">タイトル:</string>
+    <string name="director">監督:</string>
+    <string name="producer">プロデューサー:</string>
+
 </resources>
