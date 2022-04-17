@@ -19,7 +19,7 @@ data class Species(
     @SerialName("hair_colors")
     val hairColors: String,
     @SerialName("homeworld")
-    val homeWorld: String,
+    val homeWorld: String?,
     val language: String,
     val name: String,
     val people: List<String>,
