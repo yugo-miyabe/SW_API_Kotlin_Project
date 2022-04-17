@@ -27,7 +27,7 @@ class PeopleAdapter(private val peopleList: List<People>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_people_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_people, parent, false)
 
         return ViewHolder(view);
     }
