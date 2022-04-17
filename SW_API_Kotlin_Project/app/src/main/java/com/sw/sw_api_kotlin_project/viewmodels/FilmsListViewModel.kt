@@ -29,28 +29,6 @@ class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewMod
                 }
             }
         }
-
-        /*
-            fun getPeopleAPI() {
-            viewModelScope.launch {
-                val api = SWServiceClient.getService()
-                val response = api.people()
-                when (val result = apiRepository.getResponse(response)) {
-                    is Result.Success -> {
-                        _people.value = result.data
-                    }
-                    is Result.Error -> {
-                        // TODO エラーハンドリング
-                        result.type
-                    }
-                    else -> {
-                        // 何もしない
-                    }
-                }
-            }
-        }
-         */
-
     }
 }
 
