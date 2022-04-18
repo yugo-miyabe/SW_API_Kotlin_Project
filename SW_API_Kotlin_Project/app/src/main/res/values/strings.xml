@@ -22,5 +22,7 @@
     <string name="manufacturer_name">メーカー名:</string>
     <!-- 宇宙船リスト -->
     <string name="starships">宇宙船:</string>
+    <string name="starships_model_name">モデル名:</string>
+    <string name="starships_manufacturer_name">メーカー名:</string>
 
 </resources>

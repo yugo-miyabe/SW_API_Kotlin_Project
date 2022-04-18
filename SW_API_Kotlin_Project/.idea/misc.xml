@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/fragment_planets.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_species.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_star_ships.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/fragment_starships.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/fragment_vehicles.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/item_api_root.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/item_films.xml" value="0.3890625" />

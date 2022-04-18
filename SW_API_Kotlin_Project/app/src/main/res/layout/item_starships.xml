@@ -28,7 +28,7 @@
         android:id="@+id/starships_model_name_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/model_name"
+        android:text="@string/starships_model_name"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/starships_name_label" />
@@ -47,7 +47,7 @@
         android:id="@+id/starships_manufacturer_name_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/manufacturer_name"
+        android:text="@string/starships_manufacturer_name"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/starships_model_name_text" />
