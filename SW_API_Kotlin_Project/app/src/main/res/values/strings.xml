@@ -18,7 +18,11 @@
     <string name="average_height">平均身長:</string>
     <!-- 車両リスト -->
     <string name="vehicles_name">車両名:</string>
-    <string name="model_name">モデル名:</string>
-    <string name="manufacturer_name">メーカー名:</string>
+    <string name="vehicles_model_name">モデル名:</string>
+    <string name="vehicles_manufacturer_name">メーカー名:</string>
+    <!-- 宇宙船リスト -->
+    <string name="starships_name">宇宙船名:</string>
+    <string name="starships_model_name">モデル名:</string>
+    <string name="starships_manufacturer_name">メーカー名:</string>
 
 </resources>
