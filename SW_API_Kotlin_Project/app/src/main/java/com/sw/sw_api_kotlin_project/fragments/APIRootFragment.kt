@@ -56,7 +56,6 @@ class APIRootFragment : BaseFragment() {
     }
 
     private fun adapterOnClick(fragment: Fragment) {
-        //　TODO キャスト対応
         val activity: AppCompatActivity = context as AppCompatActivity
         activity.supportFragmentManager
             .beginTransaction()
