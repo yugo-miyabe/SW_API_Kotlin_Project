@@ -6,16 +6,21 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.fragments.FilmsFragment
+import com.sw.sw_api_kotlin_project.fragments.PeopleListFragment
+import com.sw.sw_api_kotlin_project.fragments.PlanetsFragment
+import com.sw.sw_api_kotlin_project.fragments.SpeciesFragment
+import com.sw.sw_api_kotlin_project.fragments.StarShipsFragment
+import com.sw.sw_api_kotlin_project.fragments.VehiclesFragment
 import com.sw.sw_api_kotlin_project.model.root.APIRoot
+import com.sw.sw_api_kotlin_project.model.root.HomeData
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class APIRootViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _isAPISuccess = MutableLiveData<Boolean>()
-    val isAPISuccess = _isAPISuccess
-    private val _apiRootURL = MutableLiveData<List<String>>()
-    val apiRootURL = _apiRootURL
+    private val _homeData = MutableLiveData<List<HomeData>>()
+    val homeData = _homeData
 
     fun getAPIRootURL() {
         viewModelScope.launch {
@@ -23,13 +28,11 @@ class APIRootViewModel(private val apiRepository: APIRepository) : BaseViewModel
             val response = api.apiRoot()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
-                    _apiRootURL.value = getUrlList(result.data)
-                    _isAPISuccess.value = true
+                    homeData.value = getHomeDataList(result.data)
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
-                    _isAPISuccess.value = false
                 }
                 else -> {
                     // 何もしない
@@ -39,14 +42,14 @@ class APIRootViewModel(private val apiRepository: APIRepository) : BaseViewModel
     }
 
     // TODO 要修正
-    private fun getUrlList(apiRootURL: APIRoot): List<String> {
+    private fun getHomeDataList(apiRootURL: APIRoot): List<HomeData> {
         return listOf(
-            apiRootURL.peopleUrl,
-            apiRootURL.planetsUrl,
-            apiRootURL.filmsUrl,
-            apiRootURL.speciesUrl,
-            apiRootURL.vehiclesUrl,
-            apiRootURL.starshipsUrl
+            HomeData("登場人物", apiRootURL.peopleUrl, PeopleListFragment()),
+            HomeData("惑星", apiRootURL.planetsUrl, PlanetsFragment()),
+            HomeData("映画", apiRootURL.filmsUrl, FilmsFragment()),
+            HomeData("人種", apiRootURL.speciesUrl, SpeciesFragment()),
+            HomeData("自動車", apiRootURL.vehiclesUrl, VehiclesFragment()),
+            HomeData("宇宙船", apiRootURL.starshipsUrl, StarShipsFragment()),
         )
     }
 

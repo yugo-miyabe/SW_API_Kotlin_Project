@@ -4,25 +4,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.utils.Constants
+import com.sw.sw_api_kotlin_project.model.root.HomeData
 
 class APIRootAdapter(
-    private val apiRootList: List<String>,
-    private val onClick: (String) -> Unit
+    private val apiRootList: List<HomeData>,
+    private val onClick: (Fragment) -> Unit
 ) :
     RecyclerView.Adapter<APIRootAdapter.ViewHolder>() {
 
-    class ViewHolder(private val view: View, private val onClick: (String) -> Unit) :
+    class ViewHolder(private val view: View, private val onClick: (Fragment) -> Unit) :
         RecyclerView.ViewHolder(view) {
         private val textView: TextView = view.findViewById(R.id.api_root_item)
 
-        fun bind(url: String, text: String) {
-            val viewText = "$text:$url"
+        fun bind(homeData: HomeData) {
+            val viewText = "${homeData.title}:${homeData.url}"
             textView.text = viewText
             view.setOnClickListener {
-                onClick(text)
+                onClick(homeData.fragment)
             }
         }
     }
@@ -35,10 +36,7 @@ class APIRootAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(
-            apiRootList[position],
-            Constants.API_ROOT_LIST[position]
-        )
+        holder.bind(apiRootList[position])
     }
 
     override fun getItemCount() = apiRootList.size
