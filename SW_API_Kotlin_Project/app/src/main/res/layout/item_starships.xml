@@ -9,7 +9,7 @@
         android:id="@+id/starships_name_label"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="@string/starships"
+        android:text="@string/starships_name"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
