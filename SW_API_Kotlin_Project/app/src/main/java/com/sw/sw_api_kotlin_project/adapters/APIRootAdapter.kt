@@ -17,11 +17,14 @@ class APIRootAdapter(
 
     class ViewHolder(private val view: View, private val onClick: (Fragment) -> Unit) :
         RecyclerView.ViewHolder(view) {
-        private val textView: TextView = view.findViewById(R.id.api_root_item)
+        private val title: TextView = view.findViewById(R.id.api_root_title)
+        private val url: TextView = view.findViewById(R.id.api_root_url)
+
 
         fun bind(homeData: HomeData) {
-            val viewText = "${homeData.title}:${homeData.url}"
-            textView.text = viewText
+            val viewText = "${homeData.title}:"
+            title.text = viewText
+            url.text = homeData.url
             view.setOnClickListener {
                 onClick(homeData.fragment)
             }

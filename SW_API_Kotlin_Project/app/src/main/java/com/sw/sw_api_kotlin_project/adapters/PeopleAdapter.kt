@@ -17,8 +17,8 @@ class PeopleAdapter(private val peopleList: List<People>) :
         private val mass = view.findViewById<TextView>(R.id.mass)
 
         fun bind(people: People) {
-            val heightText = "height:$people.height"
-            val massText = "mass:$people.mass"
+            val heightText = "height:${people.height}"
+            val massText = "mass:${people.mass}"
             fullName.text = people.name
             height.text = heightText
             mass.text = massText

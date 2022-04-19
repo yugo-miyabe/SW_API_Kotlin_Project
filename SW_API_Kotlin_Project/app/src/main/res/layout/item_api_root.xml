@@ -6,15 +6,28 @@
     android:layout_height="50dp">
 
     <TextView
-        android:id="@+id/api_root_item"
+        android:id="@+id/api_root_title"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="登場人物:" />
+
+    <TextView
+        android:id="@+id/api_root_url"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/api_root_title"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="登場人物" />
+        tools:text="https://swapi.dev/api/people/" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
