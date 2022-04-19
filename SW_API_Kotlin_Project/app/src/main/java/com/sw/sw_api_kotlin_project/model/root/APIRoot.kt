@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.model
+package com.sw.sw_api_kotlin_project.model.root
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

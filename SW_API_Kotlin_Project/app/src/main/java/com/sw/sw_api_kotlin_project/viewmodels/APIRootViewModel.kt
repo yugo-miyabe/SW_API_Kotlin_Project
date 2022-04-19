@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.APIRoot
+import com.sw.sw_api_kotlin_project.model.root.APIRoot
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch

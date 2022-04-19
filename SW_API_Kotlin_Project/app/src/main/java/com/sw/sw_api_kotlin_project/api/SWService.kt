@@ -1,6 +1,6 @@
 package com.sw.sw_api_kotlin_project.api
 
-import com.sw.sw_api_kotlin_project.model.APIRoot
+import com.sw.sw_api_kotlin_project.model.root.APIRoot
 import com.sw.sw_api_kotlin_project.model.films.FilmsRoot
 import com.sw.sw_api_kotlin_project.model.peple.PeopleRoot
 import com.sw.sw_api_kotlin_project.model.planet.PlanetRoot
