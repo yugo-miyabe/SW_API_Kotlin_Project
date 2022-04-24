@@ -36,6 +36,7 @@ class APIRootAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // TODO 要修正
         holder.bind(
             apiRootList[position],
             position,
