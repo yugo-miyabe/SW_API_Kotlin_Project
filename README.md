@@ -19,7 +19,7 @@ API:https://swapi.dev/
 |--|--|--|
 | kotlin-serialization | 1.3.1 | jsonコンバーター |
 | Retrofit | 2.9.0 | 通信ライブラリ |
-| | | |
+| Timber | 4.7.1 | ログ出力 |
 | | | |
 | | | |
 | | | |
