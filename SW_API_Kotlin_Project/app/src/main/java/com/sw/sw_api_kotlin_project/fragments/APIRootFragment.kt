@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,8 +47,8 @@ class APIRootFragment : BaseFragment() {
         super.addObservers()
 
         viewModel.apiRootURL.observe(viewLifecycleOwner) {
-            val adapter = APIRootAdapter(it) { fragment_key ->
-                adapterOnClick(fragment_key)
+            val adapter = APIRootAdapter(it) { position ->
+                adapterOnClick(position)
             }
             val recyclerView = view?.findViewById<RecyclerView>(R.id.home_recycler)
             recyclerView!!.adapter = adapter
@@ -55,15 +56,38 @@ class APIRootFragment : BaseFragment() {
         }
     }
 
-    private fun adapterOnClick(keyFragment: String) {
-        //　TODO キャスト対応
-        val fragment = Constants.FRAGMENT_LIST[keyFragment]!!
+    private fun adapterOnClick(position: Int) {
+        val fragment = getTransitionFragment(Constants.Root.values()[position])
         val activity: AppCompatActivity = context as AppCompatActivity
         activity.supportFragmentManager
             .beginTransaction()
             .addToBackStack(null)
             .replace(R.id.container, fragment)
             .commit()
+    }
+
+
+    private fun getTransitionFragment(item: Constants.Root): Fragment {
+        when (item) {
+            Constants.Root.People -> {
+                return PeopleFragment()
+            }
+            Constants.Root.Planets -> {
+                return PlanetsFragment()
+            }
+            Constants.Root.Films -> {
+                return FilmsFragment()
+            }
+            Constants.Root.Species -> {
+                return SpeciesFragment()
+            }
+            Constants.Root.Vehicles -> {
+                return VehiclesFragment()
+            }
+            Constants.Root.StarShips -> {
+                return StarShipsFragment()
+            }
+        }
     }
 
 }

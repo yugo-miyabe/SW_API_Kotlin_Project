@@ -10,19 +10,20 @@ import com.sw.sw_api_kotlin_project.utils.Constants
 
 class APIRootAdapter(
     private val apiRootList: List<String>,
-    private val onClick: (String) -> Unit
+    private val onClick: (Int) -> Unit
 ) :
     RecyclerView.Adapter<APIRootAdapter.ViewHolder>() {
 
-    class ViewHolder(private val view: View, private val onClick: (String) -> Unit) :
+    class ViewHolder(private val view: View, private val onClick: (Int) -> Unit) :
         RecyclerView.ViewHolder(view) {
         private val textView: TextView = view.findViewById(R.id.api_root_item)
 
-        fun bind(url: String, text: String) {
-            val viewText = "$text:$url"
+        fun bind(url: String, position: Int) {
+
+            val viewText = Constants.Root.values()[position].title + url
             textView.text = viewText
             view.setOnClickListener {
-                onClick(text)
+                onClick(position)
             }
         }
     }
@@ -35,9 +36,10 @@ class APIRootAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // TODO 要修正
         holder.bind(
             apiRootList[position],
-            Constants.API_ROOT_LIST[position]
+            position,
         )
     }
 

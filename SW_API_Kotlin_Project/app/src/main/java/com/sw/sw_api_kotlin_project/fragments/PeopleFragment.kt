@@ -15,7 +15,7 @@ import com.sw.sw_api_kotlin_project.viewmodels.PeopleListViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.PeopleListViewModelFactory
 
 
-class PeopleListFragment : BaseFragment() {
+class PeopleFragment : BaseFragment() {
 
     private lateinit var viewModel: PeopleListViewModel
 
