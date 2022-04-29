@@ -16,7 +16,7 @@ import com.sw.sw_api_kotlin_project.viewmodels.StarShipsViewModelFactory
 class StarShipsFragment : BaseFragment() {
     private lateinit var viewModel: StarShipsViewModel
     private var _binding: FragmentStarshipsBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

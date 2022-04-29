@@ -14,10 +14,9 @@ import com.sw.sw_api_kotlin_project.viewmodels.PeopleListViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.PeopleListViewModelFactory
 
 class PeopleFragment : BaseFragment() {
-
     private lateinit var viewModel: PeopleListViewModel
     private var _binding: FragmentPeopleListBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

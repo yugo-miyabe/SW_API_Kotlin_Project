@@ -14,10 +14,9 @@ import com.sw.sw_api_kotlin_project.viewmodels.FilmsListViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.FilmsListViewModelFactory
 
 class FilmsFragment : BaseFragment() {
-
     private lateinit var viewModel: FilmsListViewModel
     private var _binding: FragmentFilmsBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

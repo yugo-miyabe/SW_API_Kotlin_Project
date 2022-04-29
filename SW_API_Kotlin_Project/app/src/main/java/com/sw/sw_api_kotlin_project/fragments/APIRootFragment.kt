@@ -18,10 +18,9 @@ import com.sw.sw_api_kotlin_project.viewmodels.APIRootViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.APIRootViewModelFactory
 
 class APIRootFragment : BaseFragment() {
-
     private lateinit var viewModel: APIRootViewModel
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

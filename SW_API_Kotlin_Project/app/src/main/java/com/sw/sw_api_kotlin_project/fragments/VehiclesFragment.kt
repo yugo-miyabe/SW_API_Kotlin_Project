@@ -16,10 +16,9 @@ import com.sw.sw_api_kotlin_project.viewmodels.VehiclesViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.VehiclesViewModelFactory
 
 class VehiclesFragment : BaseFragment() {
-
     private lateinit var viewModel: VehiclesViewModel
     private var _binding: FragmentVehiclesBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

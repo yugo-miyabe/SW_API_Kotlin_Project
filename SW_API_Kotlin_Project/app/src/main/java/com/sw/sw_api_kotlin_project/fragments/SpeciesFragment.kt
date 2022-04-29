@@ -14,10 +14,9 @@ import com.sw.sw_api_kotlin_project.viewmodels.SpeciesViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.SpeciesViewModelFactory
 
 class SpeciesFragment : BaseFragment() {
-
     private lateinit var viewModel: SpeciesViewModel
     private var _binding: FragmentSpeciesBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
