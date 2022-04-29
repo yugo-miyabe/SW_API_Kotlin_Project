@@ -6,32 +6,60 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/full_name"
+        android:id="@+id/full_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/full_name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/full_name_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="14dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/full_name_label"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Luke Skywalker" />
 
     <TextView
-        android:id="@+id/height"
-        android:layout_width="wrap_content"
+        android:id="@+id/height_label"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/height"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/full_name"
-        tools:text="height:172" />
+        app:layout_constraintTop_toBottomOf="@+id/full_name_label" />
 
     <TextView
-        android:id="@+id/mass"
-        android:layout_width="wrap_content"
+        android:id="@+id/height_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/height_label"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_text"
+        tools:text="172" />
+
+    <TextView
+        android:id="@+id/mass_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/mass"
-        app:layout_constraintStart_toEndOf="@id/height"
-        app:layout_constraintTop_toBottomOf="@+id/full_name"
-        tools:text="mass:77" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/height_label" />
+
+    <TextView
+        android:id="@+id/mass_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/mass_label"
+        app:layout_constraintTop_toBottomOf="@+id/height_text"
+        tools:text="77" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
