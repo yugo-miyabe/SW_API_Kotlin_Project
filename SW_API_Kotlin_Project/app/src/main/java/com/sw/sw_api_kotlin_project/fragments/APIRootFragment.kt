@@ -60,11 +60,14 @@ class APIRootFragment : BaseFragment() {
     private fun adapterOnClick(position: Int) {
         val fragment = getTransitionFragment(Constants.Root.values()[position])
         val activity: AppCompatActivity = context as AppCompatActivity
+        /*
         activity.supportFragmentManager
             .beginTransaction()
             .addToBackStack(null)
             .replace(R.id.container, fragment)
             .commit()
+
+         */
     }
 
 

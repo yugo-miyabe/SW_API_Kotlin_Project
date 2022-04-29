@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/navi_people">
+
+    <fragment
+        android:id="@+id/navi_people"
+        android:name="com.sw.sw_api_kotlin_project.fragments.PeopleFragment"
+        android:label="PeopleFragment" />
+
+    <fragment
+        android:id="@+id/navi_films"
+        android:name="com.sw.sw_api_kotlin_project.fragments.FilmsFragment"
+        android:label="FilmsFragment" />
+
+    <fragment
+        android:id="@+id/navi_planets"
+        android:name="com.sw.sw_api_kotlin_project.fragments.PlanetsFragment"
+        android:label="PlanetsFragment" />
+
+    <fragment
+        android:id="@+id/navi_species"
+        android:name="com.sw.sw_api_kotlin_project.fragments.SpeciesFragment"
+        android:label="SpeciesFragment" />
+
+    <fragment
+        android:id="@+id/navi_star_ships"
+        android:name="com.sw.sw_api_kotlin_project.fragments.StarShipsFragment"
+        android:label="StarShipsFragment" />
+
+    <fragment
+        android:id="@+id/navi_vehicles"
+        android:name="com.sw.sw_api_kotlin_project.fragments.VehiclesFragment"
+        android:label="VehiclesFragment" />
+</navigation>
