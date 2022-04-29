@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.VehiclesAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.databinding.FragmentVehiclesBinding
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.viewmodels.VehiclesViewModel
 import com.sw.sw_api_kotlin_project.viewmodels.VehiclesViewModelFactory
@@ -17,6 +18,8 @@ import com.sw.sw_api_kotlin_project.viewmodels.VehiclesViewModelFactory
 class VehiclesFragment : BaseFragment() {
 
     private lateinit var viewModel: VehiclesViewModel
+    private var _binding: FragmentVehiclesBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +32,9 @@ class VehiclesFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_vehicles, container, false)
+    ): View {
+        _binding = FragmentVehiclesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,5 +50,10 @@ class VehiclesFragment : BaseFragment() {
             recyclerView!!.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(context)
         }
+    }
+
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
     }
 }
