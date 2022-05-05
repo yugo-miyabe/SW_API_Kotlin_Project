@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout/item_species.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_starships.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_vehicles.xml" value="0.23385416666666667" />
+        <entry key="app/src/main/res/layout/view_progress.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
       </map>
     </option>
