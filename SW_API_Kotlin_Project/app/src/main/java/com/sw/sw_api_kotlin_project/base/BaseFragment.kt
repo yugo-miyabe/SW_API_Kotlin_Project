@@ -76,9 +76,9 @@ open class BaseFragment : Fragment() {
     fun observeApiLoadingEvent(viewModel: BaseViewModel) {
         viewModel.loadingEvent.observe(this) {
             if (it) {
-                (activity as? BaseActivity)?.showBlockingProgress()
+                (activity as BaseActivity).showBlockingProgress()
             } else {
-                (activity as? BaseActivity)?.hideBlockingProgress()
+                (activity as BaseActivity).hideBlockingProgress()
             }
         }
     }
