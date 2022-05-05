@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/drawable/ic_baseline_airplanemode_active_24.xml" value="0.2615" />
+        <entry key="app/src/main/res/drawable/ic_baseline_directions_car_24.xml" value="0.2615" />
+        <entry key="app/src/main/res/drawable/ic_face_black_24dp.xml" value="0.214" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/ic_public_24px.xml" value="0.2615" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_films.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/fragment_people_list.xml" value="0.221875" />
@@ -22,6 +27,7 @@
         <entry key="app/src/main/res/layout/item_species.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_starships.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_vehicles.xml" value="0.23385416666666667" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

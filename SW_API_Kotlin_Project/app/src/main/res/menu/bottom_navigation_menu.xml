@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navi_people"
+        android:icon="@drawable/ic_face"
+        android:title="@string/people" />
+    <item
+        android:id="@+id/navi_planets"
+        android:icon="@drawable/ic_public"
+        android:title="@string/planets" />
+
+    <item
+        android:id="@+id/navi_star_ships"
+        android:icon="@drawable/ic_plane"
+        android:title="@string/star_ships" />
+
+    <!-- TODO Bottom Navigationの上限が5つまで Navigation Drawerに変更 -->
+    <!-- TODO タイトルが表示されるのが3まで -->
+    <!--
+    <item
+        android:id="@+id/navi_films"
+        android:icon="@drawable/ic_face_black_24dp"
+        android:title="@string/films" />
+
+    <item
+        android:id="@+id/navi_vehicles"
+        android:icon="@drawable/ic_face_black_24dp"
+        android:title="@string/vehicles" />
+    -->
+
+</menu>
