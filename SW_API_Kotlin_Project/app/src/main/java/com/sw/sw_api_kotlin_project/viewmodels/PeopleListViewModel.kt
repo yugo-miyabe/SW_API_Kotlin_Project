@@ -16,16 +16,19 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
     val people = _people
 
     fun getPeopleAPI() {
+        startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.people()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     _people.value = result.data
+                    stopLoading()
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
+                    stopLoading()
                 }
                 else -> {
                     // 何もしない
