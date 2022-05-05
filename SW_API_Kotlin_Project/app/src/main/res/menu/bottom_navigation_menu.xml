@@ -26,8 +26,6 @@
         android:id="@+id/navi_vehicles"
         android:icon="@drawable/ic_face_black_24dp"
         android:title="@string/vehicles" />
-
-
     -->
 
 </menu>
