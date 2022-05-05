@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/navi_people"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/people" />
-    <item
-        android:id="@+id/navi_planets"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/planets" />
-    <item
-        android:id="@+id/navi_films"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/films" />
-    <item
-        android:id="@+id/navi_species"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/species" />
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navi_people"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/people" />
+        <item
+            android:id="@+id/navi_planets"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/planets" />
+        <item
+            android:id="@+id/navi_films"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/films" />
+        <item
+            android:id="@+id/navi_species"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/species" />
 
-    <item
-        android:id="@+id/navi_vehicles"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/vehicles" />
-    <item
-        android:id="@+id/navi_star_ships"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="@string/star_ships" />
+        <item
+            android:id="@+id/navi_vehicles"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/vehicles" />
+        <item
+            android:id="@+id/navi_star_ships"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/star_ships" />
+    </group>
+
 </menu>

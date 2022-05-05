@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
     app:startDestination="@id/navi_people">
 
     <fragment
         android:id="@+id/navi_people"
         android:name="com.sw.sw_api_kotlin_project.fragments.PeopleFragment"
-        android:label="PeopleFragment" />
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_people_list" />
 
     <fragment
         android:id="@+id/navi_films"
         android:name="com.sw.sw_api_kotlin_project.fragments.FilmsFragment"
-        android:label="FilmsFragment" />
+        android:label="FilmsFragment"
+        tools:layout="@layout/fragment_films" />
 
     <fragment
         android:id="@+id/navi_planets"
         android:name="com.sw.sw_api_kotlin_project.fragments.PlanetsFragment"
-        android:label="PlanetsFragment" />
+        android:label="PlanetsFragment"
+        tools:layout="@layout/fragment_planets" />
 
     <fragment
         android:id="@+id/navi_species"
         android:name="com.sw.sw_api_kotlin_project.fragments.SpeciesFragment"
-        android:label="SpeciesFragment" />
+        android:label="SpeciesFragment"
+        tools:layout="@layout/fragment_species" />
 
     <fragment
         android:id="@+id/navi_star_ships"
         android:name="com.sw.sw_api_kotlin_project.fragments.StarShipsFragment"
-        android:label="StarShipsFragment" />
+        android:label="StarShipsFragment"
+        tools:layout="@layout/fragment_starships" />
 
     <fragment
         android:id="@+id/navi_vehicles"
         android:name="com.sw.sw_api_kotlin_project.fragments.VehiclesFragment"
-        android:label="VehiclesFragment" />
+        android:label="VehiclesFragment"
+        tools:layout="@layout/fragment_vehicles" />
 </navigation>
