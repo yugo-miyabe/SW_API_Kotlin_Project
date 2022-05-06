@@ -4,7 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_airplanemode_active_24.xml" value="0.2615" />
+        <entry key="app/src/main/res/drawable/ic_baseline_car_24.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_baseline_directions_car_24.xml" value="0.2615" />
+        <entry key="app/src/main/res/drawable/ic_baseline_face_24.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_baseline_film_24.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_baseline_plane_24.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_baseline_public_24.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_baseline_species_24.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_face_black_24dp.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2275" />
         <entry key="app/src/main/res/drawable/ic_public_24px.xml" value="0.2615" />
@@ -27,7 +33,8 @@
         <entry key="app/src/main/res/layout/item_species.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_starships.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_vehicles.xml" value="0.23385416666666667" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/view_progress.xml" value="0.17395833333333333" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.375" />
       </map>
     </option>
   </component>
