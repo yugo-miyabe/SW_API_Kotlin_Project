@@ -39,6 +39,7 @@ class SpeciesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getSpeciesAPI()
+        observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {

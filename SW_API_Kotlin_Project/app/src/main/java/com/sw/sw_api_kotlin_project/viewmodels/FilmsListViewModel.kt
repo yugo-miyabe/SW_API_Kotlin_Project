@@ -17,15 +17,18 @@ class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewMod
     val films = _films
 
     fun getFilmsAPI() {
+        startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.films()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     _films.value = result.data
+                    stopLoading()
                 }
                 is Result.Error -> {
                     result.type
+                    stopLoading()
                 }
             }
         }

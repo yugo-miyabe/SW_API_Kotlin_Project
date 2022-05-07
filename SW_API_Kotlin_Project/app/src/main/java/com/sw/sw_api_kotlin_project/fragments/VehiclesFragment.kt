@@ -39,6 +39,7 @@ class VehiclesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getVehiclesAPI()
+        observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
