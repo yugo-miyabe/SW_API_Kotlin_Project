@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_people"
+            android:icon="@drawable/ic_baseline_face_24"
+            android:title="@string/people" />
+
+        <item
+            android:id="@+id/nav_films"
+            android:icon="@drawable/ic_baseline_film_24"
+            android:title="@string/films" />
+
+        <item
+            android:id="@+id/nav_planets"
+            android:icon="@drawable/ic_baseline_public_24"
+            android:title="@string/planets" />
+
+        <item
+            android:id="@+id/nav_star_ships"
+            android:icon="@drawable/ic_baseline_plane_24"
+            android:title="@string/star_ships" />
+
+        <item
+            android:id="@+id/nav_species"
+            android:icon="@drawable/ic_baseline_species_24"
+            android:title="@string/species" />
+
+        <item
+            android:id="@+id/nav_vehicles"
+            android:icon="@drawable/ic_baseline_car_24"
+            android:title="@string/vehicles" />
+    </group>
+
+
+</menu>
