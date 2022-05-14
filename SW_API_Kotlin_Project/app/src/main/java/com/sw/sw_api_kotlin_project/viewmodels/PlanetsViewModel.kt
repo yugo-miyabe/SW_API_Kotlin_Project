@@ -16,16 +16,19 @@ class PlanetsViewModel(private val apiRepository: APIRepository) : BaseViewModel
     val planet = _planet
 
     fun getPlanetsAPI() {
+        startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.planets()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     _planet.value = result.data
+                    stopLoading()
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
+                    stopLoading()
                 }
                 else -> {
                     // 何もしない

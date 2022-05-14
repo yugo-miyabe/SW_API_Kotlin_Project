@@ -37,6 +37,7 @@ class StarShipsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getStarShipsAPI()
+        observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {

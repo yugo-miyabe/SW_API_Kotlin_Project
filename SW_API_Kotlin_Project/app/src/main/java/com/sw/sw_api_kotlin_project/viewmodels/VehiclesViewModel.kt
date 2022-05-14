@@ -16,16 +16,19 @@ class VehiclesViewModel(private val apiRepository: APIRepository) : BaseViewMode
     val vehicle = _vehicle
 
     fun getVehiclesAPI() {
+        startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.vehicles()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     vehicle.value = result.data
+                    stopLoading()
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
+                    stopLoading()
                 }
                 else -> {
                     // 何もしない

@@ -16,16 +16,19 @@ class StarShipsViewModel(private val apiRepository: APIRepository) : BaseViewMod
     val starShips = _starShips
 
     fun getStarShipsAPI() {
+        startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.starships()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     starShips.value = result.data
+                    stopLoading()
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
+                    stopLoading()
                 }
                 else -> {
                     // 何もしない

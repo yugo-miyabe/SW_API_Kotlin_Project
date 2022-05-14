@@ -16,16 +16,19 @@ class SpeciesViewModel(private val apiRepository: APIRepository) : BaseViewModel
     val species = _species
 
     fun getSpeciesAPI() {
+        startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.species()
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     species.value = result.data
+                    stopLoading()
                 }
                 is Result.Error -> {
                     // TODO エラーハンドリング
                     result.type
+                    stopLoading()
                 }
                 else -> {
                     // 何もしない

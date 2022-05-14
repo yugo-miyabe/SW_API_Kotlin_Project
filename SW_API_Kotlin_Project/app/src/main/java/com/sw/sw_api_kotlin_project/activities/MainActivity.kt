@@ -45,12 +45,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initViews() {
-        /*
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, APIRootFragment())
-            .commit()
-         */
+
     }
 
 
