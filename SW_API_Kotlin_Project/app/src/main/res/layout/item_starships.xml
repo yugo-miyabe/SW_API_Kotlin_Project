@@ -5,61 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/starships_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="@string/starships_name"
-        android:textSize="24sp"
+    <ImageView
+        android:id="@+id/starships_image_Icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_baseline_starships_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/teal_700"
+        tools:ignore="contentDescription" />
 
     <TextView
         android:id="@+id/starships_name_text"
+        style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/starships_name_label"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/starships_image_Icon"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Sand Crawler" />
-
-    <TextView
-        android:id="@+id/starships_model_name_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/starships_model_name"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/starships_name_label" />
-
-    <TextView
-        android:id="@+id/starships_model_name_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/starships_model_name_label"
-        app:layout_constraintTop_toBottomOf="@+id/starships_name_label"
-        tools:text="CR90 corvette" />
-
-    <TextView
-        android:id="@+id/starships_manufacturer_name_label"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/starships_manufacturer_name"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/starships_model_name_text" />
-
-    <TextView
-        android:id="@+id/starships_manufacturer_name_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/starships_manufacturer_name_label"
-        app:layout_constraintTop_toBottomOf="@+id/starships_model_name_text"
-        tools:text="CR90 corvette" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

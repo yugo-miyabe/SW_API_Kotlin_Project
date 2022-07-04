@@ -13,13 +13,9 @@ class PeopleAdapter(private val peopleList: List<People>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val fullName = view.findViewById<TextView>(R.id.full_name_text)
-        private val height = view.findViewById<TextView>(R.id.height_text)
-        private val mass = view.findViewById<TextView>(R.id.mass_text)
 
         fun bind(people: People) {
             fullName.text = people.name
-            height.text = people.height
-            mass.text = people.mass
         }
     }
 

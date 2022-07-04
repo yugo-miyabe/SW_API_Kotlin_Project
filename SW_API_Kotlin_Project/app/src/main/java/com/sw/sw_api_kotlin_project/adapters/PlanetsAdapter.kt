@@ -13,13 +13,9 @@ class PlanetsAdapter(private val planetList: List<Planet>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val planet = view.findViewById<TextView>(R.id.planet_name_text)
-        private val climate = view.findViewById<TextView>(R.id.climate_name)
-        private val terrain = view.findViewById<TextView>(R.id.terrain_name)
 
         fun bind(planetList: Planet) {
             planet.text = planetList.name
-            climate.text = planetList.climate
-            terrain.text = planetList.terrain
         }
     }
 

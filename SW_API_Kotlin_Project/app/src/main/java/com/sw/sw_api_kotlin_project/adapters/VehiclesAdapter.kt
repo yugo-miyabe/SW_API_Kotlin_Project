@@ -13,13 +13,9 @@ class VehiclesAdapter(private val vehicleList: List<Vehicles>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val vehicleName = view.findViewById<TextView>(R.id.vehicle_name_text)
-        private val modelName = view.findViewById<TextView>(R.id.model_name_text)
-        private val manufacturerName = view.findViewById<TextView>(R.id.manufacturer_name_text)
 
         fun bind(vehicles: Vehicles) {
             vehicleName.text = vehicles.name
-            modelName.text = vehicles.model
-            manufacturerName.text = vehicles.manufacturer
         }
     }
 

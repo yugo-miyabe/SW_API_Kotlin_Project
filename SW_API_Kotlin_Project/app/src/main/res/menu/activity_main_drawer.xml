@@ -16,12 +16,12 @@
 
         <item
             android:id="@+id/nav_planets"
-            android:icon="@drawable/ic_baseline_public_24"
+            android:icon="@drawable/ic_baseline_planets_24"
             android:title="@string/planets" />
 
         <item
             android:id="@+id/nav_star_ships"
-            android:icon="@drawable/ic_baseline_plane_24"
+            android:icon="@drawable/ic_baseline_starships_24"
             android:title="@string/star_ships" />
 
         <item
@@ -31,7 +31,7 @@
 
         <item
             android:id="@+id/nav_vehicles"
-            android:icon="@drawable/ic_baseline_car_24"
+            android:icon="@drawable/ic_baseline_vehicles_24"
             android:title="@string/vehicles" />
     </group>
 
