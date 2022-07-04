@@ -13,13 +13,8 @@ class FilmsAdapter(private val filmsList: List<Films>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val move = view.findViewById<TextView>(R.id.move_name)
-        private val director = view.findViewById<TextView>(R.id.director_name)
-        private val producer = view.findViewById<TextView>(R.id.producer_name)
-
         fun bind(films: Films) {
             move.text = films.title
-            director.text = films.director
-            producer.text = films.producer
         }
 
     }

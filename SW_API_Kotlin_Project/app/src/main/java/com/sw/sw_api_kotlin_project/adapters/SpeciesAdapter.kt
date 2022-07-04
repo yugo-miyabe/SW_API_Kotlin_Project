@@ -13,13 +13,9 @@ class SpeciesAdapter(private val speciesList: List<Species>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val specie = view.findViewById<TextView>(R.id.specie_name_text)
-        private val classification = view.findViewById<TextView>(R.id.classification_text)
-        private val averageHeight = view.findViewById<TextView>(R.id.average_height_text)
 
         fun bind(species: Species) {
             specie.text = species.name
-            classification.text = species.classification
-            averageHeight.text = species.averageHeight
         }
 
     }

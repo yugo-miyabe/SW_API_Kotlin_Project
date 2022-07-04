@@ -13,13 +13,9 @@ class StarShipsAdapter(private val starships: List<Starships>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val starshipsName = view.findViewById<TextView>(R.id.starships_name_text)
-        private val modelName = view.findViewById<TextView>(R.id.starships_model_name_text)
-        private val manufacturerName = view.findViewById<TextView>(R.id.starships_manufacturer_name_text)
 
         fun bind(starships: Starships) {
             starshipsName.text = starships.name
-            modelName.text = starships.model
-            manufacturerName.text = starships.manufacturer
         }
     }
 
