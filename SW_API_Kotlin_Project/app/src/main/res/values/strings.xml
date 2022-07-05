@@ -35,6 +35,22 @@
     <string name="starships_name">宇宙船名:</string>
     <string name="starships_model_name">モデル名:</string>
     <string name="starships_manufacturer_name">メーカー名:</string>
+    <!-- 登場人物詳細 -->
+    <string name="people_details_birth_year">Birth Year:</string>
+    <string name="people_details_gender">Gender:</string>
+    <string name="people_details_height">Height:</string>
+    <string name="people_details_mass">Mass:</string>
+    <string name="people_details_species">Species:</string>
+    <string name="people_details_starships">Starships</string>
+    <string name="people_details_vehicles">Vehicles:</string>
+    <string name="people_details_films">Films:</string>
+    <string name="people_details_species_Human">Human</string>
+    <!-- 共通詳細 -->
+    <string name="details_home_world">Home World:</string>
+    <string name="details_skin_color">Skin Color:</string>
+    <string name="details_eye_color">Eye Color:</string>
+    <string name="details_hair_color">Hair Color:</string>
+
     <!-- 共通 -->
     <string name="next">NEXT</string>
     <string name="previous">PREVIOUS</string>

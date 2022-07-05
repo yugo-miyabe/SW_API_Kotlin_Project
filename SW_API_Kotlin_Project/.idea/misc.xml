@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2758152173913043" />
         <entry key="app/src/main/res/layout/fragment_films.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.38958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_people_details.xml" value="0.40260416666666665" />
         <entry key="app/src/main/res/layout/fragment_people_list.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/fragment_planets.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_species.xml" value="0.2359375" />
@@ -36,8 +37,6 @@
         <entry key="app/src/main/res/layout/item_species.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_starships.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_vehicles.xml" value="0.23385416666666667" />
-        <entry key="app/src/main/res/layout/view_progress.xml" value="0.17395833333333333" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/view_progress.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2671875" />
