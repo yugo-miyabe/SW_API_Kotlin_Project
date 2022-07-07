@@ -15,7 +15,7 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
     private val _people = MutableLiveData<PeopleRoot>()
     val people = _people
 
-    fun getPeopleAPI() {
+    fun getPeopleList() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -35,6 +35,11 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
                 }
             }
         }
+    }
+
+    fun getDetailPeople(position: Int) {
+        //TODO API処理
+
     }
 }
 

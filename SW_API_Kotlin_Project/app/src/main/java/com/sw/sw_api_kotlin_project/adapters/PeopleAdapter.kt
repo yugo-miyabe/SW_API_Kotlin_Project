@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.model.peple.People
 
-class PeopleAdapter(private val peopleList: List<People>) :
+class PeopleAdapter(
+    private val peopleList: List<People>,
+    private val itemClickListener: (Int) -> Unit
+) :
     RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,6 +31,10 @@ class PeopleAdapter(private val peopleList: List<People>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(peopleList[position])
+
+        holder.itemView.setOnClickListener {
+            itemClickListener(position)
+        }
     }
 
     override fun getItemCount() = peopleList.size
