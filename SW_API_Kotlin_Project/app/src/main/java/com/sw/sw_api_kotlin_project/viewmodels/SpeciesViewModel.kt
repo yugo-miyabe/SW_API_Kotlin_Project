@@ -12,10 +12,10 @@ import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class SpeciesViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _species = MutableLiveData<SpeciesRoot>()
+    private val _species = MutableLiveData<SpeciesRoot?>()
     val species = _species
 
-    fun getSpeciesAPI() {
+    fun fetchSpecies() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -31,7 +31,7 @@ class SpeciesViewModel(private val apiRepository: APIRepository) : BaseViewModel
                     stopLoading()
                 }
                 else -> {
-                    // 何もしない
+                    // ここには来ない
                 }
             }
         }

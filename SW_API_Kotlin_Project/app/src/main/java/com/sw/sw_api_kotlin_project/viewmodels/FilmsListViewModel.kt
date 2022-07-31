@@ -13,10 +13,10 @@ import kotlinx.coroutines.launch
 
 class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
 
-    private val _films = MutableLiveData<FilmsRoot>()
+    private val _films = MutableLiveData<FilmsRoot?>()
     val films = _films
 
-    fun getFilmsAPI() {
+    fun fetchFilms() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -29,6 +29,9 @@ class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewMod
                 is Result.Error -> {
                     result.type
                     stopLoading()
+                }
+                else -> {
+                    // ここには来ない
                 }
             }
         }

@@ -38,14 +38,14 @@ class SpeciesFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getSpeciesAPI()
+        viewModel.fetchSpecies()
         observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
         super.addObservers()
         viewModel.species.observe(viewLifecycleOwner) {
-            val adapter = SpeciesAdapter(it.species)
+            val adapter = SpeciesAdapter(it!!.species)
             binding.speciesRecycler.adapter = adapter
             binding.speciesRecycler.layoutManager = LinearLayoutManager(context)
         }

@@ -36,14 +36,14 @@ class FilmsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getFilmsAPI()
+        viewModel.fetchFilms()
         observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
         super.addObservers()
         viewModel.films.observe(viewLifecycleOwner) {
-            val adapter = FilmsAdapter(it.films)
+            val adapter = FilmsAdapter(it!!.films)
             binding.filmRecycler.adapter = adapter
             binding.filmRecycler.layoutManager = LinearLayoutManager(context)
         }

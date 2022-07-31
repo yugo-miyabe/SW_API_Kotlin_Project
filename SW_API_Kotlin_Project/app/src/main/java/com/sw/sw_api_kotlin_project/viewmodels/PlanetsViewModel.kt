@@ -12,10 +12,10 @@ import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class PlanetsViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _planet = MutableLiveData<PlanetRoot>()
+    private val _planet = MutableLiveData<PlanetRoot?>()
     val planet = _planet
 
-    fun getPlanetsAPI() {
+    fun fetchPlanets() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -31,7 +31,7 @@ class PlanetsViewModel(private val apiRepository: APIRepository) : BaseViewModel
                     stopLoading()
                 }
                 else -> {
-                    // 何もしない
+                    // ここには来ない
                 }
             }
         }

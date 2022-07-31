@@ -12,10 +12,10 @@ import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _people = MutableLiveData<PeopleRoot>()
+    private val _people = MutableLiveData<PeopleRoot?>()
     val people = _people
 
-    fun getPeopleAPI() {
+    fun fetchPeople() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -31,7 +31,7 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
                     stopLoading()
                 }
                 else -> {
-                    // 何もしない
+                    // ここには来ない
                 }
             }
         }

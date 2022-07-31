@@ -38,14 +38,14 @@ class PeopleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getPeopleAPI()
+        viewModel.fetchPeople()
         observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
         super.addObservers()
         viewModel.people.observe(viewLifecycleOwner) {
-            val adapter = PeopleAdapter(it.people)
+            val adapter = PeopleAdapter(it!!.people)
             binding.peopleRecycler.adapter = adapter
             binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
         }

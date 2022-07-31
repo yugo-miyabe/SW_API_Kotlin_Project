@@ -10,10 +10,8 @@ open class BaseViewModel : ViewModel() {
     val loadingEvent: LiveData<Boolean> = _loadingEvent
 
 
-
     /**
      * 通信中のインジケーターを表示のイベントを送信
-     *
      */
     fun startLoading() {
         _loadingEvent.postValue(true)

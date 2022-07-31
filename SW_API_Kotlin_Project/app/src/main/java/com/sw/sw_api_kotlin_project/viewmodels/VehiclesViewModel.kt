@@ -15,7 +15,7 @@ class VehiclesViewModel(private val apiRepository: APIRepository) : BaseViewMode
     private val _vehicle = MutableLiveData<VehiclesRoot>()
     val vehicle = _vehicle
 
-    fun getVehiclesAPI() {
+    fun fetchVehicles() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -31,7 +31,7 @@ class VehiclesViewModel(private val apiRepository: APIRepository) : BaseViewMode
                     stopLoading()
                 }
                 else -> {
-                    // 何もしない
+                    // ここには来ない
                 }
             }
         }

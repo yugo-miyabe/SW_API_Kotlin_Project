@@ -15,7 +15,7 @@ class StarShipsViewModel(private val apiRepository: APIRepository) : BaseViewMod
     private val _starShips = MutableLiveData<StarshipsRoot>()
     val starShips = _starShips
 
-    fun getStarShipsAPI() {
+    fun fetchStarShips() {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -31,7 +31,7 @@ class StarShipsViewModel(private val apiRepository: APIRepository) : BaseViewMod
                     stopLoading()
                 }
                 else -> {
-                    // 何もしない
+                    // ここには来ない
                 }
             }
         }
