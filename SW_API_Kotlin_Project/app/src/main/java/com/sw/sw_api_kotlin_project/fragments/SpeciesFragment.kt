@@ -49,7 +49,11 @@ class SpeciesFragment : BaseFragment() {
             binding.speciesRecycler.adapter = adapter
             binding.speciesRecycler.layoutManager = LinearLayoutManager(context)
         }
+    }
 
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
     }
 
 }
