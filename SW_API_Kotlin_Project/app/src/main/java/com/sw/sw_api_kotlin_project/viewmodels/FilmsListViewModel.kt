@@ -16,11 +16,11 @@ class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewMod
     private val _films = MutableLiveData<FilmsRoot?>()
     val films = _films
 
-    fun fetchFilms() {
+    fun fetchFilms(page: Int = 1) {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
-            val response = api.films()
+            val response = api.fetchFilms(page)
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     _films.value = result.data

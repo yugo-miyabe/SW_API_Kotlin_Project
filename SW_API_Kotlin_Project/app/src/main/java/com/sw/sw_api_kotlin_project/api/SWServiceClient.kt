@@ -1,6 +1,7 @@
 package com.sw.sw_api_kotlin_project.api
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.sw.sw_api_kotlin_project.network.SWService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit

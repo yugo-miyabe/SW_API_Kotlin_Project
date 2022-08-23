@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.api
+package com.sw.sw_api_kotlin_project.network
 
 import com.sw.sw_api_kotlin_project.model.APIRoot
 import com.sw.sw_api_kotlin_project.model.films.FilmsRoot
@@ -9,6 +9,7 @@ import com.sw.sw_api_kotlin_project.model.starships.StarshipsRoot
 import com.sw.sw_api_kotlin_project.model.vehicles.VehiclesRoot
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface SWService {
 
@@ -22,19 +23,19 @@ interface SWService {
      * 登場人物取得
      */
     @GET("people/")
-    suspend fun people(): Response<PeopleRoot>
+    suspend fun fetchPeople(@Query("page") page: Int): Response<PeopleRoot>
 
     /**
      * 映画情報取得
      */
     @GET("films/")
-    suspend fun films(): Response<FilmsRoot>
+    suspend fun fetchFilms(@Query("page") page: Int): Response<FilmsRoot>
 
     /**
      * 惑星取得
      */
     @GET("planets/")
-    suspend fun planets(): Response<PlanetRoot>
+    suspend fun fetchPlanets(@Query("page") page: Int): Response<PlanetRoot>
 
     /**
      * 種族取得

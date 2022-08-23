@@ -15,11 +15,11 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
     private val _people = MutableLiveData<PeopleRoot?>()
     val people = _people
 
-    fun fetchPeople() {
+    fun fetchPeople(page: Int = 1) {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
-            val response = api.people()
+            val response = api.fetchPeople(page)
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     _people.value = result.data

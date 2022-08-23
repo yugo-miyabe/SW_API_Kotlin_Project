@@ -15,11 +15,11 @@ class PlanetsViewModel(private val apiRepository: APIRepository) : BaseViewModel
     private val _planet = MutableLiveData<PlanetRoot?>()
     val planet = _planet
 
-    fun fetchPlanets() {
+    fun fetchPlanets(page: Int = 1) {
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
-            val response = api.planets()
+            val response = api.fetchPlanets(page)
             when (val result = apiRepository.getResponse(response)) {
                 is Result.Success -> {
                     _planet.value = result.data
