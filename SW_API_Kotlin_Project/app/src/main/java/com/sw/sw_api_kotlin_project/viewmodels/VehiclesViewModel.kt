@@ -20,7 +20,7 @@ class VehiclesViewModel(private val apiRepository: APIRepository) : BaseViewMode
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.vehicles()
-            when (val result = apiRepository.getResponse(response)) {
+            when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     vehicle.value = result.data
                     stopLoading()

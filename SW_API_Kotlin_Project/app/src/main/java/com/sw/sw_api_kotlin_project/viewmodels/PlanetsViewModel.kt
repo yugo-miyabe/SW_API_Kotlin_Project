@@ -20,7 +20,7 @@ class PlanetsViewModel(private val apiRepository: APIRepository) : BaseViewModel
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.fetchPlanets(page)
-            when (val result = apiRepository.getResponse(response)) {
+            when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     _planet.value = result.data
                     stopLoading()

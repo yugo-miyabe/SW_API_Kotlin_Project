@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 import retrofit2.Response
 
 class APIRepository {
-    fun <T> getResponse(response: Response<T>): Result<T> {
+    fun <T> fetchResponse(response: Response<T>): Result<T> {
         return if (response.isSuccessful) {
             val body = response.body()!!
             Result.Success(body)

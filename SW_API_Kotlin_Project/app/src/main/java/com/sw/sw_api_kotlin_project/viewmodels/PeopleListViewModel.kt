@@ -20,7 +20,7 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.fetchPeople(page)
-            when (val result = apiRepository.getResponse(response)) {
+            when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     _people.value = result.data
                     stopLoading()

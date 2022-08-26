@@ -20,7 +20,7 @@ class StarShipsViewModel(private val apiRepository: APIRepository) : BaseViewMod
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.starships()
-            when (val result = apiRepository.getResponse(response)) {
+            when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     starShips.value = result.data
                     stopLoading()

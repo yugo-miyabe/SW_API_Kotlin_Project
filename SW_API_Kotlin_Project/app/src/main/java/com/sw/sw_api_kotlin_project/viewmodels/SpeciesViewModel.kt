@@ -20,7 +20,7 @@ class SpeciesViewModel(private val apiRepository: APIRepository) : BaseViewModel
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.species()
-            when (val result = apiRepository.getResponse(response)) {
+            when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     species.value = result.data
                     stopLoading()
