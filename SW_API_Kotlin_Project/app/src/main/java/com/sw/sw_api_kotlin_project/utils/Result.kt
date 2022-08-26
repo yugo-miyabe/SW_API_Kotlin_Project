@@ -20,12 +20,12 @@ sealed class Result<out R> {
     data class Error(
         val error: APIError
     ) : Result<Nothing>() {
-        var type: APIErrorType = APIErrorType.OtherError
+        var type: APIErrorType = APIErrorType.ServerError
 
         init {
             type = when (error.detail) {
-                "Not found" -> APIErrorType.ServerError
-                else -> APIErrorType.OtherError
+                "Not found" -> APIErrorType.NotFound
+                else -> APIErrorType.ServerError
             }
         }
     }
