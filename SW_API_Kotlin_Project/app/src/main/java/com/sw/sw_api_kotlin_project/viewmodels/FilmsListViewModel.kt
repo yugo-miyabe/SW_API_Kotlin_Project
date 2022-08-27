@@ -21,7 +21,7 @@ class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewMod
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
-            val response = api.fetchFilms(page)
+            val response = api.getFilms(page)
             when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     _films.value = result.data

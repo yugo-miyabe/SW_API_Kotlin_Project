@@ -38,7 +38,7 @@ class PeopleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchPeople()
+        viewModel.getPeople()
         observeApiLoadingEvent(viewModel)
     }
 

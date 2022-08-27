@@ -23,14 +23,14 @@ interface SWService {
     /**
      * 登場人物取得
      */
-    @GET("people/")
-    suspend fun fetchPeople(@Query("page") page: Int): Results<People>
+    @GET("people")
+    suspend fun getPeople(@Query("page") page: Int): Response<Results<People>>
 
     @GET("people")
-    suspend fun fetchPeopleSearchPage(
+    suspend fun getPeopleSearchPage(
         @Query("search") search: String,
         @Query("page") page: Int
-    ): Results<People>
+    ): Response<Results<People>>
 
     @GET()
     suspend fun getPeopleByUrl(@Url peopleUrl: String): People
@@ -38,31 +38,31 @@ interface SWService {
     /**
      * 映画情報取得
      */
-    @GET("films/")
-    suspend fun fetchFilms(@Query("page") page: Int): Response<Results<Films>>
+    @GET("films")
+    suspend fun getFilms(@Query("page") page: Int): Response<Results<Films>>
 
     /**
      * 惑星取得
      */
-    @GET("planets/")
-    suspend fun fetchPlanets(@Query("page") page: Int): Response<Results<Planet>>
+    @GET("planets")
+    suspend fun getPlanets(@Query("page") page: Int): Response<Results<Planet>>
 
     /**
      * 種族取得
      */
-    @GET("species/")
+    @GET("species")
     suspend fun species(): Response<Results<Planet>>
 
     /**
      * 宇宙船取得
      */
-    @GET("starships/")
+    @GET("starships")
     suspend fun starships(): Response<Results<Starships>>
 
     /**
      * 車両取得
      */
-    @GET("vehicles/")
+    @GET("vehicles")
     suspend fun vehicles(): Response<Results<Vehicles>>
 
 }
