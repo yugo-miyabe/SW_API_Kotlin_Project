@@ -45,7 +45,7 @@ class PeopleFragment : BaseFragment() {
     override fun addObservers() {
         super.addObservers()
         viewModel.people.observe(viewLifecycleOwner) {
-            val adapter = PeopleAdapter(it!!.people)
+            val adapter = PeopleAdapter(it!!.results)
             binding.peopleRecycler.adapter = adapter
             binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
         }

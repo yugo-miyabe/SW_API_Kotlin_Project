@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.peple.PeopleRoot
+import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _people = MutableLiveData<PeopleRoot?>()
+    private val _people = MutableLiveData<Results<People>?>()
     val people = _people
 
     fun fetchPeople(page: Int = 1) {
@@ -20,6 +21,7 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
         viewModelScope.launch {
             val api = SWServiceClient.getService()
             val response = api.fetchPeople(page)
+            /*
             when (val result = apiRepository.fetchResponse(response)) {
                 is Result.Success -> {
                     _people.value = result.data
@@ -34,6 +36,8 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
                     // ここには来ない
                 }
             }
+
+             */
         }
     }
 }

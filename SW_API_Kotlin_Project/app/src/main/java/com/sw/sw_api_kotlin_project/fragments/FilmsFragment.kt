@@ -43,7 +43,7 @@ class FilmsFragment : BaseFragment() {
     override fun addObservers() {
         super.addObservers()
         viewModel.films.observe(viewLifecycleOwner) {
-            val adapter = FilmsAdapter(it!!.films)
+            val adapter = FilmsAdapter(it!!.results)
             binding.filmRecycler.adapter = adapter
             binding.filmRecycler.layoutManager = LinearLayoutManager(context)
         }

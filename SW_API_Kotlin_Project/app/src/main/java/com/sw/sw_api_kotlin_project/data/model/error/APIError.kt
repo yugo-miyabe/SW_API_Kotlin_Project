@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.model.error
+package com.sw.sw_api_kotlin_project.data.model.error
 
 import kotlinx.serialization.Serializable
 

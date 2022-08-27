@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.planet.PlanetRoot
+import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class PlanetsViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
-    private val _planet = MutableLiveData<PlanetRoot?>()
+    private val _planet = MutableLiveData<Results<Planet>?>()
     val planet = _planet
 
     fun fetchPlanets(page: Int = 1) {

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.films.Films
+import com.sw.sw_api_kotlin_project.data.model.Films
 
 class FilmsAdapter(private val filmsList: List<Films>) :
     RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {

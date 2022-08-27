@@ -1,15 +1,16 @@
 package com.sw.sw_api_kotlin_project.network
 
-import com.sw.sw_api_kotlin_project.model.APIRoot
-import com.sw.sw_api_kotlin_project.model.films.FilmsRoot
-import com.sw.sw_api_kotlin_project.model.peple.PeopleRoot
-import com.sw.sw_api_kotlin_project.model.planet.PlanetRoot
-import com.sw.sw_api_kotlin_project.model.species.SpeciesRoot
-import com.sw.sw_api_kotlin_project.model.starships.StarshipsRoot
-import com.sw.sw_api_kotlin_project.model.vehicles.VehiclesRoot
+import com.sw.sw_api_kotlin_project.data.model.APIRoot
+import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.data.model.People
+import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Planet
+import com.sw.sw_api_kotlin_project.data.model.Starships
+import com.sw.sw_api_kotlin_project.data.model.Vehicles
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface SWService {
 
@@ -23,36 +24,45 @@ interface SWService {
      * 登場人物取得
      */
     @GET("people/")
-    suspend fun fetchPeople(@Query("page") page: Int): Response<PeopleRoot>
+    suspend fun fetchPeople(@Query("page") page: Int): Results<People>
+
+    @GET("people")
+    suspend fun fetchPeopleSearchPage(
+        @Query("search") search: String,
+        @Query("page") page: Int
+    ): Results<People>
+
+    @GET()
+    suspend fun getPeopleByUrl(@Url peopleUrl: String): People
 
     /**
      * 映画情報取得
      */
     @GET("films/")
-    suspend fun fetchFilms(@Query("page") page: Int): Response<FilmsRoot>
+    suspend fun fetchFilms(@Query("page") page: Int): Response<Results<Films>>
 
     /**
      * 惑星取得
      */
     @GET("planets/")
-    suspend fun fetchPlanets(@Query("page") page: Int): Response<PlanetRoot>
+    suspend fun fetchPlanets(@Query("page") page: Int): Response<Results<Planet>>
 
     /**
      * 種族取得
      */
     @GET("species/")
-    suspend fun species(): Response<SpeciesRoot>
+    suspend fun species(): Response<Results<Planet>>
 
     /**
      * 宇宙船取得
      */
     @GET("starships/")
-    suspend fun starships(): Response<StarshipsRoot>
+    suspend fun starships(): Response<Results<Starships>>
 
     /**
      * 車両取得
      */
     @GET("vehicles/")
-    suspend fun vehicles(): Response<VehiclesRoot>
+    suspend fun vehicles(): Response<Results<Vehicles>>
 
 }

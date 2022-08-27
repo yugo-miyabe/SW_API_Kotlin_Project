@@ -23,21 +23,5 @@
         android:label="PlanetsFragment"
         tools:layout="@layout/fragment_planets" />
 
-    <fragment
-        android:id="@+id/nav_species"
-        android:name="com.sw.sw_api_kotlin_project.fragments.SpeciesFragment"
-        android:label="SpeciesFragment"
-        tools:layout="@layout/fragment_species" />
 
-    <fragment
-        android:id="@+id/nav_star_ships"
-        android:name="com.sw.sw_api_kotlin_project.fragments.StarShipsFragment"
-        android:label="StarShipsFragment"
-        tools:layout="@layout/fragment_starships" />
-
-    <fragment
-        android:id="@+id/nav_vehicles"
-        android:name="com.sw.sw_api_kotlin_project.fragments.VehiclesFragment"
-        android:label="VehiclesFragment"
-        tools:layout="@layout/fragment_vehicles" />
 </navigation>

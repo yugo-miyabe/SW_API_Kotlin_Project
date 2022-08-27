@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.peple.People
+import com.sw.sw_api_kotlin_project.data.model.People
 
 class PeopleAdapter(private val peopleList: List<People>) :
     RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {

@@ -6,14 +6,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.films.FilmsRoot
+import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.coroutines.launch
 
 class FilmsListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
 
-    private val _films = MutableLiveData<FilmsRoot?>()
+    private val _films = MutableLiveData<Results<Films>?>()
     val films = _films
 
     fun fetchFilms(page: Int = 1) {

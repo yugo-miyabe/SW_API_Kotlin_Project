@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.planet.Planet
+import com.sw.sw_api_kotlin_project.data.model.Planet
 
 class PlanetsAdapter(private val planetList: List<Planet>) :
     RecyclerView.Adapter<PlanetsAdapter.ViewHolder>() {

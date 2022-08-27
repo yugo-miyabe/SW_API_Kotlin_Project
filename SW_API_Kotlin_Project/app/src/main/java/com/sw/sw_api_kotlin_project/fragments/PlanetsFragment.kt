@@ -47,7 +47,7 @@ class PlanetsFragment : BaseFragment() {
     override fun addObservers() {
         super.addObservers()
         viewModel.planet.observe(viewLifecycleOwner) {
-            val adapter = PlanetsAdapter(it!!.planets)
+            val adapter = PlanetsAdapter(it!!.results)
             binding.planetsRecycler.adapter = adapter
             binding.planetsRecycler.layoutManager = LinearLayoutManager(context)
         }

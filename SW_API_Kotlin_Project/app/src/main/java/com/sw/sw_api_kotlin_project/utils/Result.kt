@@ -1,7 +1,7 @@
 package com.sw.sw_api_kotlin_project.utils
 
 import com.sw.sw_api_kotlin_project.api.APIErrorType
-import com.sw.sw_api_kotlin_project.model.error.APIError
+import com.sw.sw_api_kotlin_project.data.model.error.APIError
 
 sealed class Result<out R> {
     /**

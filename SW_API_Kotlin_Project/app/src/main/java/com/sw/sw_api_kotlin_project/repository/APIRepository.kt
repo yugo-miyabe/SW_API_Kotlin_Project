@@ -1,6 +1,6 @@
 package com.sw.sw_api_kotlin_project.repository
 
-import com.sw.sw_api_kotlin_project.model.error.APIError
+import com.sw.sw_api_kotlin_project.data.model.error.APIError
 import com.sw.sw_api_kotlin_project.utils.Result
 import kotlinx.serialization.json.Json
 import retrofit2.Response
