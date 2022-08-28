@@ -16,7 +16,6 @@ class PeopleListViewModel(private val peopleRepository: PeopleRepository) : Base
     val people = _people
 
     fun getPeople(page: Int = 1) = liveData(Dispatchers.IO) {
-
         emit(Resource.loading(data = null))
         try {
             val response = peopleRepository.getPeople(page)
@@ -24,7 +23,6 @@ class PeopleListViewModel(private val peopleRepository: PeopleRepository) : Base
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
-
     }
 }
 
