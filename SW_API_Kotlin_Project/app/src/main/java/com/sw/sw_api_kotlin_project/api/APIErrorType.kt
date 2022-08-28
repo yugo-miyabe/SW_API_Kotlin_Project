@@ -6,10 +6,4 @@ enum class APIErrorType {
 
     /** ネットワーク異常 */
     NetworkError,
-
-    /** ネットワーク設定無効 */
-    NetworkNotConnectError,
-
-    /** 想定していないエラー */
-    ServerError,
 }
