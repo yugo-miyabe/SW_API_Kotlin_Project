@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
+import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
+import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 
 class PeopleFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
@@ -22,7 +24,7 @@ class PeopleFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PeopleListViewModelFactory()
+            PeopleListViewModelFactory(PeopleRepository(SWServiceClient.getService()))
         )[PeopleListViewModel::class.java]
     }
 
@@ -50,9 +52,12 @@ class PeopleFragment : BaseFragment() {
     private fun getPeople() {
         val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
             override fun onSuccess(data: Results<People>?) {
+                val people = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.peopleRecycler.visibility = View.VISIBLE
-                val adapter = PeopleAdapter(data!!.results)
+                binding.peoplePreviousButton.isEnabled = people.previous != null
+                binding.peopleNextButton.isEnabled = people.next != null
+                val adapter = PeopleAdapter(people.results)
                 binding.peopleRecycler.adapter = adapter
                 binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
             }
@@ -61,6 +66,7 @@ class PeopleFragment : BaseFragment() {
                 binding.progressBar.visibility = View.GONE
                 binding.errorText.visibility = View.VISIBLE
                 binding.errorText.text = errorMessage
+                //　TODO 再試行ボタン追加
             }
 
             override fun onLoading() {
