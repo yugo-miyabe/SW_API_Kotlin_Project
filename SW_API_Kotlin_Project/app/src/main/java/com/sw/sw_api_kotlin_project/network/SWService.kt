@@ -1,10 +1,10 @@
 package com.sw.sw_api_kotlin_project.network
 
 import com.sw.sw_api_kotlin_project.data.model.APIRoot
-import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
+import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.data.model.Starships
 import com.sw.sw_api_kotlin_project.data.model.Vehicles
 import retrofit2.Response
@@ -39,7 +39,7 @@ interface SWService {
      * 映画情報取得
      */
     @GET("films")
-    suspend fun getFilms(@Query("page") page: Int): Response<Results<Films>>
+    suspend fun getFilms(@Query("page") page: Int): Results<Films>
 
     /**
      * 惑星取得

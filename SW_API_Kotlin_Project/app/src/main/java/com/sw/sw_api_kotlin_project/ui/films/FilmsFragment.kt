@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
+import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsBinding
-import com.sw.sw_api_kotlin_project.repository.APIRepository
+import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 
 class FilmsFragment : BaseFragment() {
     private lateinit var viewModel: FilmsListViewModel
@@ -20,7 +24,7 @@ class FilmsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            FilmsListViewModelFactory(APIRepository())
+            FilmsListViewModelFactory(FilmsRepository(SWServiceClient.getService()))
         )[FilmsListViewModel::class.java]
     }
 
@@ -34,17 +38,38 @@ class FilmsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchFilms()
+        getFilms()
         observeApiLoadingEvent(viewModel)
     }
+    
+    private fun getFilms() {
+        val filmsObserver = object : SWApiLiveDataObserver<Results<Films>>() {
+            override fun onSuccess(data: Results<Films>?) {
+                val films = data!!
+                binding.progressBar.visibility = View.GONE
+                binding.filmRecycler.visibility = View.VISIBLE
+                binding.filmPreviousButton.isEnabled = films.previous != null
+                binding.filmNextButton.isEnabled = films.next != null
+                val adapter = FilmsAdapter(films.results)
+                binding.filmRecycler.adapter = adapter
+                binding.filmRecycler.layoutManager = LinearLayoutManager(context)
+            }
 
-    override fun addObservers() {
-        super.addObservers()
-        viewModel.films.observe(viewLifecycleOwner) {
-            val adapter = FilmsAdapter(it!!.results)
-            binding.filmRecycler.adapter = adapter
-            binding.filmRecycler.layoutManager = LinearLayoutManager(context)
+            override fun onError(errorMessage: String) {
+                binding.progressBar.visibility = View.GONE
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = errorMessage
+                //　TODO 再試行ボタン追加
+            }
+
+            override fun onLoading() {
+                super.onLoading()
+                binding.filmRecycler.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
+            }
         }
+
+        viewModel.getFilms().observe(viewLifecycleOwner, filmsObserver)
     }
 
     override fun onDestroy() {
