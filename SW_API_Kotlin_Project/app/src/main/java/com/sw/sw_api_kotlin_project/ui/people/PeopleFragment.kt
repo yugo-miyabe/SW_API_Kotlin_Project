@@ -54,17 +54,23 @@ class PeopleFragment : BaseFragment() {
     private fun getPeople() {
         val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
             override fun onSuccess(data: Results<People>?) {
+                binding.progressBar.visibility = View.GONE
+                binding.peopleRecycler.visibility = View.VISIBLE
                 val adapter = PeopleAdapter(data!!.results)
                 binding.peopleRecycler.adapter = adapter
                 binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {
-                print(errorMessage)
+                binding.progressBar.visibility = View.GONE
+                binding.errorText.visibility = View.VISIBLE
+                binding.errorText.text = errorMessage
             }
 
             override fun onLoading() {
                 super.onLoading()
+                binding.peopleRecycler.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
             }
         }
 
