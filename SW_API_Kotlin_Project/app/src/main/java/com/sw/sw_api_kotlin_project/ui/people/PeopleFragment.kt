@@ -8,6 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.data.model.People
+import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.repository.APIRepository
 
@@ -36,17 +39,36 @@ class PeopleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getPeople()
+        //viewModel.getPeople()
+        getPeople()
         observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
         super.addObservers()
         viewModel.people.observe(viewLifecycleOwner) {
-            val adapter = PeopleAdapter(it!!.results)
-            binding.peopleRecycler.adapter = adapter
-            binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
+
         }
+    }
+
+    private fun getPeople() {
+        val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
+            override fun onSuccess(data: Results<People>?) {
+                val adapter = PeopleAdapter(data!!.results)
+                binding.peopleRecycler.adapter = adapter
+                binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
+            }
+
+            override fun onError(errorMessage: String) {
+                print(errorMessage)
+            }
+
+            override fun onLoading() {
+                super.onLoading()
+            }
+        }
+
+        viewModel.getPeople().observe(viewLifecycleOwner, peopleObserver)
     }
 
     override fun onDestroy() {

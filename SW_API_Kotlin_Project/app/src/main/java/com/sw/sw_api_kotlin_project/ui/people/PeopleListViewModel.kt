@@ -3,20 +3,31 @@ package com.sw.sw_api_kotlin_project.ui.people
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.repository.APIRepository
-import com.sw.sw_api_kotlin_project.utils.Result
-import kotlinx.coroutines.launch
+import com.sw.sw_api_kotlin_project.utils.Resource
+import kotlinx.coroutines.Dispatchers
 
 class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
     private val _people = MutableLiveData<Results<People>?>()
     val people = _people
 
-    fun getPeople(page: Int = 1) {
+    fun getPeople(page: Int = 1) = liveData(Dispatchers.IO) {
+
+        emit(Resource.loading(data = null))
+        try {
+            val client = SWServiceClient.getService()
+            val response = client.getPeople(page)
+            emit(Resource.success(data = response))
+        } catch (e: Exception) {
+            emit(Resource.error(data = null, message = e.message ?: "error"))
+        }
+
+        /*
         startLoading()
         viewModelScope.launch {
             val api = SWServiceClient.getService()
@@ -36,8 +47,9 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
                 }
             }
 
+         */
 
-        }
+
     }
 }
 

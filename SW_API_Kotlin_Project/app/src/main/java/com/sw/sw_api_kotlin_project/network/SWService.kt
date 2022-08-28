@@ -24,7 +24,7 @@ interface SWService {
      * 登場人物取得
      */
     @GET("people")
-    suspend fun getPeople(@Query("page") page: Int): Response<Results<People>>
+    suspend fun getPeople(@Query("page") page: Int): Results<People>
 
     @GET("people")
     suspend fun getPeopleSearchPage(

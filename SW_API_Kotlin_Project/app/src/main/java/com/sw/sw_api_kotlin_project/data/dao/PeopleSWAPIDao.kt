@@ -5,6 +5,7 @@ import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.network.SWService
 import retrofit2.Response
 
+/*
 class PeopleSWAPIDao(private val swService: SWService) {
 
     suspend fun fetchPeople(page: Int): Response<Results<People>> {
@@ -21,3 +22,5 @@ class PeopleSWAPIDao(private val swService: SWService) {
     }
 
 }
+
+ */

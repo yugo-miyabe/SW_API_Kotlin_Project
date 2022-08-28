@@ -1,10 +1,10 @@
 package com.sw.sw_api_kotlin_project.repository
 
+/*
 import com.sw.sw_api_kotlin_project.data.dao.PeopleSWAPIDao
 import com.sw.sw_api_kotlin_project.data.model.People
 
 class PeopleRepository private constructor(private val peopleDao: PeopleSWAPIDao) {
-/*
     companion object {
         @Volatile
         private var _instance: PeopleRepository? = null
@@ -29,5 +29,7 @@ class PeopleRepository private constructor(private val peopleDao: PeopleSWAPIDao
         return peopleMap[peopleUrl]
     }
 
-*/
+
 }
+
+ */

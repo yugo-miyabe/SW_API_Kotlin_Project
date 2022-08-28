@@ -61,6 +61,8 @@ dependencies {
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0'
     // viewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-alpha05'
+    // livedata
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     // okhttp3
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     // navigation

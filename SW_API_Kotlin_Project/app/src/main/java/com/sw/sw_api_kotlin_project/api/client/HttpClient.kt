@@ -2,7 +2,7 @@ package com.sw.sw_api_kotlin_project.api.client
 
 import java.net.URI
 
-enum class HttpMethod {
+enum class  HttpMethod {
     GET,
     POST,
     PUT,
