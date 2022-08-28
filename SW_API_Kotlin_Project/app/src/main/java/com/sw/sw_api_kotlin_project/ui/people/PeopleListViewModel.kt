@@ -8,11 +8,10 @@ import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.repository.APIRepository
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
-class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewModel() {
+class PeopleListViewModel() : BaseViewModel() {
     private val _people = MutableLiveData<Results<People>?>()
     val people = _people
 
@@ -27,38 +26,15 @@ class PeopleListViewModel(private val apiRepository: APIRepository) : BaseViewMo
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
 
-        /*
-        startLoading()
-        viewModelScope.launch {
-            val api = SWServiceClient.getService()
-            val response = api.getPeople(page)
-            when (val result = apiRepository.fetchResponse(response)) {
-                is Result.Success -> {
-                    _people.value = result.data
-                    stopLoading()
-                }
-                is Result.Error -> {
-                    // TODO エラーハンドリング
-                    result.type
-                    stopLoading()
-                }
-                else -> {
-                    // ここには来ない
-                }
-            }
-
-         */
-
-
     }
 }
 
-class PeopleListViewModelFactory(private val apiRepository: APIRepository) :
+class PeopleListViewModelFactory() :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PeopleListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return PeopleListViewModel(apiRepository) as T
+            return PeopleListViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

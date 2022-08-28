@@ -12,7 +12,6 @@ import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.repository.APIRepository
 
 class PeopleFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
@@ -23,9 +22,7 @@ class PeopleFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PeopleListViewModelFactory(
-                APIRepository()
-            )
+            PeopleListViewModelFactory()
         )[PeopleListViewModel::class.java]
     }
 
@@ -39,7 +36,6 @@ class PeopleFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //viewModel.getPeople()
         getPeople()
         observeApiLoadingEvent(viewModel)
     }
