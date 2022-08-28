@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.viewmodels
+package com.sw.sw_api_kotlin_project.ui.people
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

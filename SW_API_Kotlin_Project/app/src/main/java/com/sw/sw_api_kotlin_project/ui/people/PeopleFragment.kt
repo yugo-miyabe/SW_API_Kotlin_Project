@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragments
+package com.sw.sw_api_kotlin_project.ui.people
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,50 +6,46 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sw.sw_api_kotlin_project.adapters.PlanetsAdapter
+import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetsBinding
+import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.repository.APIRepository
-import com.sw.sw_api_kotlin_project.viewmodels.PlanetsViewModel
-import com.sw.sw_api_kotlin_project.viewmodels.PlanetsViewModelFactory
 
-
-class PlanetsFragment : BaseFragment() {
-
-    private lateinit var viewModel: PlanetsViewModel
-    private var _binding: FragmentPlanetsBinding? = null
+class PeopleFragment : BaseFragment() {
+    private lateinit var viewModel: PeopleListViewModel
+    private var _binding: FragmentPeopleListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PlanetsViewModelFactory(
+            PeopleListViewModelFactory(
                 APIRepository()
             )
-        )[PlanetsViewModel::class.java]
+        )[PeopleListViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPlanetsBinding.inflate(inflater, container, false)
+        _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchPlanets()
+        viewModel.getPeople()
         observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
         super.addObservers()
-        viewModel.planet.observe(viewLifecycleOwner) {
-            val adapter = PlanetsAdapter(it!!.results)
-            binding.planetsRecycler.adapter = adapter
-            binding.planetsRecycler.layoutManager = LinearLayoutManager(context)
+        viewModel.people.observe(viewLifecycleOwner) {
+            val adapter = PeopleAdapter(it!!.results)
+            binding.peopleRecycler.adapter = adapter
+            binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
         }
     }
 
@@ -57,6 +53,5 @@ class PlanetsFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
-
 
 }

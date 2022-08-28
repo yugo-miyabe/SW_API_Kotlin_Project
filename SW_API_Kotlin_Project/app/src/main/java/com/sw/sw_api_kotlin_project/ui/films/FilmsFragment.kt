@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragments
+package com.sw.sw_api_kotlin_project.ui.films
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,48 +6,44 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
+import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
+import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsBinding
 import com.sw.sw_api_kotlin_project.repository.APIRepository
-import com.sw.sw_api_kotlin_project.viewmodels.PeopleListViewModel
-import com.sw.sw_api_kotlin_project.viewmodels.PeopleListViewModelFactory
 
-class PeopleFragment : BaseFragment() {
-    private lateinit var viewModel: PeopleListViewModel
-    private var _binding: FragmentPeopleListBinding? = null
+class FilmsFragment : BaseFragment() {
+    private lateinit var viewModel: FilmsListViewModel
+    private var _binding: FragmentFilmsBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PeopleListViewModelFactory(
-                APIRepository()
-            )
-        )[PeopleListViewModel::class.java]
+            FilmsListViewModelFactory(APIRepository())
+        )[FilmsListViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
+        _binding = FragmentFilmsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getPeople()
+        viewModel.fetchFilms()
         observeApiLoadingEvent(viewModel)
     }
 
     override fun addObservers() {
         super.addObservers()
-        viewModel.people.observe(viewLifecycleOwner) {
-            val adapter = PeopleAdapter(it!!.results)
-            binding.peopleRecycler.adapter = adapter
-            binding.peopleRecycler.layoutManager = LinearLayoutManager(context)
+        viewModel.films.observe(viewLifecycleOwner) {
+            val adapter = FilmsAdapter(it!!.results)
+            binding.filmRecycler.adapter = adapter
+            binding.filmRecycler.layoutManager = LinearLayoutManager(context)
         }
     }
 
