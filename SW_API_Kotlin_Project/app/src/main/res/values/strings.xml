@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">SW_API_Kotlin_Project</string>
+
+    <!-- Navigation -->
+    <string name="people">登場人物</string>
+    <string name="planets">惑星</string>
+    <string name="films">映画</string>
+    <string name="species">種族</string>
+    <string name="vehicles">車両</string>
+    <string name="star_ships">宇宙船</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <!-- 登場人物リスト  -->
+    <string name="full_name">名前:</string>
+    <string name="height">身長:</string>
+    <string name="mass">体重:</string>
+    <!-- 惑星リスト -->
+    <string name="planet_name">惑星名:</string>
+    <string name="climate">気候:</string>
+    <string name="terrain">地形:</string>
+    <!-- 映画リスト -->
+    <string name="title">タイトル:</string>
+    <string name="director">監督:</string>
+    <string name="producer">プロデューサー:</string>
+    <!-- 種族リスト -->
+    <string name="species_name">種族名:</string>
+    <string name="classification">分類:</string>
+    <string name="average_height">平均身長:</string>
+    <!-- 車両リスト -->
+    <string name="vehicles_name">車両名:</string>
+    <string name="vehicles_model_name">モデル名:</string>
+    <string name="vehicles_manufacturer_name">メーカー名:</string>
+    <!-- 宇宙船リスト -->
+    <string name="starships_name">宇宙船名:</string>
+    <string name="starships_model_name">モデル名:</string>
+    <string name="starships_manufacturer_name">メーカー名:</string>
+    <!-- 共通 -->
+    <string name="next">NEXT</string>
+    <string name="previous">PREVIOUS</string>
+
 </resources>

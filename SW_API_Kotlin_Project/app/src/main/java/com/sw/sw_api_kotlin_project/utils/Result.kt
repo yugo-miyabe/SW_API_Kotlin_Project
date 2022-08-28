@@ -1,7 +1,7 @@
 package com.sw.sw_api_kotlin_project.utils
 
 import com.sw.sw_api_kotlin_project.api.APIErrorType
-import com.sw.sw_api_kotlin_project.model.error.APIError
+import com.sw.sw_api_kotlin_project.data.model.error.APIError
 
 sealed class Result<out R> {
     /**
@@ -20,12 +20,12 @@ sealed class Result<out R> {
     data class Error(
         val error: APIError
     ) : Result<Nothing>() {
-        var type: APIErrorType = APIErrorType.OtherError
+        var type: APIErrorType = APIErrorType.NetworkError
 
         init {
             type = when (error.detail) {
-                "Not found" -> APIErrorType.ServerError
-                else -> APIErrorType.OtherError
+                "Not found" -> APIErrorType.NotFound
+                else -> APIErrorType.NetworkError
             }
         }
     }
