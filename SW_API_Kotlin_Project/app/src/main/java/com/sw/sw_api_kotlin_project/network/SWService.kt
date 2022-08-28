@@ -45,7 +45,7 @@ interface SWService {
      * 惑星取得
      */
     @GET("planets")
-    suspend fun getPlanets(@Query("page") page: Int): Response<Results<Planet>>
+    suspend fun getPlanets(@Query("page") page: Int): Results<Planet>
 
     /**
      * 種族取得
