@@ -49,6 +49,8 @@ class PlanetsFragment : BaseFragment() {
                 val planets = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.planetsRecycler.visibility = View.VISIBLE
+                binding.planetsPreviousButton.visibility = View.VISIBLE
+                binding.planetsNextButton.visibility = View.VISIBLE
                 binding.planetsPreviousButton.isEnabled = planets.previous != null
                 binding.planetsNextButton.isEnabled = planets.next != null
                 val adapter = PlanetsAdapter(planets.results)
@@ -59,6 +61,8 @@ class PlanetsFragment : BaseFragment() {
             override fun onError(errorMessage: String) {
                 binding.progressBar.visibility = View.GONE
                 binding.errorText.visibility = View.VISIBLE
+                binding.planetsPreviousButton.visibility = View.GONE
+                binding.planetsNextButton.visibility = View.GONE
                 binding.errorText.text = errorMessage
                 //　TODO 再試行ボタン追加
             }

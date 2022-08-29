@@ -47,6 +47,8 @@ class FilmsFragment : BaseFragment() {
                 val films = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.filmRecycler.visibility = View.VISIBLE
+                binding.filmPreviousButton.visibility = View.VISIBLE
+                binding.filmNextButton.visibility = View.VISIBLE
                 binding.filmPreviousButton.isEnabled = films.previous != null
                 binding.filmNextButton.isEnabled = films.next != null
                 val adapter = FilmsAdapter(films.results)
@@ -57,6 +59,8 @@ class FilmsFragment : BaseFragment() {
             override fun onError(errorMessage: String) {
                 binding.progressBar.visibility = View.GONE
                 binding.errorText.visibility = View.VISIBLE
+                binding.filmPreviousButton.visibility = View.GONE
+                binding.filmNextButton.visibility = View.GONE
                 binding.errorText.text = errorMessage
                 //　TODO 再試行ボタン追加
             }
@@ -64,6 +68,8 @@ class FilmsFragment : BaseFragment() {
             override fun onLoading() {
                 super.onLoading()
                 binding.filmRecycler.visibility = View.GONE
+                binding.filmPreviousButton.visibility = View.GONE
+                binding.filmNextButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
             }
         }
