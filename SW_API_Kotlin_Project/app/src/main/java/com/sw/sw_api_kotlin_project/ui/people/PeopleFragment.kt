@@ -14,6 +14,7 @@ import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
+import com.sw.sw_api_kotlin_project.utils.PageType
 
 class PeopleFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
@@ -36,19 +37,18 @@ class PeopleFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getPeople()
-    }
-
-    override fun addObservers() {
-        super.addObservers()
-        viewModel.people.observe(viewLifecycleOwner) {
-
+    override fun initView() {
+        super.initView()
+        binding.peopleNextButton.setOnClickListener {
+            getPeople(PageType.NEXT_PAGE)
         }
+        binding.peoplePreviousButton.setOnClickListener {
+            getPeople(PageType.PREVIOUS_PAGE)
+        }
+        getPeople(PageType.FIRST_PAGE)
     }
 
-    private fun getPeople() {
+    private fun getPeople(pageType: PageType) {
         val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
             override fun onSuccess(data: Results<People>?) {
                 val people = data!!
@@ -81,7 +81,7 @@ class PeopleFragment : BaseFragment() {
             }
         }
 
-        viewModel.getPeople().observe(viewLifecycleOwner, peopleObserver)
+        viewModel.getPeople(pageType).observe(viewLifecycleOwner, peopleObserver)
     }
 
     override fun onDestroy() {

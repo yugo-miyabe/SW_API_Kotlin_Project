@@ -27,6 +27,7 @@ open class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
         addObservers()
     }
 
@@ -59,6 +60,11 @@ open class BaseFragment : Fragment() {
         super.onDetach()
         Utils.timberTrace(this::class.java)
     }
+
+    open fun initView(){
+        Utils.timberTrace(this::class.java)
+    }
+
 
     open fun addObservers() {
         Utils.timberTrace(this::class.java)

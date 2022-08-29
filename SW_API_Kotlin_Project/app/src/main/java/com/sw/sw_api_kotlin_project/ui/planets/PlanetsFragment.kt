@@ -8,12 +8,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PlanetsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetsBinding
 import com.sw.sw_api_kotlin_project.repository.PlanetsRepository
+import com.sw.sw_api_kotlin_project.utils.PageType
 
 
 class PlanetsFragment : BaseFragment() {
@@ -38,12 +39,18 @@ class PlanetsFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getPlanets()
+    override fun initView() {
+        super.initView()
+        binding.planetsNextButton.setOnClickListener {
+            getPlanets(PageType.NEXT_PAGE)
+        }
+        binding.planetsPreviousButton.setOnClickListener {
+            getPlanets(PageType.PREVIOUS_PAGE)
+        }
+        getPlanets(PageType.FIRST_PAGE)
     }
 
-    private fun getPlanets() {
+    private fun getPlanets(pageType: PageType) {
         val planetsObserver = object : SWApiLiveDataObserver<Results<Planet>>() {
             override fun onSuccess(data: Results<Planet>?) {
                 val planets = data!!
@@ -74,7 +81,7 @@ class PlanetsFragment : BaseFragment() {
             }
         }
 
-        viewModel.getPlanets().observe(viewLifecycleOwner, planetsObserver)
+        viewModel.getPlanets(pageType).observe(viewLifecycleOwner, planetsObserver)
     }
 
     override fun onDestroy() {

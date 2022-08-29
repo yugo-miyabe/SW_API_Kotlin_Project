@@ -8,12 +8,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
+import com.sw.sw_api_kotlin_project.utils.PageType
 
 class FilmsFragment : BaseFragment() {
     private lateinit var viewModel: FilmsListViewModel
@@ -36,12 +37,18 @@ class FilmsFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getFilms()
+    override fun initView() {
+        super.initView()
+        binding.filmNextButton.setOnClickListener {
+            getFilms(PageType.NEXT_PAGE)
+        }
+        binding.filmPreviousButton.setOnClickListener {
+            getFilms(PageType.PREVIOUS_PAGE)
+        }
+        getFilms(PageType.FIRST_PAGE)
     }
-    
-    private fun getFilms() {
+
+    private fun getFilms(pageType: PageType) {
         val filmsObserver = object : SWApiLiveDataObserver<Results<Films>>() {
             override fun onSuccess(data: Results<Films>?) {
                 val films = data!!
@@ -74,7 +81,7 @@ class FilmsFragment : BaseFragment() {
             }
         }
 
-        viewModel.getFilms().observe(viewLifecycleOwner, filmsObserver)
+        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmsObserver)
     }
 
     override fun onDestroy() {
