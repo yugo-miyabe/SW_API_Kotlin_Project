@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsBinding
@@ -39,7 +39,6 @@ class FilmsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getFilms()
-        observeApiLoadingEvent(viewModel)
     }
     
     private fun getFilms() {
@@ -48,6 +47,8 @@ class FilmsFragment : BaseFragment() {
                 val films = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.filmRecycler.visibility = View.VISIBLE
+                binding.filmPreviousButton.visibility = View.VISIBLE
+                binding.filmNextButton.visibility = View.VISIBLE
                 binding.filmPreviousButton.isEnabled = films.previous != null
                 binding.filmNextButton.isEnabled = films.next != null
                 val adapter = FilmsAdapter(films.results)
@@ -58,6 +59,8 @@ class FilmsFragment : BaseFragment() {
             override fun onError(errorMessage: String) {
                 binding.progressBar.visibility = View.GONE
                 binding.errorText.visibility = View.VISIBLE
+                binding.filmPreviousButton.visibility = View.GONE
+                binding.filmNextButton.visibility = View.GONE
                 binding.errorText.text = errorMessage
                 //　TODO 再試行ボタン追加
             }
@@ -65,6 +68,8 @@ class FilmsFragment : BaseFragment() {
             override fun onLoading() {
                 super.onLoading()
                 binding.filmRecycler.visibility = View.GONE
+                binding.filmPreviousButton.visibility = View.GONE
+                binding.filmNextButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
             }
         }

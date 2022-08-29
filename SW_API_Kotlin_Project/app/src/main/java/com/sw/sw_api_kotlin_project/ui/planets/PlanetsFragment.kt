@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PlanetsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetsBinding
@@ -41,7 +41,6 @@ class PlanetsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getPlanets()
-        observeApiLoadingEvent(viewModel)
     }
 
     private fun getPlanets() {
@@ -50,6 +49,8 @@ class PlanetsFragment : BaseFragment() {
                 val planets = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.planetsRecycler.visibility = View.VISIBLE
+                binding.planetsPreviousButton.visibility = View.VISIBLE
+                binding.planetsNextButton.visibility = View.VISIBLE
                 binding.planetsPreviousButton.isEnabled = planets.previous != null
                 binding.planetsNextButton.isEnabled = planets.next != null
                 val adapter = PlanetsAdapter(planets.results)
@@ -60,6 +61,8 @@ class PlanetsFragment : BaseFragment() {
             override fun onError(errorMessage: String) {
                 binding.progressBar.visibility = View.GONE
                 binding.errorText.visibility = View.VISIBLE
+                binding.planetsPreviousButton.visibility = View.GONE
+                binding.planetsNextButton.visibility = View.GONE
                 binding.errorText.text = errorMessage
                 //　TODO 再試行ボタン追加
             }

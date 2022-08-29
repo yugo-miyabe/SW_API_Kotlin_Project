@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.249" />
         <entry key="app/src/main/res/drawable-v24/side_nav_bar.xml" value="0.2585" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_color.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/ic_baseline_airplanemode_active_24.xml" value="0.2615" />
         <entry key="app/src/main/res/drawable/ic_baseline_car_24.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_baseline_directions_car_24.xml" value="0.2615" />
@@ -12,10 +14,13 @@
         <entry key="app/src/main/res/drawable/ic_baseline_plane_24.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_baseline_public_24.xml" value="0.273" />
         <entry key="app/src/main/res/drawable/ic_baseline_species_24.xml" value="0.273" />
+        <entry key="app/src/main/res/drawable/ic_baseline_starships_24.xml" value="0.249" />
+        <entry key="app/src/main/res/drawable/ic_baseline_vehicles_24.xml" value="0.249" />
         <entry key="app/src/main/res/drawable/ic_face_black_24dp.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2275" />
         <entry key="app/src/main/res/drawable/ic_public_24px.xml" value="0.2615" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.3135" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19007873535156247" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2758152173913043" />
         <entry key="app/src/main/res/layout/fragment_films.xml" value="0.2359375" />
@@ -36,8 +41,6 @@
         <entry key="app/src/main/res/layout/item_species.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_starships.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_vehicles.xml" value="0.23385416666666667" />
-        <entry key="app/src/main/res/layout/view_progress.xml" value="0.17395833333333333" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/view_progress.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2671875" />

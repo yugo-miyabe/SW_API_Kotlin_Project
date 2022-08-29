@@ -3,25 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/nav_people">
+    app:startDestination="@id/fragment_people">
 
     <fragment
-        android:id="@+id/nav_people"
+        android:id="@+id/fragment_people"
         android:name="com.sw.sw_api_kotlin_project.ui.people.PeopleFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_people_list" />
 
     <fragment
-        android:id="@+id/nav_films"
+        android:id="@+id/fragment_films"
         android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films" />
 
     <fragment
-        android:id="@+id/nav_planets"
+        android:id="@+id/fragment_planets"
         android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsFragment"
         android:label="PlanetsFragment"
         tools:layout="@layout/fragment_planets" />
-
 
 </navigation>
