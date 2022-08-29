@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.utils.Utils
 
 
@@ -68,19 +67,5 @@ open class BaseFragment : Fragment() {
         Utils.timberTrace(this::class.java)
     }
 
-    /**
-     * 通信中の状態イベントをObserve
-     *
-     * @param viewModel FragmentにBindingのViewModel
-     */
-    fun observeApiLoadingEvent(viewModel: BaseViewModel) {
-        viewModel.loadingEvent.observe(this) {
-            if (it) {
-                (activity as BaseActivity).showBlockingProgress()
-            } else {
-                (activity as BaseActivity).hideBlockingProgress()
-            }
-        }
-    }
 
 }

@@ -39,7 +39,6 @@ class FilmsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getFilms()
-        observeApiLoadingEvent(viewModel)
     }
     
     private fun getFilms() {

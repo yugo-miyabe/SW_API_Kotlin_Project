@@ -41,7 +41,6 @@ class PlanetsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getPlanets()
-        observeApiLoadingEvent(viewModel)
     }
 
     private fun getPlanets() {
