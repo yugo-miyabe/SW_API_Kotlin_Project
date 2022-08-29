@@ -39,7 +39,6 @@ class FilmsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        getFilms()
         binding.filmNextButton.setOnClickListener {
             getFilms(PageType.NEXT_PAGE)
         }

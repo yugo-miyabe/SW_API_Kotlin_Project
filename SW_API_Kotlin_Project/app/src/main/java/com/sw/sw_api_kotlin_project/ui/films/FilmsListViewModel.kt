@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 class FilmsListViewModel(private val filmsRepository: FilmsRepository) : BaseViewModel() {
 
     fun getFilms(pageType: PageType) = liveData(Dispatchers.IO) {
-        pageFormat(pageType)
+        pageParameterFormat(pageType)
         emit(Resource.loading(data = null))
         try {
             val response = filmsRepository.getFilms(page)

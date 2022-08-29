@@ -6,7 +6,7 @@ import com.sw.sw_api_kotlin_project.utils.PageType
 open class BaseViewModel : ViewModel() {
     var page: Int = 1
 
-    fun pageFormat(pageType: PageType) {
+    fun pageParameterFormat(pageType: PageType) {
         when (pageType) {
             PageType.FIRST_PAGE -> {
                 page = 1

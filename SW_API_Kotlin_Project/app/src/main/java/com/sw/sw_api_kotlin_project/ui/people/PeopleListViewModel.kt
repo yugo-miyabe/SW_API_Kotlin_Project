@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 class PeopleListViewModel(private val peopleRepository: PeopleRepository) : BaseViewModel() {
 
     fun getPeople(pageType: PageType) = liveData(Dispatchers.IO) {
-        pageFormat(pageType)
+        pageParameterFormat(pageType)
         emit(Resource.loading(data = null))
         try {
             val response = peopleRepository.getPeople(page)
