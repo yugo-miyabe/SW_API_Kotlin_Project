@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.data.liveData
+package com.sw.sw_api_kotlin_project.api.liveData
 
 import androidx.lifecycle.Observer
 import com.sw.sw_api_kotlin_project.utils.RequestStatus

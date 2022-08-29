@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsBinding
