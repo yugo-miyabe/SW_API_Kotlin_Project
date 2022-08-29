@@ -1,21 +1,18 @@
 package com.sw.sw_api_kotlin_project.ui.people
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.data.model.People
-import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
+import com.sw.sw_api_kotlin_project.utils.PageType
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
 class PeopleListViewModel(private val peopleRepository: PeopleRepository) : BaseViewModel() {
-    private val _people = MutableLiveData<Results<People>?>()
-    val people = _people
 
-    fun getPeople(page: Int = 1) = liveData(Dispatchers.IO) {
+    fun getPeople(pageType: PageType) = liveData(Dispatchers.IO) {
+        pageFormat(pageType)
         emit(Resource.loading(data = null))
         try {
             val response = peopleRepository.getPeople(page)
