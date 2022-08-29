@@ -5,12 +5,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
+import com.sw.sw_api_kotlin_project.utils.PageType
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
 class FilmsListViewModel(private val filmsRepository: FilmsRepository) : BaseViewModel() {
 
-    fun getFilms(page: Int = 1) = liveData(Dispatchers.IO) {
+    fun getFilms(pageType: PageType) = liveData(Dispatchers.IO) {
+        pageFormat(pageType)
         emit(Resource.loading(data = null))
         try {
             val response = filmsRepository.getFilms(page)
