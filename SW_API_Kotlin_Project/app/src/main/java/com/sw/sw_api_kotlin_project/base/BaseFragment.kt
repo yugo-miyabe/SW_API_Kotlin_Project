@@ -1,6 +1,5 @@
 package com.sw.sw_api_kotlin_project.base
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,6 @@ import com.sw.sw_api_kotlin_project.utils.Utils
 
 
 open class BaseFragment : Fragment() {
-
-    private var mProgressDialog: Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +63,4 @@ open class BaseFragment : Fragment() {
     open fun addObservers() {
         Utils.timberTrace(this::class.java)
     }
-
-
 }
