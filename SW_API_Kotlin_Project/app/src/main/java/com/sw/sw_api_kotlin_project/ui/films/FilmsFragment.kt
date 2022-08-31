@@ -12,13 +12,13 @@ import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsBinding
+import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
 class FilmsFragment : BaseFragment() {
     private lateinit var viewModel: FilmsListViewModel
-    private var _binding: FragmentFilmsBinding? = null
+    private var _binding: FragmentFilmsListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,16 +33,16 @@ class FilmsFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFilmsBinding.inflate(inflater, container, false)
+        _binding = FragmentFilmsListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun initView() {
         super.initView()
-        binding.filmNextButton.setOnClickListener {
+        binding.nextButton.setOnClickListener {
             getFilms(PageType.NEXT_PAGE)
         }
-        binding.filmPreviousButton.setOnClickListener {
+        binding.previousButton.setOnClickListener {
             getFilms(PageType.PREVIOUS_PAGE)
         }
         getFilms(PageType.FIRST_PAGE)
@@ -53,35 +53,34 @@ class FilmsFragment : BaseFragment() {
             override fun onSuccess(data: Results<Films>?) {
                 val films = data!!
                 binding.progressBar.visibility = View.GONE
-                binding.filmRecycler.visibility = View.VISIBLE
-                binding.filmPreviousButton.visibility = View.VISIBLE
-                binding.filmNextButton.visibility = View.VISIBLE
-                binding.filmPreviousButton.isEnabled = films.previous != null
-                binding.filmNextButton.isEnabled = films.next != null
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.previousButton.visibility = View.VISIBLE
+                binding.nextButton.visibility = View.VISIBLE
+                binding.previousButton.isEnabled = films.previous != null
+                binding.nextButton.isEnabled = films.next != null
                 val adapter = FilmsAdapter(films.results)
-                binding.filmRecycler.adapter = adapter
-                binding.filmRecycler.layoutManager = LinearLayoutManager(context)
+                binding.recyclerView.adapter = adapter
+                binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {
                 binding.progressBar.visibility = View.GONE
                 binding.errorText.visibility = View.VISIBLE
-                binding.filmPreviousButton.visibility = View.GONE
-                binding.filmNextButton.visibility = View.GONE
+                binding.previousButton.visibility = View.GONE
+                binding.nextButton.visibility = View.GONE
                 binding.errorText.text = errorMessage
                 binding.retryButton.visibility = View.VISIBLE
             }
 
             override fun onLoading() {
                 super.onLoading()
-                binding.filmRecycler.visibility = View.GONE
-                binding.filmPreviousButton.visibility = View.GONE
-                binding.filmNextButton.visibility = View.GONE
+                binding.recyclerView.visibility = View.GONE
+                binding.previousButton.visibility = View.GONE
+                binding.nextButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
                 binding.retryButton.visibility = View.GONE
             }
         }
-
         viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmsObserver)
     }
 
@@ -89,5 +88,4 @@ class FilmsFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
-
 }
