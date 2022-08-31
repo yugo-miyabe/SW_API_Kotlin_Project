@@ -56,6 +56,7 @@ class PeopleFragment : BaseFragment() {
                 binding.peopleRecycler.visibility = View.VISIBLE
                 binding.peoplePreviousButton.visibility = View.VISIBLE
                 binding.peopleNextButton.visibility = View.VISIBLE
+                binding.retryButton.visibility = View.GONE
                 binding.peoplePreviousButton.isEnabled = people.previous != null
                 binding.peopleNextButton.isEnabled = people.next != null
                 val adapter = PeopleAdapter(people.results)
@@ -68,8 +69,8 @@ class PeopleFragment : BaseFragment() {
                 binding.errorText.visibility = View.VISIBLE
                 binding.peoplePreviousButton.visibility = View.GONE
                 binding.peopleNextButton.visibility = View.GONE
+                binding.retryButton.visibility = View.VISIBLE
                 binding.errorText.text = errorMessage
-                //　TODO 再試行ボタン追加
             }
 
             override fun onLoading() {
@@ -77,6 +78,7 @@ class PeopleFragment : BaseFragment() {
                 binding.peopleRecycler.visibility = View.GONE
                 binding.peoplePreviousButton.visibility = View.GONE
                 binding.peopleNextButton.visibility = View.GONE
+                binding.retryButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
             }
         }

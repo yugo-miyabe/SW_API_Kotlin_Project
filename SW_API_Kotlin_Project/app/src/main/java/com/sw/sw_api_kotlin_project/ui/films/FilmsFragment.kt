@@ -69,7 +69,7 @@ class FilmsFragment : BaseFragment() {
                 binding.filmPreviousButton.visibility = View.GONE
                 binding.filmNextButton.visibility = View.GONE
                 binding.errorText.text = errorMessage
-                //　TODO 再試行ボタン追加
+                binding.retryButton.visibility = View.VISIBLE
             }
 
             override fun onLoading() {
@@ -78,6 +78,7 @@ class FilmsFragment : BaseFragment() {
                 binding.filmPreviousButton.visibility = View.GONE
                 binding.filmNextButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
+                binding.retryButton.visibility = View.GONE
             }
         }
 

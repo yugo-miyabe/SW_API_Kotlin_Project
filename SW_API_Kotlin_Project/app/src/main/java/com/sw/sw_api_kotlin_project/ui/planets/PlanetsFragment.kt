@@ -58,6 +58,7 @@ class PlanetsFragment : BaseFragment() {
                 binding.planetsRecycler.visibility = View.VISIBLE
                 binding.planetsPreviousButton.visibility = View.VISIBLE
                 binding.planetsNextButton.visibility = View.VISIBLE
+                binding.retryButton.visibility = View.GONE
                 binding.planetsPreviousButton.isEnabled = planets.previous != null
                 binding.planetsNextButton.isEnabled = planets.next != null
                 val adapter = PlanetsAdapter(planets.results)
@@ -70,6 +71,7 @@ class PlanetsFragment : BaseFragment() {
                 binding.errorText.visibility = View.VISIBLE
                 binding.planetsPreviousButton.visibility = View.GONE
                 binding.planetsNextButton.visibility = View.GONE
+                binding.retryButton.visibility = View.VISIBLE
                 binding.errorText.text = errorMessage
                 //　TODO 再試行ボタン追加
             }
@@ -77,7 +79,10 @@ class PlanetsFragment : BaseFragment() {
             override fun onLoading() {
                 super.onLoading()
                 binding.planetsRecycler.visibility = View.GONE
+                binding.planetsPreviousButton.visibility = View.GONE
+                binding.planetsNextButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
+                binding.retryButton.visibility = View.GONE
             }
         }
 
