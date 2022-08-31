@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment_people"
+        android:id="@+id/nav_people"
         android:icon="@drawable/ic_baseline_face_24"
         android:title="@string/people" />
 
     <item
-        android:id="@+id/fragment_films"
+        android:id="@+id/nav_films"
         android:icon="@drawable/ic_baseline_film_24"
         android:title="@string/films" />
 
     <item
-        android:id="@+id/fragment_planets"
+        android:id="@+id/nav_planets"
         android:icon="@drawable/ic_baseline_planets_24"
         android:title="@string/planets" />
 
