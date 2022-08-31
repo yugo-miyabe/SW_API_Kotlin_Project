@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/fragment_people_list.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/fragment_planets.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout/fragment_planets_list.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_species.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_star_ships.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_starships.xml" value="0.23385416666666667" />

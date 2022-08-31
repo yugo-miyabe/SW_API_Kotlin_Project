@@ -38,5 +38,6 @@
     <!-- 共通 -->
     <string name="next">NEXT</string>
     <string name="previous">PREVIOUS</string>
+    <string name="retry">再試行</string>
 
 </resources>

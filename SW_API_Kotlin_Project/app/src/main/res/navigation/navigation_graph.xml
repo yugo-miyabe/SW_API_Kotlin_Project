@@ -15,12 +15,12 @@
         android:id="@+id/fragment_films"
         android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsFragment"
         android:label="FilmsFragment"
-        tools:layout="@layout/fragment_films" />
+        tools:layout="@layout/fragment_films_list" />
 
     <fragment
         android:id="@+id/fragment_planets"
         android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsFragment"
         android:label="PlanetsFragment"
-        tools:layout="@layout/fragment_planets" />
+        tools:layout="@layout/fragment_planets_list" />
 
 </navigation>

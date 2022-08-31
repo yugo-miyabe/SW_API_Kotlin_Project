@@ -3,7 +3,7 @@ package com.sw.sw_api_kotlin_project.base
 import androidx.lifecycle.ViewModel
 import com.sw.sw_api_kotlin_project.utils.PageType
 
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
     var page: Int = 1
 
     fun pageParameterFormat(pageType: PageType) {
