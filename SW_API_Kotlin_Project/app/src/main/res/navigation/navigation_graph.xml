@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/nav_people">
+    app:startDestination="@id/nav_people_list">
 
     <fragment
-        android:id="@+id/nav_people"
-        android:name="com.sw.sw_api_kotlin_project.ui.people.PeopleFragment"
+        android:id="@+id/nav_people_list"
+        android:name="com.sw.sw_api_kotlin_project.ui.people.PeopleListFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_people_list">
         <action
@@ -24,13 +24,13 @@
 
     <fragment
         android:id="@+id/nav_films"
-        android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsFragment"
+        android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsListFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films_list" />
 
     <fragment
         android:id="@+id/nav_planets"
-        android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsFragment"
+        android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsListFragment"
         android:label="PlanetsFragment"
         tools:layout="@layout/fragment_planets_list" />
 

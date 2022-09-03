@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.ui.people
+package com.sw.sw_api_kotlin_project.ui.films
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,60 +6,59 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
+import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.People
+import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.repository.PeopleRepository
+import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
+import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
-class PeopleFragment : BaseFragment() {
-    private lateinit var viewModel: PeopleListViewModel
-    private var _binding: FragmentPeopleListBinding? = null
+class FilmsListFragment : BaseFragment() {
+    private lateinit var viewModel: FilmsListViewModel
+    private var _binding: FragmentFilmsListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PeopleListViewModelFactory(PeopleRepository(SWServiceClient.getService()))
-        )[PeopleListViewModel::class.java]
+            FilmsListViewModelFactory(FilmsRepository(SWServiceClient.getService()))
+        )[FilmsListViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
+        _binding = FragmentFilmsListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun initView() {
         super.initView()
         binding.nextButton.setOnClickListener {
-            getPeople(PageType.NEXT_PAGE)
+            getFilms(PageType.NEXT_PAGE)
         }
-        binding.progressBar.setOnClickListener {
-            getPeople(PageType.PREVIOUS_PAGE)
+        binding.previousButton.setOnClickListener {
+            getFilms(PageType.PREVIOUS_PAGE)
         }
-        getPeople(PageType.FIRST_PAGE)
+        getFilms(PageType.FIRST_PAGE)
     }
 
-    private fun getPeople(pageType: PageType) {
-        val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
-            override fun onSuccess(data: Results<People>?) {
-                val people = data!!
+    private fun getFilms(pageType: PageType) {
+        val filmsObserver = object : SWApiLiveDataObserver<Results<Films>>() {
+            override fun onSuccess(data: Results<Films>?) {
+                val films = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
                 binding.previousButton.visibility = View.VISIBLE
                 binding.nextButton.visibility = View.VISIBLE
-                binding.retryButton.visibility = View.GONE
-                binding.previousButton.isEnabled = people.previous != null
-                binding.nextButton.isEnabled = people.next != null
-                val adapter = PeopleAdapter(people.results)
+                binding.previousButton.isEnabled = films.previous != null
+                binding.nextButton.isEnabled = films.next != null
+                val adapter = FilmsAdapter(films.results)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
@@ -69,8 +68,8 @@ class PeopleFragment : BaseFragment() {
                 binding.errorText.visibility = View.VISIBLE
                 binding.previousButton.visibility = View.GONE
                 binding.nextButton.visibility = View.GONE
-                binding.retryButton.visibility = View.VISIBLE
                 binding.errorText.text = errorMessage
+                binding.retryButton.visibility = View.VISIBLE
             }
 
             override fun onLoading() {
@@ -78,11 +77,11 @@ class PeopleFragment : BaseFragment() {
                 binding.recyclerView.visibility = View.GONE
                 binding.previousButton.visibility = View.GONE
                 binding.nextButton.visibility = View.GONE
-                binding.retryButton.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
+                binding.retryButton.visibility = View.GONE
             }
         }
-        viewModel.getPeople(pageType).observe(viewLifecycleOwner, peopleObserver)
+        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmsObserver)
     }
 
     override fun onDestroy() {

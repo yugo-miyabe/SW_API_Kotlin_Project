@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
+
 
 class PeopleDetailsFragment : BaseFragment() {
     private lateinit var viewModel: PeopleDetailsViewModel
@@ -29,6 +31,12 @@ class PeopleDetailsFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun initView() {
+        super.initView()
+
+
+
+    }
 
 
     override fun onDestroy() {

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_people"
+        android:id="@+id/nav_people_list"
         android:icon="@drawable/ic_baseline_face_24"
         android:title="@string/people" />
 

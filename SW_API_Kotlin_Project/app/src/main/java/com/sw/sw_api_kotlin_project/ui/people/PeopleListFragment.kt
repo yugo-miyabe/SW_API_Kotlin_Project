@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.ui.planets
+package com.sw.sw_api_kotlin_project.ui.people
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,20 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sw.sw_api_kotlin_project.adapters.PlanetsAdapter
+import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Planet
+import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.repository.PlanetsRepository
+import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
-
-class PlanetsFragment : BaseFragment() {
-
-    private lateinit var viewModel: PlanetsViewModel
+class PeopleListFragment : BaseFragment() {
+    private lateinit var viewModel: PeopleListViewModel
     private var _binding: FragmentPeopleListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -27,8 +25,8 @@ class PlanetsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PlanetsViewModelFactory(PlanetsRepository(SWServiceClient.getService()))
-        )[PlanetsViewModel::class.java]
+            PeopleListViewModelFactory(PeopleRepository(SWServiceClient.getService()))
+        )[PeopleListViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -42,26 +40,26 @@ class PlanetsFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.nextButton.setOnClickListener {
-            getPlanets(PageType.NEXT_PAGE)
+            getPeople(PageType.NEXT_PAGE)
         }
-        binding.previousButton.setOnClickListener {
-            getPlanets(PageType.PREVIOUS_PAGE)
+        binding.progressBar.setOnClickListener {
+            getPeople(PageType.PREVIOUS_PAGE)
         }
-        getPlanets(PageType.FIRST_PAGE)
+        getPeople(PageType.FIRST_PAGE)
     }
 
-    private fun getPlanets(pageType: PageType) {
-        val planetsObserver = object : SWApiLiveDataObserver<Results<Planet>>() {
-            override fun onSuccess(data: Results<Planet>?) {
-                val planets = data!!
+    private fun getPeople(pageType: PageType) {
+        val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
+            override fun onSuccess(data: Results<People>?) {
+                val people = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
                 binding.previousButton.visibility = View.VISIBLE
                 binding.nextButton.visibility = View.VISIBLE
                 binding.retryButton.visibility = View.GONE
-                binding.previousButton.isEnabled = planets.previous != null
-                binding.nextButton.isEnabled = planets.next != null
-                val adapter = PlanetsAdapter(planets.results)
+                binding.previousButton.isEnabled = people.previous != null
+                binding.nextButton.isEnabled = people.next != null
+                val adapter = PeopleAdapter(people.results)
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
@@ -80,12 +78,11 @@ class PlanetsFragment : BaseFragment() {
                 binding.recyclerView.visibility = View.GONE
                 binding.previousButton.visibility = View.GONE
                 binding.nextButton.visibility = View.GONE
-                binding.progressBar.visibility = View.VISIBLE
                 binding.retryButton.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
             }
         }
-
-        viewModel.getPlanets(pageType).observe(viewLifecycleOwner, planetsObserver)
+        viewModel.getPeople(pageType).observe(viewLifecycleOwner, peopleObserver)
     }
 
     override fun onDestroy() {
