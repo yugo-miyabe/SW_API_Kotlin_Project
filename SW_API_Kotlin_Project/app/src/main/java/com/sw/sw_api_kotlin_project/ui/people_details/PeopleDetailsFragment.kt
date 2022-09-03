@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
@@ -33,7 +32,6 @@ class PeopleDetailsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-
 
 
     }
