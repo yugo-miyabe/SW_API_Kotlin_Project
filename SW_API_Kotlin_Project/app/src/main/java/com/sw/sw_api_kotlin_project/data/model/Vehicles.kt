@@ -1,9 +1,11 @@
 package com.sw.sw_api_kotlin_project.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable
+@Parcelize
 data class Vehicles(
     @SerialName("cargo_capacity")
     val cargoCapacity: String,
@@ -24,4 +26,4 @@ data class Vehicles(
     val pilots: List<String>,
     val url: String,
     val vehicle_class: String
-)
+): Parcelable

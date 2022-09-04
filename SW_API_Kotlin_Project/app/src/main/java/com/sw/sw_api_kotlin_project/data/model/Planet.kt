@@ -1,9 +1,11 @@
 package com.sw.sw_api_kotlin_project.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable
+@Parcelize
 data class Planet(
     val climate: String,
     val created: String,
@@ -22,4 +24,4 @@ data class Planet(
     val surfaceWater: String,
     val terrain: String,
     val url: String
-)
+): Parcelable

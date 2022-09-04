@@ -1,9 +1,11 @@
 package com.sw.sw_api_kotlin_project.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable
+@Parcelize
 data class Species(
     @SerialName("average_height")
     val averageHeight: String,
@@ -25,4 +27,4 @@ data class Species(
     val people: List<String>,
     val skin_colors: String,
     val url: String
-)
+) : Parcelable

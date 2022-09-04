@@ -1,9 +1,10 @@
 package com.sw.sw_api_kotlin_project.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
+@Parcelize
 data class Films(
     val characters: List<String>,
     val created: String,
@@ -22,4 +23,4 @@ data class Films(
     val title: String,
     val url: String,
     val vehicles: List<String>
-)
+) : Parcelable

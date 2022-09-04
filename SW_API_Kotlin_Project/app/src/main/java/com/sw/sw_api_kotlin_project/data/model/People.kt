@@ -1,9 +1,10 @@
 package com.sw.sw_api_kotlin_project.data.model
 
+import android.os.Parcelable
 import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.parcelize.Parcelize
 
-@Serializable
+@Parcelize
 data class People(
     val name: String?,
     val height: String?,
@@ -26,4 +27,4 @@ data class People(
     val created: String,
     val edited: String,
     val url: String,
-)
+) : Parcelable
