@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
@@ -59,7 +60,10 @@ class PeopleListFragment : BaseFragment() {
                 binding.retryButton.visibility = View.GONE
                 binding.previousButton.isEnabled = people.previous != null
                 binding.nextButton.isEnabled = people.next != null
-                val adapter = PeopleAdapter(people.results)
+                val adapter = PeopleAdapter(people.results) {
+                    val action = PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
+                    findNavController().navigate(action)
+                }
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
