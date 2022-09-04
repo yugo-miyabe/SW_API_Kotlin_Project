@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlinx-serialization'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -60,6 +60,7 @@ dependencies {
     // retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // viewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-alpha05'
     // livedata
