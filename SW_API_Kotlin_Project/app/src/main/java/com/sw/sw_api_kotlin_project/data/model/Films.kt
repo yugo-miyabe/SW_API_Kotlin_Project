@@ -1,6 +1,7 @@
 package com.sw.sw_api_kotlin_project.data.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.SerialName
 
@@ -10,13 +11,13 @@ data class Films(
     val created: String,
     val director: String,
     val edited: String,
-    @SerialName("episode_id")
+    @SerializedName("episode_id")
     val episodeId: Int,
-    @SerialName("opening_crawl")
+    @SerializedName("opening_crawl")
     val openingCrawl: String,
     val planets: List<String>,
     val producer: String,
-    @SerialName("release_date")
+    @SerializedName("release_date")
     val releaseDate: String,
     val species: List<String>,
     val starships: List<String>,
