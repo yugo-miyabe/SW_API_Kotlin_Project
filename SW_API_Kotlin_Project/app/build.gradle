@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.sw.sw_api_kotlin_project"
-        minSdk 23
+        minSdk 28
         targetSdk 31
         versionCode 1
         versionName "1.0"
