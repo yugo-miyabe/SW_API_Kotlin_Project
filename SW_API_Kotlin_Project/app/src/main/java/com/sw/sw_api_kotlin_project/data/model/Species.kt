@@ -1,26 +1,25 @@
 package com.sw.sw_api_kotlin_project.data.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 @Parcelize
 data class Species(
-    @SerialName("average_height")
+    @SerializedName("average_height")
     val averageHeight: String,
-    @SerialName("average_lifespan")
+    @SerializedName("average_lifespan")
     val averageLifespan: String,
     val classification: String,
     val created: String,
     val designation: String,
     val edited: String,
-    @SerialName("eye_colors")
+    @SerializedName("eye_colors")
     val eyeColors: String,
     val films: List<String>,
-    @SerialName("hair_colors")
+    @SerializedName("hair_colors")
     val hairColors: String,
-    @SerialName("homeworld")
+    @SerializedName("homeworld")
     val homeWorld: String?,
     val language: String,
     val name: String,
