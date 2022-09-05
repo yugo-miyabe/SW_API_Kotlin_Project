@@ -10,7 +10,6 @@ import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 
-
 class PeopleDetailsFragment : BaseFragment() {
     private lateinit var viewModel: PeopleDetailsViewModel
     private var _binding: FragmentPeopleDetailsBinding? = null
@@ -35,9 +34,17 @@ class PeopleDetailsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        val people :People = args.people
-        binding.fullNameText.text = people.name
-
+        val people: People = args.people
+        people.run {
+            binding.fullNameText.text = name
+            binding.birthYearText.text = birthYear
+            binding.genderText.text = gender
+            binding.skinColorText.text = skinColor
+            binding.eyeColorText.text = eyeColor
+            binding.heightText.text = height
+            binding.massText.text = mass
+            binding.homeworldText.text = homeWorld
+        }
     }
 
 

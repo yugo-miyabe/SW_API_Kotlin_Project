@@ -38,7 +38,7 @@
             tools:text="Luke Skywalker" />
 
         <TextView
-            android:id="@+id/text_labelfor_birth_year"
+            android:id="@+id/birth_year_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toBottomOf="@+id/full_name_text" />
 
         <TextView
-            android:id="@+id/text_details_birth_year"
+            android:id="@+id/birth_year_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -59,7 +59,7 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/text_labelfor_birth_year"
+            app:layout_constraintStart_toEndOf="@+id/birth_year_label"
             app:layout_constraintTop_toBottomOf="@+id/full_name_text"
             tools:text="19BBY" />
 
@@ -76,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/image_details_icon" />
 
         <TextView
-            android:id="@+id/text_details_gender"
+            android:id="@+id/gender_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -89,7 +89,7 @@
             tools:text="male" />
 
         <TextView
-            android:id="@+id/text_label_for_skin_color"
+            android:id="@+id/skin_color_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -98,11 +98,11 @@
             android:text="@string/details_skin_color"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/text_details_skin_color"
+            app:layout_constraintEnd_toStartOf="@+id/skin_color_text"
             app:layout_constraintTop_toBottomOf="@+id/image_details_icon" />
 
         <TextView
-            android:id="@+id/text_details_skin_color"
+            android:id="@+id/skin_color_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -116,7 +116,7 @@
 
 
         <TextView
-            android:id="@+id/text_label_for_eye_color"
+            android:id="@+id/eye_color_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -125,10 +125,10 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_gender" />
+            app:layout_constraintTop_toBottomOf="@+id/gender_text" />
 
         <TextView
-            android:id="@+id/text_details_eye_color"
+            android:id="@+id/eye_color_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -136,12 +136,12 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/text_label_for_eye_color"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_gender"
+            app:layout_constraintStart_toEndOf="@+id/eye_color_label"
+            app:layout_constraintTop_toBottomOf="@+id/gender_text"
             tools:text="blue" />
 
         <TextView
-            android:id="@+id/text_label_for_height"
+            android:id="@+id/height_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -149,11 +149,11 @@
             android:text="@string/people_details_height"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/text_details_height"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_gender" />
+            app:layout_constraintEnd_toStartOf="@+id/height_text"
+            app:layout_constraintTop_toBottomOf="@+id/gender_text" />
 
         <TextView
-            android:id="@+id/text_details_height"
+            android:id="@+id/height_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -162,11 +162,11 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_gender"
+            app:layout_constraintTop_toBottomOf="@+id/gender_text"
             tools:text="172" />
 
         <TextView
-            android:id="@+id/text_label_for_hair_color"
+            android:id="@+id/hair_color_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -175,10 +175,10 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_eye_color" />
+            app:layout_constraintTop_toBottomOf="@+id/eye_color_text" />
 
         <TextView
-            android:id="@+id/text_details_hair_color"
+            android:id="@+id/hair_color_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -186,12 +186,12 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/text_label_for_hair_color"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_eye_color"
+            app:layout_constraintStart_toEndOf="@id/hair_color_label"
+            app:layout_constraintTop_toBottomOf="@+id/eye_color_text"
             tools:text="blond" />
 
         <TextView
-            android:id="@+id/text_labelfor_mass"
+            android:id="@+id/mass_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -200,11 +200,11 @@
             android:text="@string/people_details_mass"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/text_details_mass"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_height" />
+            app:layout_constraintEnd_toStartOf="@+id/mass_text"
+            app:layout_constraintTop_toBottomOf="@+id/height_text" />
 
         <TextView
-            android:id="@+id/text_details_mass"
+            android:id="@+id/mass_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -213,11 +213,11 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_height"
+            app:layout_constraintTop_toBottomOf="@+id/height_text"
             tools:text="77" />
 
         <TextView
-            android:id="@+id/text_labelfor_species"
+            android:id="@+id/species_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -226,10 +226,10 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_hair_color" />
+            app:layout_constraintTop_toBottomOf="@+id/hair_color_text" />
 
         <TextView
-            android:id="@+id/text_details_species"
+            android:id="@+id/species_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -237,12 +237,12 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/text_labelfor_species"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_hair_color"
+            app:layout_constraintStart_toEndOf="@+id/species_label"
+            app:layout_constraintTop_toBottomOf="@+id/hair_color_text"
             tools:text="Human" />
 
         <TextView
-            android:id="@+id/text_labelfor_homeworld"
+            android:id="@+id/homeworld_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -251,10 +251,10 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/text_labelfor_species" />
+            app:layout_constraintTop_toBottomOf="@+id/species_label" />
 
         <TextView
-            android:id="@+id/text_details_homeworld"
+            android:id="@+id/homeworld_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -262,12 +262,12 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/text_labelfor_homeworld"
-            app:layout_constraintTop_toBottomOf="@+id/text_labelfor_species"
+            app:layout_constraintStart_toEndOf="@+id/homeworld_label"
+            app:layout_constraintTop_toBottomOf="@+id/species_label"
             tools:text="Tatooine" />
 
         <TextView
-            android:id="@+id/text_labelfor_starships"
+            android:id="@+id/starships_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -277,7 +277,7 @@
             android:textSize="20sp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/text_details_homeworld" />
+            app:layout_constraintTop_toBottomOf="@+id/homeworld_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_starships"
@@ -286,7 +286,7 @@
             android:layout_marginTop="8dp"
             android:visibility="visible"
             app:layout_constrainedHeight="true"
-            app:layout_constraintTop_toBottomOf="@+id/text_labelfor_starships" />
+            app:layout_constraintTop_toBottomOf="@+id/starships_label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
