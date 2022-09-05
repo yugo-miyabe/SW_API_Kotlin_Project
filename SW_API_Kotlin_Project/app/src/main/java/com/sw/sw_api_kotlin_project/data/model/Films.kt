@@ -3,7 +3,6 @@ package com.sw.sw_api_kotlin_project.data.model
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.SerialName
 
 @Parcelize
 data class Films(
