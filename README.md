@@ -11,7 +11,7 @@ API:https://swapi.dev/
 スターウォーズの、登場人物、映画、人種、宇宙船、自動車、惑星を紹介する
 
 
-* 最小API Level:23
+* 最小API Level:28
 * ターゲットAPI Level:31
 
 ## 使用ライブラリ
