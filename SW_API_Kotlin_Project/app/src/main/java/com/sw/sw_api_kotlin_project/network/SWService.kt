@@ -5,6 +5,7 @@ import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.data.model.Species
 import com.sw.sw_api_kotlin_project.data.model.Starships
 import com.sw.sw_api_kotlin_project.data.model.Vehicles
 import retrofit2.Response
@@ -57,7 +58,10 @@ interface SWService {
      * 宇宙船取得
      */
     @GET("starships")
-    suspend fun starships(): Response<Results<Starships>>
+    suspend fun getStarShips(@Query("page") page: Int): Results<Starships>
+
+    @GET
+    suspend fun getSpeciesByUrl(@Url speciesUrl: String): Species
 
     /**
      * 車両取得
