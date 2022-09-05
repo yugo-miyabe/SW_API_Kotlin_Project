@@ -3,23 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/fragment_people">
+    app:startDestination="@id/nav_people_list">
 
     <fragment
-        android:id="@+id/fragment_people"
-        android:name="com.sw.sw_api_kotlin_project.ui.people.PeopleFragment"
+        android:id="@+id/nav_people_list"
+        android:name="com.sw.sw_api_kotlin_project.ui.people.PeopleListFragment"
         android:label="PeopleFragment"
-        tools:layout="@layout/fragment_people_list" />
+        tools:layout="@layout/fragment_people_list">
+        <action
+            android:id="@+id/action_nav_people_to_nav_people_detail"
+            app:destination="@+id/nav_people_detail" />
+    </fragment>
 
     <fragment
-        android:id="@+id/fragment_films"
-        android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsFragment"
+        android:id="@+id/nav_people_detail"
+        android:name="com.sw.sw_api_kotlin_project.ui.people_details.PeopleDetailsFragment"
+        android:label="PeopleDetailsFragment"
+        tools:layout="@layout/fragment_people_details">
+        <argument
+            android:name="people"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_films"
+        android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsListFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films_list" />
 
     <fragment
-        android:id="@+id/fragment_planets"
-        android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsFragment"
+        android:id="@+id/nav_planets"
+        android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsListFragment"
         android:label="PlanetsFragment"
         tools:layout="@layout/fragment_planets_list" />
 

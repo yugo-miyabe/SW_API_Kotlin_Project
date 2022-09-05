@@ -1,23 +1,24 @@
 package com.sw.sw_api_kotlin_project.data.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-@Serializable
+@Parcelize
 data class People(
     val name: String?,
     val height: String?,
     val mass: String?,
-    @SerialName("hair_color")
+    @SerializedName("hair_color")
     val hairColor: String,
-    @SerialName("skin_color")
+    @SerializedName("skin_color")
     val skinColor: String,
-    @SerialName("eye_color")
+    @SerializedName("eye_color")
     val eyeColor: String,
-    @SerialName("birth_year")
+    @SerializedName("birth_year")
     val birthYear: String,
     val gender: String,
-    @SerialName("homeworld")
+    @SerializedName("homeworld")
     val homeWorld: String,
     val films: List<String>,
     val species: List<String>,
@@ -26,4 +27,4 @@ data class People(
     val created: String,
     val edited: String,
     val url: String,
-)
+) : Parcelable

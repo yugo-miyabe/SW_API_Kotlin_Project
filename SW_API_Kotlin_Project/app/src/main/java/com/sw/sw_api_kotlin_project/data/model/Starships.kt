@@ -1,29 +1,30 @@
 package com.sw.sw_api_kotlin_project.data.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-@Serializable
+@Parcelize
 data class Starships(
     /**
      * 近代銀河光時間
      */
-    @SerialName("MGLT")
+    @SerializedName("MGLT")
     val mglt: String,
-    @SerialName("cargo_capacity")
+    @SerializedName("cargo_capacity")
     val cargoCapacity: String,
     val consumables: String,
-    @SerialName("cost_in_credits")
+    @SerializedName("cost_in_credits")
     val costInCredits: String,
     val created: String,
     val crew: String,
     val edited: String,
     val films: List<String>,
-    @SerialName("hyperdrive_rating")
+    @SerializedName("hyperdrive_rating")
     val hyperDriveRating: String,
     val length: String,
     val manufacturer: String,
-    @SerialName("max_atmosphering_speed")
+    @SerializedName("max_atmosphering_speed")
     val maxAtmosphereSpeed: String,
     val model: String,
     val name: String,
@@ -31,4 +32,4 @@ data class Starships(
     val pilots: List<String>,
     val starship_class: String,
     val url: String
-)
+) : Parcelable
