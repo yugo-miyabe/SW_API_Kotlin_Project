@@ -3,8 +3,6 @@ package com.sw.sw_api_kotlin_project.data.model
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 @Parcelize
 data class Starships(
@@ -34,4 +32,4 @@ data class Starships(
     val pilots: List<String>,
     val starship_class: String,
     val url: String
-): Parcelable
+) : Parcelable
