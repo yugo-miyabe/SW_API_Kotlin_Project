@@ -18,11 +18,8 @@ class PeopleDetailsViewModel(private val starShipsRepository: StarShipsRepositor
     fun getStarshipsByUrl(starshipUrl: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            val response = starShipsRepository.getStarShips()
         } catch (e: Exception) {
-
         }
-
     }
 
 }

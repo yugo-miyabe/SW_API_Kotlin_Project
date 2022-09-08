@@ -39,7 +39,7 @@ class PeopleDetailsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        getStarships()
+        // getStarships()
         people = args.people
         people.run {
             binding.fullNameText.text = name
