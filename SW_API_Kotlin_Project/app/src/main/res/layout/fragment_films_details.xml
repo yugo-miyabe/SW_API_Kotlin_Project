@@ -27,7 +27,7 @@
             app:tint="@color/teal_700" />
 
         <TextView
-            android:id="@+id/full_name_text"
+            android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -50,11 +50,11 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/image_film_icon"
-            app:layout_constraintTop_toBottomOf="@+id/full_name_text" />
+            app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
 
         <TextView
-            android:id="@+id/birth_year_text"
+            android:id="@+id/release_date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -63,7 +63,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/release_date_label"
-            app:layout_constraintTop_toBottomOf="@+id/full_name_text"
+            app:layout_constraintTop_toBottomOf="@+id/title_text"
             tools:text="1977-05-25" />
 
         <TextView
