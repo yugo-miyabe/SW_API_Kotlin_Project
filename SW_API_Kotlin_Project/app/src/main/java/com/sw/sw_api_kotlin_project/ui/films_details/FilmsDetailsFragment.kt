@@ -19,7 +19,8 @@ class FilmsDetailsFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[FilmsDetailsViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, FilmsDetailsFactory())[FilmsDetailsViewModel::class.java]
     }
 
     override fun onCreateView(
