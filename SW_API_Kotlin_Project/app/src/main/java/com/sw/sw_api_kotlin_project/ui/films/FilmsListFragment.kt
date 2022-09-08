@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
@@ -58,7 +59,10 @@ class FilmsListFragment : BaseFragment() {
                 binding.nextButton.visibility = View.VISIBLE
                 binding.previousButton.isEnabled = films.previous != null
                 binding.nextButton.isEnabled = films.next != null
-                val adapter = FilmsAdapter(films.results)
+                val adapter = FilmsAdapter(films.results) {
+                    val action = FilmsListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
+                    findNavController().navigate(action)
+                }
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }

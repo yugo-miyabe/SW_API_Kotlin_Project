@@ -45,6 +45,9 @@
     <string name="people_details_vehicles">Vehicles:</string>
     <string name="people_details_films">Films:</string>
     <string name="people_details_species_Human">Human</string>
+    <!-- 映画詳細 -->
+    <string name="films_details_release_date">Release Date</string>
+    <string name="films_details_opening_crawl">Opening Crawl:</string>
     <!-- 共通詳細 -->
     <string name="details_home_world">Home World:</string>
     <string name="details_skin_color">Skin Color:</string>
