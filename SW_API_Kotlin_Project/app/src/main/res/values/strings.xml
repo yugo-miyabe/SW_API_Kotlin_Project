@@ -48,6 +48,14 @@
     <!-- 映画詳細 -->
     <string name="films_details_release_date">Release Date</string>
     <string name="films_details_opening_crawl">Opening Crawl:</string>
+    <!-- 惑星詳細 -->
+    <string name="planet_details_rotation_period">自転周期:</string>
+    <string name="planet_details_diameter">直径:</string>
+    <string name="planet_details_climate">気候:</string>
+    <string name="planet_details_gravity">重力:</string>
+    <string name="planet_details_terrain">地形:</string>
+    <string name="planet_details_surface">地表水:</string>
+    <string name="planet_details_population">人口:</string>
     <!-- 共通詳細 -->
     <string name="details_home_world">Home World:</string>
     <string name="details_skin_color">Skin Color:</string>
