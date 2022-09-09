@@ -3,7 +3,7 @@
 
     <!-- Navigation -->
     <string name="people">登場人物</string>
-    <string name="planets">惑星</string>
+    <string name="planet">惑星</string>
     <string name="films">映画</string>
     <string name="species">種族</string>
     <string name="vehicles">車両</string>

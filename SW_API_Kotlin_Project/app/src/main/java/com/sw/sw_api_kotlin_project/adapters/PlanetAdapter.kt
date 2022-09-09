@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.Planet
 
-class PlanetsAdapter(private val planetList: List<Planet>) :
-    RecyclerView.Adapter<PlanetsAdapter.ViewHolder>() {
+class PlanetAdapter(private val planetList: List<Planet>) :
+    RecyclerView.Adapter<PlanetAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val planet = view.findViewById<TextView>(R.id.planet_name_text)
@@ -20,7 +20,7 @@ class PlanetsAdapter(private val planetList: List<Planet>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_planets, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_planet, parent, false)
 
         return ViewHolder(view)
     }

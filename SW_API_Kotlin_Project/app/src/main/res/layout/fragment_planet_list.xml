@@ -6,7 +6,7 @@
 
         <variable
             name="fragment_planets"
-            type="com.sw.sw_api_kotlin_project.ui.planets.PlanetsViewModel" />
+            type="com.sw.sw_api_kotlin_project.ui.planet.PlanetViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
             app:layout_constraintTop_toTopOf="@+id/error_text" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/planets_recycler"
+            android:id="@+id/planet_recycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"

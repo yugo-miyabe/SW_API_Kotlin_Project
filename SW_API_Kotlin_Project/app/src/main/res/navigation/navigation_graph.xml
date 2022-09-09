@@ -46,9 +46,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_planets"
-        android:name="com.sw.sw_api_kotlin_project.ui.planets.PlanetsListFragment"
-        android:label="PlanetsFragment"
-        tools:layout="@layout/fragment_planets_list" />
+        android:id="@+id/nav_planet"
+        android:name="com.sw.sw_api_kotlin_project.ui.planet.PlanetListFragment"
+        android:label="PlanetFragment"
+        tools:layout="@layout/fragment_planet_list" />
 
 </navigation>
