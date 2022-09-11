@@ -3,7 +3,7 @@
 
     <!-- Navigation -->
     <string name="people">登場人物</string>
-    <string name="planets">惑星</string>
+    <string name="planet">惑星</string>
     <string name="films">映画</string>
     <string name="species">種族</string>
     <string name="vehicles">車両</string>
@@ -36,26 +36,34 @@
     <string name="starships_model_name">モデル名:</string>
     <string name="starships_manufacturer_name">メーカー名:</string>
     <!-- 登場人物詳細 -->
-    <string name="people_details_birth_year">Birth Year:</string>
-    <string name="people_details_gender">Gender:</string>
-    <string name="people_details_height">Height:</string>
-    <string name="people_details_mass">Mass:</string>
-    <string name="people_details_species">Species:</string>
-    <string name="people_details_starships">Starships</string>
-    <string name="people_details_vehicles">Vehicles:</string>
-    <string name="people_details_films">Films:</string>
-    <string name="people_details_species_Human">Human</string>
+    <string name="people_details_birth_year">誕生日:</string>
+    <string name="people_details_gender">性別:</string>
+    <string name="people_details_height">身長:</string>
+    <string name="people_details_mass">質量:</string>
+    <string name="people_details_species">種族:</string>
+    <string name="people_details_starships">宇宙船:</string>
+    <string name="people_details_vehicles">乗り物:</string>
+    <string name="people_details_films">出演映画:</string>
+    <string name="people_details_species_human">Human</string>
     <!-- 映画詳細 -->
-    <string name="films_details_release_date">Release Date</string>
-    <string name="films_details_opening_crawl">Opening Crawl:</string>
+    <string name="films_details_release_date">公開日:</string>
+    <string name="films_details_opening_crawl">オープニングクロール:</string>
+    <!-- 惑星詳細 -->
+    <string name="planet_details_rotation_period">自転周期:</string>
+    <string name="planet_details_diameter">直径:</string>
+    <string name="planet_details_climate">気候:</string>
+    <string name="planet_details_gravity">重力:</string>
+    <string name="planet_details_terrain">地形:</string>
+    <string name="planet_details_surface">地表水:</string>
+    <string name="planet_details_population">人口:</string>
     <!-- 共通詳細 -->
-    <string name="details_home_world">Home World:</string>
-    <string name="details_skin_color">Skin Color:</string>
-    <string name="details_eye_color">Eye Color:</string>
-    <string name="details_hair_color">Hair Color:</string>
+    <string name="details_home_world">ホームワールド:</string>
+    <string name="details_skin_color">肌の色:</string>
+    <string name="details_eye_color">瞳の色:</string>
+    <string name="details_hair_color">髪色:</string>
     <!-- 共通 -->
-    <string name="next">NEXT</string>
-    <string name="previous">PREVIOUS</string>
+    <string name="next">次ページへ</string>
+    <string name="previous">前ページへ</string>
     <string name="retry">再試行</string>
 
 </resources>

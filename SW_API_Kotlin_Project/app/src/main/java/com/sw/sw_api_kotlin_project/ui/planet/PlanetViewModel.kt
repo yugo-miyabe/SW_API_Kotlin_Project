@@ -1,21 +1,21 @@
-package com.sw.sw_api_kotlin_project.ui.planets
+package com.sw.sw_api_kotlin_project.ui.planet
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.repository.PlanetsRepository
+import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
-class PlanetsViewModel(private val planetsRepository: PlanetsRepository) : BaseViewModel() {
+class PlanetViewModel(private val planetRepository: PlanetRepository) : BaseViewModel() {
 
     fun getPlanets(pageType: PageType) = liveData(Dispatchers.IO) {
         pageParameterFormat(pageType)
         emit(Resource.loading(data = null))
         try {
-            val response = planetsRepository.getPlanets(page)
+            val response = planetRepository.getPlanets(page)
             emit(Resource.success(data = response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
@@ -23,12 +23,12 @@ class PlanetsViewModel(private val planetsRepository: PlanetsRepository) : BaseV
     }
 }
 
-class PlanetsViewModelFactory(private val planetsRepository: PlanetsRepository) :
+class PlanetViewModelFactory(private val planetRepository: PlanetRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PlanetsViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(PlanetViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return PlanetsViewModel(planetsRepository) as T
+            return PlanetViewModel(planetRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
