@@ -10,11 +10,11 @@ import com.sw.sw_api_kotlin_project.databinding.ActivityMainBinding
 class MainActivity : BaseActivity() {
 
     private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding
+    private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navController = findNavController(R.id.nav_host_fragment)
