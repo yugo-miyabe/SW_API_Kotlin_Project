@@ -48,6 +48,7 @@ class PeopleDetailsFragment : BaseFragment() {
             binding.skinColorText.text = skinColor
             binding.eyeColorText.text = eyeColor
             binding.heightText.text = height
+            binding.hairColorText.text = hairColor
             binding.massText.text = mass
             binding.homeworldText.text = homeWorld
         }
