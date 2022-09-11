@@ -18,14 +18,13 @@ class MainActivity : BaseActivity() {
         setupWithNavController(navigation, navController)
     }
 
-    override fun initViews() {}
+    override fun initViews() {
+        // 何もしない
+    }
 
 
     override fun initData() {
         // 何もしない
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }
