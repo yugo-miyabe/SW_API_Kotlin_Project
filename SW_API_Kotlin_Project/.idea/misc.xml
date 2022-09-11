@@ -23,11 +23,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19007873535156247" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2758152173913043" />
+        <entry key="app/src/main/res/layout/fragment_base.xml" value="0.3944746376811594" />
         <entry key="app/src/main/res/layout/fragment_films.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_films_details.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/fragment_people_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_people_list.xml" value="0.221875" />
+        <entry key="app/src/main/res/layout/fragment_planet_details.xml" value="0.3944746376811594" />
+        <entry key="app/src/main/res/layout/fragment_planet_list.xml" value="0.3944746376811594" />
         <entry key="app/src/main/res/layout/fragment_planets.xml" value="0.2359375" />
         <entry key="app/src/main/res/layout/fragment_planets_list.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_species.xml" value="0.2359375" />
@@ -40,6 +43,7 @@
         <entry key="app/src/main/res/layout/item_people.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_people_list.xml" value="0.48378127896200185" />
         <entry key="app/src/main/res/layout/item_pepole_list.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/item_planet.xml" value="0.3944746376811594" />
         <entry key="app/src/main/res/layout/item_planets.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_species.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/item_starship.xml" value="0.3691123188405797" />

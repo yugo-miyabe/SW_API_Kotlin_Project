@@ -6,7 +6,7 @@
 
         <variable
             name="fragment_people"
-            type="com.sw.sw_api_kotlin_project.ui.planets.PlanetsViewModel" />
+            type="com.sw.sw_api_kotlin_project.ui.planet.PlanetViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"

@@ -12,9 +12,9 @@
         android:title="@string/films" />
 
     <item
-        android:id="@+id/nav_planets"
+        android:id="@+id/nav_planet"
         android:icon="@drawable/ic_baseline_planets_24"
-        android:title="@string/planets" />
+        android:title="@string/planet" />
 
     <!--
     <item

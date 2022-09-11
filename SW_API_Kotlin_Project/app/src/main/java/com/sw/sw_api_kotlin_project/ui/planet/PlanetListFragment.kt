@@ -1,25 +1,26 @@
-package com.sw.sw_api_kotlin_project.ui.planets
+package com.sw.sw_api_kotlin_project.ui.planet
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sw.sw_api_kotlin_project.adapters.PlanetsAdapter
+import com.sw.sw_api_kotlin_project.adapters.PlanetAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.repository.PlanetsRepository
+import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
 
-class PlanetsListFragment : BaseFragment() {
+class PlanetListFragment : BaseFragment() {
 
-    private lateinit var viewModel: PlanetsViewModel
+    private lateinit var viewModel: PlanetViewModel
     private var _binding: FragmentPeopleListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -27,8 +28,8 @@ class PlanetsListFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PlanetsViewModelFactory(PlanetsRepository(SWServiceClient.getService()))
-        )[PlanetsViewModel::class.java]
+            PlanetViewModelFactory(PlanetRepository(SWServiceClient.getService()))
+        )[PlanetViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -42,15 +43,15 @@ class PlanetsListFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.nextButton.setOnClickListener {
-            getPlanets(PageType.NEXT_PAGE)
+            getPlanet(PageType.NEXT_PAGE)
         }
         binding.previousButton.setOnClickListener {
-            getPlanets(PageType.PREVIOUS_PAGE)
+            getPlanet(PageType.PREVIOUS_PAGE)
         }
-        getPlanets(PageType.FIRST_PAGE)
+        getPlanet(PageType.FIRST_PAGE)
     }
 
-    private fun getPlanets(pageType: PageType) {
+    private fun getPlanet(pageType: PageType) {
         val planetsObserver = object : SWApiLiveDataObserver<Results<Planet>>() {
             override fun onSuccess(data: Results<Planet>?) {
                 val planets = data!!
@@ -61,7 +62,10 @@ class PlanetsListFragment : BaseFragment() {
                 binding.retryButton.visibility = View.GONE
                 binding.previousButton.isEnabled = planets.previous != null
                 binding.nextButton.isEnabled = planets.next != null
-                val adapter = PlanetsAdapter(planets.results)
+                val adapter = PlanetAdapter(planets.results) {
+                    val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
+                    findNavController().navigate(action)
+                }
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
