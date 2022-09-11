@@ -49,13 +49,20 @@
         android:id="@+id/nav_planet"
         android:name="com.sw.sw_api_kotlin_project.ui.planet.PlanetListFragment"
         android:label="PlanetFragment"
-        tools:layout="@layout/fragment_planet_list" />
-
+        tools:layout="@layout/fragment_planet_list">
+        <action
+            android:id="@+id/action_nav_planet_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_planet_detail"
-        android:name="com.sw.sw_api_kotlin_project.ui.films_details.FilmsDetailsFragment"
-
-        />
+        android:name="com.sw.sw_api_kotlin_project.ui.planet_details.PlanetDetailsFragment"
+        android:label="PlanetDetails"
+        tools:layout="@layout/fragment_planet_details" >
+        <argument
+            android:name="planet"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.Planet" />
+    </fragment>
 
 </navigation>

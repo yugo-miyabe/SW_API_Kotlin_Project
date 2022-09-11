@@ -40,7 +40,7 @@
             tools:text="Tatooine" />
 
         <TextView
-            android:id="@+id/rotation_period"
+            android:id="@+id/rotation_period_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
             app:layout_constraintTop_toBottomOf="@+id/name_text" />
 
         <TextView
-            android:id="@+id/birth_year_text"
+            android:id="@+id/rotation_period_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -61,7 +61,7 @@
             android:layout_marginEnd="8dp"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/rotation_period"
+            app:layout_constraintStart_toEndOf="@+id/rotation_period_label"
             app:layout_constraintTop_toBottomOf="@+id/name_text"
             tools:text="23" />
 

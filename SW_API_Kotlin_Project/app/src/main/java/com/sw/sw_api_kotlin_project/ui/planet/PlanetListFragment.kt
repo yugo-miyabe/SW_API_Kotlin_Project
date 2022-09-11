@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PlanetAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
@@ -61,7 +62,10 @@ class PlanetListFragment : BaseFragment() {
                 binding.retryButton.visibility = View.GONE
                 binding.previousButton.isEnabled = planets.previous != null
                 binding.nextButton.isEnabled = planets.next != null
-                val adapter = PlanetAdapter(planets.results)
+                val adapter = PlanetAdapter(planets.results) {
+                    val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
+                    findNavController().navigate(action)
+                }
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
