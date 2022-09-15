@@ -43,7 +43,7 @@ class PeopleListFragment : BaseFragment() {
         binding.nextButton.setOnClickListener {
             getPeople(PageType.NEXT_PAGE)
         }
-        binding.progressBar.setOnClickListener {
+        binding.previousButton.setOnClickListener {
             getPeople(PageType.PREVIOUS_PAGE)
         }
         getPeople(PageType.FIRST_PAGE)

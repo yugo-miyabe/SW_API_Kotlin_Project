@@ -1,20 +1,21 @@
 package com.sw.sw_api_kotlin_project.data.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-@Serializable
+@Parcelize
 data class APIRoot(
-    @SerialName("people")
+    @SerializedName("people")
     val peopleUrl: String,
-    @SerialName("planets")
+    @SerializedName("planets")
     val planetsUrl: String,
-    @SerialName("films")
+    @SerializedName("films")
     val filmsUrl: String,
-    @SerialName("species")
+    @SerializedName("species")
     val speciesUrl: String,
-    @SerialName("vehicles")
+    @SerializedName("vehicles")
     val vehiclesUrl: String,
-    @SerialName("starships")
+    @SerializedName("starships")
     val starshipsUrl: String,
-)
+) : Parcelable

@@ -1,8 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+
+    ext {
+        navigationVersion = "2.3.5"
+    }
+
     dependencies {
-        def nav_version = "2.5.1"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
     }
 }
 plugins {

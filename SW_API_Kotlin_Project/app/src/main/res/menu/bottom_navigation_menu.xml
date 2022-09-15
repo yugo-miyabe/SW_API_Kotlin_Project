@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/nav_people_list"
         android:icon="@drawable/ic_baseline_face_24"
         android:title="@string/people" />
 
     <item
-        android:id="@+id/nav_films"
+        android:id="@+id/nav_films_list"
         android:icon="@drawable/ic_baseline_film_24"
         android:title="@string/films" />
 
     <item
-        android:id="@+id/nav_planet"
+        android:id="@+id/nav_planet_list"
         android:icon="@drawable/ic_baseline_planets_24"
         android:title="@string/planet" />
+</menu>
 
     <!--
     <item
@@ -32,5 +32,3 @@
         android:icon="@drawable/ic_baseline_vehicles_24"
         android:title="@string/vehicles" />
     -->
-
-</menu>
