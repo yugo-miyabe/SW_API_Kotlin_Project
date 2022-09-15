@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        setupWithNavController(binding.bottomNavigation, navController)
+        setupWithNavController(binding.bottomNavigationView, navController)
     }
 
     override fun initViews() {
