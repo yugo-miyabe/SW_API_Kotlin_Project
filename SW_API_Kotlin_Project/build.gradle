@@ -2,7 +2,7 @@
 buildscript {
 
     ext {
-        navigationVersion = "2.5.2"
+        navigationVersion = "2.3.5"
     }
 
     dependencies {
