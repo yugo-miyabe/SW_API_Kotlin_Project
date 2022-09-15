@@ -46,6 +46,9 @@ class PeopleListFragment : BaseFragment() {
         binding.previousButton.setOnClickListener {
             getPeople(PageType.PREVIOUS_PAGE)
         }
+        binding.retryButton.setOnClickListener {
+            getPeople(PageType.CURRENT_PAGE)
+        }
         getPeople(PageType.FIRST_PAGE)
     }
 
@@ -83,6 +86,7 @@ class PeopleListFragment : BaseFragment() {
                 binding.previousButton.visibility = View.GONE
                 binding.nextButton.visibility = View.GONE
                 binding.retryButton.visibility = View.GONE
+                binding.errorText.visibility = View.GONE
                 binding.progressBar.visibility = View.VISIBLE
             }
         }
