@@ -31,7 +31,7 @@ interface SWService {
     suspend fun getPeopleSearchPage(
         @Query("search") search: String,
         @Query("page") page: Int
-    ): Response<Results<People>>
+    ): Results<People>
 
     @GET()
     suspend fun getPeopleByUrl(@Url peopleUrl: String): People
