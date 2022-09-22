@@ -3,6 +3,7 @@ buildscript {
 
     ext {
         navigationVersion = "2.3.5"
+        room_version = "2.4.3"
     }
 
     dependencies {
