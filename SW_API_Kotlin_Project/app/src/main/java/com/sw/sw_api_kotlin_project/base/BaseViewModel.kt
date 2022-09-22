@@ -17,6 +17,9 @@ abstract class BaseViewModel : ViewModel() {
             PageType.PREVIOUS_PAGE -> {
                 page -= 1
             }
+            PageType.CURRENT_PAGE -> {
+                // 何もしない
+            }
         }
     }
 }

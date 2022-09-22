@@ -48,6 +48,9 @@ class PlanetListFragment : BaseFragment() {
         binding.previousButton.setOnClickListener {
             getPlanet(PageType.PREVIOUS_PAGE)
         }
+        binding.retryButton.setOnClickListener {
+            getPlanet(PageType.CURRENT_PAGE)
+        }
         getPlanet(PageType.FIRST_PAGE)
     }
 

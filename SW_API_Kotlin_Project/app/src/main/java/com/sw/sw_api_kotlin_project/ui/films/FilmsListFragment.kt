@@ -46,6 +46,9 @@ class FilmsListFragment : BaseFragment() {
         binding.previousButton.setOnClickListener {
             getFilms(PageType.PREVIOUS_PAGE)
         }
+        binding.retryButton.setOnClickListener {
+            getFilms(PageType.CURRENT_PAGE)
+        }
         getFilms(PageType.FIRST_PAGE)
     }
 
