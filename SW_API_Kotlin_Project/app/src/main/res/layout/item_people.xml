@@ -24,9 +24,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favorite_mark"
         app:layout_constraintStart_toEndOf="@+id/face_image_Icon"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Luke Skywalker" />
+
+    <ImageView
+        android:id="@+id/favorite_mark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_star_border_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="contentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
