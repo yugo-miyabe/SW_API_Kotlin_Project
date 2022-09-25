@@ -1,9 +1,13 @@
 package com.sw.sw_api_kotlin_project.ui.people
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.data.database.Favorite
+import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
@@ -14,20 +18,47 @@ class PeopleListViewModel(
     private val peopleRepository: PeopleRepository,
     private val favoriteRepository: FavoriteRepository
 ) : BaseViewModel() {
+    private val _favoriteStatus = MutableLiveData<List<Boolean>>()
+    val favoriteStatus: LiveData<List<Boolean>> = _favoriteStatus
 
     fun getPeople(pageType: PageType) = liveData(Dispatchers.IO) {
         pageParameterFormat(pageType)
         emit(Resource.loading(data = null))
         try {
             val response = peopleRepository.getPeople(page)
+            getFavoriteState(response.results)
             emit(Resource.success(data = response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
     }
 
-    fun getDatabase(){
+    private suspend fun getFavoriteState(peopleList: List<People>) {
+        for (element in peopleList) {
+            favoriteRepository.getPeopleFavoriteState(name = element.name) != null
+        }
+    }
+
+    suspend fun addOrDeleteFavorite(name: String) {
+        val favorite: Favorite? = favoriteCheck(name)
+        if (favorite == null) {
+            insert(Favorite(0, name))
+        } else {
+            delete(favorite)
+        }
+    }
+
+    private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
+
+    private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
+
+    private suspend fun favoriteCheck(name: String): Favorite? {
+        return favoriteRepository.getPeopleFavoriteState(name = name)
+    }
+
+    fun getDatabase() {
         //取得
+        favoriteRepository.getAll()
     }
 }
 

@@ -1,5 +1,6 @@
 package com.sw.sw_api_kotlin_project.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -16,9 +17,12 @@ interface FavoriteDao {
     @Query("DELETE FROM favorite_table")
     suspend fun clear()
 
-    @Query("SELECT * FROM favorite_table WHERE id = :key")
-    suspend fun get(key: Long): Favorite?
+    @Query("SELECT * FROM favorite_table WHERE name = :name LIMIT 1")
+    suspend fun getFavorite(name: String): Favorite?
 
+    /**
+     * 全て取得
+     */
     @Query("SELECT * FROM favorite_table")
-    fun getAll(): Favorite?
+    fun getAll(): LiveData<List<Favorite>>?
 }

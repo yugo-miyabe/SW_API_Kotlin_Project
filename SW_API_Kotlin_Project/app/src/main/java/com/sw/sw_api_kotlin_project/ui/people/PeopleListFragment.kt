@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
@@ -18,6 +19,7 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
+import kotlinx.coroutines.launch
 
 class PeopleListFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
@@ -78,7 +80,9 @@ class PeopleListFragment : BaseFragment() {
                             PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
                         findNavController().navigate(action)
                     }, {
-                        viewModel.getDatabase()
+                        lifecycleScope.launch {
+                            viewModel.addOrDeleteFavorite(name = it)
+                        }
                     }
                 )
                 binding.recyclerView.adapter = adapter

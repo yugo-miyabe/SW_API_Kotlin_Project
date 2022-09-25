@@ -12,14 +12,14 @@ import com.sw.sw_api_kotlin_project.data.model.People
 class PeopleAdapter(
     private val peopleList: List<People>,
     private val onClick: (People) -> Unit,
-    private val onFavoriteClick: () -> Unit
+    private val onFavoriteClick: (String) -> Unit
 ) :
     RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     class ViewHolder(
         private val view: View,
         private val onClick: (People) -> Unit,
-        private val onFavoriteClick: () -> Unit
+        private val onFavoriteClick: (String) -> Unit
     ) :
         RecyclerView.ViewHolder(view) {
         private val fullName = view.findViewById<TextView>(R.id.full_name_text)
@@ -31,7 +31,7 @@ class PeopleAdapter(
                 onClick(people)
             }
             peopleFavoriteMark.setOnClickListener {
-                onFavoriteClick()
+                onFavoriteClick(people.name)
             }
         }
     }
