@@ -18,4 +18,7 @@ interface FavoriteDao {
 
     @Query("SELECT * FROM favorite_table WHERE id = :key")
     suspend fun get(key: Long): Favorite?
+
+    @Query("SELECT * FROM favorite_table")
+    fun getAll(): Favorite?
 }
