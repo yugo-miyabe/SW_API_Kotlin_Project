@@ -25,6 +25,10 @@ class PeopleListViewModel(
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
     }
+
+    fun getDatabase(){
+        //取得
+    }
 }
 
 class PeopleListViewModelFactory(

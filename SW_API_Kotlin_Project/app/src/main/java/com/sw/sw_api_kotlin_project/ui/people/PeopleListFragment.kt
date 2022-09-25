@@ -72,10 +72,15 @@ class PeopleListFragment : BaseFragment() {
                 binding.retryButton.visibility = View.GONE
                 binding.previousButton.isEnabled = people.previous != null
                 binding.nextButton.isEnabled = people.next != null
-                val adapter = PeopleAdapter(people.results) {
-                    val action = PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
-                    findNavController().navigate(action)
-                }
+                val adapter = PeopleAdapter(
+                    people.results, {
+                        val action =
+                            PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
+                        findNavController().navigate(action)
+                    }, {
+                        viewModel.getDatabase()
+                    }
+                )
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
