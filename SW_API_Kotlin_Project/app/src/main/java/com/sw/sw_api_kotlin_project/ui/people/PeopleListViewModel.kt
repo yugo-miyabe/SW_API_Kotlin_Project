@@ -4,12 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
-class PeopleListViewModel(private val peopleRepository: PeopleRepository) : BaseViewModel() {
+class PeopleListViewModel(
+    private val peopleRepository: PeopleRepository,
+    private val favoriteRepository: FavoriteRepository
+) : BaseViewModel() {
 
     fun getPeople(pageType: PageType) = liveData(Dispatchers.IO) {
         pageParameterFormat(pageType)
@@ -23,12 +27,15 @@ class PeopleListViewModel(private val peopleRepository: PeopleRepository) : Base
     }
 }
 
-class PeopleListViewModelFactory(private val peopleRepository: PeopleRepository) :
+class PeopleListViewModelFactory(
+    private val peopleRepository: PeopleRepository,
+    private val favoriteRepository: FavoriteRepository
+) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PeopleListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return PeopleListViewModel(peopleRepository) as T
+            return PeopleListViewModel(peopleRepository, favoriteRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
