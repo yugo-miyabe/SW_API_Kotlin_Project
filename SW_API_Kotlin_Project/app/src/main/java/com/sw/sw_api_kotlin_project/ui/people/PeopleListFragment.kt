@@ -11,6 +11,7 @@ import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
@@ -26,7 +27,12 @@ class PeopleListFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PeopleListViewModelFactory(PeopleRepository(SWServiceClient.getService()))
+            PeopleListViewModelFactory(
+                PeopleRepository(
+                    SWServiceClient.getService(),
+                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao(),
+                )
+            )
         )[PeopleListViewModel::class.java]
     }
 
