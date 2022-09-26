@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,8 +19,6 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class PeopleListFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
@@ -78,22 +75,12 @@ class PeopleListFragment : BaseFragment() {
                 binding.nextButton.isEnabled = people.next != null
                 val adapter = PeopleAdapter(
                     people.results,
-                    {
-                        //TODO lifecycleScope.launchに変更する
-                        runBlocking {
-                            viewModel.checkFavoriteState(it)
-                        }
-                    },
-                    {
-                        val action: NavDirections =
-                            PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
-                        findNavController().navigate(action)
-                    },
                 ) {
-                    lifecycleScope.launch {
-                        viewModel.addOrDeleteFavorite(name = it)
-                    }
+                    val action: NavDirections =
+                        PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
+                    findNavController().navigate(action)
                 }
+
                 binding.recyclerView.adapter = adapter
                 binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
