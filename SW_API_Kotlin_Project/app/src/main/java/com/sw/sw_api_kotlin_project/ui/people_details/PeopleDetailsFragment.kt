@@ -5,14 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Starships
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
+import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.StarShipsRepository
+import kotlinx.coroutines.launch
 
 class PeopleDetailsFragment : BaseFragment() {
     private lateinit var viewModel: PeopleDetailsViewModel
@@ -25,7 +30,12 @@ class PeopleDetailsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            PeopleDetailsFactory(StarShipsRepository(swService = SWServiceClient.getService()))
+            PeopleDetailsFactory(
+                StarShipsRepository(swService = SWServiceClient.getService()),
+                FavoriteRepository(
+                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
+                ),
+            ),
         )[PeopleDetailsViewModel::class.java]
     }
 
@@ -39,7 +49,6 @@ class PeopleDetailsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        // getStarships()
         people = args.people
         people.run {
             binding.fullNameText.text = name
@@ -51,6 +60,21 @@ class PeopleDetailsFragment : BaseFragment() {
             binding.hairColorText.text = hairColor
             binding.massText.text = mass
             binding.homeworldText.text = homeWorld
+        }
+        binding.peopleFavoriteMark.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.addOrDeleteFavorite(people.name)
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.getFavoriteState(people.name)
+        }
+        viewModel.favoriteStatus.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.peopleFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
+            } else {
+                binding.peopleFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
+            }
         }
     }
 
