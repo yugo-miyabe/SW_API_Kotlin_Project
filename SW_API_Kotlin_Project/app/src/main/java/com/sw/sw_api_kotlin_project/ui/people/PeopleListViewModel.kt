@@ -52,14 +52,9 @@ class PeopleListViewModel(
 
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
-    private suspend fun favoriteCheck(name: String): Favorite? {
-        return favoriteRepository.getPeopleFavoriteState(name = name)
-    }
+    private suspend fun favoriteCheck(name: String): Favorite? =
+        favoriteRepository.getPeopleFavoriteState(name = name)
 
-    fun getDatabase() {
-        //取得
-        favoriteRepository.getAll()
-    }
 }
 
 class PeopleListViewModelFactory(
