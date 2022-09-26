@@ -33,11 +33,7 @@ class PeopleListViewModel(
         }
     }
 
-    private suspend fun getFavoriteState(peopleList: List<People>) {
-        for (element in peopleList) {
-            favoriteRepository.getPeopleFavoriteState(name = element.name) != null
-        }
-    }
+    suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
 
     suspend fun addOrDeleteFavorite(name: String) {
         val favorite: Favorite? = favoriteCheck(name)
