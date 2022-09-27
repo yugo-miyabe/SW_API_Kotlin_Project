@@ -69,6 +69,11 @@ class PeopleDetailsFragment : BaseFragment() {
         lifecycleScope.launch {
             viewModel.getFavoriteState(people.name)
         }
+    }
+
+
+    override fun addObservers() {
+        super.addObservers()
         viewModel.favoriteStatus.observe(viewLifecycleOwner) {
             if (it) {
                 binding.peopleFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
