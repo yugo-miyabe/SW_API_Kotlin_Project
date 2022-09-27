@@ -71,7 +71,6 @@ class PeopleDetailsFragment : BaseFragment() {
         }
     }
 
-
     override fun addObservers() {
         super.addObservers()
         viewModel.favoriteStatus.observe(viewLifecycleOwner) {
