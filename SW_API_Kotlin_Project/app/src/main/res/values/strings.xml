@@ -8,9 +8,7 @@
     <string name="species">種族</string>
     <string name="vehicles">車両</string>
     <string name="star_ships">宇宙船</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="favorite">お気に入り</string>
     <!-- 登場人物リスト  -->
     <string name="full_name">名前:</string>
     <string name="height">身長:</string>

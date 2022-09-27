@@ -14,6 +14,11 @@
         android:id="@+id/nav_planet_list"
         android:icon="@drawable/ic_baseline_planets_24"
         android:title="@string/planet" />
+
+    <item
+        android:id="@+id/nav_favorite_list"
+        android:icon="@drawable/ic_baseline_star_24"
+        android:title="@string/favorite" />
 </menu>
 
     <!--
