@@ -65,4 +65,10 @@
             app:argType="com.sw.sw_api_kotlin_project.data.model.Planet" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_favorite_list"
+        android:name="com.sw.sw_api_kotlin_project.ui.favorite.FavoriteFragment"
+        android:label="PlanetDetails"
+        tools:layout="@layout/fragment_favorite" />
+
 </navigation>
