@@ -67,7 +67,7 @@
             tools:text="1977-05-25" />
 
         <ImageView
-            android:id="@+id/planet_favorite_mark"
+            android:id="@+id/film_favorite_mark"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
