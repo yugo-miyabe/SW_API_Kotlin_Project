@@ -20,11 +20,11 @@
             android:layout_height="72dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:contentDescription="@string/people"
             android:src="@drawable/ic_baseline_face_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/teal_700" />
+            app:tint="@color/teal_700"
+            tools:ignore="contentDescription" />
 
         <TextView
             android:id="@+id/full_name_text"
@@ -64,6 +64,20 @@
             app:layout_constraintStart_toEndOf="@+id/birth_year_label"
             app:layout_constraintTop_toBottomOf="@+id/full_name_text"
             tools:text="19BBY" />
+
+        <ImageView
+            android:id="@+id/people_favorite_mark"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_baseline_star_border_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="contentDescription" />
 
         <TextView
             android:id="@+id/text_label_for_gender"

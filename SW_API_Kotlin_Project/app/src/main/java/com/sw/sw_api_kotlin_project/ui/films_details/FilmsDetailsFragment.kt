@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
+import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import kotlinx.coroutines.launch
 
 class FilmsDetailsFragment : BaseFragment() {
     private lateinit var viewModel: FilmsDetailsViewModel
@@ -20,7 +25,13 @@ class FilmsDetailsFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel =
-            ViewModelProvider(this, FilmsDetailsFactory())[FilmsDetailsViewModel::class.java]
+            ViewModelProvider(
+                this, FilmsDetailsFactory(
+                    FavoriteRepository(
+                        FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
+                    ),
+                )
+            )[FilmsDetailsViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -39,6 +50,25 @@ class FilmsDetailsFragment : BaseFragment() {
             binding.titleText.text = title
             binding.releaseDateText.text = releaseDate
             binding.openingCrawlText.text = openingCrawl
+        }
+        binding.filmFavoriteMark.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.addOrDeleteFavorite(films.title)
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.getFavoriteState(films.title)
+        }
+    }
+
+    override fun addObservers() {
+        super.addObservers()
+        viewModel.favoriteStatus.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.filmFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
+            } else {
+                binding.filmFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
+            }
         }
     }
 

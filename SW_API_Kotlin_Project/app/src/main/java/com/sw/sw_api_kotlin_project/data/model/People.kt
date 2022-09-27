@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class People(
-    val name: String?,
+    val name: String,
     val height: String?,
     val mass: String?,
     @SerializedName("hair_color")
