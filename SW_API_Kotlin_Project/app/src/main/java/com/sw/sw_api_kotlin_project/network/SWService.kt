@@ -33,7 +33,6 @@ interface SWService {
     @GET("people")
     suspend fun getPeopleSearchPage(
         @Query("search") search: String,
-        @Query("page") page: Int
     ): Response<Results<People>>
 
     /**
@@ -41,6 +40,7 @@ interface SWService {
      */
     @GET("films")
     suspend fun getFilms(@Query("page") page: Int): Results<Films>
+
 
     /**
      * 惑星取得
