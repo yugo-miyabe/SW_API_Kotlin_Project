@@ -82,9 +82,14 @@ interface SWService {
 
 
     /**
-     * 車両取得
+     * 車両情報取得
      */
     @GET("vehicles")
-    suspend fun vehicles(): Response<Results<Vehicles>>
+    suspend fun getVehicles(@Query("page") page: Int): Results<Vehicles>
 
+    /**
+     * 車両情報取得
+     */
+    @GET("vehicles")
+    suspend fun getVehiclesSearch(@Query("search") search: String): Results<Vehicles>
 }
