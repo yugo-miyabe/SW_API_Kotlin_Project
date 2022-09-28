@@ -15,7 +15,6 @@ class SearchFragment : BaseFragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = checkNotNull(_binding)
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
