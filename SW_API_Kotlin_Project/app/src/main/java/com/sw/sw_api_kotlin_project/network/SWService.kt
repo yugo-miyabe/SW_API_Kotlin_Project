@@ -56,16 +56,30 @@ interface SWService {
     suspend fun getPlanetsSearch(@Query("search") search: String): Results<Planet>
 
     /**
-     * 種族取得
+     * 種族情報取得
      */
     @GET("species")
-    suspend fun species(): Response<Results<Planet>>
+    suspend fun getSpecies(@Query("page") page: Int): Results<Planet>
 
     /**
-     * 宇宙船取得
+     * 種族情報取得
+     */
+    @GET("species")
+    suspend fun getSpeciesSearch(@Query("search") search: String): Results<Planet>
+
+
+    /**
+     * 宇宙船情報取得
      */
     @GET("starships")
     suspend fun getStarShips(@Query("page") page: Int): Results<Starships>
+
+    /**
+     * 宇宙船情報検索
+     */
+    @GET("starships")
+    suspend fun getStarShipsSearch(@Query("search") search: String): Results<Starships>
+
 
     /**
      * 車両取得
