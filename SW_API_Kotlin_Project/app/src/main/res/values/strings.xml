@@ -2,13 +2,15 @@
     <string name="app_name">SW_API_Kotlin_Project</string>
 
     <!-- Navigation -->
+    <string name="home">ホーム</string>
+    <string name="search">検索</string>
+    <string name="favorite">お気に入り</string>
     <string name="people">登場人物</string>
     <string name="planet">惑星</string>
     <string name="films">映画</string>
     <string name="species">種族</string>
     <string name="vehicles">車両</string>
     <string name="star_ships">宇宙船</string>
-    <string name="favorite">お気に入り</string>
     <!-- 登場人物リスト  -->
     <string name="full_name">名前:</string>
     <string name="height">身長:</string>

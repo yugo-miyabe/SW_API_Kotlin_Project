@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home_list"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/nav_favorite_list"
+        android:icon="@drawable/ic_baseline_star_rate_24"
+        android:title="@string/favorite" />
+</menu>
+
+    <!--
     <item
         android:id="@+id/nav_people_list"
         android:icon="@drawable/ic_baseline_face_24"
@@ -19,9 +35,7 @@
         android:id="@+id/nav_favorite_list"
         android:icon="@drawable/ic_baseline_star_24"
         android:title="@string/favorite" />
-</menu>
 
-    <!--
     <item
         android:id="@+id/nav_star_ships"
         android:icon="@drawable/ic_baseline_starships_24"
