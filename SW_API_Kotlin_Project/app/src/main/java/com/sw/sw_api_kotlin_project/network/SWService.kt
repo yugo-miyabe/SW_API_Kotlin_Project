@@ -31,9 +31,7 @@ interface SWService {
      * 登場人物検索
      */
     @GET("people")
-    suspend fun getPeopleSearchPage(
-        @Query("search") search: String,
-    ): Response<Results<People>>
+    suspend fun getPeopleSearch(@Query("search") search: String): Response<Results<People>>
 
     /**
      * 映画情報取得
@@ -41,6 +39,11 @@ interface SWService {
     @GET("films")
     suspend fun getFilms(@Query("page") page: Int): Results<Films>
 
+    /**
+     * 映画情報検索
+     */
+    @GET("films")
+    suspend fun getFilmsSearch(@Query("search") search: String): Results<Films>
 
     /**
      * 惑星取得
