@@ -19,6 +19,9 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.StarShipsRepository
 import kotlinx.coroutines.launch
 
+/**
+ * 登場人物詳細画面
+ */
 class PeopleDetailsFragment : BaseFragment() {
     private lateinit var viewModel: PeopleDetailsViewModel
     private var _binding: FragmentPeopleDetailsBinding? = null

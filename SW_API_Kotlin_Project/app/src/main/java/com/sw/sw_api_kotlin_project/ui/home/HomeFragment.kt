@@ -14,7 +14,9 @@ import com.sw.sw_api_kotlin_project.data.model.HomeItem
 import com.sw.sw_api_kotlin_project.databinding.FragmentHomeBinding
 import com.sw.sw_api_kotlin_project.utils.ListType
 
-
+/**
+ * ホーム画面
+ */
 class HomeFragment : BaseFragment() {
     private lateinit var viewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null

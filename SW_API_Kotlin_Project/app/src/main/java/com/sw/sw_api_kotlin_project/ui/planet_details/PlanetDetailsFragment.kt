@@ -17,6 +17,9 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import kotlinx.coroutines.launch
 
+/**
+ * 惑星詳細画面
+ */
 class PlanetDetailsFragment : BaseFragment() {
     private lateinit var viewModel: PlanetDetailsViewModel
     private var _binding: FragmentPlanetDetailsBinding? = null

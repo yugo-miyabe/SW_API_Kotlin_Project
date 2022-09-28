@@ -17,6 +17,9 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
+/**
+ * 映画一覧画面
+ */
 class FilmsListFragment : BaseFragment() {
     private lateinit var viewModel: FilmsListViewModel
     private var _binding: FragmentFilmsListBinding? = null

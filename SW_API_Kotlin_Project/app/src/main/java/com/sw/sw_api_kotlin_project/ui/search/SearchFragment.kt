@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 
-
+/**
+ * 検索画面
+ */
 class SearchFragment : BaseFragment() {
     private lateinit var viewModel: SearchViewModel
     private var _binding: FragmentSearchBinding? = null

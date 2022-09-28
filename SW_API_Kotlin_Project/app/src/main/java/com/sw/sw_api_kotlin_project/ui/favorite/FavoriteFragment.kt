@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
 
+/**
+ * お気に入り画面
+ */
 class FavoriteFragment : BaseFragment() {
     private lateinit var viewModel: FavoriteViewModel
     private var _binding: FragmentFavoriteBinding? = null

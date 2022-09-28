@@ -15,6 +15,9 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import kotlinx.coroutines.launch
 
+/**
+ * 映画詳細画面
+ */
 class FilmsDetailsFragment : BaseFragment() {
     private lateinit var viewModel: FilmsDetailsViewModel
     private var _binding: FragmentFilmsDetailsBinding? = null
