@@ -5,13 +5,11 @@ import com.sw.sw_api_kotlin_project.data.model.Films
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.data.model.Species
 import com.sw.sw_api_kotlin_project.data.model.Starships
 import com.sw.sw_api_kotlin_project.data.model.Vehicles
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
-import retrofit2.http.Url
 
 interface SWService {
 
@@ -46,10 +44,16 @@ interface SWService {
     suspend fun getFilmsSearch(@Query("search") search: String): Results<Films>
 
     /**
-     * 惑星取得
+     * 惑星情報取得
      */
     @GET("planets")
     suspend fun getPlanets(@Query("page") page: Int): Results<Planet>
+
+    /**
+     * 惑星情報検索
+     */
+    @GET("planets")
+    suspend fun getPlanetsSearch(@Query("search") search: String): Results<Planet>
 
     /**
      * 種族取得
@@ -62,9 +66,6 @@ interface SWService {
      */
     @GET("starships")
     suspend fun getStarShips(@Query("page") page: Int): Results<Starships>
-
-    @GET
-    suspend fun getSpeciesByUrl(@Url speciesUrl: String): Species
 
     /**
      * 車両取得
