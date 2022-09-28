@@ -27,14 +27,14 @@ interface SWService {
     @GET("people")
     suspend fun getPeople(@Query("page") page: Int): Results<People>
 
+    /**
+     * 登場人物検索
+     */
     @GET("people")
     suspend fun getPeopleSearchPage(
         @Query("search") search: String,
         @Query("page") page: Int
     ): Response<Results<People>>
-
-    @GET()
-    suspend fun getPeopleByUrl(@Url peopleUrl: String): People
 
     /**
      * 映画情報取得
