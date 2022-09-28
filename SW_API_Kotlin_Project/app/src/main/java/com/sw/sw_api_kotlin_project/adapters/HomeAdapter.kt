@@ -8,18 +8,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.HomeItem
+import com.sw.sw_api_kotlin_project.utils.ListType
 
-class HomeAdapter(private val homeItemList: List<HomeItem>, private val onClick: () -> Unit) :
+class HomeAdapter(
+    private val homeItemList: List<HomeItem>,
+    private val onClick: (ListType) -> Unit
+) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-    class ViewHolder(private val view: View, private val onClick: () -> Unit) :
+    class ViewHolder(private val view: View, private val onClick: (ListType) -> Unit) :
         RecyclerView.ViewHolder(view) {
         private val image = view.findViewById<ImageView>(R.id.home_image)
         private val text = view.findViewById<TextView>(R.id.home_text)
 
         fun bind(homeItem: HomeItem) {
+            image.setImageDrawable(homeItem.image)
             text.text = homeItem.title
             view.setOnClickListener {
-                onClick()
+                onClick(homeItem.listType)
             }
         }
     }
@@ -34,5 +39,5 @@ class HomeAdapter(private val homeItemList: List<HomeItem>, private val onClick:
         holder.bind(homeItemList[position])
     }
 
-    override fun getItemCount(): Int = homeItemList.size
+    override fun getItemCount(): Int = ListType.values().size
 }
