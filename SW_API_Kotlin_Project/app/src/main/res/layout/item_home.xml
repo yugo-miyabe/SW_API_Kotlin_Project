@@ -26,7 +26,7 @@
             tools:src="@drawable/ic_baseline_face_24" />
 
         <TextView
-            android:id="@+id/text_view"
+            android:id="@+id/home_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
