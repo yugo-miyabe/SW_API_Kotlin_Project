@@ -18,6 +18,9 @@ import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
 
+/**
+ * 惑星一覧画面
+ */
 class PlanetListFragment : BaseFragment() {
 
     private lateinit var viewModel: PlanetViewModel

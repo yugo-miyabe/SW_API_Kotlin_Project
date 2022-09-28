@@ -20,6 +20,9 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
+/**
+ * 登場人物一覧画面
+ */
 class PeopleListFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
     private var _binding: FragmentPeopleListBinding? = null
