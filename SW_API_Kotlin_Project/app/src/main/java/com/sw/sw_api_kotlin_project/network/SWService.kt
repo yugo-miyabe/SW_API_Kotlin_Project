@@ -62,7 +62,7 @@ interface SWService {
     suspend fun getSpecies(@Query("page") page: Int): Results<Planet>
 
     /**
-     * 種族情報取得
+     * 種族情報検索
      */
     @GET("species")
     suspend fun getSpeciesSearch(@Query("search") search: String): Results<Planet>
@@ -88,7 +88,7 @@ interface SWService {
     suspend fun getVehicles(@Query("page") page: Int): Results<Vehicles>
 
     /**
-     * 車両情報取得
+     * 車両情報検索
      */
     @GET("vehicles")
     suspend fun getVehiclesSearch(@Query("search") search: String): Results<Vehicles>
