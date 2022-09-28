@@ -3,6 +3,7 @@
 
     <!-- Navigation -->
     <string name="home">ホーム</string>
+    <string name="search">検索</string>
     <string name="people">登場人物</string>
     <string name="planet">惑星</string>
     <string name="films">映画</string>
