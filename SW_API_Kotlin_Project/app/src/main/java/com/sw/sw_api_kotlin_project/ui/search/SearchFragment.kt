@@ -82,17 +82,20 @@ class SearchFragment : BaseFragment() {
                     // TODO 画面遷移処理追加
                 }
                 binding.planetRecyclerView.layoutManager = LinearLayoutManager(context)
+                binding.searchButton.isEnabled = true
                 binding.peopleRecyclerView.visibility = View.VISIBLE
                 binding.filmRecyclerView.visibility = View.VISIBLE
                 binding.planetRecyclerView.visibility = View.VISIBLE
             }
 
             override fun onError(errorMessage: String) {
+                binding.searchButton.isEnabled = true
                 binding.progressBar.visibility = View.GONE
             }
 
             override fun onLoading() {
                 super.onLoading()
+                binding.searchButton.isEnabled = false
                 binding.progressBar.visibility = View.VISIBLE
                 binding.peopleRecyclerView.visibility = View.GONE
                 binding.filmRecyclerView.visibility = View.GONE
