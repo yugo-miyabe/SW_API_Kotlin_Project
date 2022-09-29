@@ -1,6 +1,7 @@
 package com.sw.sw_api_kotlin_project.ui.search
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
@@ -55,19 +55,19 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun getSearchResult(searchString: String) {
-        val searchResultObserver = object : SWApiLiveDataObserver<Results<People>>() {
+        val searchResultObserver = object : SWApiLiveDataObserver<List<Results<out Parcelable>>>() {
 
-            override fun onSuccess(data: Results<People>?) {
-                val hoge = data
+            override fun onSuccess(data: List<Results<out Parcelable>>?) {
+                binding.progressBar.visibility = View.GONE
             }
 
             override fun onError(errorMessage: String) {
-                TODO("Not yet implemented")
+                binding.progressBar.visibility = View.GONE
             }
 
             override fun onLoading() {
                 super.onLoading()
-                TODO("Not yet implemented")
+                binding.progressBar.visibility = View.VISIBLE
             }
 
         }

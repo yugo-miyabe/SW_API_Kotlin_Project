@@ -1,9 +1,11 @@
 package com.sw.sw_api_kotlin_project.ui.search
 
+import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
@@ -17,12 +19,14 @@ class SearchViewModel(
 ) : BaseViewModel() {
 
     fun getSearchResult(searchString: String) = liveData(Dispatchers.IO) {
-
+        emit(Resource.loading(data = null))
         try {
             val searchResponse = peopleRepository.getPeopleSearch(search = searchString)
-            //val filmsResponse = filmsRepository.getFilmsSearch(search = searchString)
-            //val planetResponse = planetRepository.getPlanetsSearch(search = searchString)
-            emit(Resource.success(searchResponse))
+            val filmsResponse = filmsRepository.getFilmsSearch(search = searchString)
+            val planetResponse = planetRepository.getPlanetsSearch(search = searchString)
+            val response: List<Results<out Parcelable>> =
+                listOf(searchResponse, filmsResponse, planetResponse)
+            emit(Resource.success(response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
