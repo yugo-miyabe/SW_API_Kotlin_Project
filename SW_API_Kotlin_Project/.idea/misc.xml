@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/layout/fragment_films_details.xml" value="0.2625" />
         <entry key="app/src/main/res/layout/fragment_films_list.xml" value="0.34782608695652173" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.38958333333333334" />
+        <entry key="app/src/main/res/layout/fragment_others.xml" value="0.3754528985507246" />
         <entry key="app/src/main/res/layout/fragment_people_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_people_list.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/fragment_planet_details.xml" value="0.3944746376811594" />
