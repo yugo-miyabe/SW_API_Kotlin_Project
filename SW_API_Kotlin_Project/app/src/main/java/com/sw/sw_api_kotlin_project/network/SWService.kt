@@ -29,7 +29,7 @@ interface SWService {
      * 登場人物検索
      */
     @GET("people")
-    suspend fun getPeopleSearch(@Query("search") search: String): Response<Results<People>>
+    suspend fun getPeopleSearch(@Query("search") search: String): Results<People>
 
     /**
      * 映画情報取得
