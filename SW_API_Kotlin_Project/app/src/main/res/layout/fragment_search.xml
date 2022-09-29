@@ -41,7 +41,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="4dp"
                     android:layout_weight="1"
-                    android:hint="検索キーワード"
+                    android:hint="@string/search_keyword"
                     android:iconifiedByDefault="false"
                     android:inputType="text"
                     app:layout_constraintStart_toStartOf="parent"
