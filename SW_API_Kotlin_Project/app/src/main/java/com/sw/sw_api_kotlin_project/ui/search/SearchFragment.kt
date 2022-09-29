@@ -6,14 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
+import com.sw.sw_api_kotlin_project.ui.people.PeopleListFragmentDirections
 
 /**
  * 検索画面
@@ -59,6 +65,15 @@ class SearchFragment : BaseFragment() {
 
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
+
+                val peopleResults: List<People> = data!![0].results as List<People>
+                binding.peopleRecyclerView.adapter = PeopleAdapter(peopleResults) {
+
+                }
+                binding.peopleRecyclerView.layoutManager = LinearLayoutManager(context)
+
+
+
             }
 
             override fun onError(errorMessage: String) {
