@@ -13,7 +13,6 @@ class OthersFragment : BaseFragment() {
     private var _binding: FragmentOthersBinding? = null
     private val binding get() = checkNotNull(_binding)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
