@@ -5,7 +5,6 @@
     android:id="@+id/navigation_graph"
     app:startDestination="@id/nav_home_list">
 
-
     <fragment
         android:id="@+id/nav_home_list"
         android:name="com.sw.sw_api_kotlin_project.ui.home.HomeFragment"
@@ -27,7 +26,6 @@
         android:name="com.sw.sw_api_kotlin_project.ui.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
-
 
     <fragment
         android:id="@+id/nav_people_list"
@@ -82,7 +80,7 @@
     <fragment
         android:id="@+id/nav_planet_detail"
         android:name="com.sw.sw_api_kotlin_project.ui.planet_details.PlanetDetailsFragment"
-        android:label="PlanetDetails"
+        android:label="PlanetDetailsFragment"
         tools:layout="@layout/fragment_planet_details">
         <argument
             android:name="planet"
@@ -92,7 +90,13 @@
     <fragment
         android:id="@+id/nav_favorite_list"
         android:name="com.sw.sw_api_kotlin_project.ui.favorite.FavoriteFragment"
-        android:label="PlanetDetails"
+        android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/nav_other"
+        android:name="com.sw.sw_api_kotlin_project.ui.others.OthersFragment"
+        android:label="OthersFragment"
+        tools:layout="@layout/fragment_others" />
 
 </navigation>

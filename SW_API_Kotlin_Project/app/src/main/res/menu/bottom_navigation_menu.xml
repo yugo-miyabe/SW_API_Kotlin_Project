@@ -13,41 +13,9 @@
         android:id="@+id/nav_favorite_list"
         android:icon="@drawable/ic_baseline_star_rate_24"
         android:title="@string/favorite" />
+
+    <item
+        android:id="@+id/nav_other"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/others" />
 </menu>
-
-    <!--
-    <item
-        android:id="@+id/nav_people_list"
-        android:icon="@drawable/ic_baseline_face_24"
-        android:title="@string/people" />
-
-    <item
-        android:id="@+id/nav_films_list"
-        android:icon="@drawable/ic_baseline_film_24"
-        android:title="@string/films" />
-
-    <item
-        android:id="@+id/nav_planet_list"
-        android:icon="@drawable/ic_baseline_planets_24"
-        android:title="@string/planet" />
-
-    <item
-        android:id="@+id/nav_favorite_list"
-        android:icon="@drawable/ic_baseline_star_24"
-        android:title="@string/favorite" />
-
-    <item
-        android:id="@+id/nav_star_ships"
-        android:icon="@drawable/ic_baseline_starships_24"
-        android:title="@string/star_ships" />
-
-    <item
-        android:id="@+id/nav_species"
-        android:icon="@drawable/ic_baseline_species_24"
-        android:title="@string/species" />
-
-    <item
-        android:id="@+id/nav_vehicles"
-        android:icon="@drawable/ic_baseline_vehicles_24"
-        android:title="@string/vehicles" />
-    -->

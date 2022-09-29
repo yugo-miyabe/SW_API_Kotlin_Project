@@ -5,6 +5,8 @@
     <string name="home">ホーム</string>
     <string name="search">検索</string>
     <string name="favorite">お気に入り</string>
+    <string name="others">その他</string>
+    <!--　ホーム画面 -->
     <string name="people">登場人物</string>
     <string name="planet">惑星</string>
     <string name="films">映画</string>
