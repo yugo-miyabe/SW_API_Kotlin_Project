@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Films(
+data class Film(
     val characters: List<String>,
     val created: String,
     val director: String,

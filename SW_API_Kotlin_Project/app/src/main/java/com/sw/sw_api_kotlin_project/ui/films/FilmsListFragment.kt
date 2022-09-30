@@ -11,7 +11,7 @@ import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
@@ -56,8 +56,8 @@ class FilmsListFragment : BaseFragment() {
     }
 
     private fun getFilms(pageType: PageType) {
-        val filmsObserver = object : SWApiLiveDataObserver<Results<Films>>() {
-            override fun onSuccess(data: Results<Films>?) {
+        val filmObserver = object : SWApiLiveDataObserver<Results<Film>>() {
+            override fun onSuccess(data: Results<Film>?) {
                 val films = data!!
                 binding.progressBar.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
@@ -91,7 +91,7 @@ class FilmsListFragment : BaseFragment() {
                 binding.retryButton.visibility = View.GONE
             }
         }
-        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmsObserver)
+        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmObserver)
     }
 
     override fun onDestroy() {

@@ -13,7 +13,7 @@ import com.sw.sw_api_kotlin_project.adapters.PlanetAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
@@ -72,8 +72,8 @@ class SearchFragment : BaseFragment() {
                     // TODO 画面遷移処理追加
                 }
                 binding.peopleRecyclerView.layoutManager = LinearLayoutManager(context)
-                val filmsResults: List<Films> = data[1].results as List<Films>
-                binding.filmRecyclerView.adapter = FilmsAdapter(filmsResults) {
+                val filmResults: List<Film> = data[1].results as List<Film>
+                binding.filmRecyclerView.adapter = FilmsAdapter(filmResults) {
                     // TODO 画面遷移処理追加
                 }
                 binding.filmRecyclerView.layoutManager = LinearLayoutManager(context)
