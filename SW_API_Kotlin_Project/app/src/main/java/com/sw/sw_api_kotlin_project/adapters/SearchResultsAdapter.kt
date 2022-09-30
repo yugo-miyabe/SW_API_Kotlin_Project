@@ -58,8 +58,6 @@ class SearchResultsAdapter(private val searchResults: List<Results<out Parcelabl
         }
     }
 
-    override fun getItemCount(): Int {
-        return peopleMaxCount + filmMaxCount + planetMaxCount
-    }
+    override fun getItemCount(): Int = peopleMaxCount + filmMaxCount + planetMaxCount
 
 }
