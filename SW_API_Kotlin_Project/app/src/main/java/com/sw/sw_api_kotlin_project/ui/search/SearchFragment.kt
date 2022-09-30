@@ -37,7 +37,6 @@ class SearchFragment : BaseFragment() {
         )[SearchViewModel::class.java]
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,7 +48,6 @@ class SearchFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-
         binding.searchButton.setOnClickListener {
             val searchString = binding.searchBar.text.toString()
             getSearchResult(searchString)
@@ -58,8 +56,6 @@ class SearchFragment : BaseFragment() {
 
     private fun getSearchResult(searchString: String) {
         val searchResultObserver = object : SWApiLiveDataObserver<List<Results<out Parcelable>>>() {
-
-            @Suppress("UNCHECKED_CAST")
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
                 val adapter = SearchResultsAdapter(data!!)
@@ -83,9 +79,7 @@ class SearchFragment : BaseFragment() {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.searchResultRecyclerView.visibility = View.GONE
                 binding.searchResultDoesNot.visibility = View.GONE
-
             }
-
         }
         viewModel.getSearchResult(searchString = searchString)
             .observe(viewLifecycleOwner, searchResultObserver)
