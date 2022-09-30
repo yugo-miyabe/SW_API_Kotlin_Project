@@ -64,7 +64,7 @@
         tools:layout="@layout/fragment_films_details">
         <argument
             android:name="films"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.Films" />
+            app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
     </fragment>
 
     <fragment
