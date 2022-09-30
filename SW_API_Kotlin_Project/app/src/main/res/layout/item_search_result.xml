@@ -4,37 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="6dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="8dp">
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/result_image_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/search_result_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:padding="4dp"
-            android:src="@drawable/ic_baseline_face_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/teal_700"
-            tools:ignore="contentDescription" />
+            tools:ignore="contentDescription"
+            tools:src="@drawable/ic_baseline_face_24" />
 
         <TextView
-            android:id="@+id/result_name"
+            android:id="@+id/search_result_text"
             style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/result_image_icon"
+            app:layout_constraintStart_toEndOf="@+id/search_result_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Luke Skywalker" />
 

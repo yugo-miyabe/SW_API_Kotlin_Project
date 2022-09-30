@@ -1,7 +1,7 @@
 package com.sw.sw_api_kotlin_project.network
 
 import com.sw.sw_api_kotlin_project.data.model.APIRoot
-import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
@@ -35,13 +35,13 @@ interface SWService {
      * 映画情報取得
      */
     @GET("films")
-    suspend fun getFilms(@Query("page") page: Int): Results<Films>
+    suspend fun getFilms(@Query("page") page: Int): Results<Film>
 
     /**
      * 映画情報検索
      */
     @GET("films")
-    suspend fun getFilmsSearch(@Query("search") search: String): Results<Films>
+    suspend fun getFilmsSearch(@Query("search") search: String): Results<Film>
 
     /**
      * 惑星情報取得

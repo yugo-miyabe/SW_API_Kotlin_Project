@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
-import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ class FilmsDetailsFragment : BaseFragment() {
     private var _binding: FragmentFilmsDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val args: FilmsDetailsFragmentArgs by navArgs()
-    private lateinit var films: Films
+    private lateinit var film: Film
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,19 +48,19 @@ class FilmsDetailsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        films = args.films
-        films.run {
+        film = args.films
+        film.run {
             binding.titleText.text = title
             binding.releaseDateText.text = releaseDate
             binding.openingCrawlText.text = openingCrawl
         }
         binding.filmFavoriteMark.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.addOrDeleteFavorite(films.title)
+                viewModel.addOrDeleteFavorite(film.title)
             }
         }
         lifecycleScope.launch {
-            viewModel.getFavoriteState(films.title)
+            viewModel.getFavoriteState(film.title)
         }
     }
 
