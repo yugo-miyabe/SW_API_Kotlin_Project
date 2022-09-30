@@ -11,7 +11,6 @@ import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
@@ -63,14 +62,12 @@ class SearchFragment : BaseFragment() {
             @Suppress("UNCHECKED_CAST")
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
-                val peopleResults: List<People> = data!![0].results as List<People>
-
-                val adapter = SearchResultsAdapter(data)
+                val adapter = SearchResultsAdapter(data!!)
                 binding.searchResultRecyclerView.adapter = adapter
                 binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
                 binding.searchResultRecyclerView.visibility = View.VISIBLE
-                if (data[0].count == 0 && data[0].count == 0 && data[0].count == 0)
+                if (data[0].count == 0 && data[1].count == 0 && data[2].count == 0)
                     binding.searchResultDoesNot.visibility = View.VISIBLE
             }
 
