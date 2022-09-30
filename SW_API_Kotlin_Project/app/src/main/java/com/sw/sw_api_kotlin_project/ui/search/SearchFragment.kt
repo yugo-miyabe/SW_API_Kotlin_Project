@@ -86,11 +86,14 @@ class SearchFragment : BaseFragment() {
                 binding.peopleRecyclerView.visibility = View.VISIBLE
                 binding.filmRecyclerView.visibility = View.VISIBLE
                 binding.planetRecyclerView.visibility = View.VISIBLE
+                if (data[0].count == 0 && data[0].count == 0 && data[0].count == 0)
+                    binding.searchResultDoesNot.visibility = View.VISIBLE
             }
 
             override fun onError(errorMessage: String) {
                 binding.searchButton.isEnabled = true
                 binding.progressBar.visibility = View.GONE
+                binding.searchResultDoesNot.visibility = View.GONE
             }
 
             override fun onLoading() {
@@ -100,6 +103,8 @@ class SearchFragment : BaseFragment() {
                 binding.peopleRecyclerView.visibility = View.GONE
                 binding.filmRecyclerView.visibility = View.GONE
                 binding.planetRecyclerView.visibility = View.GONE
+                binding.searchResultDoesNot.visibility = View.GONE
+
             }
 
         }

@@ -15,6 +15,7 @@
     <string name="star_ships">宇宙船</string>
     <!-- 検索画面 -->
     <string name="search_keyword">検索キーワード</string>
+    <string name="search_result_does_not">検索結果が存在しません</string>
     <!-- お気に入り画面 -->
     <string name="remove_all_favorites">お気に入りを全て削除</string>
     <!-- その他画面 -->
