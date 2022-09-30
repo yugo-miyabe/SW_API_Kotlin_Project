@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.data.model.Films
+import com.sw.sw_api_kotlin_project.data.model.Film
 
-class FilmsAdapter(private val filmsList: List<Films>, private val onClick: (Films) -> Unit) :
+class FilmsAdapter(private val filmList: List<Film>, private val onClick: (Film) -> Unit) :
     RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val view: View, private val onClick: (Films) -> Unit) :
+    class ViewHolder(private val view: View, private val onClick: (Film) -> Unit) :
         RecyclerView.ViewHolder(view) {
         private val move = view.findViewById<TextView>(R.id.move_name)
-        fun bind(films: Films) {
-            move.text = films.title
+        fun bind(film: Film) {
+            move.text = film.title
             view.setOnClickListener {
-                onClick(films)
+                onClick(film)
             }
         }
     }
@@ -29,10 +29,10 @@ class FilmsAdapter(private val filmsList: List<Films>, private val onClick: (Fil
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(filmsList[position])
+        holder.bind(filmList[position])
     }
 
-    override fun getItemCount() = filmsList.size
+    override fun getItemCount() = filmList.size
 
 
 }
