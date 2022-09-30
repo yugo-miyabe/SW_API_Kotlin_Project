@@ -7,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
-import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
-import com.sw.sw_api_kotlin_project.adapters.PlanetAdapter
+import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.People
-import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
@@ -68,24 +64,12 @@ class SearchFragment : BaseFragment() {
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
                 val peopleResults: List<People> = data!![0].results as List<People>
-                binding.peopleRecyclerView.adapter = PeopleAdapter(peopleResults) {
-                    // TODO 画面遷移処理追加
-                }
-                binding.peopleRecyclerView.layoutManager = LinearLayoutManager(context)
-                val filmResults: List<Film> = data[1].results as List<Film>
-                binding.filmRecyclerView.adapter = FilmsAdapter(filmResults) {
-                    // TODO 画面遷移処理追加
-                }
-                binding.filmRecyclerView.layoutManager = LinearLayoutManager(context)
-                val planetResults: List<Planet> = data[2].results as List<Planet>
-                binding.planetRecyclerView.adapter = PlanetAdapter(planetResults) {
-                    // TODO 画面遷移処理追加
-                }
-                binding.planetRecyclerView.layoutManager = LinearLayoutManager(context)
+
+                val adapter = SearchResultsAdapter(data)
+                binding.searchResultRecyclerView.adapter = adapter
+                binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
-                binding.peopleRecyclerView.visibility = View.VISIBLE
-                binding.filmRecyclerView.visibility = View.VISIBLE
-                binding.planetRecyclerView.visibility = View.VISIBLE
+                binding.searchResultRecyclerView.visibility = View.VISIBLE
                 if (data[0].count == 0 && data[0].count == 0 && data[0].count == 0)
                     binding.searchResultDoesNot.visibility = View.VISIBLE
             }
@@ -100,9 +84,7 @@ class SearchFragment : BaseFragment() {
                 super.onLoading()
                 binding.searchButton.isEnabled = false
                 binding.progressBar.visibility = View.VISIBLE
-                binding.peopleRecyclerView.visibility = View.GONE
-                binding.filmRecyclerView.visibility = View.GONE
-                binding.planetRecyclerView.visibility = View.GONE
+                binding.searchResultRecyclerView.visibility = View.GONE
                 binding.searchResultDoesNot.visibility = View.GONE
 
             }

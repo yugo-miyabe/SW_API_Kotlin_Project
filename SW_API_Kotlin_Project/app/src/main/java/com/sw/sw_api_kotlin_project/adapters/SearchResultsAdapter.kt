@@ -21,7 +21,6 @@ class SearchResultsAdapter(private val searchResults: List<Results<out Parcelabl
     private val filmMaxCount = searchResults[1].results.size
     private val planetMaxCount = searchResults[2].results.size
 
-
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val searchResultImage = view.findViewById<ImageView>(R.id.search_result_image)
         private val searchResultText = view.findViewById<TextView>(R.id.search_result_text)
@@ -50,12 +49,12 @@ class SearchResultsAdapter(private val searchResults: List<Results<out Parcelabl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (position <= peopleMaxCount) {
+        if (position < peopleMaxCount) {
             holder.peopleBind(searchResults[0].results[position] as People)
-        } else if (position <= filmMaxCount) {
-            holder.filmBind(searchResults[0].results[position - peopleMaxCount] as Film)
-        } else if (position <= planetMaxCount) {
-            holder.planetBind(searchResults[0].results[position - (peopleMaxCount + planetMaxCount)] as Planet)
+        } else if (position < filmMaxCount + peopleMaxCount) {
+            holder.filmBind(searchResults[1].results[position - peopleMaxCount] as Film)
+        } else if (position < planetMaxCount + filmMaxCount + peopleMaxCount) {
+            holder.planetBind(searchResults[2].results[position - (peopleMaxCount + filmMaxCount)] as Planet)
         }
     }
 
