@@ -1,16 +1,20 @@
 package com.sw.sw_api_kotlin_project.data.database
 
 import androidx.room.TypeConverter
-import java.util.*
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.sw.sw_api_kotlin_project.data.model.People
 
 class Converters {
     @TypeConverter
-    fun fromTimestamp(value: Long?): Date? {
-        return value?.let { Date(it) }
+    fun fromResults(value: String?): People {
+        val result = object : TypeToken<People?>() {}.type
+        return Gson().fromJson(value, result)
     }
 
     @TypeConverter
-    fun dateToTimestamp(date: Date?): Long? {
-        return date?.time?.toLong()
+    fun fromResults(people: People): String {
+        val gson = Gson()
+        return gson.toJson(people)
     }
 }

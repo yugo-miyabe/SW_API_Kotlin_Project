@@ -40,7 +40,7 @@ class PeopleDetailsViewModel(
     suspend fun addOrDeleteFavorite(people: People) {
         val favorite: Favorite? = favoriteCheck(people.name)
         if (favorite == null) {
-            insert(Favorite(0, people.name, Date()))
+            insert(Favorite(0, people.name, people))
         } else {
             delete(favorite)
         }

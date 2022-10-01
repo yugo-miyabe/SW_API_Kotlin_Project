@@ -24,7 +24,7 @@ class FilmsDetailsViewModel(
     suspend fun addOrDeleteFavorite(name: String) {
         val favorite: Favorite? = favoriteCheck(name)
         if (favorite == null) {
-            insert(Favorite(0, name, Date()))
+            //insert(Favorite(0, name, Date()))
         } else {
             delete(favorite)
         }
