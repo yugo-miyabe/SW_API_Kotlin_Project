@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import java.util.*
 
 class FilmsDetailsViewModel(
     private val favoriteRepository: FavoriteRepository
@@ -23,7 +24,7 @@ class FilmsDetailsViewModel(
     suspend fun addOrDeleteFavorite(name: String) {
         val favorite: Favorite? = favoriteCheck(name)
         if (favorite == null) {
-            insert(Favorite(0, name))
+            insert(Favorite(0, name, Date()))
         } else {
             delete(favorite)
         }

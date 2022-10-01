@@ -8,6 +8,7 @@ import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
+import java.util.*
 
 class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()
@@ -20,7 +21,7 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
     suspend fun addOrDeleteFavorite(name: String) {
         val favorite: Favorite? = favoriteCheck(name)
         if (favorite == null) {
-            insert(Favorite(0, name))
+            insert(Favorite(0, name, Date()))
         } else {
             delete(favorite)
         }
