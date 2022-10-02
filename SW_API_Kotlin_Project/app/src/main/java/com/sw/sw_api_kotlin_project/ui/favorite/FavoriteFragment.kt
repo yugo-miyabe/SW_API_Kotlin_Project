@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.sw.sw_api_kotlin_project.adapters.FavoriteAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import kotlinx.coroutines.launch
 
 /**
  * お気に入り画面
@@ -43,10 +47,21 @@ class FavoriteFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        getRepository()
+        lifecycleScope.launch {
+            val favoriteList = getRepository()
+            if (favoriteList != null) {
+                binding.favoriteRecyclerView.adapter = FavoriteAdapter(favoriteList)
+                binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
+            } else {
+                // TODO お気に入り登録されていません画面追加
+            }
+        }
+
     }
 
-    private fun getRepository(): List<Favorite>? = viewModel.getDatabase()
+    private suspend fun getRepository(): List<Favorite>? {
+        return viewModel.getDatabase()
+    }
 
 
 }

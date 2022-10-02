@@ -23,5 +23,5 @@ interface FavoriteDao {
      * 全て取得
      */
     @Query("SELECT * FROM favorite_table")
-    fun getAll(): List<Favorite>?
+    suspend fun getAll(): List<Favorite>?
 }
