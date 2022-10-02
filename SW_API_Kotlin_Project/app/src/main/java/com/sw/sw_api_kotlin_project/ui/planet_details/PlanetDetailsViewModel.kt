@@ -8,7 +8,6 @@ import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
-import java.util.*
 
 class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()

@@ -1,6 +1,5 @@
 package com.sw.sw_api_kotlin_project.data.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -24,5 +23,5 @@ interface FavoriteDao {
      * 全て取得
      */
     @Query("SELECT * FROM favorite_table")
-    fun getAll(): LiveData<List<Favorite>>?
+    fun getAll(): List<Favorite>?
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
@@ -39,5 +40,13 @@ class FavoriteFragment : BaseFragment() {
 
         return binding.root
     }
+
+    override fun initView() {
+        super.initView()
+        getRepository()
+    }
+
+    private fun getRepository(): List<Favorite>? = viewModel.getDatabase()
+
 
 }
