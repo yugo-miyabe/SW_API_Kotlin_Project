@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer
 import com.sw.sw_api_kotlin_project.utils.RequestStatus
 import com.sw.sw_api_kotlin_project.utils.Resource
 
-abstract class SWApiLiveDataObserver<T> : Observer<Resource<T?>> {
+abstract class SWLiveDataObserver<T> : Observer<Resource<T?>> {
     override fun onChanged(it: Resource<T?>) {
         it.let { resource ->
             when (resource.status) {

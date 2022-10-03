@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 class FilmsDetailsViewModel(
     private val favoriteRepository: FavoriteRepository
@@ -20,14 +22,23 @@ class FilmsDetailsViewModel(
 
     private suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
 
-    suspend fun addOrDeleteFavorite(name: String) {
-        val favorite: Favorite? = favoriteCheck(name)
+    suspend fun addOrDeleteFavorite(film: Film) {
+        val favorite: Favorite? = favoriteCheck(film.title)
         if (favorite == null) {
-            insert(Favorite(0, name))
+            insert(
+                Favorite(
+                    id = 0,
+                    name = film.title,
+                    listType = ListType.FILM,
+                    people = null,
+                    film = film,
+                    planet = null
+                )
+            )
         } else {
             delete(favorite)
         }
-        getFavoriteState(name)
+        getFavoriteState(film.title)
     }
 
     private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
@@ -35,7 +46,7 @@ class FilmsDetailsViewModel(
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
     private suspend fun favoriteCheck(name: String): Favorite? =
-        favoriteRepository.getPeopleFavoriteState(name = name)
+        favoriteRepository.getFavoriteState(name = name)
 }
 
 

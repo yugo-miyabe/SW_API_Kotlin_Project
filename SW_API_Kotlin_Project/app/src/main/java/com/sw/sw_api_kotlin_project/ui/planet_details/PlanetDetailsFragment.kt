@@ -62,7 +62,7 @@ class PlanetDetailsFragment : BaseFragment() {
         }
         binding.planetFavoriteMark.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.addOrDeleteFavorite(planet.name)
+                viewModel.addOrDeleteFavorite(planet)
             }
         }
         lifecycleScope.launch {

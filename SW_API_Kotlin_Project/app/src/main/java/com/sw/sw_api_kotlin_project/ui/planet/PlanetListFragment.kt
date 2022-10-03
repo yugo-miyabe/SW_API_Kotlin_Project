@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PlanetAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
@@ -58,7 +58,7 @@ class PlanetListFragment : BaseFragment() {
     }
 
     private fun getPlanet(pageType: PageType) {
-        val planetsObserver = object : SWApiLiveDataObserver<Results<Planet>>() {
+        val planetsObserver = object : SWLiveDataObserver<Results<Planet>>() {
             override fun onSuccess(data: Results<Planet>?) {
                 val planets = data!!
                 binding.progressBar.visibility = View.GONE

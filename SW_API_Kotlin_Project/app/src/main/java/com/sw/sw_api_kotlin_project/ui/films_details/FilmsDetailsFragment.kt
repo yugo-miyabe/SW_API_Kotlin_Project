@@ -56,7 +56,7 @@ class FilmsDetailsFragment : BaseFragment() {
         }
         binding.filmFavoriteMark.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.addOrDeleteFavorite(film.title)
+                viewModel.addOrDeleteFavorite(film)
             }
         }
         lifecycleScope.launch {

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
@@ -55,7 +55,7 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun getSearchResult(searchString: String) {
-        val searchResultObserver = object : SWApiLiveDataObserver<List<Results<out Parcelable>>>() {
+        val searchResultObserver = object : SWLiveDataObserver<List<Results<out Parcelable>>>() {
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
                 val adapter = SearchResultsAdapter(data!!)
