@@ -10,9 +10,9 @@ import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.StarShipsRepository
+import com.sw.sw_api_kotlin_project.utils.ListType
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
-import java.util.*
 
 class PeopleDetailsViewModel(
     private val starShipsRepository: StarShipsRepository,
@@ -40,7 +40,7 @@ class PeopleDetailsViewModel(
     suspend fun addOrDeleteFavorite(people: People) {
         val favorite: Favorite? = favoriteCheck(people.name)
         if (favorite == null) {
-            insert(Favorite(0, people.name, people))
+            insert(Favorite(0, people.name, ListType.PEOPLE, people, null, null))
         } else {
             delete(favorite)
         }

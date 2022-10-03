@@ -20,7 +20,7 @@ class FavoriteViewModel(private val favoriteRepository: FavoriteRepository) : Ba
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
     }
-    
+
 }
 
 class FavoriteFactory(private val favoriteRepository: FavoriteRepository) :

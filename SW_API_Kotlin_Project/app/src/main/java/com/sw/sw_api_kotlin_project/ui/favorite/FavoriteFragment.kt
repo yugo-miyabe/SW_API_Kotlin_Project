@@ -54,6 +54,7 @@ class FavoriteFragment : BaseFragment() {
         val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
             override fun onSuccess(data: List<Favorite>?) {
                 if (data != null) {
+                    binding.favoriteRecyclerView.visibility = View.VISIBLE
                     binding.favoriteRecyclerView.adapter = FavoriteAdapter(data)
                     binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
                 } else {
@@ -69,6 +70,7 @@ class FavoriteFragment : BaseFragment() {
             override fun onLoading() {
                 super.onLoading()
                 binding.favoriteMessage.visibility = View.GONE
+                binding.favoriteRecyclerView.visibility = View.GONE
             }
         }
         viewModel.getFavoriteList().observe(viewLifecycleOwner, favoriteListObserver)
