@@ -12,32 +12,52 @@ import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 // TODO 構成を考え直す
-class SearchResultsAdapter(private val searchResults: List<Results<out Parcelable>>) :
+class SearchResultsAdapter(
+    private val searchResults: List<Results<out Parcelable>>,
+    private val onPeopleClick: (People) -> Unit,
+    private val onFilmClick: (Film) -> Unit,
+    private val onPlanetClick: (Planet) -> Unit
+) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
 
-    private val peopleMaxCount = searchResults[0].results.size
-    private val filmMaxCount = searchResults[1].results.size
-    private val planetMaxCount = searchResults[2].results.size
+    private val peopleMaxCount = searchResults[ListType.PEOPLE.ordinal].results.size
+    private val filmMaxCount = searchResults[ListType.FILM.ordinal].results.size
+    private val planetMaxCount = searchResults[ListType.PLANETS.ordinal].results.size
 
-    class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(
+        private val view: View,
+        private val onPeopleClick: (People) -> Unit,
+        private val onFilmClick: (Film) -> Unit,
+        private val onPlanetClick: (Planet) -> Unit
+    ) : RecyclerView.ViewHolder(view) {
         private val searchResultImage = view.findViewById<ImageView>(R.id.search_result_image)
         private val searchResultText = view.findViewById<TextView>(R.id.search_result_text)
 
         fun peopleBind(people: People) {
             searchResultImage.setImageResource(R.drawable.ic_baseline_face_24)
             searchResultText.text = people.name
+            view.setOnClickListener {
+                onPeopleClick(people)
+            }
         }
 
         fun filmBind(film: Film) {
             searchResultImage.setImageResource(R.drawable.ic_baseline_film_24)
             searchResultText.text = film.title
+            view.setOnClickListener {
+                onFilmClick(film)
+            }
         }
 
         fun planetBind(planet: Planet) {
             searchResultImage.setImageResource(R.drawable.ic_baseline_planets_24)
             searchResultText.text = planet.name
+            view.setOnClickListener {
+                onPlanetClick(planet)
+            }
         }
     }
 
@@ -45,16 +65,16 @@ class SearchResultsAdapter(private val searchResults: List<Results<out Parcelabl
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_search_result, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view, onPeopleClick, onFilmClick, onPlanetClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (position < peopleMaxCount) {
-            holder.peopleBind(searchResults[0].results[position] as People)
+            holder.peopleBind(searchResults[ListType.PEOPLE.ordinal].results[position] as People)
         } else if (position < filmMaxCount + peopleMaxCount) {
-            holder.filmBind(searchResults[1].results[position - peopleMaxCount] as Film)
+            holder.filmBind(searchResults[ListType.FILM.ordinal].results[position - peopleMaxCount] as Film)
         } else if (position < planetMaxCount + filmMaxCount + peopleMaxCount) {
-            holder.planetBind(searchResults[2].results[position - (peopleMaxCount + filmMaxCount)] as Planet)
+            holder.planetBind(searchResults[ListType.PLANETS.ordinal].results[position - (peopleMaxCount + filmMaxCount)] as Planet)
         }
     }
 

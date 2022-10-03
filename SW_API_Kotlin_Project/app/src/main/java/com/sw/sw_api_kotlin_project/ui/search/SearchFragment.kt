@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
@@ -16,6 +17,7 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 /**
  * 検索画面
@@ -58,12 +60,26 @@ class SearchFragment : BaseFragment() {
         val searchResultObserver = object : SWLiveDataObserver<List<Results<out Parcelable>>>() {
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
-                val adapter = SearchResultsAdapter(data!!)
+                val adapter = SearchResultsAdapter(
+                    data!!,
+                    {
+                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetail(it)
+                        findNavController().navigate(action)
+                    },
+                    {
+                        val action = SearchFragmentDirections.actionNavSearchToNavFilmsDetail(it)
+                        findNavController().navigate(action)
+                    },
+                    {
+                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetail(it)
+                        findNavController().navigate(action)
+                    },
+                )
                 binding.searchResultRecyclerView.adapter = adapter
                 binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
                 binding.searchResultRecyclerView.visibility = View.VISIBLE
-                if (data[0].count == 0 && data[1].count == 0 && data[2].count == 0)
+                if (data[ListType.PEOPLE.ordinal].count == 0 && data[ListType.FILM.ordinal].count == 0 && data[ListType.PLANETS.ordinal].count == 0)
                     binding.searchResultDoesNot.visibility = View.VISIBLE
             }
 

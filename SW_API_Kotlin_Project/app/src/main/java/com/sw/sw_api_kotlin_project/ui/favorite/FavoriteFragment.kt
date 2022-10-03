@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.FavoriteAdapter
@@ -53,14 +54,35 @@ class FavoriteFragment : BaseFragment() {
     private fun getFavoriteList() {
         val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
             override fun onSuccess(data: List<Favorite>?) {
-                if (data != null) {
+                if (data!!.isNotEmpty()) {
                     binding.favoriteRecyclerView.visibility = View.VISIBLE
-                    binding.favoriteRecyclerView.adapter = FavoriteAdapter(data)
+                    binding.favoriteRecyclerView.adapter = FavoriteAdapter(
+                        data,
+                        {
+                            val action =
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetail(it)
+                            findNavController().navigate(action)
+                        },
+                        {
+                            val action =
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(it)
+                            findNavController().navigate(action)
+
+                        },
+                        {
+                            val action =
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetail(it)
+                            findNavController().navigate(action)
+
+                        },
+                    )
                     binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
                 } else {
+                    binding.favoriteMessage.visibility = View.VISIBLE
                     binding.favoriteMessage.text = getString(R.string.not_in_favorites)
                 }
             }
+
 
             override fun onError(errorMessage: String) {
                 binding.favoriteMessage.visibility = View.VISIBLE
