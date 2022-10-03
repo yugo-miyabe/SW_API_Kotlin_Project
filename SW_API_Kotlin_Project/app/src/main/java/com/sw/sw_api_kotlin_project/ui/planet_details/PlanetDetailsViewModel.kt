@@ -26,7 +26,7 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
                 Favorite(
                     id = 0,
                     name = planet.name,
-                    listType = ListType.FILM,
+                    listType = ListType.PLANETS,
                     people = null,
                     film = null,
                     planet = planet
