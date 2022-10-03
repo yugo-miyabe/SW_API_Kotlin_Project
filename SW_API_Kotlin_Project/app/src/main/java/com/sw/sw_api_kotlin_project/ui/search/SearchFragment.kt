@@ -58,12 +58,12 @@ class SearchFragment : BaseFragment() {
         val searchResultObserver = object : SWLiveDataObserver<List<Results<out Parcelable>>>() {
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
-                val adapter = SearchResultsAdapter(data!!)
+                val adapter = SearchResultsAdapter(data!!, {}, {}, {})
                 binding.searchResultRecyclerView.adapter = adapter
                 binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
                 binding.searchResultRecyclerView.visibility = View.VISIBLE
-                if (data[0].count == 0 && data[1].count == 0 && data[2].count == 0)
+                if (data!![0].count == 0 && data[1].count == 0 && data[2].count == 0)
                     binding.searchResultDoesNot.visibility = View.VISIBLE
             }
 
