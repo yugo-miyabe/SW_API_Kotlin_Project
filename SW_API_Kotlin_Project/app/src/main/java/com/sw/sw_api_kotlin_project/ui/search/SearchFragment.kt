@@ -16,6 +16,7 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 /**
  * 検索画面
@@ -63,7 +64,7 @@ class SearchFragment : BaseFragment() {
                 binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
                 binding.searchResultRecyclerView.visibility = View.VISIBLE
-                if (data!![0].count == 0 && data[1].count == 0 && data[2].count == 0)
+                if (data[ListType.PEOPLE.ordinal].count == 0 && data[ListType.FILM.ordinal].count == 0 && data[ListType.PLANETS.ordinal].count == 0)
                     binding.searchResultDoesNot.visibility = View.VISIBLE
             }
 

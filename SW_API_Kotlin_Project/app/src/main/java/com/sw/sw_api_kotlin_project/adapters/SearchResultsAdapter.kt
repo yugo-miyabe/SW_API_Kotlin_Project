@@ -12,7 +12,7 @@ import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.utils.SearchResultType
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 // TODO 構成を考え直す
 class SearchResultsAdapter(
@@ -23,9 +23,9 @@ class SearchResultsAdapter(
 ) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
 
-    private val peopleMaxCount = searchResults[SearchResultType.PEOPLE.cnt].results.size
-    private val filmMaxCount = searchResults[SearchResultType.PEOPLE.cnt].results.size
-    private val planetMaxCount = searchResults[SearchResultType.PEOPLE.cnt].results.size
+    private val peopleMaxCount = searchResults[ListType.PEOPLE.ordinal].results.size
+    private val filmMaxCount = searchResults[ListType.FILM.ordinal].results.size
+    private val planetMaxCount = searchResults[ListType.PLANETS.ordinal].results.size
 
     class ViewHolder(
         private val view: View,
