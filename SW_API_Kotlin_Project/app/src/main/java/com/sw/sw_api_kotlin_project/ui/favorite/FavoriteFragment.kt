@@ -54,11 +54,14 @@ class FavoriteFragment : BaseFragment() {
         val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
             override fun onSuccess(data: List<Favorite>?) {
                 if (data != null) {
-                    binding.favoriteRecyclerView.visibility = View.VISIBLE
-                    binding.favoriteRecyclerView.adapter = FavoriteAdapter(data)
-                    binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
-                } else {
-                    binding.favoriteMessage.text = getString(R.string.not_in_favorites)
+                    if (data.isNotEmpty()) {
+                        binding.favoriteRecyclerView.visibility = View.VISIBLE
+                        binding.favoriteRecyclerView.adapter = FavoriteAdapter(data)
+                        binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
+                    } else {
+                        binding.favoriteMessage.visibility = View.VISIBLE
+                        binding.favoriteMessage.text = getString(R.string.not_in_favorites)
+                    }
                 }
             }
 
