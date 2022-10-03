@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.database.Favorite
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 class FavoriteAdapter(private val favoriteList: List<Favorite>) :
     RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
@@ -17,8 +18,21 @@ class FavoriteAdapter(private val favoriteList: List<Favorite>) :
         private val titleText = view.findViewById<TextView>(R.id.search_result_text)
 
         fun bind(favorite: Favorite) {
-            imageView.setImageResource(R.drawable.ic_baseline_face_24)
-            titleText.text = favorite.name
+            when (favorite.listType) {
+                ListType.PEOPLE -> {
+                    imageView.setImageResource(R.drawable.ic_baseline_face_24)
+                    titleText.text = favorite.people?.name
+                }
+                ListType.FILM -> {
+                    imageView.setImageResource(R.drawable.ic_baseline_film_24)
+                    titleText.text = favorite.film?.title
+                }
+                ListType.PLANETS -> {
+                    imageView.setImageResource(R.drawable.ic_baseline_planets_24)
+                    titleText.text = favorite.planet?.name
+                }
+            }
+
         }
     }
 

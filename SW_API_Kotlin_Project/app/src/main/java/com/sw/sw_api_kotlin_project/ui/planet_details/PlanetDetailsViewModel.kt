@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
+import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
+import com.sw.sw_api_kotlin_project.utils.ListType
 
 class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()
@@ -17,14 +19,23 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
         _favoriteStatus.value = checkFavoriteState(name)
     }
 
-    suspend fun addOrDeleteFavorite(name: String) {
-        val favorite: Favorite? = favoriteCheck(name)
+    suspend fun addOrDeleteFavorite(planet: Planet) {
+        val favorite: Favorite? = favoriteCheck(planet.name)
         if (favorite == null) {
-            //insert(Favorite(0, name, Date()))
+            insert(
+                Favorite(
+                    id = 0,
+                    name = planet.name,
+                    listType = ListType.FILM,
+                    people = null,
+                    film = null,
+                    planet = planet
+                )
+            )
         } else {
             delete(favorite)
         }
-        getFavoriteState(name)
+        getFavoriteState(planet.name)
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
