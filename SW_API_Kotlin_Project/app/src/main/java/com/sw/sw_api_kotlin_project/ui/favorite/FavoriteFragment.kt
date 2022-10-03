@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.FavoriteAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
@@ -52,15 +53,22 @@ class FavoriteFragment : BaseFragment() {
     private fun getFavoriteList() {
         val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
             override fun onSuccess(data: List<Favorite>?) {
-                val favoriteList = data
-                if (favoriteList != null) {
-                    binding.favoriteRecyclerView.adapter = FavoriteAdapter(favoriteList)
+                if (data != null) {
+                    binding.favoriteRecyclerView.adapter = FavoriteAdapter(data)
                     binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
+                } else {
+                    binding.favoriteMessage.text = getString(R.string.not_in_favorites)
                 }
             }
 
             override fun onError(errorMessage: String) {
+                binding.favoriteMessage.visibility = View.VISIBLE
+                binding.favoriteMessage.text = errorMessage
+            }
 
+            override fun onLoading() {
+                super.onLoading()
+                binding.favoriteMessage.visibility = View.GONE
             }
         }
         viewModel.getFavoriteList().observe(viewLifecycleOwner, favoriteListObserver)
