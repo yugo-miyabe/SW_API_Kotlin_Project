@@ -25,7 +25,7 @@
         android:id="@+id/nav_search"
         android:name="com.sw.sw_api_kotlin_project.ui.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_nav_search_to_nav_people_detail"
             app:destination="@id/nav_people_detail" />
@@ -101,7 +101,17 @@
         android:id="@+id/nav_favorite_list"
         android:name="com.sw.sw_api_kotlin_project.ui.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_nav_favorite_list_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
+        <action
+            android:id="@+id/action_nav_favorite_list_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
+        <action
+            android:id="@+id/action_nav_favorite_list_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_other"

@@ -70,11 +70,11 @@ class SearchResultsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (position < peopleMaxCount) {
-            holder.peopleBind(searchResults[0].results[position] as People)
+            holder.peopleBind(searchResults[ListType.PEOPLE.ordinal].results[position] as People)
         } else if (position < filmMaxCount + peopleMaxCount) {
-            holder.filmBind(searchResults[1].results[position - peopleMaxCount] as Film)
+            holder.filmBind(searchResults[ListType.FILM.ordinal].results[position - peopleMaxCount] as Film)
         } else if (position < planetMaxCount + filmMaxCount + peopleMaxCount) {
-            holder.planetBind(searchResults[2].results[position - (peopleMaxCount + filmMaxCount)] as Planet)
+            holder.planetBind(searchResults[ListType.PLANETS.ordinal].results[position - (peopleMaxCount + filmMaxCount)] as Planet)
         }
     }
 
