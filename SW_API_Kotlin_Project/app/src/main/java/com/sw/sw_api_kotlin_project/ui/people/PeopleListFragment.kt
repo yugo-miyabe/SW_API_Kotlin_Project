@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
@@ -79,8 +78,7 @@ class PeopleListFragment : BaseFragment() {
                 val adapter = PeopleAdapter(
                     people.results,
                 ) {
-                    val action: NavDirections =
-                        PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
+                    val action = PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
                     findNavController().navigate(action)
                 }
 
