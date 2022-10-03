@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FavoriteAdapter
-import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
@@ -50,7 +50,7 @@ class FavoriteFragment : BaseFragment() {
     }
 
     private fun getFavoriteList() {
-        val favoriteListObserver = object : SWApiLiveDataObserver<List<Favorite>>() {
+        val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
             override fun onSuccess(data: List<Favorite>?) {
                 val favoriteList = data
                 if (favoriteList != null) {
@@ -60,7 +60,7 @@ class FavoriteFragment : BaseFragment() {
             }
 
             override fun onError(errorMessage: String) {
-        
+
             }
         }
         viewModel.getFavoriteList().observe(viewLifecycleOwner, favoriteListObserver)

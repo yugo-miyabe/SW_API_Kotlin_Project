@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
@@ -66,7 +66,7 @@ class PeopleListFragment : BaseFragment() {
     }
 
     private fun getPeople(pageType: PageType) {
-        val peopleObserver = object : SWApiLiveDataObserver<Results<People>>() {
+        val peopleObserver = object : SWLiveDataObserver<Results<People>>() {
             override fun onSuccess(data: Results<People>?) {
                 val people = data!!
                 binding.progressBar.visibility = View.GONE

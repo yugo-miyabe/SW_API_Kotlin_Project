@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
@@ -86,7 +86,7 @@ class PeopleDetailsFragment : BaseFragment() {
     }
 
     private fun getStarships() {
-        val starShipsObservable = object : SWApiLiveDataObserver<Result<Starships>>() {
+        val starShipsObservable = object : SWLiveDataObserver<Result<Starships>>() {
             override fun onSuccess(data: Result<Starships>?) {
                 TODO("Not yet implemented")
             }

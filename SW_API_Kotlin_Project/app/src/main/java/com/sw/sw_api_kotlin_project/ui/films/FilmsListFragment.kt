@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.api.liveData.SWApiLiveDataObserver
+import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.Results
@@ -56,7 +56,7 @@ class FilmsListFragment : BaseFragment() {
     }
 
     private fun getFilms(pageType: PageType) {
-        val filmObserver = object : SWApiLiveDataObserver<Results<Film>>() {
+        val filmObserver = object : SWLiveDataObserver<Results<Film>>() {
             override fun onSuccess(data: Results<Film>?) {
                 val films = data!!
                 binding.progressBar.visibility = View.GONE
