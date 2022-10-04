@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import kotlinx.coroutines.launch
 
 class OthersFragment : BaseFragment() {
     private lateinit var viewModel: OthersViewModel
@@ -34,6 +36,15 @@ class OthersFragment : BaseFragment() {
     ): View {
         _binding = FragmentOthersBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun initView() {
+        super.initView()
+        binding.deleteFavorite.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.delete()
+            }
+        }
     }
 
     override fun onDestroy() {
