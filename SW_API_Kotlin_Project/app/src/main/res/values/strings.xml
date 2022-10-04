@@ -20,6 +20,7 @@
     <string name="not_in_favorites">お気に入り登録されていません</string>
     <!-- その他画面 -->
     <string name="remove_all_favorites">お気に入りを全て削除</string>
+    <string name="api_document">APIのドキュメント</string>
     <!-- 登場人物リスト  -->
     <string name="full_name">名前:</string>
     <string name="height">身長:</string>
