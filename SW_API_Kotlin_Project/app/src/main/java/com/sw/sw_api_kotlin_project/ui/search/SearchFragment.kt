@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
@@ -79,14 +80,18 @@ class SearchFragment : BaseFragment() {
                 binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
                 binding.searchResultRecyclerView.visibility = View.VISIBLE
-                if (data[ListType.PEOPLE.ordinal].count == 0 && data[ListType.FILM.ordinal].count == 0 && data[ListType.PLANETS.ordinal].count == 0)
-                    binding.searchResultDoesNot.visibility = View.VISIBLE
+                if (data[ListType.PEOPLE.ordinal].count == 0 && data[ListType.FILM.ordinal].count == 0 && data[ListType.PLANETS.ordinal].count == 0) {
+                    binding.searchResultMessage.visibility = View.VISIBLE
+                    binding.searchResultMessage.text = getString(R.string.search_result_does_not)
+
+                }
             }
 
             override fun onError(errorMessage: String) {
                 binding.searchButton.isEnabled = true
+                binding.searchResultMessage.text = errorMessage
                 binding.progressBar.visibility = View.GONE
-                binding.searchResultDoesNot.visibility = View.GONE
+                binding.searchResultMessage.visibility = View.GONE
             }
 
             override fun onLoading() {
@@ -94,7 +99,7 @@ class SearchFragment : BaseFragment() {
                 binding.searchButton.isEnabled = false
                 binding.progressBar.visibility = View.VISIBLE
                 binding.searchResultRecyclerView.visibility = View.GONE
-                binding.searchResultDoesNot.visibility = View.GONE
+                binding.searchResultMessage.visibility = View.GONE
             }
         }
         viewModel.getSearchResult(searchString = searchString)
