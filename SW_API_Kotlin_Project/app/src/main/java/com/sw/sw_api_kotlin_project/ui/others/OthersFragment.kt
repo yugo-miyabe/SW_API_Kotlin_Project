@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
+import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 
 class OthersFragment : BaseFragment() {
     private lateinit var viewModel: OthersViewModel
@@ -17,7 +19,11 @@ class OthersFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(
             this,
-            OthersViewModelFactory()
+            OthersViewModelFactory(
+                FavoriteRepository(
+                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao(),
+                ),
+            )
         )[OthersViewModel::class.java]
     }
 

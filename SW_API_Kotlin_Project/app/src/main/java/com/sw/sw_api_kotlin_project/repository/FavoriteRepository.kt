@@ -13,4 +13,6 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
     suspend fun getFavoriteState(name: String) = favoriteDao.getFavorite(name = name)
 
     suspend fun getAll(): List<Favorite>? = favoriteDao.getAll()
+
+    suspend fun deleteAll() = favoriteDao.deleteAll()
 }
