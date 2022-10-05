@@ -81,7 +81,7 @@ class PlanetListFragment : BaseFragment() {
 
             override fun onLoading() {
                 super.onLoading()
-                binding.retryButton.visibility = View.GONE
+                binding.retryButton.isVisible = false
                 binding.errorText.isVisible = false
             }
 

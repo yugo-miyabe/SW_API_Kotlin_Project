@@ -14,7 +14,6 @@ abstract class SWLiveDataObserver<T> : Observer<Resource<T?>> {
                 }
                 RequestStatus.ERROR -> {
                     onError(resource.message ?: "Unknown error")
-                    onViewChange(false)
                 }
                 RequestStatus.LOADING -> {
                     onLoading()
