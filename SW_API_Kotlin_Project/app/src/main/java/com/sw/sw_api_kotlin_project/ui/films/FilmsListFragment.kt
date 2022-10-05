@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,10 +60,6 @@ class FilmsListFragment : BaseFragment() {
         val filmObserver = object : SWLiveDataObserver<Results<Film>>() {
             override fun onSuccess(data: Results<Film>?) {
                 val films = data!!
-                binding.progressBar.visibility = View.GONE
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.previousButton.visibility = View.VISIBLE
-                binding.nextButton.visibility = View.VISIBLE
                 binding.previousButton.isEnabled = films.previous != null
                 binding.nextButton.isEnabled = films.next != null
                 val adapter = FilmsAdapter(films.results) {
@@ -74,21 +71,24 @@ class FilmsListFragment : BaseFragment() {
             }
 
             override fun onError(errorMessage: String) {
-                binding.progressBar.visibility = View.GONE
-                binding.errorText.visibility = View.VISIBLE
-                binding.previousButton.visibility = View.GONE
-                binding.nextButton.visibility = View.GONE
+                binding.progressBar.isVisible = false
+                binding.retryButton.isVisible = true
+                binding.errorText.isVisible = true
                 binding.errorText.text = errorMessage
-                binding.retryButton.visibility = View.VISIBLE
             }
 
             override fun onLoading() {
                 super.onLoading()
-                binding.recyclerView.visibility = View.GONE
-                binding.previousButton.visibility = View.GONE
-                binding.nextButton.visibility = View.GONE
-                binding.progressBar.visibility = View.VISIBLE
                 binding.retryButton.visibility = View.GONE
+                binding.errorText.isVisible = false
+            }
+
+            override fun onViewChange(shouldListShow: Boolean) {
+                super.onViewChange(shouldListShow)
+                binding.progressBar.isVisible = !shouldListShow
+                binding.recyclerView.isVisible = shouldListShow
+                binding.previousButton.isVisible = shouldListShow
+                binding.nextButton.isVisible = shouldListShow
             }
         }
         viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmObserver)
