@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
@@ -44,6 +46,11 @@ class OthersFragment : BaseFragment() {
             lifecycleScope.launch {
                 viewModel.delete()
             }
+            Toast.makeText(
+                context,
+                getString(R.string.delete_favorite_item),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
