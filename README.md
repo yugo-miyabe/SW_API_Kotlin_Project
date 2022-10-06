@@ -1,7 +1,7 @@
 # SWAPI APP
 
 ## 開発環境
-[![AndroidStudio](https://img.shields.io/badge/Android%20Studio-Bumblebee%20%7C%202021.1.1%20Patch%203-blue)](https://developer.android.com/studio/)
+[![AndroidStudio](https://img.shields.io/badge/Android%20Studio-Dolphin%20%7C%202021.3.1-blue)](https://developer.android.com/studio/)
 
 ## アプリ概要
 スターウォーズのAPIを使用したアプリ
