@@ -16,5 +16,6 @@ data class Favorite(
     val listType: ListType,
     val people: People?,
     val film: Film?,
-    val planet: Planet?
+    val planet: Planet?,
+    val data: String
 )
