@@ -70,4 +70,9 @@ class HomeFragment : BaseFragment() {
             )
         )
     }
+
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
+    }
 }

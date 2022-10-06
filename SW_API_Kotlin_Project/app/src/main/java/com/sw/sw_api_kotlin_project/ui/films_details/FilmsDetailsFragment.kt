@@ -79,5 +79,4 @@ class FilmsDetailsFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
-
 }
