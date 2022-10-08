@@ -3,7 +3,6 @@ package com.sw.sw_api_kotlin_project.utils
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 object DateUtils {
     private val FORMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd HH:mm"
 
@@ -15,5 +14,4 @@ object DateUtils {
         val format = SimpleDateFormat(FORMAT_YYYYMMDDHHMMSS, Locale.getDefault())
         return format.format(date)
     }
-
 }
