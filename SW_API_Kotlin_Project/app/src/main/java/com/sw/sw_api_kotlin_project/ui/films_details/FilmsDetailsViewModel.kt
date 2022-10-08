@@ -8,6 +8,7 @@ import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.utils.DateUtils
 import com.sw.sw_api_kotlin_project.utils.ListType
 
 class FilmsDetailsViewModel(
@@ -32,11 +33,12 @@ class FilmsDetailsViewModel(
                     listType = ListType.FILM,
                     people = null,
                     film = film,
-                    planet = null
+                    planet = null,
+                    registrationDate = DateUtils.getTodayDateStringYYYYMMDDHHMMSS()
                 )
             )
         } else {
-            delete(favorite)
+            delete(favorite = favorite)
         }
         getFavoriteState(film.title)
     }

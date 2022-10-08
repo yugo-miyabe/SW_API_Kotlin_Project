@@ -66,7 +66,7 @@ class PeopleDetailsFragment : BaseFragment() {
         }
         binding.peopleFavoriteMark.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.addOrDeleteFavorite(people)
+                viewModel.addOrDeleteFavorite(people = people)
             }
         }
         lifecycleScope.launch {

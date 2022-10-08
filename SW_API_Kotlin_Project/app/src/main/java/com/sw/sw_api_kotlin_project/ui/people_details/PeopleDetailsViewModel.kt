@@ -10,6 +10,7 @@ import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.StarShipsRepository
+import com.sw.sw_api_kotlin_project.utils.DateUtils
 import com.sw.sw_api_kotlin_project.utils.ListType
 import com.sw.sw_api_kotlin_project.utils.Resource
 import kotlinx.coroutines.Dispatchers
@@ -40,16 +41,26 @@ class PeopleDetailsViewModel(
     suspend fun addOrDeleteFavorite(people: People) {
         val favorite: Favorite? = favoriteCheck(people.name)
         if (favorite == null) {
-            insert(Favorite(0, people.name, ListType.PEOPLE, people, null, null))
+            insert(
+                Favorite(
+                    id = 0,
+                    name = people.name,
+                    listType = ListType.PEOPLE,
+                    people = people,
+                    film = null,
+                    planet = null,
+                    registrationDate = DateUtils.getTodayDateStringYYYYMMDDHHMMSS()
+                )
+            )
         } else {
-            delete(favorite)
+            delete(favorite = favorite)
         }
-        getFavoriteState(people.name)
+        getFavoriteState(name = people.name)
     }
 
-    private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
+    private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite = favorite)
 
-    private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
+    private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite = favorite)
 
     private suspend fun favoriteCheck(name: String): Favorite? =
         favoriteRepository.getFavoriteState(name = name)

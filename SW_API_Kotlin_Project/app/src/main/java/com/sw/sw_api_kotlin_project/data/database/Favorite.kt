@@ -17,5 +17,5 @@ data class Favorite(
     val people: People?,
     val film: Film?,
     val planet: Planet?,
-    val data: String
+    val registrationDate: String
 )

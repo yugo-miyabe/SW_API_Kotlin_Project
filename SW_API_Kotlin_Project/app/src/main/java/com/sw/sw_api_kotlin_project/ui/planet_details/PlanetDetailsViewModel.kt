@@ -9,6 +9,7 @@ import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
+import com.sw.sw_api_kotlin_project.utils.DateUtils
 import com.sw.sw_api_kotlin_project.utils.ListType
 
 class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
@@ -29,11 +30,12 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
                     listType = ListType.PLANETS,
                     people = null,
                     film = null,
-                    planet = planet
+                    planet = planet,
+                    registrationDate = DateUtils.getTodayDateStringYYYYMMDDHHMMSS()
                 )
             )
         } else {
-            delete(favorite)
+            delete(favorite = favorite)
         }
         getFavoriteState(planet.name)
     }
