@@ -15,7 +15,7 @@ class Converters {
     }
 
     @TypeConverter
-    fun PeopleToResults(people: People?): String {
+    fun peopleToResults(people: People?): String {
         val gson = Gson()
         return gson.toJson(people)
     }
