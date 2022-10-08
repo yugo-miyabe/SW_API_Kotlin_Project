@@ -57,7 +57,6 @@ class PeopleDetailsFragment : BaseFragment() {
             binding.heightText.text = height
             binding.hairColorText.text = hairColor
             binding.massText.text = mass
-            binding.homeworldText.text = homeWorld
         }
         binding.peopleFavoriteMark.setOnClickListener {
             lifecycleScope.launch {

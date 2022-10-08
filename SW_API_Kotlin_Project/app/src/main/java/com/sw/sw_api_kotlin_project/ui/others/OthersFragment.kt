@@ -48,7 +48,7 @@ class OthersFragment : BaseFragment() {
             }
             Toast.makeText(
                 context,
-                getString(R.string.delete_favorite_item),
+                getString(R.string.other_delete_favorite_item),
                 Toast.LENGTH_SHORT
             ).show()
         }

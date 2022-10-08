@@ -1,61 +1,36 @@
 <resources>
-    <string name="app_name">SW_API_Kotlin_Project</string>
-
+    <string name="app_name">SW_API_Project</string>
     <!-- Navigation -->
-    <string name="home">ホーム</string>
-    <string name="search">検索</string>
-    <string name="favorite">お気に入り</string>
-    <string name="others">その他</string>
+    <string name="navigation_home">ホーム</string>
+    <string name="navigation_search">検索</string>
+    <string name="navigation_favorite">お気に入り</string>
+    <string name="navigation_others">その他</string>
     <!--　ホーム画面 -->
-    <string name="people">登場人物</string>
-    <string name="planet">惑星</string>
-    <string name="films">映画</string>
-    <string name="species">種族</string>
-    <string name="vehicles">車両</string>
-    <string name="star_ships">宇宙船</string>
+    <string name="home_people">登場人物</string>
+    <string name="home_planet">惑星</string>
+    <string name="home_films">映画</string>
+    <string name="home_species">種族</string>
+    <string name="home_vehicles">車両</string>
+    <string name="home_star_ships">宇宙船</string>
     <!-- 検索画面 -->
     <string name="search_keyword">検索キーワード</string>
     <string name="search_result_does_not">検索結果が存在しません</string>
+    <string name="search_button">検索</string>
     <!-- お気に入り画面 -->
-    <string name="not_in_favorites">お気に入り登録されていません</string>
+    <string name="favorite_not_in_favorites">お気に入り登録されていません</string>
     <!-- その他画面 -->
-    <string name="remove_all_favorites">お気に入りを全て削除</string>
-    <string name="delete_favorite_item">お気に入り登録されたアイテムを削除しました</string>
-    <string name="api_document">APIのドキュメント</string>
-    <!-- 登場人物リスト  -->
-    <string name="full_name">名前:</string>
-    <string name="height">身長:</string>
-    <string name="mass">体重:</string>
-    <!-- 惑星リスト -->
-    <string name="planet_name">惑星名:</string>
-    <string name="climate">気候:</string>
-    <string name="terrain">地形:</string>
-    <!-- 映画リスト -->
-    <string name="title">タイトル:</string>
-    <string name="director">監督:</string>
-    <string name="producer">プロデューサー:</string>
-    <!-- 種族リスト -->
-    <string name="species_name">種族名:</string>
-    <string name="classification">分類:</string>
-    <string name="average_height">平均身長:</string>
-    <!-- 車両リスト -->
-    <string name="vehicles_name">車両名:</string>
-    <string name="vehicles_model_name">モデル名:</string>
-    <string name="vehicles_manufacturer_name">メーカー名:</string>
-    <!-- 宇宙船リスト -->
-    <string name="starships_name">宇宙船名:</string>
-    <string name="starships_model_name">モデル名:</string>
-    <string name="starships_manufacturer_name">メーカー名:</string>
+    <string name="other_remove_all_favorites">お気に入りを全て削除</string>
+    <string name="other_delete_favorite_item">お気に入り登録されたアイテムを削除しました</string>
+    <string name="other_api_document">APIのドキュメント</string>
     <!-- 登場人物詳細 -->
     <string name="people_details_birth_year">誕生日:</string>
     <string name="people_details_gender">性別:</string>
     <string name="people_details_height">身長:</string>
     <string name="people_details_mass">質量:</string>
+    <string name="people_details_skin_color">肌の色:</string>
+    <string name="people_details_eye_color">瞳の色:</string>
+    <string name="people_details_hair_color">髪色:</string>
     <string name="people_details_species">種族:</string>
-    <string name="people_details_starships">宇宙船:</string>
-    <string name="people_details_vehicles">乗り物:</string>
-    <string name="people_details_films">出演映画:</string>
-    <string name="people_details_species_human">Human</string>
     <!-- 映画詳細 -->
     <string name="films_details_release_date">公開日:</string>
     <string name="films_details_opening_crawl">オープニングクロール:</string>
@@ -67,14 +42,8 @@
     <string name="planet_details_terrain">地形:</string>
     <string name="planet_details_surface">地表水:</string>
     <string name="planet_details_population">人口:</string>
-    <!-- 共通詳細 -->
-    <string name="details_home_world">ホームワールド:</string>
-    <string name="details_skin_color">肌の色:</string>
-    <string name="details_eye_color">瞳の色:</string>
-    <string name="details_hair_color">髪色:</string>
     <!-- 共通 -->
-    <string name="next">次ページへ</string>
-    <string name="previous">前ページへ</string>
-    <string name="retry">再試行</string>
-
+    <string name="common_next">次ページへ</string>
+    <string name="common_previous">前ページへ</string>
+    <string name="common_retry">再試行</string>
 </resources>

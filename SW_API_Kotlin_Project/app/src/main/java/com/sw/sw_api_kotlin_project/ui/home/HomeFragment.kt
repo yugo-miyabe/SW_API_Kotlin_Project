@@ -63,15 +63,15 @@ class HomeFragment : BaseFragment() {
         return listOf(
             HomeItem(
                 getDrawable(requireContext(), R.drawable.ic_baseline_face_24),
-                getString(R.string.people),
+                getString(R.string.home_people),
                 ListType.PEOPLE
             ), HomeItem(
                 getDrawable(requireContext(), R.drawable.ic_baseline_film_24),
-                getString(R.string.films),
+                getString(R.string.home_films),
                 ListType.FILM
             ), HomeItem(
                 getDrawable(requireContext(), R.drawable.ic_baseline_planets_24),
-                getString(R.string.planet),
+                getString(R.string.home_planet),
                 ListType.PLANETS
             )
         )
