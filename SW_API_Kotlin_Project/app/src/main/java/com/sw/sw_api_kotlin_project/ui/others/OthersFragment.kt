@@ -1,5 +1,7 @@
 package com.sw.sw_api_kotlin_project.ui.others
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.utils.WebViewURL
 import kotlinx.coroutines.launch
 
 class OthersFragment : BaseFragment() {
@@ -51,6 +54,10 @@ class OthersFragment : BaseFragment() {
                 getString(R.string.delete_favorite_item),
                 Toast.LENGTH_SHORT
             ).show()
+        }
+        binding.webViewDocumentation.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(WebViewURL.swApiDocumentation))
+            startActivity(intent)
         }
     }
 
