@@ -11,11 +11,9 @@ import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
@@ -34,9 +32,6 @@ class PeopleListFragment : BaseFragment() {
             PeopleListViewModelFactory(
                 PeopleRepository(
                     SWServiceClient.getService(),
-                ),
-                FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao(),
                 ),
             )
         )[PeopleListViewModel::class.java]
