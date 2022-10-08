@@ -7,7 +7,7 @@ import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.utils.ListType
 
-//TODO ジェネリクス型に変更できないか調査
+//TODO People,Film,Planetをジェネリクス型に変更できないか調査
 @Entity(tableName = "favorite_table")
 data class Favorite(
     @PrimaryKey(autoGenerate = true)
@@ -16,5 +16,6 @@ data class Favorite(
     val listType: ListType,
     val people: People?,
     val film: Film?,
-    val planet: Planet?
+    val planet: Planet?,
+    val registrationDate: String
 )

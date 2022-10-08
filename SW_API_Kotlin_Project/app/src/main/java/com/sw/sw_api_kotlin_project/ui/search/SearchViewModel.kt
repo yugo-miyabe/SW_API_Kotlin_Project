@@ -19,7 +19,7 @@ class SearchViewModel(
 ) : BaseViewModel() {
 
     fun getSearchResult(searchString: String) = liveData(Dispatchers.IO) {
-        emit(Resource.loading(data = null))
+        emit(Resource.loading(null))
         try {
             val searchResponse = peopleRepository.getPeopleSearch(search = searchString)
             val filmsResponse = filmsRepository.getFilmsSearch(search = searchString)
@@ -41,8 +41,11 @@ class SearchViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return SearchViewModel(peopleRepository, filmsRepository, planetRepository) as T
+            @Suppress("UNCHECKED_CAST") return SearchViewModel(
+                peopleRepository,
+                filmsRepository,
+                planetRepository
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

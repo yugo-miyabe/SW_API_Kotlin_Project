@@ -8,15 +8,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
-import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
-import com.sw.sw_api_kotlin_project.data.model.Starships
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.repository.StarShipsRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -34,7 +30,6 @@ class PeopleDetailsFragment : BaseFragment() {
         viewModel = ViewModelProvider(
             this,
             PeopleDetailsFactory(
-                StarShipsRepository(swService = SWServiceClient.getService()),
                 FavoriteRepository(
                     FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
                 ),
@@ -83,26 +78,6 @@ class PeopleDetailsFragment : BaseFragment() {
                 binding.peopleFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
             }
         }
-    }
-
-    private fun getStarships() {
-        val starShipsObservable = object : SWLiveDataObserver<Result<Starships>>() {
-            override fun onSuccess(data: Result<Starships>?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onError(errorMessage: String) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                binding.recyclerViewStarships.visibility = View.GONE
-                binding.progressBar.visibility = View.VISIBLE
-            }
-        }
-
-        people.starships.forEach { specise -> viewModel.getStarShips() }
     }
 
     override fun onDestroy() {

@@ -13,7 +13,7 @@ class FilmsListViewModel(private val filmsRepository: FilmsRepository) : BaseVie
 
     fun getFilms(pageType: PageType) = liveData(Dispatchers.IO) {
         pageParameterFormat(pageType)
-        emit(Resource.loading(data = null))
+        emit(Resource.loading(null))
         try {
             val response = filmsRepository.getFilms(page)
             emit(Resource.success(data = response))

@@ -7,7 +7,6 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 
 class OthersViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
 
-
     suspend fun delete() {
         favoriteRepository.deleteAll()
     }
