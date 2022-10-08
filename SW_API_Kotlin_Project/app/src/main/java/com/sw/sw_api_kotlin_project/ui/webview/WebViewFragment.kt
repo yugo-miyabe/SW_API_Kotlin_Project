@@ -32,6 +32,4 @@ class WebViewFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
-
-
 }

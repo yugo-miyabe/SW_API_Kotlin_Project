@@ -1,7 +1,5 @@
 package com.sw.sw_api_kotlin_project.ui.others
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
@@ -56,8 +55,9 @@ class OthersFragment : BaseFragment() {
             ).show()
         }
         binding.webViewDocumentation.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(WebViewURL.swApiDocumentation))
-            startActivity(intent)
+            val action =
+                OthersFragmentDirections.actionNavOtherToWebView(WebViewURL.swApiDocumentation)
+            findNavController().navigate(action)
         }
     }
 

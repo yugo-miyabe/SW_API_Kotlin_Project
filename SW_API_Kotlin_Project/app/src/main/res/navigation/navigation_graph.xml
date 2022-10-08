@@ -130,7 +130,7 @@
         tools:layout="@layout/fragment_web_view">
         <argument
             android:name="url"
-            app:argType="String" />
+            app:argType="string" />
     </fragment>
 
 </navigation>
