@@ -14,7 +14,6 @@ import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.utils.ListType
 
-// TODO 構成を考え直す
 class SearchResultsAdapter(
     private val searchResults: List<Results<out Parcelable>>,
     private val onPeopleClick: (People) -> Unit,
