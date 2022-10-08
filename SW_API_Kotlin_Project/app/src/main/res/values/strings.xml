@@ -22,30 +22,6 @@
     <string name="other_remove_all_favorites">お気に入りを全て削除</string>
     <string name="other_delete_favorite_item">お気に入り登録されたアイテムを削除しました</string>
     <string name="other_api_document">APIのドキュメント</string>
-    <!-- 登場人物リスト  -->
-    <string name="full_name">名前:</string>
-    <string name="height">身長:</string>
-    <string name="mass">体重:</string>
-    <!-- 惑星リスト -->
-    <string name="planet_name">惑星名:</string>
-    <string name="climate">気候:</string>
-    <string name="terrain">地形:</string>
-    <!-- 映画リスト -->
-    <string name="title">タイトル:</string>
-    <string name="director">監督:</string>
-    <string name="producer">プロデューサー:</string>
-    <!-- 種族リスト -->
-    <string name="species_name">種族名:</string>
-    <string name="classification">分類:</string>
-    <string name="average_height">平均身長:</string>
-    <!-- 車両リスト -->
-    <string name="vehicles_name">車両名:</string>
-    <string name="vehicles_model_name">モデル名:</string>
-    <string name="vehicles_manufacturer_name">メーカー名:</string>
-    <!-- 宇宙船リスト -->
-    <string name="starships_name">宇宙船名:</string>
-    <string name="starships_model_name">モデル名:</string>
-    <string name="starships_manufacturer_name">メーカー名:</string>
     <!-- 登場人物詳細 -->
     <string name="people_details_birth_year">誕生日:</string>
     <string name="people_details_gender">性別:</string>
@@ -70,5 +46,4 @@
     <string name="common_next">次ページへ</string>
     <string name="common_previous">前ページへ</string>
     <string name="common_retry">再試行</string>
-
 </resources>
