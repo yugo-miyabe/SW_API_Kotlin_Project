@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SW_API_Kotlin_Project</string>
+    <string name="app_name">SW_API_Project</string>
     <!-- Navigation -->
     <string name="navigation_home">ホーム</string>
     <string name="navigation_search">検索</string>

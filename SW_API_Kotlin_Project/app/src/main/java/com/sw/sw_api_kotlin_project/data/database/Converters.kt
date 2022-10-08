@@ -9,13 +9,13 @@ import com.sw.sw_api_kotlin_project.data.model.Planet
 
 class Converters {
     @TypeConverter
-    fun fromResults(value: String?): People? {
+    fun fromPeopleResults(value: String?): People? {
         val result = object : TypeToken<People?>() {}.type
         return Gson().fromJson(value, result)
     }
 
     @TypeConverter
-    fun dataToResults(people: People?): String {
+    fun PeopleToResults(people: People?): String {
         val gson = Gson()
         return gson.toJson(people)
     }
