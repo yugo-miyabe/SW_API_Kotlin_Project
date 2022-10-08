@@ -111,7 +111,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/details_skin_color"
+            android:text="@string/people_details_skin_color"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/skin_color_text"
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/details_eye_color"
+            android:text="@string/people_details_eye_color"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
@@ -187,7 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/details_hair_color"
+            android:text="@string/people_details_hair_color"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/image_details_icon"
@@ -256,62 +256,6 @@
             app:layout_constraintStart_toEndOf="@+id/species_label"
             app:layout_constraintTop_toBottomOf="@+id/hair_color_text"
             tools:text="Human" />
-
-        <TextView
-            android:id="@+id/homeworld_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/details_home_world"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/species_label" />
-
-        <TextView
-            android:id="@+id/homeworld_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/homeworld_label"
-            app:layout_constraintTop_toBottomOf="@+id/species_label"
-            tools:text="Tatooine" />
-
-        <TextView
-            android:id="@+id/starships_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/people_details_starships"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/homeworld_text" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_starships"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintTop_toBottomOf="@+id/starships_label" />
-
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:visibility="gone"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/starships_label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

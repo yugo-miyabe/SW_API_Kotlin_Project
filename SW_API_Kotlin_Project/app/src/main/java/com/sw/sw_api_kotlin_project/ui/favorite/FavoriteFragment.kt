@@ -79,7 +79,7 @@ class FavoriteFragment : BaseFragment() {
                     binding.favoriteRecyclerView.layoutManager = LinearLayoutManager(context)
                 } else {
                     binding.favoriteMessage.visibility = View.VISIBLE
-                    binding.favoriteMessage.text = getString(R.string.not_in_favorites)
+                    binding.favoriteMessage.text = getString(R.string.favorite_not_in_favorites)
                 }
             }
 
