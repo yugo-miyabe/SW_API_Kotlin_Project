@@ -117,6 +117,20 @@
         android:id="@+id/nav_other"
         android:name="com.sw.sw_api_kotlin_project.ui.others.OthersFragment"
         android:label="OthersFragment"
-        tools:layout="@layout/fragment_others" />
+        tools:layout="@layout/fragment_others">
+        <action
+            android:id="@+id/action_nav_other_to_web_view"
+            app:destination="@id/web_view" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/web_view"
+        android:name="com.sw.sw_api_kotlin_project.ui.webview.WebViewFragment"
+        android:label="WebViewFragment"
+        tools:layout="@layout/fragment_web_view">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.utils.WebViewURL
 import kotlinx.coroutines.launch
 
 class OthersFragment : BaseFragment() {
@@ -51,6 +53,11 @@ class OthersFragment : BaseFragment() {
                 getString(R.string.other_delete_favorite_item),
                 Toast.LENGTH_SHORT
             ).show()
+        }
+        binding.webViewDocumentation.setOnClickListener {
+            val action =
+                OthersFragmentDirections.actionNavOtherToWebView(WebViewURL.swApiDocumentation)
+            findNavController().navigate(action)
         }
     }
 
