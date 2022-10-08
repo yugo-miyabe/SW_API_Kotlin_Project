@@ -48,7 +48,7 @@ class FilmsDetailsViewModel(
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
     private suspend fun favoriteCheck(name: String): Favorite? =
-        favoriteRepository.getFavoriteState(name = name)
+        favoriteRepository.getFavoriteState(name)
 }
 
 

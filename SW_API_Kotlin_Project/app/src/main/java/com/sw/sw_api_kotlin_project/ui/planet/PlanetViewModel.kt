@@ -13,10 +13,10 @@ class PlanetViewModel(private val planetRepository: PlanetRepository) : BaseView
 
     fun getPlanets(pageType: PageType) = liveData(Dispatchers.IO) {
         pageParameterFormat(pageType)
-        emit(Resource.loading(data = null))
+        emit(Resource.loading(null))
         try {
             val response = planetRepository.getPlanets(page)
-            emit(Resource.success(data = response))
+            emit(Resource.success(response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }

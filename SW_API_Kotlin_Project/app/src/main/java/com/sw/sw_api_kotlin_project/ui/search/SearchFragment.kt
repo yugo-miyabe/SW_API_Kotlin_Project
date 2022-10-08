@@ -102,7 +102,7 @@ class SearchFragment : BaseFragment() {
                 binding.searchResultMessage.visibility = View.GONE
             }
         }
-        viewModel.getSearchResult(searchString = searchString)
+        viewModel.getSearchResult(searchString)
             .observe(viewLifecycleOwner, searchResultObserver)
     }
 

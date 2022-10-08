@@ -8,13 +8,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -32,7 +30,6 @@ class PlanetDetailsFragment : BaseFragment() {
         viewModel = ViewModelProvider(
             this,
             PlanetDetailsFactory(
-                PlanetRepository(swService = SWServiceClient.getService()),
                 FavoriteRepository(
                     FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
                 ),

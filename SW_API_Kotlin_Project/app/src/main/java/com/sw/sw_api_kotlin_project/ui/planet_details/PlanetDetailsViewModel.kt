@@ -35,7 +35,7 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
                 )
             )
         } else {
-            delete(favorite = favorite)
+            delete(favorite)
         }
         getFavoriteState(planet.name)
     }
@@ -52,7 +52,6 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
 }
 
 class PlanetDetailsFactory(
-    private val planetRepository: PlanetRepository,
     private val favoriteRepository: FavoriteRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

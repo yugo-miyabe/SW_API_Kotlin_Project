@@ -9,10 +9,15 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
 
     suspend fun delete(favorite: Favorite) = favoriteDao.delete(favorite = favorite)
 
-    // TODO Peopleのみに修正
     suspend fun getFavoriteState(name: String) = favoriteDao.getFavorite(name = name)
 
+    /**
+     * 全て取得
+     */
     suspend fun getAll(): List<Favorite>? = favoriteDao.getAll()
 
+    /**
+     * 全て削除
+     */
     suspend fun deleteAll() = favoriteDao.deleteAll()
 }

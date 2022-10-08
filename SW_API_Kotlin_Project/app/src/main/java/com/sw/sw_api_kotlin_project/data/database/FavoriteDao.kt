@@ -16,15 +16,9 @@ interface FavoriteDao {
     @Query("SELECT * FROM favorite_table WHERE name = :name LIMIT 1")
     suspend fun getFavorite(name: String): Favorite?
 
-    /**
-     * 全て取得
-     */
     @Query("SELECT * FROM favorite_table")
     suspend fun getAll(): List<Favorite>?
 
-    /**
-     * 全て削除
-     */
     @Query("DELETE FROM favorite_table")
     suspend fun deleteAll()
 }
