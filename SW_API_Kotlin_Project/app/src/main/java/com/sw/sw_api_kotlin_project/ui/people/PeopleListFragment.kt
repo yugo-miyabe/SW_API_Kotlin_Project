@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
@@ -48,6 +48,9 @@ class PeopleListFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        binding.toolbar.setOnClickListener { view ->
+            view.findNavController().navigateUp()
+        }
         binding.nextButton.setOnClickListener {
             getPeople(PageType.NEXT_PAGE)
         }
