@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
@@ -51,6 +52,8 @@ class SearchFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        binding.searchAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
+            getString(R.string.navigation_search)
         binding.searchButton.setOnClickListener {
             val searchString = binding.searchBar.text.toString()
             getSearchResult(searchString)
