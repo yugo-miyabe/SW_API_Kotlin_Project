@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
@@ -48,8 +50,11 @@ class PeopleListFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        binding.toolbar.setOnClickListener { view ->
-            view.findNavController().navigateUp()
+        binding.peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            setOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+            title = getString(R.string.people_list_title)
         }
         binding.nextButton.setOnClickListener {
             getPeople(PageType.NEXT_PAGE)

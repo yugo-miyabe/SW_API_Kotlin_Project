@@ -42,9 +42,7 @@ class HomeFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.toolbar.setOnClickListener { view ->
-            binding.toolbar.setOnClickListener {
-                view.findNavController().navigateUp()
-            }
+            view.findNavController().navigateUp()
         }
         val adapter = HomeAdapter(getHomeList()) {
             val action = when (it) {

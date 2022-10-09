@@ -14,6 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Theme.SW_API_Kotlin_Project"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="リスト" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
         <ImageView
             android:id="@+id/planet_icon"
             android:layout_width="72dp"
@@ -22,7 +40,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_planets_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
             app:tint="@color/teal_700"
             tools:ignore="contentDescription" />
 
@@ -36,7 +54,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/planet_icon"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
             tools:text="Tatooine" />
 
         <TextView
@@ -76,7 +94,7 @@
             android:foregroundGravity="center"
             android:src="@drawable/ic_baseline_star_border_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
             tools:ignore="contentDescription" />
 
         <TextView
