@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.HomeAdapter
 import com.sw.sw_api_kotlin_project.base.BaseFragment
@@ -41,9 +41,8 @@ class HomeFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        binding.toolbar.setOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
+        binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
+            getString(R.string.navigation_home)
         val adapter = HomeAdapter(getHomeList()) {
             val action = when (it) {
                 ListType.PEOPLE -> {

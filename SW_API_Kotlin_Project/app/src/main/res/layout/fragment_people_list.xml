@@ -16,7 +16,7 @@
 
         <include
             android:id="@+id/people_list_appbar"
-            layout="@layout/navigation_appbar"
+            layout="@layout/include_back_arrow_appbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
