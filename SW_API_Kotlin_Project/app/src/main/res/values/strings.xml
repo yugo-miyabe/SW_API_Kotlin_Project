@@ -35,7 +35,7 @@
     <string name="people_details_hair_color">髪色:</string>
     <string name="people_details_species">種族:</string>
     <!-- 映画一覧 -->
-    <string name="films_title">映画一覧</string>
+    <string name="film_title">映画一覧</string>
     <!-- 映画詳細 -->
     <string name="films_details_title">映画詳細</string>
     <string name="films_details_release_date">公開日:</string>
