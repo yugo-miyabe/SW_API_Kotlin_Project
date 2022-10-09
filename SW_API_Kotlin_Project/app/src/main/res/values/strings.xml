@@ -51,6 +51,8 @@
     <string name="planet_details_terrain">地形:</string>
     <string name="planet_details_surface">地表水:</string>
     <string name="planet_details_population">人口:</string>
+    <!-- その他 -->
+    <string name="web_view_title">ドキュメント</string>
     <!-- 共通 -->
     <string name="common_next">次ページへ</string>
     <string name="common_previous">前ページへ</string>

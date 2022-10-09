@@ -59,7 +59,12 @@ class OthersFragment : BaseFragment() {
         }
         binding.webViewDocumentation.setOnClickListener {
             val action =
-                OthersFragmentDirections.actionNavOtherToWebView(WebViewURL.swApiDocumentation)
+                OthersFragmentDirections.actionNavOtherToWebView(
+                    arrayOf(
+                        getString(R.string.web_view_title),
+                        WebViewURL.swApiDocumentation,
+                    )
+                )
             findNavController().navigate(action)
         }
     }
