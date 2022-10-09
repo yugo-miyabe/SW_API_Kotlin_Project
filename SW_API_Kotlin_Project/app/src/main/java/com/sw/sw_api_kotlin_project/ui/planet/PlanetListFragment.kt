@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.PlanetAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
+import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 
@@ -24,7 +27,7 @@ import com.sw.sw_api_kotlin_project.utils.PageType
  */
 class PlanetListFragment : BaseFragment() {
     private lateinit var viewModel: PlanetViewModel
-    private var _binding: FragmentPeopleListBinding? = null
+    private var _binding: FragmentPlanetListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +42,18 @@ class PlanetListFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
+        _binding = FragmentPlanetListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun initView() {
         super.initView()
+        binding.planetListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            setOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+            title = getString(R.string.planet_title)
+        }
         binding.nextButton.setOnClickListener {
             getPlanet(PageType.NEXT_PAGE)
         }
@@ -67,8 +76,8 @@ class PlanetListFragment : BaseFragment() {
                     val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
                     findNavController().navigate(action)
                 }
-                binding.recyclerView.adapter = adapter
-                binding.recyclerView.layoutManager = LinearLayoutManager(context)
+                binding.planetRecycler.adapter = adapter
+                binding.planetRecycler.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {
@@ -87,7 +96,7 @@ class PlanetListFragment : BaseFragment() {
             override fun onViewChange(shouldListShow: Boolean) {
                 super.onViewChange(shouldListShow)
                 binding.progressBar.isVisible = !shouldListShow
-                binding.recyclerView.isVisible = shouldListShow
+                binding.planetRecycler.isVisible = shouldListShow
                 binding.previousButton.isVisible = shouldListShow
                 binding.nextButton.isVisible = shouldListShow
             }

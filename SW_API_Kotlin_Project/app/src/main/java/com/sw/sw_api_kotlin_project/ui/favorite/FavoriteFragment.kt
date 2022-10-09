@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.FavoriteAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
@@ -42,12 +43,13 @@ class FavoriteFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun initView() {
         super.initView()
+        binding.favoriteAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
+            getString(R.string.navigation_favorite)
         getFavoriteList()
     }
 

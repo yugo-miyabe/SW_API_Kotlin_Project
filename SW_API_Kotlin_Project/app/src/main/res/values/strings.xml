@@ -22,7 +22,10 @@
     <string name="other_remove_all_favorites">お気に入りを全て削除</string>
     <string name="other_delete_favorite_item">お気に入り登録されたアイテムを削除しました</string>
     <string name="other_api_document">APIのドキュメント</string>
+    <!-- 登場人物一覧画面 -->
+    <string name="people_list_title">登場人物一覧</string>
     <!-- 登場人物詳細 -->
+    <string name="people_details_title">登場人物詳細</string>
     <string name="people_details_birth_year">誕生日:</string>
     <string name="people_details_gender">性別:</string>
     <string name="people_details_height">身長:</string>
@@ -31,10 +34,16 @@
     <string name="people_details_eye_color">瞳の色:</string>
     <string name="people_details_hair_color">髪色:</string>
     <string name="people_details_species">種族:</string>
-    <!-- 映画詳細 -->
+    <!-- 映画一覧画面 -->
+    <string name="film_title">映画一覧</string>
+    <!-- 映画詳細画面 -->
+    <string name="films_details_title">映画詳細</string>
     <string name="films_details_release_date">公開日:</string>
     <string name="films_details_opening_crawl">オープニングクロール:</string>
-    <!-- 惑星詳細 -->
+    <!-- 惑星一覧画面 -->
+    <string name="planet_title">惑星一覧</string>
+    <!-- 惑星詳細画面 -->
+    <string name="planet_details_title">惑星詳細</string>
     <string name="planet_details_rotation_period">自転周期:</string>
     <string name="planet_details_diameter">直径:</string>
     <string name="planet_details_climate">気候:</string>

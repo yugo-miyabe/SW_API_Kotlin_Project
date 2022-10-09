@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
@@ -47,6 +49,12 @@ class PeopleDetailsFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            setOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+            title = getString(R.string.people_details_title)
+        }
         people = args.people
         people.run {
             binding.fullNameText.text = name

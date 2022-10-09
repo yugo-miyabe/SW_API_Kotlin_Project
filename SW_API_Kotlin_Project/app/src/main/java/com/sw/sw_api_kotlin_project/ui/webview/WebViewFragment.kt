@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.appbar.MaterialToolbar
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.databinding.FragmentWebViewBinding
 
@@ -24,8 +27,14 @@ class WebViewFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        val webViewUrl = args.url
-        binding.webView.loadUrl(webViewUrl)
+        val args = args.url
+        binding.webViewAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            setOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+            title = args[0]
+        }
+        binding.webView.loadUrl(args[1])
     }
 
     override fun onDestroy() {

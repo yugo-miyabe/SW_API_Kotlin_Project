@@ -14,6 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/planet_detail_appbar"
+            layout="@layout/include_back_arrow_appbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/planet_icon"
             android:layout_width="72dp"
@@ -22,7 +29,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_planets_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/planet_detail_appbar"
             app:tint="@color/teal_700"
             tools:ignore="contentDescription" />
 
@@ -36,7 +43,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/planet_icon"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/planet_detail_appbar"
             tools:text="Tatooine" />
 
         <TextView
@@ -76,7 +83,7 @@
             android:foregroundGravity="center"
             android:src="@drawable/ic_baseline_star_border_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/planet_detail_appbar"
             tools:ignore="contentDescription" />
 
         <TextView

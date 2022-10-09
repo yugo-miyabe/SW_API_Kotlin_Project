@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.MaterialToolbar
+import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapters.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
@@ -44,6 +47,12 @@ class FilmsListFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            setOnClickListener { view ->
+                view.findNavController().navigateUp()
+            }
+            title = getString(R.string.film_title)
+        }
         binding.nextButton.setOnClickListener {
             getFilms(PageType.NEXT_PAGE)
         }

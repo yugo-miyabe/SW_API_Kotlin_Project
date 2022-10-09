@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
@@ -44,6 +45,8 @@ class OthersFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        binding.othersAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
+            getString(R.string.navigation_others)
         binding.deleteFavorite.setOnClickListener {
             lifecycleScope.launch {
                 viewModel.delete()
@@ -56,7 +59,12 @@ class OthersFragment : BaseFragment() {
         }
         binding.webViewDocumentation.setOnClickListener {
             val action =
-                OthersFragmentDirections.actionNavOtherToWebView(WebViewURL.swApiDocumentation)
+                OthersFragmentDirections.actionNavOtherToWebView(
+                    arrayOf(
+                        getString(R.string.other_api_document),
+                        WebViewURL.swApiDocumentation,
+                    )
+                )
             findNavController().navigate(action)
         }
     }
