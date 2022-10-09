@@ -37,11 +37,13 @@
     <!-- 映画一覧 -->
     <string name="films_title">映画一覧</string>
     <!-- 映画詳細 -->
+    <string name="films_details_title">映画詳細</string>
     <string name="films_details_release_date">公開日:</string>
     <string name="films_details_opening_crawl">オープニングクロール:</string>
     <!-- 惑星一覧 -->
     <string name="planet_title">惑星一覧</string>
     <!-- 惑星詳細 -->
+    <string name="planet_details_title">惑星詳細</string>
     <string name="planet_details_rotation_period">自転周期:</string>
     <string name="planet_details_diameter">直径:</string>
     <string name="planet_details_climate">気候:</string>
