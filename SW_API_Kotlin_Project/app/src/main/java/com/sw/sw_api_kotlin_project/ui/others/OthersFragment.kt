@@ -61,7 +61,7 @@ class OthersFragment : BaseFragment() {
             val action =
                 OthersFragmentDirections.actionNavOtherToWebView(
                     arrayOf(
-                        getString(R.string.web_view_title),
+                        getString(R.string.other_api_document),
                         WebViewURL.swApiDocumentation,
                     )
                 )
