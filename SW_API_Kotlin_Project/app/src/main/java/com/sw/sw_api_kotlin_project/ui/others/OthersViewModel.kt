@@ -2,13 +2,17 @@ package com.sw.sw_api_kotlin_project.ui.others
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import kotlinx.coroutines.launch
 
 class OthersViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
 
-    suspend fun delete() {
-        favoriteRepository.deleteAll()
+    fun delete() {
+        viewModelScope.launch {
+            favoriteRepository.deleteAll()
+        }
     }
 }
 

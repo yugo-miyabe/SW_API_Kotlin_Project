@@ -51,20 +51,22 @@ class PeopleListFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        binding.peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                view.findNavController().navigateUp()
+        binding.apply {
+            peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+                setOnClickListener { view ->
+                    view.findNavController().navigateUp()
+                }
+                title = getString(R.string.people_list_title)
             }
-            title = getString(R.string.people_list_title)
-        }
-        binding.nextButton.setOnClickListener {
-            getPeople(PageType.NEXT_PAGE)
-        }
-        binding.previousButton.setOnClickListener {
-            getPeople(PageType.PREVIOUS_PAGE)
-        }
-        binding.retryButton.setOnClickListener {
-            getPeople(PageType.CURRENT_PAGE)
+            nextButton.setOnClickListener {
+                getPeople(PageType.NEXT_PAGE)
+            }
+            previousButton.setOnClickListener {
+                getPeople(PageType.PREVIOUS_PAGE)
+            }
+            retryButton.setOnClickListener {
+                getPeople(PageType.CURRENT_PAGE)
+            }
         }
         getPeople(PageType.FIRST_PAGE)
     }

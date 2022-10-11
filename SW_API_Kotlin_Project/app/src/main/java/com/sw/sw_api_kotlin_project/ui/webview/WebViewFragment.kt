@@ -1,6 +1,7 @@
 package com.sw.sw_api_kotlin_project.ui.webview
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,14 +28,21 @@ class WebViewFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        val args = args.url
+        val webViewInfo = args.info
         binding.webViewAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
-            title = args[0]
+            title = webViewInfo.title
         }
-        binding.webView.loadUrl(args[1])
+        binding.webView.loadUrl(webViewInfo.url)
+        binding.webView.setOnKeyListener { _, keyCode, event ->
+            (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
+                binding.webView.goBack()
+            }
+        }
+        binding.webView.isFocusableInTouchMode = true
+        binding.webView.requestFocus()
     }
 
     override fun onDestroy() {
