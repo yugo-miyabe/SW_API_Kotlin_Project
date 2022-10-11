@@ -15,6 +15,7 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -67,13 +68,9 @@ class PeopleDetailsFragment : BaseFragment() {
             binding.massText.text = mass
         }
         binding.peopleFavoriteMark.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.addOrDeleteFavorite(people)
-            }
+            viewModel.addOrDeleteFavorite(people)
         }
-        lifecycleScope.launch {
-            viewModel.getFavoriteState(people.name)
-        }
+        viewModel.getFavoriteState(people.name)
     }
 
     override fun addObservers() {

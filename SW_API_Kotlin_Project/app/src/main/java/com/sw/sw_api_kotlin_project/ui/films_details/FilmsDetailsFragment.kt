@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
@@ -15,7 +14,6 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import kotlinx.coroutines.launch
 
 /**
  * 映画詳細画面
@@ -63,13 +61,9 @@ class FilmsDetailsFragment : BaseFragment() {
             binding.openingCrawlText.text = openingCrawl
         }
         binding.filmFavoriteMark.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.addOrDeleteFavorite(film)
-            }
+            viewModel.addOrDeleteFavorite(film)
         }
-        lifecycleScope.launch {
-            viewModel.getFavoriteState(film.title)
-        }
+        viewModel.getFavoriteState(film.title)
     }
 
     override fun addObservers() {

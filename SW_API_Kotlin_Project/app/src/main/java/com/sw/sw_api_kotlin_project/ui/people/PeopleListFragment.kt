@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -72,11 +73,6 @@ class PeopleListFragment : BaseFragment() {
         val peopleObserver = object : SWLiveDataObserver<Results<People>>() {
             override fun onSuccess(data: Results<People>?) {
                 val people = data!!
-                binding.progressBar.visibility = View.GONE
-                binding.recyclerView.visibility = View.VISIBLE
-                binding.previousButton.visibility = View.VISIBLE
-                binding.nextButton.visibility = View.VISIBLE
-                binding.retryButton.visibility = View.GONE
                 binding.previousButton.isEnabled = people.previous != null
                 binding.nextButton.isEnabled = people.next != null
                 val adapter = PeopleAdapter(
@@ -85,28 +81,29 @@ class PeopleListFragment : BaseFragment() {
                     val action = PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
                     findNavController().navigate(action)
                 }
-
-                binding.recyclerView.adapter = adapter
-                binding.recyclerView.layoutManager = LinearLayoutManager(context)
+                binding.peopleRecyclerView.adapter = adapter
+                binding.peopleRecyclerView.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {
-                binding.progressBar.visibility = View.GONE
-                binding.errorText.visibility = View.VISIBLE
-                binding.previousButton.visibility = View.GONE
-                binding.nextButton.visibility = View.GONE
-                binding.retryButton.visibility = View.VISIBLE
+                binding.progressBar.isVisible = false
+                binding.retryButton.isVisible = true
+                binding.errorText.isVisible = true
                 binding.errorText.text = errorMessage
             }
 
             override fun onLoading() {
                 super.onLoading()
-                binding.recyclerView.visibility = View.GONE
-                binding.previousButton.visibility = View.GONE
-                binding.nextButton.visibility = View.GONE
-                binding.retryButton.visibility = View.GONE
-                binding.errorText.visibility = View.GONE
-                binding.progressBar.visibility = View.VISIBLE
+                binding.retryButton.isVisible = false
+                binding.errorText.isVisible = false
+            }
+
+            override fun onViewChange(shouldListShow: Boolean) {
+                super.onViewChange(shouldListShow)
+                binding.progressBar.isVisible = !shouldListShow
+                binding.peopleRecyclerView.isVisible = shouldListShow
+                binding.previousButton.isVisible = shouldListShow
+                binding.nextButton.isVisible = shouldListShow
             }
         }
         viewModel.getPeople(pageType).observe(viewLifecycleOwner, peopleObserver)
