@@ -38,4 +38,4 @@ API:https://swapi.dev/
 | data | データクラス、データベースのレスポンスなど |
 | fragment | Fragment 各FragmentのViewModel |
 | repository | APIのリクエスト、データベースの操作などを行う |
-| utils | enum、WebViewのリンク、Date型の処理など |
+| utils | Enum、WebViewのリンク、Date型の処理など |
