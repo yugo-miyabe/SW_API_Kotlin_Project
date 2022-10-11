@@ -44,8 +44,8 @@ class PeopleDetailsViewModel(
             } else {
                 delete(favorite)
             }
-            getFavoriteState(people.name)
         }
+        getFavoriteState(people.name)
     }
 
     private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
