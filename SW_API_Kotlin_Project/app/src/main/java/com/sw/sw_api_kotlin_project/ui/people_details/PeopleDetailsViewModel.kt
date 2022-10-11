@@ -11,7 +11,6 @@ import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.DateUtils
 import com.sw.sw_api_kotlin_project.utils.ListType
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PeopleDetailsViewModel(
@@ -27,7 +26,7 @@ class PeopleDetailsViewModel(
     }
 
     fun addOrDeleteFavorite(people: People) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val favorite: Favorite? = favoriteCheck(people.name)
             if (favorite == null) {
                 insert(
@@ -44,8 +43,8 @@ class PeopleDetailsViewModel(
             } else {
                 delete(favorite)
             }
+            getFavoriteState(people.name)
         }
-        getFavoriteState(people.name)
     }
 
     private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
