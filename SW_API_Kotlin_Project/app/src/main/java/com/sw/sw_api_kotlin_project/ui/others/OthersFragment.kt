@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
@@ -15,7 +14,6 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.WebViewURL
-import kotlinx.coroutines.launch
 
 class OthersFragment : BaseFragment() {
     private lateinit var viewModel: OthersViewModel
@@ -48,9 +46,7 @@ class OthersFragment : BaseFragment() {
         binding.othersAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_others)
         binding.deleteFavorite.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.delete()
-            }
+            viewModel.delete()
             Toast.makeText(
                 context,
                 getString(R.string.other_delete_favorite_item),
