@@ -32,8 +32,8 @@ class SearchResultsAdapter(
         private val onFilmClick: (Film) -> Unit,
         private val onPlanetClick: (Planet) -> Unit
     ) : RecyclerView.ViewHolder(view) {
-        private val searchResultImage = view.findViewById<ImageView>(R.id.search_result_image)
-        private val searchResultText = view.findViewById<TextView>(R.id.search_result_text)
+        private val searchResultImage = view.findViewById<ImageView>(R.id.common_image)
+        private val searchResultText = view.findViewById<TextView>(R.id.common_text)
 
         fun peopleBind(people: People) {
             searchResultImage.setImageResource(R.drawable.ic_baseline_face_24)
@@ -62,7 +62,7 @@ class SearchResultsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_search_result, parent, false)
+            .inflate(R.layout.item_common, parent, false)
 
         return ViewHolder(view, onPeopleClick, onFilmClick, onPlanetClick)
     }
