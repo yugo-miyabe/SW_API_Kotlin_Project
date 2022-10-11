@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 
 class FavoriteViewModel(private val favoriteRepository: FavoriteRepository) : BaseViewModel() {
 
-    fun getFavoriteList() = liveData(Dispatchers.Main) {
+    fun getFavoriteList() = liveData(Dispatchers.IO) {
         try {
             val response = favoriteRepository.getAll()
             emit(Resource.success(response))

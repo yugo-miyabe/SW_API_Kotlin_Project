@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.repository.StarShipsRepository
 import com.sw.sw_api_kotlin_project.utils.DateUtils
 import com.sw.sw_api_kotlin_project.utils.ListType
+import kotlinx.coroutines.launch
 
 class PeopleDetailsViewModel(
     private val favoriteRepository: FavoriteRepository
@@ -18,37 +19,41 @@ class PeopleDetailsViewModel(
     private val _favoriteStatus = MutableLiveData<Boolean>()
     val favoriteStatus: LiveData<Boolean> = _favoriteStatus
 
-    suspend fun getFavoriteState(name: String) {
-        _favoriteStatus.value = checkFavoriteState(name)
+    fun getFavoriteState(name: String) {
+        viewModelScope.launch {
+            _favoriteStatus.value = checkFavoriteState(name)
+        }
     }
 
-    private suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
-
-    suspend fun addOrDeleteFavorite(people: People) {
-        val favorite: Favorite? = favoriteCheck(people.name)
-        if (favorite == null) {
-            insert(
-                Favorite(
-                    id = 0,
-                    name = people.name,
-                    listType = ListType.PEOPLE,
-                    people = people,
-                    film = null,
-                    planet = null,
-                    registrationDate = DateUtils.getTodayDateStringYYYYMMDDHHMMSS()
+    fun addOrDeleteFavorite(people: People) {
+        viewModelScope.launch {
+            val favorite: Favorite? = isFavoriteExist(people.name)
+            if (favorite == null) {
+                insert(
+                    Favorite(
+                        id = 0,
+                        name = people.name,
+                        listType = ListType.PEOPLE,
+                        people = people,
+                        film = null,
+                        planet = null,
+                        registrationDate = DateUtils.getTodayDateStringYYYYMMDDHHMMSS()
+                    )
                 )
-            )
-        } else {
-            delete(favorite)
+            } else {
+                delete(favorite)
+            }
+            getFavoriteState(people.name)
         }
-        getFavoriteState(people.name)
     }
 
     private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
 
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
-    private suspend fun favoriteCheck(name: String): Favorite? =
+    private suspend fun checkFavoriteState(name: String): Boolean = isFavoriteExist(name) != null
+
+    private suspend fun isFavoriteExist(name: String): Favorite? =
         favoriteRepository.getFavoriteState(name)
 
 }
