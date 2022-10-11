@@ -6,15 +6,14 @@
 ## アプリ概要
 スターウォーズのAPIを使用したアプリ
 
+[ドキュメント](https://swapi.dev/documentation)
+
 API:https://swapi.dev/
 
 スターウォーズの、登場人物、映画、人種、宇宙船、自動車、惑星を紹介する
 
 * 最小API Level:28
 * ターゲットAPI Level:31
-
-## ドキュメント
-* https://swapi.dev/documentation
 
 ## 使用ライブラリ
 |ライブラリ名|バージョン|用途|
