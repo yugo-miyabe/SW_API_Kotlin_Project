@@ -28,4 +28,15 @@ API:https://swapi.dev/
 
 
 
-## プロジェクト構成
+## パッケージ構成
+| パッケージ名 | 説明 |
+|--|--|
+| activity |  |
+| adapter |  |
+| api |  |
+| base |  |
+| data |  |
+| fragment |  |
+| network |  |
+| repository |  |
+| utils |  |
