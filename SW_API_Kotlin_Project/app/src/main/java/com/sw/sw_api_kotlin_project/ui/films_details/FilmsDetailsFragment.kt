@@ -15,6 +15,7 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -63,11 +64,11 @@ class FilmsDetailsFragment : BaseFragment() {
             binding.openingCrawlText.text = openingCrawl
         }
         binding.filmFavoriteMark.setOnClickListener {
-            lifecycleScope.launch {
+            lifecycleScope.launch(Dispatchers.IO) {
                 viewModel.addOrDeleteFavorite(film)
             }
         }
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             viewModel.getFavoriteState(film.title)
         }
     }
