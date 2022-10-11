@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SW_API_Kotlin_Project">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
