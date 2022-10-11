@@ -13,17 +13,16 @@ API:https://swapi.dev/
 スターウォーズの、登場人物、映画、人種、宇宙船、自動車、惑星を紹介する
 
 * 最小API Level:28
-* ターゲットAPI Level:31
+* ターゲットAPI Level:33
 
 ## 使用ライブラリ
 |ライブラリ名|バージョン|用途|
 |--|--|--|
-| kotlin-serialization | 1.3.1 | jsonコンバーター |
-| Retrofit | 2.9.0 | 通信ライブラリ |
+| Retrofit2 | 2.9.0 | 通信ライブラリ |
 | Timber | 4.7.1 | ログ出力 |
-| | | |
-| | | |
-| | | |
+| Room | 2.4.3 | データベース |
+| LiveData | 2.5.1 | コルーチン|
+| Navigation | 2.9.0 | 画面遷移 |
 
 
 
