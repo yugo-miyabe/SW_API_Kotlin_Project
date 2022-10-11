@@ -31,12 +31,12 @@ API:https://swapi.dev/
 ## パッケージ構成
 | パッケージ名 | 説明 |
 |--|--|
-| activity |  |
-| adapter |  |
+| activity | Activity |
+| adapter | RecyclerView の Adapter |
 | api |  |
 | base |  |
 | data |  |
-| fragment |  |
+| fragment | Fragment |
 | network |  |
 | repository |  |
 | utils |  |
