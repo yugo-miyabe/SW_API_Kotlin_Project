@@ -4,6 +4,7 @@ buildscript {
     ext {
         navigationVersion = "2.3.5"
         room_version = "2.4.3"
+        view_model_scope_version = "2.6.0-alpha02"
     }
 
     dependencies {

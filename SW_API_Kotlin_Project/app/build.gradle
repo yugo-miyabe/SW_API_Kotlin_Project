@@ -59,7 +59,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // viewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-alpha05'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$view_model_scope_version"
     // livedata
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     // okhttp3
