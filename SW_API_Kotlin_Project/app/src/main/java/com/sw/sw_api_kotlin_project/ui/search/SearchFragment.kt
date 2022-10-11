@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.adapters.SearchResultsAdapter
+import com.sw.sw_api_kotlin_project.adapter.SearchResultsAdapter
 import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment

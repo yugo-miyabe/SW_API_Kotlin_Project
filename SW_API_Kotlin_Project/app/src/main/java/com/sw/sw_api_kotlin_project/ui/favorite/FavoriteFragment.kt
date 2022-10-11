@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.adapters.FavoriteAdapter
+import com.sw.sw_api_kotlin_project.adapter.FavoriteAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.Favorite

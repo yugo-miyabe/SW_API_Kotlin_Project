@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.adapters
+package com.sw.sw_api_kotlin_project.adapter
 
 import android.os.Parcelable
 import android.view.LayoutInflater
