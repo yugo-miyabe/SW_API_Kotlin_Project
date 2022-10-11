@@ -33,10 +33,9 @@ API:https://swapi.dev/
 |--|--|
 | activity | Activity |
 | adapter | RecyclerView の Adapter |
-| api |  |
-| base |  |
-| data |  |
-| fragment | Fragment |
-| network |  |
-| repository |  |
-| utils |  |
+| api | API処理の基盤 |
+| base | BaseFragment、BaseViewModel |
+| data | データクラス、データベースのレスポンスなど |
+| fragment | Fragment 各FragmentのViewModel |
+| repository | APIのリクエスト、データベースの操作などを行う |
+| utils | enum、WebViewのリンク、Date型の処理など |
