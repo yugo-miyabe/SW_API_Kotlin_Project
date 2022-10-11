@@ -25,7 +25,7 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
 
     fun addOrDeleteFavorite(planet: Planet) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteCheck(planet.name)
+            val favorite: Favorite? = isFavoriteExist(planet.name)
             if (favorite == null) {
                 insert(
                     Favorite(
@@ -49,9 +49,9 @@ class PlanetDetailsViewModel(private val favoriteRepository: FavoriteRepository)
 
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
-    private suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
+    private suspend fun checkFavoriteState(name: String): Boolean = isFavoriteExist(name) != null
 
-    private suspend fun favoriteCheck(name: String): Favorite? =
+    private suspend fun isFavoriteExist(name: String): Favorite? =
         favoriteRepository.getFavoriteState(name = name)
 
 }

@@ -27,7 +27,7 @@ class FilmsDetailsViewModel(
 
     fun addOrDeleteFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteCheck(film.title)
+            val favorite: Favorite? = isFavoriteExist(film.title)
             if (favorite == null) {
                 insert(
                     Favorite(
@@ -51,9 +51,9 @@ class FilmsDetailsViewModel(
 
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
-    private suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
+    private suspend fun checkFavoriteState(name: String): Boolean = isFavoriteExist(name) != null
 
-    private suspend fun favoriteCheck(name: String): Favorite? =
+    private suspend fun isFavoriteExist(name: String): Favorite? =
         favoriteRepository.getFavoriteState(name)
 }
 

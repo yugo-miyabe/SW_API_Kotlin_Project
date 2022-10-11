@@ -27,7 +27,7 @@ class PeopleDetailsViewModel(
 
     fun addOrDeleteFavorite(people: People) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteCheck(people.name)
+            val favorite: Favorite? = isFavoriteExist(people.name)
             if (favorite == null) {
                 insert(
                     Favorite(
@@ -51,9 +51,9 @@ class PeopleDetailsViewModel(
 
     private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
 
-    private suspend fun checkFavoriteState(name: String): Boolean = favoriteCheck(name) != null
+    private suspend fun checkFavoriteState(name: String): Boolean = isFavoriteExist(name) != null
 
-    private suspend fun favoriteCheck(name: String): Favorite? =
+    private suspend fun isFavoriteExist(name: String): Favorite? =
         favoriteRepository.getFavoriteState(name)
 
 }
