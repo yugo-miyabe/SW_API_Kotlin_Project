@@ -17,13 +17,6 @@ class WebViewFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
     private val args: WebViewFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-        // The callback can be enabled or disabled here or in the lambda
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
