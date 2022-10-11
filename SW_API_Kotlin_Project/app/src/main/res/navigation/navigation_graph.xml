@@ -129,8 +129,8 @@
         android:label="WebViewFragment"
         tools:layout="@layout/fragment_web_view">
         <argument
-            android:name="url"
-            app:argType="string[]" />
+            android:name="info"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.WebViewInfo" />
     </fragment>
 
 </navigation>

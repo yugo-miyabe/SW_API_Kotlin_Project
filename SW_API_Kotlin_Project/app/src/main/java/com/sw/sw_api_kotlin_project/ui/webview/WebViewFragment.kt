@@ -28,14 +28,14 @@ class WebViewFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        val args = args.url
+        val webViewInfo = args.info
         binding.webViewAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
-            title = args[0]
+            title = webViewInfo.title
         }
-        binding.webView.loadUrl(args[1])
+        binding.webView.loadUrl(webViewInfo.url)
         binding.webView.setOnKeyListener { _, keyCode, event ->
             (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {
                 binding.webView.goBack()
