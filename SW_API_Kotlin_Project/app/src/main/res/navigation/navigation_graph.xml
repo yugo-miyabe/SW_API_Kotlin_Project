@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home_list"
-        android:name="com.sw.sw_api_kotlin_project.ui.home.HomeFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="com.sw.sw_api_kotlin_project.ui.search.SearchFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/nav_people_list"
-        android:name="com.sw.sw_api_kotlin_project.ui.people.PeopleListFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.people.PeopleListFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_people_list">
         <action
@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/nav_people_detail"
-        android:name="com.sw.sw_api_kotlin_project.ui.people_details.PeopleDetailsFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.people_details.PeopleDetailsFragment"
         android:label="PeopleDetailsFragment"
         tools:layout="@layout/fragment_people_details">
         <argument
@@ -59,7 +59,7 @@
 
     <fragment
         android:id="@+id/nav_films_list"
-        android:name="com.sw.sw_api_kotlin_project.ui.films.FilmsListFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.films.FilmsListFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_films_list">
         <action
@@ -69,7 +69,7 @@
 
     <fragment
         android:id="@+id/nav_films_detail"
-        android:name="com.sw.sw_api_kotlin_project.ui.films_details.FilmsDetailsFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.films_details.FilmsDetailsFragment"
         android:label="FilmsDetailsFragment"
         tools:layout="@layout/fragment_films_details">
         <argument
@@ -79,7 +79,7 @@
 
     <fragment
         android:id="@+id/nav_planet_list"
-        android:name="com.sw.sw_api_kotlin_project.ui.planet.PlanetListFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.planet.PlanetListFragment"
         android:label="PlanetFragment"
         tools:layout="@layout/fragment_planet_list">
         <action
@@ -89,7 +89,7 @@
 
     <fragment
         android:id="@+id/nav_planet_detail"
-        android:name="com.sw.sw_api_kotlin_project.ui.planet_details.PlanetDetailsFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.planet_details.PlanetDetailsFragment"
         android:label="PlanetDetailsFragment"
         tools:layout="@layout/fragment_planet_details">
         <argument
@@ -99,7 +99,7 @@
 
     <fragment
         android:id="@+id/nav_favorite_list"
-        android:name="com.sw.sw_api_kotlin_project.ui.favorite.FavoriteFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite">
         <action
@@ -115,7 +115,7 @@
 
     <fragment
         android:id="@+id/nav_other"
-        android:name="com.sw.sw_api_kotlin_project.ui.others.OthersFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.others.OthersFragment"
         android:label="OthersFragment"
         tools:layout="@layout/fragment_others">
         <action
@@ -125,7 +125,7 @@
 
     <fragment
         android:id="@+id/web_view"
-        android:name="com.sw.sw_api_kotlin_project.ui.webview.WebViewFragment"
+        android:name="com.sw.sw_api_kotlin_project.fragment.webview.WebViewFragment"
         android:label="WebViewFragment"
         tools:layout="@layout/fragment_web_view">
         <argument

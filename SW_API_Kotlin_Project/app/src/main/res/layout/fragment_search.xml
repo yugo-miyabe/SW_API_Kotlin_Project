@@ -7,7 +7,7 @@
 
         <variable
             name="fragment_search"
-            type="com.sw.sw_api_kotlin_project.ui.search.SearchViewModel" />
+            type="com.sw.sw_api_kotlin_project.fragment.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

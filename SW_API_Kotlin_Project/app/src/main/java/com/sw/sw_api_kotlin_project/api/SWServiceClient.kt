@@ -1,6 +1,6 @@
 package com.sw.sw_api_kotlin_project.api
 
-import com.sw.sw_api_kotlin_project.network.SWService
+import com.sw.sw_api_kotlin_project.api.network.SWService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
