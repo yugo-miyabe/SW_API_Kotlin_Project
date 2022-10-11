@@ -19,7 +19,7 @@ API:https://swapi.dev/
 |ライブラリ名|バージョン|用途|
 |--|--|--|
 | Retrofit2 | 2.9.0 | 通信ライブラリ |
-| Timber | 4.7.1 | ログ出力 |
+| Timber | 5.0.1 | ログ出力 |
 | Room | 2.4.3 | データベース |
 | LiveData | 2.5.1 | コルーチン|
 | Navigation | 2.9.0 | 画面遷移 |
