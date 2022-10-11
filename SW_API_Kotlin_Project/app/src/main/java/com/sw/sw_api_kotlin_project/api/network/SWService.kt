@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.network
+package com.sw.sw_api_kotlin_project.api.network
 
 import com.sw.sw_api_kotlin_project.data.model.APIRoot
 import com.sw.sw_api_kotlin_project.data.model.Film
