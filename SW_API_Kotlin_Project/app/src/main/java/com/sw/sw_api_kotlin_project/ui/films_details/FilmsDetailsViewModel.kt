@@ -38,7 +38,7 @@ class FilmsDetailsViewModel(
                 )
             )
         } else {
-            delete(favorite = favorite)
+            delete(favorite)
         }
         getFavoriteState(film.title)
     }

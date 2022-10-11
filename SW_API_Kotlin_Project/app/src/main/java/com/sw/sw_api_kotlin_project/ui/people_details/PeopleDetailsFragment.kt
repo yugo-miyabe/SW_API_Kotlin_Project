@@ -68,13 +68,9 @@ class PeopleDetailsFragment : BaseFragment() {
             binding.massText.text = mass
         }
         binding.peopleFavoriteMark.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.addOrDeleteFavorite(people)
-            }
+            viewModel.addOrDeleteFavorite(people)
         }
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.getFavoriteState(people.name)
-        }
+        viewModel.getFavoriteState(people.name)
     }
 
     override fun addObservers() {
