@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
@@ -15,8 +14,6 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * 惑星詳細画面
@@ -67,13 +64,9 @@ class PlanetDetailsFragment : BaseFragment() {
             binding.terrainText.text = terrain
         }
         binding.planetFavoriteMark.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                viewModel.addOrDeleteFavorite(planet)
-            }
+            viewModel.addOrDeleteFavorite(planet)
         }
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.getFavoriteState(planet.name)
-        }
+        viewModel.getFavoriteState(planet.name)
     }
 
     override fun addObservers() {
@@ -91,5 +84,4 @@ class PlanetDetailsFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
-
 }
