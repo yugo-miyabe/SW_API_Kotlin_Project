@@ -39,9 +39,9 @@ class PeopleAdapter(
         return ViewHolder(view, onClick)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(peopleList[position])
-    }
+
 
     override fun getItemCount() = peopleList.size
 
