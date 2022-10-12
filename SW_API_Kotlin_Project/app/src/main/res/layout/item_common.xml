@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/face_image_Icon"
+            android:id="@+id/common_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="4dp"
@@ -27,13 +27,13 @@
             tools:ignore="contentDescription" />
 
         <TextView
-            android:id="@+id/full_name_text"
+            android:id="@+id/common_text"
             style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/face_image_Icon"
+            app:layout_constraintStart_toEndOf="@+id/common_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Luke Skywalker" />
 

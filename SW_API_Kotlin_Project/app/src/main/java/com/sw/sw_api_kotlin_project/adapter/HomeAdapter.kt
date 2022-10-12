@@ -13,8 +13,7 @@ import com.sw.sw_api_kotlin_project.utils.ListType
 class HomeAdapter(
     private val homeItemList: List<HomeItem>,
     private val onClick: (ListType) -> Unit
-) :
-    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     class ViewHolder(private val view: View, private val onClick: (ListType) -> Unit) :
         RecyclerView.ViewHolder(view) {
         private val image = view.findViewById<ImageView>(R.id.home_image)
@@ -31,13 +30,12 @@ class HomeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home, parent, false)
-
         return ViewHolder(view, onClick)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(homeItemList[position])
-    }
+
 
     override fun getItemCount(): Int = ListType.values().size
 }
