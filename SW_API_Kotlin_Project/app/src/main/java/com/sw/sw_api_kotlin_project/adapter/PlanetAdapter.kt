@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.Planet
 
-class PlanetAdapter(private val planetList: List<Planet>, private val onClick: (Planet) -> Unit) :
-    RecyclerView.Adapter<PlanetAdapter.ViewHolder>() {
+class PlanetAdapter(
+    private val planetList: List<Planet>,
+    private val onClick: (Planet) -> Unit
+) : RecyclerView.Adapter<PlanetAdapter.ViewHolder>() {
 
     class ViewHolder(private val view: View, private val onClick: (Planet) -> Unit) :
         RecyclerView.ViewHolder(view) {

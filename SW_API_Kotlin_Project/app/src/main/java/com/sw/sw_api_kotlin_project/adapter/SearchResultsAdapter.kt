@@ -19,8 +19,7 @@ class SearchResultsAdapter(
     private val onPeopleClick: (People) -> Unit,
     private val onFilmClick: (Film) -> Unit,
     private val onPlanetClick: (Planet) -> Unit
-) :
-    RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
 
     private val peopleMaxCount = searchResults[ListType.PEOPLE.ordinal].results.size
     private val filmMaxCount = searchResults[ListType.FILM.ordinal].results.size
