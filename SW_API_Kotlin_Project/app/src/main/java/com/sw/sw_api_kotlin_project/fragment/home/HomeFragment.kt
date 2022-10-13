@@ -15,15 +15,17 @@ import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.HomeItem
 import com.sw.sw_api_kotlin_project.databinding.FragmentHomeBinding
 import com.sw.sw_api_kotlin_project.utils.ListType
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ホーム画面
  */
+@AndroidEntryPoint
 class HomeFragment : BaseFragment() {
     private lateinit var viewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = checkNotNull(_binding)
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this, HomeFactory())[HomeViewModel::class.java]

@@ -20,10 +20,12 @@ import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 登場人物一覧画面
  */
+@AndroidEntryPoint
 class PeopleListFragment : BaseFragment() {
     private lateinit var viewModel: PeopleListViewModel
     private var _binding: FragmentPeopleListBinding? = null

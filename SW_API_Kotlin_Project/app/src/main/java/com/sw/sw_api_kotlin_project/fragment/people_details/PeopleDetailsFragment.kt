@@ -14,10 +14,12 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 登場人物詳細画面
  */
+@AndroidEntryPoint
 class PeopleDetailsFragment : BaseFragment() {
     private lateinit var viewModel: PeopleDetailsViewModel
     private var _binding: FragmentPeopleDetailsBinding? = null
