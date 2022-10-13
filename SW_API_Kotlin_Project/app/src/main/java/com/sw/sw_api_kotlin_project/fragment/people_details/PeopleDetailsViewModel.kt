@@ -9,14 +9,14 @@ import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.utils.ListDetailsDatabase
 import com.sw.sw_api_kotlin_project.utils.DateUtils
+import com.sw.sw_api_kotlin_project.utils.ListDetailsDatabase
 import com.sw.sw_api_kotlin_project.utils.ListType
 import kotlinx.coroutines.launch
 
 class PeopleDetailsViewModel(
     private val favoriteRepository: FavoriteRepository
-) : ListDetailsDatabase, BaseViewModel() {
+) : BaseViewModel(), ListDetailsDatabase {
     private val _favoriteStatus = MutableLiveData<Boolean>()
     val favoriteStatus: LiveData<Boolean> = _favoriteStatus
 
