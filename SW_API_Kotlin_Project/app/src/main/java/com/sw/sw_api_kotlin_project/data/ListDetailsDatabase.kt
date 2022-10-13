@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.utils
+package com.sw.sw_api_kotlin_project.data
 
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 
