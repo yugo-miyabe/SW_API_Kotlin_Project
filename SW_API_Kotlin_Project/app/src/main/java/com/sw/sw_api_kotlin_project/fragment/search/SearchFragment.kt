@@ -5,6 +5,7 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -92,9 +93,10 @@ class SearchFragment : BaseFragment() {
 
             override fun onError(errorMessage: String) {
                 binding.searchButton.isEnabled = true
+                binding.searchResultMessage.isVisible = true
                 binding.searchResultMessage.text = errorMessage
+                binding.searchResultRecyclerView.isVisible = false
                 binding.progressBar.visibility = View.GONE
-                binding.searchResultMessage.visibility = View.GONE
             }
 
             override fun onLoading() {
