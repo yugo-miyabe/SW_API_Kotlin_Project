@@ -9,13 +9,14 @@ import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.utils.ListDetailsDatabase
 import com.sw.sw_api_kotlin_project.utils.DateUtils
 import com.sw.sw_api_kotlin_project.utils.ListType
 import kotlinx.coroutines.launch
 
 class PeopleDetailsViewModel(
     private val favoriteRepository: FavoriteRepository
-) : BaseViewModel() {
+) : ListDetailsDatabase, BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()
     val favoriteStatus: LiveData<Boolean> = _favoriteStatus
 
@@ -47,13 +48,13 @@ class PeopleDetailsViewModel(
         }
     }
 
-    private suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
-
-    private suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
-
     private suspend fun checkFavoriteState(name: String): Boolean = isFavoriteExist(name) != null
 
-    private suspend fun isFavoriteExist(name: String): Favorite? =
+    override suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
+
+    override suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
+
+    override suspend fun isFavoriteExist(name: String): Favorite? =
         favoriteRepository.getFavoriteState(name)
 
 }
