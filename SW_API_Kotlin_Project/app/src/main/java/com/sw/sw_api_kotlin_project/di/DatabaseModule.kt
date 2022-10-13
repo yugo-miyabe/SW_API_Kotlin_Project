@@ -29,6 +29,4 @@ object DatabaseModule {
     fun provideFavoriteDao(database: FavoriteDatabase): FavoriteDao {
         return database.favoriteDao()
     }
-
-
 }

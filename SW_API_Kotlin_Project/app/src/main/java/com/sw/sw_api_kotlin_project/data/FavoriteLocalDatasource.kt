@@ -15,6 +15,7 @@ class FavoriteLocalDatasource @Inject constructor(private val favoriteDao: Favor
         favoriteDao.delete(favorite)
     }
 
-    override suspend fun isFavoriteExist(name: String): Favorite? = favoriteDao.getFavorite(name)
+    override suspend fun isFavoriteExist(name: String): Favorite? =
+        return favoriteDao.getFavorite(name)
 
 }
