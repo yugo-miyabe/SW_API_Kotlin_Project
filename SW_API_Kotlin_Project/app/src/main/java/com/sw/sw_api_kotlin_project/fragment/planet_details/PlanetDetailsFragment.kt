@@ -31,7 +31,7 @@ class PlanetDetailsFragment : BaseFragment() {
             this,
             PlanetDetailsFactory(
                 FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
+                    FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao()
                 ),
             )
         )[PlanetDetailsViewModel::class.java]

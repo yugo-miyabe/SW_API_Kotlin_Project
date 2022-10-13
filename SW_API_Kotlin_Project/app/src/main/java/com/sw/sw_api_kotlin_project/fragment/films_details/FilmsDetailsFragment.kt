@@ -31,7 +31,7 @@ class FilmsDetailsFragment : BaseFragment() {
             ViewModelProvider(
                 this, FilmsDetailsFactory(
                     FavoriteRepository(
-                        FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
+                        FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao()
                     ),
                 )
             )[FilmsDetailsViewModel::class.java]

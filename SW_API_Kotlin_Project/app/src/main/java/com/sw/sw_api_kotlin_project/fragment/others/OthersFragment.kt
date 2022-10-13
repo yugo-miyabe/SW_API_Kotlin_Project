@@ -26,7 +26,7 @@ class OthersFragment : BaseFragment() {
         viewModel = ViewModelProvider(
             this, OthersViewModelFactory(
                 FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao(),
+                    FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao(),
                 ),
             )
         )[OthersViewModel::class.java]

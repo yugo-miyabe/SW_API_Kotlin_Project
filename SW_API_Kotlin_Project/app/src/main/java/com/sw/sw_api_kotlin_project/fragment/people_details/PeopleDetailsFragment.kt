@@ -31,7 +31,7 @@ class PeopleDetailsFragment : BaseFragment() {
             this,
             PeopleDetailsFactory(
                 FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
+                    FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao()
                 ),
             ),
         )[PeopleDetailsViewModel::class.java]

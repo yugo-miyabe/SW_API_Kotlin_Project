@@ -31,7 +31,7 @@ class FavoriteFragment : BaseFragment() {
             this,
             FavoriteFactory(
                 FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
+                    FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao()
                 )
             )
         )[FavoriteViewModel::class.java]
