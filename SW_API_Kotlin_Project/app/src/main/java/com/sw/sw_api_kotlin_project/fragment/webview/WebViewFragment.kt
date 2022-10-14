@@ -11,7 +11,12 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.databinding.FragmentWebViewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * WebView
+ */
+@AndroidEntryPoint
 class WebViewFragment : BaseFragment() {
     private var _binding: FragmentWebViewBinding? = null
     private val binding get() = checkNotNull(_binding)

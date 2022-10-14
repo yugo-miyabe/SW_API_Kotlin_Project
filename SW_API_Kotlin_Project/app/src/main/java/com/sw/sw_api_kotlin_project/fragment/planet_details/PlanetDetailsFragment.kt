@@ -14,10 +14,12 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 惑星詳細画面
  */
+@AndroidEntryPoint
 class PlanetDetailsFragment : BaseFragment() {
     private val viewModel by viewModels<PlanetDetailsViewModel> {
         PlanetDetailsFactory(

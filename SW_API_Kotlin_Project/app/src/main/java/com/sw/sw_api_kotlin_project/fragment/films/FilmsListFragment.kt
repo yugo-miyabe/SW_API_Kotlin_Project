@@ -20,10 +20,12 @@ import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 映画一覧画面
  */
+@AndroidEntryPoint
 class FilmsListFragment : BaseFragment() {
     private val viewModel by viewModels<FilmsListViewModel> {
         FilmsListViewModelFactory(FilmsRepository(SWServiceClient.getService()))

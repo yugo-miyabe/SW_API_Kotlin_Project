@@ -21,10 +21,12 @@ import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.ListType
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 検索画面
  */
+@AndroidEntryPoint
 class SearchFragment : BaseFragment() {
     private val viewModel by viewModels<SearchViewModel> {
         SearchViewModelFactory(

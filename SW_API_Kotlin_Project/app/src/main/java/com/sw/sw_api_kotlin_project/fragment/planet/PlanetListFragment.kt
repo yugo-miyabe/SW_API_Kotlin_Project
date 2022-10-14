@@ -20,11 +20,13 @@ import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
  * 惑星一覧画面
  */
+@AndroidEntryPoint
 class PlanetListFragment : BaseFragment() {
     private val viewModel by viewModels<PlanetViewModel> {
         PlanetViewModelFactory(PlanetRepository(SWServiceClient.getService()))

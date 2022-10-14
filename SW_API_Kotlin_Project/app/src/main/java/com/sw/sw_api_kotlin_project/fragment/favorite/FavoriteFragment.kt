@@ -16,10 +16,12 @@ import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * お気に入り画面
  */
+@AndroidEntryPoint
 class FavoriteFragment : BaseFragment() {
     private val viewModel by viewModels<FavoriteViewModel> {
         FavoriteFactory(

@@ -15,7 +15,12 @@ import com.sw.sw_api_kotlin_project.data.model.WebViewInfo
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.WebViewURL
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * その他画面
+ */
+@AndroidEntryPoint
 class OthersFragment : BaseFragment() {
     private val viewModel by viewModels<OthersViewModel> {
         OthersViewModelFactory(

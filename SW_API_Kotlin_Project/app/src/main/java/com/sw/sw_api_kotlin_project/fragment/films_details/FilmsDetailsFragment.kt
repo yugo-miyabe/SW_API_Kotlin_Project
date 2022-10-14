@@ -14,10 +14,12 @@ import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 映画詳細画面
  */
+@AndroidEntryPoint
 class FilmsDetailsFragment : BaseFragment() {
     private val viewModel by viewModels<FilmsDetailsViewModel> {
         FilmsDetailsFactory(
