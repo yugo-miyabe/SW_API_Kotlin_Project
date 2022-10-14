@@ -29,6 +29,14 @@
 
     </activity>
 
+    <activity
+        android:id="@+id/nav_films_list"
+        android:name="com.sw.sw_api_kotlin_project.activity.films_list.FilmsListActivity"
+        android:label="FilmsListActivity"
+        tools:layout="@layout/activity_films_list">
+
+    </activity>
+
     <fragment
         android:id="@+id/nav_search"
         android:name="com.sw.sw_api_kotlin_project.fragment.search.SearchFragment"
@@ -55,15 +63,6 @@
             app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_films_list"
-        android:name="com.sw.sw_api_kotlin_project.fragment.films.FilmsListFragment"
-        android:label="FilmsFragment"
-        tools:layout="@layout/fragment_films_list">
-        <action
-            android:id="@+id/action_nav_films_to_nav_films_detail"
-            app:destination="@id/nav_films_detail" />
-    </fragment>
 
     <fragment
         android:id="@+id/nav_films_detail"

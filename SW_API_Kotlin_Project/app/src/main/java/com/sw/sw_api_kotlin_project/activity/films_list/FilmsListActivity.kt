@@ -1,22 +1,18 @@
-package com.sw.sw_api_kotlin_project.fragment.films
+package com.sw.sw_api_kotlin_project.activity.films_list
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.base.BaseActivity
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
+import com.sw.sw_api_kotlin_project.databinding.ActivityFilmsListBinding
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,21 +20,16 @@ import dagger.hilt.android.AndroidEntryPoint
  * 映画一覧画面
  */
 @AndroidEntryPoint
-class FilmsListFragment : BaseFragment() {
-    private val viewModel: FilmsListViewModel by viewModels()
-    private var _binding: FragmentFilmsListBinding? = null
+class FilmsListActivity : BaseActivity() {
+    private var _binding: ActivityFilmsListBinding? = null
     private val binding get() = checkNotNull(_binding)
+    private val viewModel: FilmsListViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFilmsListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _binding = ActivityFilmsListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    override fun initView() {
-        super.initView()
         binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
                 view.findNavController().navigateUp()
@@ -64,11 +55,11 @@ class FilmsListFragment : BaseFragment() {
                 binding.previousButton.isEnabled = films.previous != null
                 binding.nextButton.isEnabled = films.next != null
                 val adapter = FilmsAdapter(films.results) {
-                    val action = FilmsListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
-                    findNavController().navigate(action)
+                    // TODO 画面遷移
+
                 }
                 binding.recyclerView.adapter = adapter
-                binding.recyclerView.layoutManager = LinearLayoutManager(context)
+                binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
             }
 
             override fun onError(errorMessage: String) {
@@ -92,7 +83,7 @@ class FilmsListFragment : BaseFragment() {
                 binding.nextButton.isVisible = shouldListShow
             }
         }
-        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmObserver)
+        viewModel.getFilms(pageType).observe(this, filmObserver)
     }
 
     override fun onDestroy() {

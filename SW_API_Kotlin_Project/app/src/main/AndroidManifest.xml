@@ -17,6 +17,9 @@
             android:name=".activity.people_list.PeopleListActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.films_list.FilmsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
