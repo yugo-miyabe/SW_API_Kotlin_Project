@@ -1,15 +1,18 @@
 package com.sw.sw_api_kotlin_project.fragment.planet
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 import com.sw.sw_api_kotlin_project.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class PlanetViewModel(private val planetRepository: PlanetRepository) : BaseViewModel() {
+@HiltViewModel
+class PlanetViewModel @Inject constructor(
+    private val planetRepository: PlanetRepository
+) : BaseViewModel() {
 
     fun getPlanets(pageType: PageType) = liveData(Dispatchers.IO) {
         pageParameterFormat(pageType)
@@ -20,16 +23,5 @@ class PlanetViewModel(private val planetRepository: PlanetRepository) : BaseView
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
-    }
-}
-
-class PlanetViewModelFactory(private val planetRepository: PlanetRepository) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PlanetViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return PlanetViewModel(planetRepository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

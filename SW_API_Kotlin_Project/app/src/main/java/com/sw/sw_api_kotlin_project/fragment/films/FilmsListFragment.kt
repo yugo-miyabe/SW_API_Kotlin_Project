@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.FilmsAdapter
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsListBinding
-import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,9 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class FilmsListFragment : BaseFragment() {
-    private val viewModel by viewModels<FilmsListViewModel> {
-        FilmsListViewModelFactory(FilmsRepository(SWServiceClient.getService()))
-    }
+    private val viewModel: FilmsListViewModel by viewModels()
     private var _binding: FragmentFilmsListBinding? = null
     private val binding get() = checkNotNull(_binding)
 

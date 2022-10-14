@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.PeopleAdapter
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,9 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PeopleListFragment : BaseFragment() {
-    private val viewModel by viewModels<PeopleListViewModel> {
-        PeopleListViewModelFactory(PeopleRepository(SWServiceClient.getService()))
-    }
+    private val viewModel: PeopleListViewModel by viewModels()
     private var _binding: FragmentPeopleListBinding? = null
     private val binding get() = checkNotNull(_binding)
 

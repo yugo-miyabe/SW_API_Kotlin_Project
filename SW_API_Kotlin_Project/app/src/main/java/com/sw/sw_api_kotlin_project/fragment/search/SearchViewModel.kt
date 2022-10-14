@@ -1,8 +1,6 @@
 package com.sw.sw_api_kotlin_project.fragment.search
 
 import android.os.Parcelable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.model.Results
@@ -10,9 +8,12 @@ import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class SearchViewModel(
+@HiltViewModel
+class SearchViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository,
     private val filmsRepository: FilmsRepository,
     private val planetRepository: PlanetRepository,
@@ -32,21 +33,4 @@ class SearchViewModel(
         }
     }
 
-}
-
-class SearchViewModelFactory(
-    private val peopleRepository: PeopleRepository,
-    private val filmsRepository: FilmsRepository,
-    private val planetRepository: PlanetRepository,
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST") return SearchViewModel(
-                peopleRepository,
-                filmsRepository,
-                planetRepository
-            ) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
 }

@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.PlanetAdapter
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
-import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,9 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PlanetListFragment : BaseFragment() {
-    private val viewModel by viewModels<PlanetViewModel> {
-        PlanetViewModelFactory(PlanetRepository(SWServiceClient.getService()))
-    }
+    private val viewModel: PlanetViewModel by viewModels()
     private var _binding: FragmentPlanetListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
