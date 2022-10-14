@@ -2,21 +2,21 @@ package com.sw.sw_api_kotlin_project.fragment.films_details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.DateFormatter
-import com.sw.sw_api_kotlin_project.data.ListDetailsDatabase
 import com.sw.sw_api_kotlin_project.utils.ListType
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FilmsDetailsViewModel(
+@HiltViewModel
+class FilmsDetailsViewModel @Inject constructor(
     private val favoriteRepository: FavoriteRepository
-) : BaseViewModel(), ListDetailsDatabase {
+) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()
     val favoriteStatus: LiveData<Boolean> = _favoriteStatus
 
@@ -28,9 +28,9 @@ class FilmsDetailsViewModel(
 
     fun addOrDeleteFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = isFavoriteExist(film.title)
+            val favorite: Favorite? = favoriteRepository.getFavoriteState(film.title)
             if (favorite == null) {
-                insert(
+                favoriteRepository.insert(
                     Favorite(
                         id = 0,
                         name = film.title,
@@ -42,30 +42,12 @@ class FilmsDetailsViewModel(
                     )
                 )
             } else {
-                delete(favorite)
+                favoriteRepository.delete(favorite)
             }
             getFavoriteState(film.title)
         }
     }
 
-    private suspend fun checkFavoriteState(name: String): Boolean = isFavoriteExist(name) != null
-    
-    override suspend fun insert(favorite: Favorite) = favoriteRepository.insert(favorite)
-
-    override suspend fun delete(favorite: Favorite) = favoriteRepository.delete(favorite)
-
-    override suspend fun isFavoriteExist(name: String): Favorite? =
-        favoriteRepository.getFavoriteState(name)
-}
-
-
-class FilmsDetailsFactory(private val favoriteRepository: FavoriteRepository) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(FilmsDetailsViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return FilmsDetailsViewModel(favoriteRepository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
+    private suspend fun checkFavoriteState(name: String): Boolean =
+        favoriteRepository.getFavoriteState(name) != null
 }
