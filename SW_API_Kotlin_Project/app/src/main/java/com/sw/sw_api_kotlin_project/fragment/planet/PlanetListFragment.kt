@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,17 +26,11 @@ import com.sw.sw_api_kotlin_project.utils.PageType
  * 惑星一覧画面
  */
 class PlanetListFragment : BaseFragment() {
-    private lateinit var viewModel: PlanetViewModel
+    private val viewModel by viewModels<PlanetViewModel> {
+        PlanetViewModelFactory(PlanetRepository(SWServiceClient.getService()))
+    }
     private var _binding: FragmentPlanetListBinding? = null
     private val binding get() = checkNotNull(_binding)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            PlanetViewModelFactory(PlanetRepository(SWServiceClient.getService()))
-        )[PlanetViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

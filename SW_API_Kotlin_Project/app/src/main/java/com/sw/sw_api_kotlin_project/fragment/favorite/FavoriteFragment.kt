@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
@@ -21,26 +21,16 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
  * お気に入り画面
  */
 class FavoriteFragment : BaseFragment() {
-    private lateinit var viewModel: FavoriteViewModel
+    private val viewModel by viewModels<FavoriteViewModel> {
+        FavoriteFactory(
+            FavoriteRepository(FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao())
+        )
+    }
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = checkNotNull(_binding)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            FavoriteFactory(
-                FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
-                )
-            )
-        )[FavoriteViewModel::class.java]
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
