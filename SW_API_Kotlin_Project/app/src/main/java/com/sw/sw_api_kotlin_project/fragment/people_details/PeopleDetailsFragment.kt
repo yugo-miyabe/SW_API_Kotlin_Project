@@ -10,10 +10,8 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
-import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -21,11 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PeopleDetailsFragment : BaseFragment() {
-    private val viewModel by viewModels<PeopleDetailsViewModel> {
-        PeopleDetailsFactory(
-            FavoriteRepository(FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao()),
-        )
-    }
+    private val viewModel: PeopleDetailsViewModel by viewModels()
     private var _binding: FragmentPeopleDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val args: PeopleDetailsFragmentArgs by navArgs()
