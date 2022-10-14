@@ -9,7 +9,7 @@ import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.utils.DateUtils
+import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import com.sw.sw_api_kotlin_project.data.ListDetailsDatabase
 import com.sw.sw_api_kotlin_project.utils.ListType
 import kotlinx.coroutines.launch
@@ -38,7 +38,7 @@ class PlanetDetailsViewModel(
                         people = null,
                         film = null,
                         planet = planet,
-                        registrationDate = DateUtils.getTodayDateStringYYYYMMDDHHMMSS()
+                        registrationDate = DateFormatter.getTodayDateStringYYYYMMDDHHMMSS()
                     )
                 )
             } else {

@@ -3,7 +3,7 @@ package com.sw.sw_api_kotlin_project.utils
 import java.text.SimpleDateFormat
 import java.util.*
 
-object DateUtils {
+object DateFormatter {
     private val FORMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd HH:mm"
 
     fun getTodayDateStringYYYYMMDDHHMMSS(): String {
