@@ -32,7 +32,8 @@ class FilmsListActivity : BaseActivity() {
 
         binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
-                view.findNavController().navigateUp()
+                //view.findNavController().navigateUp()
+                finish()
             }
             title = getString(R.string.film_title)
         }

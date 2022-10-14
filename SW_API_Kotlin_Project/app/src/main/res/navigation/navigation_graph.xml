@@ -11,31 +11,33 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
+            android:id="@+id/action_nav_home_list_to_nav_people_List"
+            app:destination="@id/nav_people_List" />
+        <action
             android:id="@+id/action_nav_home_list_to_nav_films_list"
             app:destination="@id/nav_films_list" />
         <action
             android:id="@+id/action_nav_home_list_to_nav_planet_list"
             app:destination="@id/nav_planet_list" />
-        <action
-            android:id="@+id/action_nav_home_list_to_nav_people_List"
-            app:destination="@id/nav_people_List" />
     </fragment>
 
     <activity
         android:id="@+id/nav_people_List"
         android:name="com.sw.sw_api_kotlin_project.activity.people_list.PeopleListActivity"
         android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people_list">
-
-    </activity>
+        tools:layout="@layout/activity_people_list"></activity>
 
     <activity
         android:id="@+id/nav_films_list"
         android:name="com.sw.sw_api_kotlin_project.activity.films_list.FilmsListActivity"
         android:label="FilmsListActivity"
-        tools:layout="@layout/activity_films_list">
+        tools:layout="@layout/activity_films_list"></activity>
 
-    </activity>
+    <activity
+        android:id="@+id/nav_planet_list"
+        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetListActivity"
+        android:label="PlanetListActivity"
+        tools:layout="@layout/activity_planet_list"></activity>
 
     <fragment
         android:id="@+id/nav_search"
@@ -74,15 +76,6 @@
             app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_planet_list"
-        android:name="com.sw.sw_api_kotlin_project.fragment.planet.PlanetListFragment"
-        android:label="PlanetFragment"
-        tools:layout="@layout/fragment_planet_list">
-        <action
-            android:id="@+id/action_nav_planet_to_nav_planet_detail"
-            app:destination="@id/nav_planet_detail" />
-    </fragment>
 
     <fragment
         android:id="@+id/nav_planet_detail"

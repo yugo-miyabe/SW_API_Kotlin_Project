@@ -33,7 +33,7 @@ class PeopleListActivity : BaseActivity() {
         binding.apply {
             peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
                 setOnClickListener { view ->
-                    view.findNavController().navigateUp()
+                    finish()
                 }
                 title = getString(R.string.people_list_title)
             }
