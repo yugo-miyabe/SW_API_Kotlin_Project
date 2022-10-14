@@ -1,22 +1,18 @@
-package com.sw.sw_api_kotlin_project.fragment.people
+package com.sw.sw_api_kotlin_project.activity.people_list
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.PeopleAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.base.BaseActivity
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
+import com.sw.sw_api_kotlin_project.databinding.ActivityPeopleListBinding
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,21 +20,16 @@ import dagger.hilt.android.AndroidEntryPoint
  * 登場人物一覧画面
  */
 @AndroidEntryPoint
-class PeopleListFragment : BaseFragment() {
-    private val viewModel: PeopleListViewModel by viewModels()
-    private var _binding: FragmentPeopleListBinding? = null
+class PeopleListActivity : BaseActivity() {
+    private var _binding: ActivityPeopleListBinding? = null
     private val binding get() = checkNotNull(_binding)
+    private val viewModel: PeopleListViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _binding = ActivityPeopleListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    override fun initView() {
-        super.initView()
         binding.apply {
             peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
                 setOnClickListener { view ->
@@ -68,11 +59,14 @@ class PeopleListFragment : BaseFragment() {
                 val adapter = PeopleAdapter(
                     people.results,
                 ) {
+                    // TODO 画面遷移
+                    /*
                     val action = PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
                     findNavController().navigate(action)
+                    */
                 }
                 binding.peopleRecyclerView.adapter = adapter
-                binding.peopleRecyclerView.layoutManager = LinearLayoutManager(context)
+                binding.peopleRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
             }
 
             override fun onError(errorMessage: String) {
@@ -96,7 +90,7 @@ class PeopleListFragment : BaseFragment() {
                 binding.nextButton.isVisible = shouldListShow
             }
         }
-        viewModel.getPeople(pageType).observe(viewLifecycleOwner, peopleObserver)
+        viewModel.getPeople(pageType).observe(this, peopleObserver)
     }
 
     override fun onDestroy() {

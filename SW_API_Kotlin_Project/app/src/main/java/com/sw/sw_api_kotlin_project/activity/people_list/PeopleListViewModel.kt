@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.people
+package com.sw.sw_api_kotlin_project.activity.people_list
 
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel

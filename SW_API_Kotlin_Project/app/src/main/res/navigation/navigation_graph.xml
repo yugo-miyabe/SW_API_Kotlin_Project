@@ -11,15 +11,23 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_list_to_nav_people_list"
-            app:destination="@id/nav_people_list" />
-        <action
             android:id="@+id/action_nav_home_list_to_nav_films_list"
             app:destination="@id/nav_films_list" />
         <action
             android:id="@+id/action_nav_home_list_to_nav_planet_list"
             app:destination="@id/nav_planet_list" />
+        <action
+            android:id="@+id/action_nav_home_list_to_nav_people_List"
+            app:destination="@id/nav_people_List" />
     </fragment>
+
+    <activity
+        android:id="@+id/nav_people_List"
+        android:name="com.sw.sw_api_kotlin_project.activity.people_list.PeopleListActivity"
+        android:label="PeopleListActivity"
+        tools:layout="@layout/activity_people_list">
+
+    </activity>
 
     <fragment
         android:id="@+id/nav_search"
@@ -35,16 +43,6 @@
         <action
             android:id="@+id/action_nav_search_to_nav_planet_detail"
             app:destination="@id/nav_planet_detail" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_people_list"
-        android:name="com.sw.sw_api_kotlin_project.fragment.people.PeopleListFragment"
-        android:label="PeopleFragment"
-        tools:layout="@layout/fragment_people_list">
-        <action
-            android:id="@+id/action_nav_people_to_nav_people_detail"
-            app:destination="@+id/nav_people_detail" />
     </fragment>
 
     <fragment
