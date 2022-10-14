@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -15,11 +14,6 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val BASE_URL = "https://swapi.dev/api/"
-
-    @Singleton
-    @Provides
-    fun provideOkHttpClient() = OkHttpClient.Builder().build()
-
 
     @Singleton
     @Provides
