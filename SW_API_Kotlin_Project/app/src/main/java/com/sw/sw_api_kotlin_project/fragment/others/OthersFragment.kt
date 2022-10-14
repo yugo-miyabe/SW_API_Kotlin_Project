@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
@@ -17,20 +17,15 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.WebViewURL
 
 class OthersFragment : BaseFragment() {
-    private lateinit var viewModel: OthersViewModel
+    private val viewModel by viewModels<OthersViewModel> {
+        OthersViewModelFactory(
+            FavoriteRepository(
+                FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao(),
+            ),
+        )
+    }
     private var _binding: FragmentOthersBinding? = null
     private val binding get() = checkNotNull(_binding)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this, OthersViewModelFactory(
-                FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).favoriteDao(),
-                ),
-            )
-        )[OthersViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

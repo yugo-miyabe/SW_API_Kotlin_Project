@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
@@ -22,14 +22,9 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel by viewModels<HomeViewModel> { HomeFactory() }
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = checkNotNull(_binding)
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this, HomeFactory())[HomeViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

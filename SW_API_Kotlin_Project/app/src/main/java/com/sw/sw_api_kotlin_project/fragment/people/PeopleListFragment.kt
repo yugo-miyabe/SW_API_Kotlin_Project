@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,21 +27,11 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PeopleListFragment : BaseFragment() {
-    private lateinit var viewModel: PeopleListViewModel
+    private val viewModel by viewModels<PeopleListViewModel> {
+        PeopleListViewModelFactory(PeopleRepository(SWServiceClient.getService()))
+    }
     private var _binding: FragmentPeopleListBinding? = null
     private val binding get() = checkNotNull(_binding)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            PeopleListViewModelFactory(
-                PeopleRepository(
-                    SWServiceClient.getService(),
-                ),
-            )
-        )[PeopleListViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
