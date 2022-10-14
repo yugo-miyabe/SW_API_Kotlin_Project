@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
@@ -19,27 +19,19 @@ import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
  * 登場人物詳細画面
  */
 class PeopleDetailsFragment : BaseFragment() {
-    private lateinit var viewModel: PeopleDetailsViewModel
+    private val viewModel by viewModels<PeopleDetailsViewModel> {
+        PeopleDetailsFactory(
+            FavoriteRepository(FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()),
+        )
+    }
     private var _binding: FragmentPeopleDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val args: PeopleDetailsFragmentArgs by navArgs()
     private lateinit var people: People
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            PeopleDetailsFactory(
-                FavoriteRepository(
-                    FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()
-                ),
-            ),
-        )[PeopleDetailsViewModel::class.java]
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPeopleDetailsBinding.inflate(inflater, container, false)
         return binding.root

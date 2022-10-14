@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,17 +25,11 @@ import com.sw.sw_api_kotlin_project.utils.PageType
  * 映画一覧画面
  */
 class FilmsListFragment : BaseFragment() {
-    private lateinit var viewModel: FilmsListViewModel
+    private val viewModel by viewModels<FilmsListViewModel> {
+        FilmsListViewModelFactory(FilmsRepository(SWServiceClient.getService()))
+    }
     private var _binding: FragmentFilmsListBinding? = null
     private val binding get() = checkNotNull(_binding)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            FilmsListViewModelFactory(FilmsRepository(SWServiceClient.getService()))
-        )[FilmsListViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
