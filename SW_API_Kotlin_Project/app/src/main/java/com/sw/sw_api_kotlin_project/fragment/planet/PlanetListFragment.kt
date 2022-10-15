@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
@@ -19,7 +18,6 @@ import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
-
 
 /**
  * 惑星一覧画面
@@ -41,8 +39,8 @@ class PlanetListFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.planetListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                view.findNavController().navigateUp()
+            setOnClickListener {
+                activity?.finish()
             }
             title = getString(R.string.planet_title)
         }

@@ -29,15 +29,15 @@
 
     <activity
         android:id="@+id/nav_film_activity"
-        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleActivity"
-        android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people" />
+        android:name="com.sw.sw_api_kotlin_project.activity.film.FilmActivity"
+        android:label="FilmActivity"
+        tools:layout="@layout/activity_film" />
 
     <activity
         android:id="@+id/nav_planet_activity"
-        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleActivity"
-        android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people" />
+        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetActivity"
+        android:label="PlanetActivity"
+        tools:layout="@layout/activity_planet" />
 
     <fragment
         android:id="@+id/nav_search"

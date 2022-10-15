@@ -40,8 +40,8 @@ class FilmsListFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                view.findNavController().navigateUp()
+            setOnClickListener {
+                activity?.finish()
             }
             title = getString(R.string.film_title)
         }
