@@ -107,19 +107,19 @@
         android:label="OthersFragment"
         tools:layout="@layout/fragment_others">
         <action
-            android:id="@+id/action_nav_other_to_web_view"
-            app:destination="@id/web_view" />
+            android:id="@+id/action_nav_other_to_nav_web_view"
+            app:destination="@id/nav_web_view" />
     </fragment>
 
-    <fragment
-        android:id="@+id/web_view"
-        android:name="com.sw.sw_api_kotlin_project.fragment.webview.WebViewFragment"
-        android:label="WebViewFragment"
-        tools:layout="@layout/fragment_web_view">
+    <activity
+        android:id="@+id/nav_web_view"
+        android:name="com.sw.sw_api_kotlin_project.activity.webview.WebViewActivity"
+        android:label="WebViewActivity"
+        tools:layout="@layout/activity_web_view">
         <argument
             android:name="info"
             app:argType="com.sw.sw_api_kotlin_project.data.model.WebViewInfo" />
-    </fragment>
+    </activity>
 
 
 </navigation>

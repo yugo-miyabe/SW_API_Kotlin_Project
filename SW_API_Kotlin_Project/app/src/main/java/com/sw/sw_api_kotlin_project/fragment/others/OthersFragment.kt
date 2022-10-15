@@ -42,7 +42,7 @@ class OthersFragment : BaseFragment() {
             ).show()
         }
         binding.webViewDocumentation.setOnClickListener {
-            val action = OthersFragmentDirections.actionNavOtherToWebView(
+            val action = OthersFragmentDirections.actionNavOtherToNavWebView(
                 WebViewInfo(
                     title = getString(R.string.other_api_document),
                     url = WebViewURL.swApiDocumentation,
