@@ -14,11 +14,11 @@
             android:id="@+id/action_nav_home_list_to_nav_people_activity"
             app:destination="@id/nav_people_activity" />
         <action
-            android:id="@+id/action_nav_home_list_to_nav_planet_list"
-            app:destination="@id/nav_planet_list" />
-        <action
             android:id="@+id/action_nav_home_list_to_nav_film_activity"
             app:destination="@id/nav_film_activity" />
+        <action
+            android:id="@+id/action_nav_home_list_to_nav_planet_activity"
+            app:destination="@id/nav_planet_activity" />
     </fragment>
 
     <activity
@@ -29,6 +29,12 @@
 
     <activity
         android:id="@+id/nav_film_activity"
+        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleActivity"
+        android:label="PeopleListActivity"
+        tools:layout="@layout/activity_people" />
+
+    <activity
+        android:id="@+id/nav_planet_activity"
         android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleActivity"
         android:label="PeopleListActivity"
         tools:layout="@layout/activity_people" />
@@ -59,7 +65,6 @@
             app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_films_detail"
         android:name="com.sw.sw_api_kotlin_project.fragment.films_details.FilmsDetailsFragment"
@@ -68,16 +73,6 @@
         <argument
             android:name="films"
             app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_planet_list"
-        android:name="com.sw.sw_api_kotlin_project.fragment.planet.PlanetListFragment"
-        android:label="PlanetFragment"
-        tools:layout="@layout/fragment_planet_list">
-        <action
-            android:id="@+id/action_nav_planet_to_nav_planet_detail"
-            app:destination="@id/nav_planet_detail" />
     </fragment>
 
     <fragment

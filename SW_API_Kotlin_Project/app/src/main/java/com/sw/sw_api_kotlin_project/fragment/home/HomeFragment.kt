@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment() {
                     HomeFragmentDirections.actionNavHomeListToNavFilmActivity()
                 }
                 ListType.PLANETS -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
+                    HomeFragmentDirections.actionNavHomeListToNavPlanetActivity()
                 }
             }
             findNavController().navigate(action)
