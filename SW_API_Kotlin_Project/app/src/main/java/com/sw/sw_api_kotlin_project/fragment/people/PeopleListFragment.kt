@@ -68,7 +68,7 @@ class PeopleListFragment : BaseFragment() {
                 val adapter = PeopleAdapter(
                     people.results,
                 ) {
-                    val action = PeopleListFragmentDirections.actionNavPeopleToNavPeopleDetail(it)
+                    val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
                     findNavController().navigate(action)
                 }
                 binding.peopleRecyclerView.adapter = adapter

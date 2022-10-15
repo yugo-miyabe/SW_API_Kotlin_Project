@@ -41,18 +41,22 @@ class HomeFragment : BaseFragment() {
         binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_home)
         val adapter = HomeAdapter(getHomeList()) {
-            val action = when (it) {
+            when (it) {
                 ListType.PEOPLE -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPeopleList()
+                    val action = HomeFragmentDirections.actionNavHomeListToNavPeopleListActivity()
+                    findNavController().navigate(action)
                 }
                 ListType.FILM -> {
-                    HomeFragmentDirections.actionNavHomeListToNavFilmsList()
+                    val action = HomeFragmentDirections.actionNavHomeListToNavFilmsList()
+                    findNavController().navigate(action)
+
                 }
                 ListType.PLANETS -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
+                    val action = HomeFragmentDirections.actionNavHomeListToNavPlanetList()
+                    findNavController().navigate(action)
+
                 }
             }
-            findNavController().navigate(action)
         }
         binding.homeRecyclerView.adapter = adapter
         binding.homeRecyclerView.layoutManager = LinearLayoutManager(context)
