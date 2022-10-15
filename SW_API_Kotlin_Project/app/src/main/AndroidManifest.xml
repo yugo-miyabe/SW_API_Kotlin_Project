@@ -14,6 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SW_API_Kotlin_Project">
         <activity
+            android:name=".ListActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
