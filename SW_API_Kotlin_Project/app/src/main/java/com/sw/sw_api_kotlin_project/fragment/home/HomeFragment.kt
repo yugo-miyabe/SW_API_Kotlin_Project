@@ -27,9 +27,7 @@ class HomeFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
@@ -41,22 +39,18 @@ class HomeFragment : BaseFragment() {
         binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_home)
         val adapter = HomeAdapter(getHomeList()) {
-            when (it) {
+            val action = when (it) {
                 ListType.PEOPLE -> {
-                    val action = HomeFragmentDirections.actionNavHomeListToNavPeopleListActivity()
-                    findNavController().navigate(action)
+                    HomeFragmentDirections.actionNavHomeListToNavPeopleActivity()
                 }
                 ListType.FILM -> {
-                    val action = HomeFragmentDirections.actionNavHomeListToNavFilmsList()
-                    findNavController().navigate(action)
-
+                    HomeFragmentDirections.actionNavHomeListToNavFilmActivity()
                 }
                 ListType.PLANETS -> {
-                    val action = HomeFragmentDirections.actionNavHomeListToNavPlanetList()
-                    findNavController().navigate(action)
-
+                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
                 }
             }
+            findNavController().navigate(action)
         }
         binding.homeRecyclerView.adapter = adapter
         binding.homeRecyclerView.layoutManager = LinearLayoutManager(context)

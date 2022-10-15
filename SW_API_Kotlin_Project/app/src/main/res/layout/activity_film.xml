@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.people.PeopleActivity">
-
+        tools:context=".activity.film.FilmActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_people_host_fragment"
@@ -23,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/navigation_people" />
+            app:navGraph="@navigation/navigation_film_graph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
