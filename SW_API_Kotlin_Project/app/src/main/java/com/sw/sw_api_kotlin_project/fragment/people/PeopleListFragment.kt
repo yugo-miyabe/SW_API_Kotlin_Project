@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
@@ -41,8 +40,8 @@ class PeopleListFragment : BaseFragment() {
         super.initView()
         binding.apply {
             peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-                setOnClickListener { view ->
-                    view.findNavController().navigateUp()
+                setOnClickListener {
+                    activity?.finish()
                 }
                 title = getString(R.string.people_list_title)
             }
@@ -68,7 +67,8 @@ class PeopleListFragment : BaseFragment() {
                 val adapter = PeopleAdapter(
                     people.results,
                 ) {
-                    val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
+                    val action =
+                        PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
                     findNavController().navigate(action)
                 }
                 binding.peopleRecyclerView.adapter = adapter
