@@ -25,19 +25,19 @@
         android:id="@+id/nav_people_List"
         android:name="com.sw.sw_api_kotlin_project.activity.people_list.PeopleListActivity"
         android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people_list"></activity>
+        tools:layout="@layout/activity_people_list" />
 
     <activity
         android:id="@+id/nav_films_list"
         android:name="com.sw.sw_api_kotlin_project.activity.films_list.FilmsListActivity"
         android:label="FilmsListActivity"
-        tools:layout="@layout/activity_films_list"></activity>
+        tools:layout="@layout/activity_films_list" />
 
     <activity
         android:id="@+id/nav_planet_list"
         android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetListActivity"
         android:label="PlanetListActivity"
-        tools:layout="@layout/activity_planet_list"></activity>
+        tools:layout="@layout/activity_planet_list" />
 
     <fragment
         android:id="@+id/nav_search"
