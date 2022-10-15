@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SW_API_Kotlin_Project">
         <activity
-            android:name=".activity.people_list.PeopleListActivity"
+            android:name=".activity.people.PeopleActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

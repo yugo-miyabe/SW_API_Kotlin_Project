@@ -1,18 +1,18 @@
-package com.sw.sw_api_kotlin_project.activity.people_list
+package com.sw.sw_api_kotlin_project.activity.people
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sw.sw_api_kotlin_project.databinding.ActivityPeopleListBinding
+import com.sw.sw_api_kotlin_project.databinding.ActivityPeopleBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PeopleListActivity : AppCompatActivity() {
-    private var _binding: ActivityPeopleListBinding? = null
+class PeopleActivity : AppCompatActivity() {
+    private var _binding: ActivityPeopleBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityPeopleListBinding.inflate(layoutInflater)
+        _binding = ActivityPeopleBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
