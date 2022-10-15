@@ -25,7 +25,9 @@
         android:id="@+id/nav_people_List"
         android:name="com.sw.sw_api_kotlin_project.activity.people_list.PeopleListActivity"
         android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people_list" />
+        tools:layout="@layout/activity_people_list" >
+
+    </activity>
 
     <activity
         android:id="@+id/nav_films_list"
@@ -35,7 +37,7 @@
 
     <activity
         android:id="@+id/nav_planet_list"
-        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetListActivity"
+        android:name="com.sw.sw_api_kotlin_project.activity.planet_list.PlanetListActivity"
         android:label="PlanetListActivity"
         tools:layout="@layout/activity_planet_list" />
 

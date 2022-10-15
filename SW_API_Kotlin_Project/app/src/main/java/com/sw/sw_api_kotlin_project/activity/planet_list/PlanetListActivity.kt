@@ -1,9 +1,8 @@
-package com.sw.sw_api_kotlin_project.activity.planet
+package com.sw.sw_api_kotlin_project.activity.planet_list
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R

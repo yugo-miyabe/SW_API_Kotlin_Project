@@ -20,7 +20,7 @@
             android:name=".activity.films_list.FilmsListActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.planet.PlanetListActivity"
+            android:name=".activity.planet_list.PlanetListActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
