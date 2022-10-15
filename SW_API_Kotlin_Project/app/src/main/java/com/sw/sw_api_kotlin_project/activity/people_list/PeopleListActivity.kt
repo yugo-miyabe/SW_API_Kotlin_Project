@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.activity
+package com.sw.sw_api_kotlin_project.activity.people_list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ListActivity : AppCompatActivity() {
+class PeopleListActivity : AppCompatActivity() {
     private var _binding: ActivityListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
