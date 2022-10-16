@@ -69,7 +69,6 @@
         <action
             android:id="@+id/action_nav_favorite_list_to_nav_planet_details"
             app:destination="@id/nav_planet_details" />
-
     </fragment>
 
     <fragment
@@ -98,10 +97,9 @@
         android:label="FilmDetailsActivity"
         tools:layout="@layout/activity_film_details">
         <argument
-            android:name="people_details"
+            android:name="film_details"
             app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
     </activity>
-
 
     <activity
         android:id="@+id/nav_planet_details"
@@ -113,7 +111,6 @@
             app:argType="com.sw.sw_api_kotlin_project.data.model.Planet" />
     </activity>
 
-
     <activity
         android:id="@+id/nav_web_view"
         android:name="com.sw.sw_api_kotlin_project.activity.webview.WebViewActivity"
@@ -123,6 +120,4 @@
             android:name="info"
             app:argType="com.sw.sw_api_kotlin_project.data.model.WebViewInfo" />
     </activity>
-
-
 </navigation>
