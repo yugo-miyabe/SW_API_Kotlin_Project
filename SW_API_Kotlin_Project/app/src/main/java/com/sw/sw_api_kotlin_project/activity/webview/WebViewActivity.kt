@@ -22,7 +22,7 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val webViewInfo = args.info
+        val webViewInfo = args.webViewInfo
         binding.webViewAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener {
                 finish()
