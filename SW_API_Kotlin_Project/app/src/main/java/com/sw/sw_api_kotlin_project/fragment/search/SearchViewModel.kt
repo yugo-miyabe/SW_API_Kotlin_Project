@@ -22,9 +22,9 @@ class SearchViewModel @Inject constructor(
     fun getSearchResult(searchString: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            val searchResponse = peopleRepository.getPeopleSearch(search = searchString)
-            val filmsResponse = filmsRepository.getFilmsSearch(search = searchString)
-            val planetResponse = planetRepository.getPlanetsSearch(search = searchString)
+            val searchResponse = peopleRepository.getPeopleSearch(searchString)
+            val filmsResponse = filmsRepository.getFilmsSearch(searchString)
+            val planetResponse = planetRepository.getPlanetsSearch(searchString)
             val response: List<Results<out Parcelable>> =
                 listOf(searchResponse, filmsResponse, planetResponse)
             emit(Resource.success(response))

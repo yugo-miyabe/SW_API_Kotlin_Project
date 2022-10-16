@@ -37,8 +37,8 @@ class HomeFragment : BaseFragment() {
         super.initView()
         binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_home)
-        val adapter = HomeAdapter(getHomeList()) {
-            val action = when (it) {
+        val adapter = HomeAdapter( getHomeList()) {
+             val action = when (it) {
                 ListType.PEOPLE -> {
                     HomeFragmentDirections.actionNavHomeListToNavPeopleActivity()
                 }
@@ -59,17 +59,17 @@ class HomeFragment : BaseFragment() {
     private fun getHomeList(): List<HomeItem> {
         return listOf(
             HomeItem(
-                getDrawable(requireContext(), R.drawable.ic_baseline_face_24),
-                getString(R.string.home_people),
-                ListType.PEOPLE
+                image = getDrawable(requireContext(), R.drawable.ic_baseline_face_24),
+                title = getString(R.string.home_people),
+                listType = ListType.PEOPLE
             ), HomeItem(
-                getDrawable(requireContext(), R.drawable.ic_baseline_film_24),
-                getString(R.string.home_films),
-                ListType.FILM
+                image = getDrawable(requireContext(), R.drawable.ic_baseline_film_24),
+                title = getString(R.string.home_films),
+                listType = ListType.FILM
             ), HomeItem(
-                getDrawable(requireContext(), R.drawable.ic_baseline_planets_24),
-                getString(R.string.home_planet),
-                ListType.PLANETS
+                image = getDrawable(requireContext(), R.drawable.ic_baseline_planets_24),
+                title = getString(R.string.home_planet),
+                listType = ListType.PLANETS
             )
         )
     }
