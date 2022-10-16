@@ -32,6 +32,7 @@
 | api | API処理の基盤 |
 | base | BaseFragment、BaseViewModel |
 | data | データクラス、データベースのレスポンスなど |
+| di | Hilt モジュール |
 | fragment | Fragment及び各FragmentのViewModel |
 | repository | APIのリクエスト、データベースの操作などを行う |
 | utils | Enum、WebViewのリンク、Date型の処理など |
