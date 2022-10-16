@@ -54,15 +54,15 @@ class SearchFragment : BaseFragment() {
                 val adapter = SearchResultsAdapter(
                     data!!,
                     {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetail(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
                         findNavController().navigate(action)
                     },
                     {
-                        val action = SearchFragmentDirections.actionNavSearchToNavFilmsDetail(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavFilmDetails(it)
                         findNavController().navigate(action)
                     },
                     {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetail(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetails(it)
                         findNavController().navigate(action)
                     },
                 )
