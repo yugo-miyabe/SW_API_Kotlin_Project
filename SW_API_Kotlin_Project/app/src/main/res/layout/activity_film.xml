@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/navigation_film_graph" />
+            app:navGraph="@navigation/nav_film_graph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
