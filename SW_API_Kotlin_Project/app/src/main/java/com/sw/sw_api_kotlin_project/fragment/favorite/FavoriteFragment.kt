@@ -36,6 +36,10 @@ class FavoriteFragment : BaseFragment() {
         super.initView()
         binding.favoriteAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_favorite)
+    }
+
+    override fun onResume() {
+        super.onResume()
         getFavoriteList()
     }
 
