@@ -13,19 +13,15 @@ import com.sw.sw_api_kotlin_project.adapter.FavoriteAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.database.Favorite
-import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
-import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * お気に入り画面
  */
+@AndroidEntryPoint
 class FavoriteFragment : BaseFragment() {
-    private val viewModel by viewModels<FavoriteViewModel> {
-        FavoriteFactory(
-            FavoriteRepository(FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao())
-        )
-    }
+    private val viewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -52,18 +48,22 @@ class FavoriteFragment : BaseFragment() {
                         data,
                         {
                             val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetail(it)
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetails(
+                                    it
+                                )
                             findNavController().navigate(action)
                         },
                         {
                             val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(it)
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavFilmDetails(it)
                             findNavController().navigate(action)
 
                         },
                         {
                             val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetail(it)
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetails(
+                                    it
+                                )
                             findNavController().navigate(action)
 
                         },

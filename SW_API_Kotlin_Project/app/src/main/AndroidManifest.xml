@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,6 +13,27 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.SW_API_Kotlin_Project">
+        <activity
+            android:name=".activity.film.FilmDetailsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.planet.PlanetDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.people.PeopleDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.people.PeopleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.film.FilmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.planet.PlanetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.webview.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">

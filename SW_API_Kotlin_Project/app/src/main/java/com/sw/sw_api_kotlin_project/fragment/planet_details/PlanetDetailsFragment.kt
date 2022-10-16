@@ -9,21 +9,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
+import com.sw.sw_api_kotlin_project.activity.planet.PlanetActivity
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
-import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.utils.PlanetNavListener
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 惑星詳細画面
  */
+@AndroidEntryPoint
 class PlanetDetailsFragment : BaseFragment() {
-    private val viewModel by viewModels<PlanetDetailsViewModel> {
-        PlanetDetailsFactory(
-            FavoriteRepository(FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao()),
-        )
-    }
+    private val viewModel: PlanetDetailsViewModel by viewModels()
     private var _binding: FragmentPlanetDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val args: PlanetDetailsFragmentArgs by navArgs()
@@ -40,11 +38,20 @@ class PlanetDetailsFragment : BaseFragment() {
         super.initView()
         binding.planetDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
-                view.findNavController().navigateUp()
+                if (activity is PlanetActivity) {
+                    view.findNavController().navigateUp()
+                } else {
+                    activity?.finish()
+                }
             }
             title = getString(R.string.films_details_title)
         }
-        planet = args.planet
+        planet = if (activity is PlanetActivity) {
+            args.planet
+        } else {
+            val navListener = activity as PlanetNavListener
+            navListener.getPlanetValue()
+        }
         planet.run {
             binding.nameText.text = name
             binding.rotationPeriodText.text = rotationPeriod

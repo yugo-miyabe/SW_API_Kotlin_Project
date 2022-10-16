@@ -12,27 +12,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.SearchResultsAdapter
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
-import com.sw.sw_api_kotlin_project.repository.FilmsRepository
-import com.sw.sw_api_kotlin_project.repository.PeopleRepository
-import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.ListType
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 検索画面
  */
+@AndroidEntryPoint
 class SearchFragment : BaseFragment() {
-    private val viewModel by viewModels<SearchViewModel> {
-        SearchViewModelFactory(
-            PeopleRepository(SWServiceClient.getService()),
-            FilmsRepository(SWServiceClient.getService()),
-            PlanetRepository(SWServiceClient.getService()),
-        )
-    }
+    private val viewModel: SearchViewModel by viewModels()
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -62,15 +54,15 @@ class SearchFragment : BaseFragment() {
                 val adapter = SearchResultsAdapter(
                     data!!,
                     {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetail(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
                         findNavController().navigate(action)
                     },
                     {
-                        val action = SearchFragmentDirections.actionNavSearchToNavFilmsDetail(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavFilmDetails(it)
                         findNavController().navigate(action)
                     },
                     {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetail(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetails(it)
                         findNavController().navigate(action)
                     },
                 )

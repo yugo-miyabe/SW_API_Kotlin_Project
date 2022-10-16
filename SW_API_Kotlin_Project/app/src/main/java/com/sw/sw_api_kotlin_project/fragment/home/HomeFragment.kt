@@ -15,19 +15,19 @@ import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.HomeItem
 import com.sw.sw_api_kotlin_project.databinding.FragmentHomeBinding
 import com.sw.sw_api_kotlin_project.utils.ListType
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ホーム画面
  */
+@AndroidEntryPoint
 class HomeFragment : BaseFragment() {
     private val viewModel by viewModels<HomeViewModel> { HomeFactory() }
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
@@ -41,13 +41,13 @@ class HomeFragment : BaseFragment() {
         val adapter = HomeAdapter(getHomeList()) {
             val action = when (it) {
                 ListType.PEOPLE -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPeopleList()
+                    HomeFragmentDirections.actionNavHomeListToNavPeopleActivity()
                 }
                 ListType.FILM -> {
-                    HomeFragmentDirections.actionNavHomeListToNavFilmsList()
+                    HomeFragmentDirections.actionNavHomeListToNavFilmActivity()
                 }
                 ListType.PLANETS -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
+                    HomeFragmentDirections.actionNavHomeListToNavPlanetActivity()
                 }
             }
             findNavController().navigate(action)

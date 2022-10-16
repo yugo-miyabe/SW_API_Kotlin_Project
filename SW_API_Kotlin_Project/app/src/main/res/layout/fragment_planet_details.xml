@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="fragment_people"
+            name="viewModel"
             type="com.sw.sw_api_kotlin_project.fragment.planet_details.PlanetDetailsViewModel" />
     </data>
 

@@ -6,29 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.adapter.PlanetAdapter
-import com.sw.sw_api_kotlin_project.api.SWServiceClient
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
-import com.sw.sw_api_kotlin_project.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.utils.PageType
-
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 惑星一覧画面
  */
+@AndroidEntryPoint
 class PlanetListFragment : BaseFragment() {
-    private val viewModel by viewModels<PlanetViewModel> {
-        PlanetViewModelFactory(PlanetRepository(SWServiceClient.getService()))
-    }
+    private val viewModel: PlanetViewModel by viewModels()
     private var _binding: FragmentPlanetListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -43,8 +39,8 @@ class PlanetListFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.planetListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                view.findNavController().navigateUp()
+            setOnClickListener {
+                activity?.finish()
             }
             title = getString(R.string.planet_title)
         }

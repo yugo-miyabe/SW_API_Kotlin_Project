@@ -10,20 +10,17 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import com.sw.sw_api_kotlin_project.data.model.WebViewInfo
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
-import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.WebViewURL
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * その他画面
+ */
+@AndroidEntryPoint
 class OthersFragment : BaseFragment() {
-    private val viewModel by viewModels<OthersViewModel> {
-        OthersViewModelFactory(
-            FavoriteRepository(
-                FavoriteDatabase.getDatabase(activity?.application!!).FavoriteDao(),
-            ),
-        )
-    }
+    private val viewModel: OthersViewModel by viewModels()
     private var _binding: FragmentOthersBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -45,7 +42,7 @@ class OthersFragment : BaseFragment() {
             ).show()
         }
         binding.webViewDocumentation.setOnClickListener {
-            val action = OthersFragmentDirections.actionNavOtherToWebView(
+            val action = OthersFragmentDirections.actionNavOtherToNavWebView(
                 WebViewInfo(
                     title = getString(R.string.other_api_document),
                     url = WebViewURL.swApiDocumentation,
