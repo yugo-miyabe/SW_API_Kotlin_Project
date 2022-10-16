@@ -26,7 +26,5 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideFavoriteDao(database: FavoriteDatabase): FavoriteDao {
-        return database.favoriteDao()
-    }
+    fun provideFavoriteDao(database: FavoriteDatabase): FavoriteDao = database.favoriteDao()
 }

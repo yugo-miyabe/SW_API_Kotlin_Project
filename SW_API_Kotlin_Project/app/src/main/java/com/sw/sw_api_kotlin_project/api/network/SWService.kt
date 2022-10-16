@@ -67,7 +67,6 @@ interface SWService {
     @GET("species")
     suspend fun getSpeciesSearch(@Query("search") search: String): Results<Planet>
 
-
     /**
      * 宇宙船情報取得
      */
@@ -79,7 +78,6 @@ interface SWService {
      */
     @GET("starships")
     suspend fun getStarShipsSearch(@Query("search") search: String): Results<Starships>
-
 
     /**
      * 車両情報取得

@@ -117,7 +117,7 @@
         android:label="WebViewActivity"
         tools:layout="@layout/activity_web_view">
         <argument
-            android:name="info"
+            android:name="web_view_info"
             app:argType="com.sw.sw_api_kotlin_project.data.model.WebViewInfo" />
     </activity>
 </navigation>

@@ -52,16 +52,16 @@ class SearchFragment : BaseFragment() {
             override fun onSuccess(data: List<Results<out Parcelable>>?) {
                 binding.progressBar.visibility = View.GONE
                 val adapter = SearchResultsAdapter(
-                    data!!,
-                    {
+                    searchResults = data!!,
+                    onPeopleClick = {
                         val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
                         findNavController().navigate(action)
                     },
-                    {
+                    onFilmClick = {
                         val action = SearchFragmentDirections.actionNavSearchToNavFilmDetails(it)
                         findNavController().navigate(action)
                     },
-                    {
+                    onPlanetClick = {
                         val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetails(it)
                         findNavController().navigate(action)
                     },
