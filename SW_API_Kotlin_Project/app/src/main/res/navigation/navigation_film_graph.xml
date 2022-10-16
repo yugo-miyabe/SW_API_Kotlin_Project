@@ -21,7 +21,7 @@
         android:label="FilmsDetailsFragment"
         tools:layout="@layout/fragment_film_details">
         <argument
-            android:name="films"
+            android:name="film"
             app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
     </fragment>
 

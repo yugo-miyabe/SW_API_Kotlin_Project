@@ -1,17 +1,18 @@
 package com.sw.sw_api_kotlin_project.activity.film
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.databinding.ActivityFilmBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.navArgs
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.ActivityFilmDetailsBinding
-import com.sw.sw_api_kotlin_project.databinding.ActivityPeopleDetailsBinding
+import com.sw.sw_api_kotlin_project.utils.FilmNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FilmDetailsActivity : AppCompatActivity() {
+class FilmDetailsActivity : AppCompatActivity(), FilmNavListener {
     private var _binding: ActivityFilmDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
+    private val args: FilmDetailsActivityArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,4 +24,6 @@ class FilmDetailsActivity : AppCompatActivity() {
         _binding = null
         super.onDestroy()
     }
+
+    override fun getFilmValue(): Film = args.filmDetails
 }

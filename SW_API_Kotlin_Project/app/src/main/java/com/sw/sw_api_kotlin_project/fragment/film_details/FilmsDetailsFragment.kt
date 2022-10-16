@@ -9,10 +9,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
+import com.sw.sw_api_kotlin_project.activity.film.FilmActivity
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
+import com.sw.sw_api_kotlin_project.utils.FilmNavListener
 import dagger.hilt.android.AndroidEntryPoint
+
 
 /**
  * 映画詳細画面
@@ -36,11 +39,20 @@ class FilmsDetailsFragment : BaseFragment() {
         super.initView()
         binding.filmDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
-                view.findNavController().navigateUp()
+                if (activity is FilmActivity) {
+                    view.findNavController().navigateUp()
+                } else {
+                    activity?.finish()
+                }
             }
             title = getString(R.string.films_details_title)
         }
-        film = args.films
+        film = if (activity is FilmActivity) {
+            args.film
+        } else {
+            val navListener = activity as FilmNavListener
+            navListener.getFilmValue()
+        }
         film.run {
             binding.titleText.text = title
             binding.releaseDateText.text = releaseDate
@@ -67,4 +79,5 @@ class FilmsDetailsFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
+
 }
