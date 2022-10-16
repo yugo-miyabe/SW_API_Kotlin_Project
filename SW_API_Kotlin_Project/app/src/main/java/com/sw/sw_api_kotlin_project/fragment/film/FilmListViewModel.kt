@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.films
+package com.sw.sw_api_kotlin_project.fragment.film
 
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
-class FilmsListViewModel @Inject constructor(
+class FilmListViewModel @Inject constructor(
     private val filmsRepository: FilmsRepository
 ) : BaseViewModel() {
 

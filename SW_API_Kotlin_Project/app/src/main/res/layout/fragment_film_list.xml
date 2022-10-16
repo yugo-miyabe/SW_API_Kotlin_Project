@@ -7,7 +7,7 @@
 
         <variable
             name="fragment_films"
-            type="com.sw.sw_api_kotlin_project.fragment.films.FilmsListViewModel" />
+            type="com.sw.sw_api_kotlin_project.fragment.film.FilmListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
