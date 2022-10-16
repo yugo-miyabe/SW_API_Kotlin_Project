@@ -9,9 +9,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
+import com.sw.sw_api_kotlin_project.activity.people.PeopleActivity
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
+import com.sw.sw_api_kotlin_project.utils.PeopleNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -36,11 +38,20 @@ class PeopleDetailsFragment : BaseFragment() {
         super.initView()
         binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
-                view.findNavController().navigateUp()
+                if (activity is PeopleActivity) {
+                    view.findNavController().navigateUp()
+                } else {
+                    activity?.finish()
+                }
             }
             title = getString(R.string.people_details_title)
         }
-        people = args.people
+        people = if (activity is PeopleActivity) {
+            args.people
+        } else {
+            val navListener = activity as PeopleNavListener
+            navListener.getPeopleValue()
+        }
         people.run {
             binding.fullNameText.text = name
             binding.birthYearText.text = birthYear

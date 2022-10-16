@@ -27,9 +27,7 @@ class HomeFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
@@ -43,13 +41,13 @@ class HomeFragment : BaseFragment() {
         val adapter = HomeAdapter(getHomeList()) {
             val action = when (it) {
                 ListType.PEOPLE -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPeopleList()
+                    HomeFragmentDirections.actionNavHomeListToNavPeopleActivity()
                 }
                 ListType.FILM -> {
-                    HomeFragmentDirections.actionNavHomeListToNavFilmsList()
+                    HomeFragmentDirections.actionNavHomeListToNavFilmActivity()
                 }
                 ListType.PLANETS -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
+                    HomeFragmentDirections.actionNavHomeListToNavPlanetActivity()
                 }
             }
             findNavController().navigate(action)

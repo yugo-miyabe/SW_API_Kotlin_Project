@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.films_details
+package com.sw.sw_api_kotlin_project.fragment.film_details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilmsDetailsViewModel @Inject constructor(
+class FilmDetailsViewModel @Inject constructor(
     private val favoriteRepository: FavoriteRepository
 ) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()

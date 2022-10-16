@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.films_details
+package com.sw.sw_api_kotlin_project.fragment.film_details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,18 +9,21 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
+import com.sw.sw_api_kotlin_project.activity.film.FilmActivity
 import com.sw.sw_api_kotlin_project.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
-import com.sw.sw_api_kotlin_project.databinding.FragmentFilmsDetailsBinding
+import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
+import com.sw.sw_api_kotlin_project.utils.FilmNavListener
 import dagger.hilt.android.AndroidEntryPoint
+
 
 /**
  * 映画詳細画面
  */
 @AndroidEntryPoint
 class FilmsDetailsFragment : BaseFragment() {
-    private val viewModel: FilmsDetailsViewModel by viewModels()
-    private var _binding: FragmentFilmsDetailsBinding? = null
+    private val viewModel: FilmDetailsViewModel by viewModels()
+    private var _binding: FragmentFilmDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val args: FilmsDetailsFragmentArgs by navArgs()
     private lateinit var film: Film
@@ -28,7 +31,7 @@ class FilmsDetailsFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFilmsDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentFilmDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,11 +39,20 @@ class FilmsDetailsFragment : BaseFragment() {
         super.initView()
         binding.filmDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
-                view.findNavController().navigateUp()
+                if (activity is FilmActivity) {
+                    view.findNavController().navigateUp()
+                } else {
+                    activity?.finish()
+                }
             }
             title = getString(R.string.films_details_title)
         }
-        film = args.films
+        film = if (activity is FilmActivity) {
+            args.film
+        } else {
+            val navListener = activity as FilmNavListener
+            navListener.getFilmValue()
+        }
         film.run {
             binding.titleText.text = title
             binding.releaseDateText.text = releaseDate
@@ -67,4 +79,5 @@ class FilmsDetailsFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
+
 }

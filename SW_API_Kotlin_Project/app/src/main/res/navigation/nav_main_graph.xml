@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/nav_home_list">
+
+    <fragment
+        android:id="@+id/nav_home_list"
+        android:name="com.sw.sw_api_kotlin_project.fragment.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_list_to_nav_people_activity"
+            app:destination="@id/nav_people_activity" />
+        <action
+            android:id="@+id/action_nav_home_list_to_nav_film_activity"
+            app:destination="@id/nav_film_activity" />
+        <action
+            android:id="@+id/action_nav_home_list_to_nav_planet_activity"
+            app:destination="@id/nav_planet_activity" />
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_people_activity"
+        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleActivity"
+        android:label="PeopleListActivity"
+        tools:layout="@layout/activity_people" />
+
+    <activity
+        android:id="@+id/nav_film_activity"
+        android:name="com.sw.sw_api_kotlin_project.activity.film.FilmActivity"
+        android:label="FilmActivity"
+        tools:layout="@layout/activity_film" />
+
+    <activity
+        android:id="@+id/nav_planet_activity"
+        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetActivity"
+        android:label="PlanetActivity"
+        tools:layout="@layout/activity_planet" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.sw.sw_api_kotlin_project.fragment.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_nav_search_to_nav_people_details"
+            app:destination="@id/nav_people_details" />
+        <action
+            android:id="@+id/action_nav_search_to_nav_film_details"
+            app:destination="@id/nav_film_details" />
+        <action
+            android:id="@+id/action_nav_search_to_nav_planet_details"
+            app:destination="@id/nav_planet_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_favorite_list"
+        android:name="com.sw.sw_api_kotlin_project.fragment.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_nav_favorite_list_to_nav_people_details"
+            app:destination="@id/nav_people_details" />
+        <action
+            android:id="@+id/action_nav_favorite_list_to_nav_film_details"
+            app:destination="@id/nav_film_details" />
+        <action
+            android:id="@+id/action_nav_favorite_list_to_nav_planet_details"
+            app:destination="@id/nav_planet_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_other"
+        android:name="com.sw.sw_api_kotlin_project.fragment.others.OthersFragment"
+        android:label="OthersFragment"
+        tools:layout="@layout/fragment_others">
+        <action
+            android:id="@+id/action_nav_other_to_nav_web_view"
+            app:destination="@id/nav_web_view" />
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_people_details"
+        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleDetailsActivity"
+        android:label="PeopleDetailsActivity"
+        tools:layout="@layout/activity_people_details">
+        <argument
+            android:name="people_details"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
+    </activity>
+
+    <activity
+        android:id="@+id/nav_film_details"
+        android:name="com.sw.sw_api_kotlin_project.activity.film.FilmDetailsActivity"
+        android:label="FilmDetailsActivity"
+        tools:layout="@layout/activity_film_details">
+        <argument
+            android:name="film_details"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
+    </activity>
+
+    <activity
+        android:id="@+id/nav_planet_details"
+        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetDetailsActivity"
+        android:label="PlanetDetailsActivity"
+        tools:layout="@layout/activity_planet_details">
+        <argument
+            android:name="people_details"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.Planet" />
+    </activity>
+
+    <activity
+        android:id="@+id/nav_web_view"
+        android:name="com.sw.sw_api_kotlin_project.activity.webview.WebViewActivity"
+        android:label="WebViewActivity"
+        tools:layout="@layout/activity_web_view">
+        <argument
+            android:name="info"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.WebViewInfo" />
+    </activity>
+</navigation>

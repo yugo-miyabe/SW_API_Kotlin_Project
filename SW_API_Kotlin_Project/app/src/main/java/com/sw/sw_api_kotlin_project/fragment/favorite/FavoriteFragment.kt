@@ -48,18 +48,22 @@ class FavoriteFragment : BaseFragment() {
                         data,
                         {
                             val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetail(it)
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetails(
+                                    it
+                                )
                             findNavController().navigate(action)
                         },
                         {
                             val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(it)
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavFilmDetails(it)
                             findNavController().navigate(action)
 
                         },
                         {
                             val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetail(it)
+                                FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetails(
+                                    it
+                                )
                             findNavController().navigate(action)
 
                         },

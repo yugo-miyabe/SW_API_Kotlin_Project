@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_people_details"
+    app:startDestination="@id/nav_people_detail">
+
+    <fragment
+        android:id="@+id/nav_people_detail"
+        android:name="com.sw.sw_api_kotlin_project.fragment.people_details.PeopleDetailsFragment"
+        android:label="PeopleDetailsFragment"
+        tools:layout="@layout/fragment_people_details">
+        <argument
+            android:name="people"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
+    </fragment>
+
+</navigation>
