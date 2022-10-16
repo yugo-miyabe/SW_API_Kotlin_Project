@@ -103,8 +103,8 @@
 
     <activity
         android:id="@+id/nav_planet_details"
-        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetActivity"
-        android:label="PlanetActivity"
+        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetDetailsActivity"
+        android:label="PlanetDetailsActivity"
         tools:layout="@layout/activity_planet_details">
         <argument
             android:name="people_details"
