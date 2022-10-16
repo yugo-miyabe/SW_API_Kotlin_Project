@@ -61,10 +61,9 @@ open class BaseFragment : Fragment() {
         Utils.timberTrace(this::class.java)
     }
 
-    open fun initView(){
+    open fun initView() {
         Utils.timberTrace(this::class.java)
     }
-
 
     open fun addObservers() {
         Utils.timberTrace(this::class.java)

@@ -79,7 +79,6 @@ class FavoriteFragment : BaseFragment() {
                 }
             }
 
-
             override fun onError(errorMessage: String) {
                 binding.favoriteMessage.visibility = View.VISIBLE
                 binding.favoriteMessage.text = errorMessage
@@ -98,5 +97,4 @@ class FavoriteFragment : BaseFragment() {
         _binding = null
         super.onDestroy()
     }
-
 }
