@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
-    private val viewModel by viewModels<HomeViewModel> { HomeFactory() }
+    private val viewModel: HomeViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -30,7 +30,6 @@ class HomeFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
