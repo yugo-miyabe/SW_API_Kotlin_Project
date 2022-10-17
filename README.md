@@ -35,4 +35,4 @@
 | di | Hilt モジュール |
 | fragment | Fragment及び各FragmentのViewModel |
 | repository | APIのリクエスト、データベースの操作などを行う |
-| utils | Enum、WebViewのリンク、Date型の処理など |
+| utils | Enum、WebViewのリンク、Listene、Date型の処理など |
