@@ -7,7 +7,7 @@
 
         <variable
             name="fragment_people"
-            type="com.sw.sw_api_kotlin_project.fragment.people.PeopleListViewModel" />
+            type="com.sw.sw_api_kotlin_project.screen.people.PeopleListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

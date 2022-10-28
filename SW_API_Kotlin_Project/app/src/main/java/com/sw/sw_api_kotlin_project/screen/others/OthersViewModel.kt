@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.others
+package com.sw.sw_api_kotlin_project.screen.others
 
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.base.BaseViewModel

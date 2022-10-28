@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.people
+package com.sw.sw_api_kotlin_project.screen.people
 
 import android.os.Bundle
 import android.view.LayoutInflater

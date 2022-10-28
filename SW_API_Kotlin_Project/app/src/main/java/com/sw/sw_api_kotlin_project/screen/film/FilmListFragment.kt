@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.planet
+package com.sw.sw_api_kotlin_project.screen.film
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,64 +10,64 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.adapter.PlanetAdapter
+import com.sw.sw_api_kotlin_project.adapter.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Planet
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.Results
-import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
+import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
 import com.sw.sw_api_kotlin_project.utils.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * 惑星一覧画面
+ * 映画一覧画面
  */
 @AndroidEntryPoint
-class PlanetListFragment : BaseFragment() {
-    private val viewModel: PlanetViewModel by viewModels()
-    private var _binding: FragmentPlanetListBinding? = null
+class FilmListFragment : BaseFragment() {
+    private val viewModel: FilmListViewModel by viewModels()
+    private var _binding: FragmentFilmListBinding? = null
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPlanetListBinding.inflate(inflater, container, false)
+        _binding = FragmentFilmListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun initView() {
         super.initView()
-        binding.planetListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+        binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener {
                 activity?.finish()
             }
-            title = getString(R.string.planet_title)
+            title = getString(R.string.film_title)
         }
         binding.nextButton.setOnClickListener {
-            getPlanet(PageType.NEXT_PAGE)
+            getFilms(PageType.NEXT_PAGE)
         }
         binding.previousButton.setOnClickListener {
-            getPlanet(PageType.PREVIOUS_PAGE)
+            getFilms(PageType.PREVIOUS_PAGE)
         }
         binding.retryButton.setOnClickListener {
-            getPlanet(PageType.CURRENT_PAGE)
+            getFilms(PageType.CURRENT_PAGE)
         }
-        getPlanet(PageType.FIRST_PAGE)
+        getFilms(PageType.FIRST_PAGE)
     }
 
-    private fun getPlanet(pageType: PageType) {
-        val planetsObserver = object : SWLiveDataObserver<Results<Planet>>() {
-            override fun onSuccess(data: Results<Planet>?) {
-                val planets = data!!
-                binding.previousButton.isEnabled = planets.previous != null
-                binding.nextButton.isEnabled = planets.next != null
-                val adapter = PlanetAdapter(planets.results) {
-                    val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
+    private fun getFilms(pageType: PageType) {
+        val filmObserver = object : SWLiveDataObserver<Results<Film>>() {
+            override fun onSuccess(data: Results<Film>?) {
+                val films = data!!
+                binding.previousButton.isEnabled = films.previous != null
+                binding.nextButton.isEnabled = films.next != null
+                val adapter = FilmsAdapter(films.results) {
+                    val action = FilmListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
                     findNavController().navigate(action)
                 }
-                binding.planetRecycler.adapter = adapter
-                binding.planetRecycler.layoutManager = LinearLayoutManager(context)
+                binding.recyclerView.adapter = adapter
+                binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {
@@ -86,12 +86,12 @@ class PlanetListFragment : BaseFragment() {
             override fun onViewChange(shouldListShow: Boolean) {
                 super.onViewChange(shouldListShow)
                 binding.progressBar.isVisible = !shouldListShow
-                binding.planetRecycler.isVisible = shouldListShow
+                binding.recyclerView.isVisible = shouldListShow
                 binding.previousButton.isVisible = shouldListShow
                 binding.nextButton.isVisible = shouldListShow
             }
         }
-        viewModel.getPlanets(pageType).observe(viewLifecycleOwner, planetsObserver)
+        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmObserver)
     }
 
     override fun onDestroy() {

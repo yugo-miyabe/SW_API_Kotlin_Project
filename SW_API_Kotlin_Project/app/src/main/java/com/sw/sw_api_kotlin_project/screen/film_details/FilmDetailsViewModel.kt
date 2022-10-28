@@ -1,11 +1,11 @@
-package com.sw.sw_api_kotlin_project.fragment.planet_details
+package com.sw.sw_api_kotlin_project.screen.film_details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
-import com.sw.sw_api_kotlin_project.data.model.Planet
+import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import com.sw.sw_api_kotlin_project.utils.ListType
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PlanetDetailsViewModel @Inject constructor(
+class FilmDetailsViewModel @Inject constructor(
     private val favoriteRepository: FavoriteRepository
 ) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()
@@ -26,29 +26,28 @@ class PlanetDetailsViewModel @Inject constructor(
         }
     }
 
-    fun addOrDeleteFavorite(planet: Planet) {
+    fun addOrDeleteFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFavoriteState(planet.name)
+            val favorite: Favorite? = favoriteRepository.getFavoriteState(film.title)
             if (favorite == null) {
                 favoriteRepository.insert(
                     Favorite(
                         id = 0,
-                        name = planet.name,
-                        listType = ListType.PLANETS,
+                        name = film.title,
+                        listType = ListType.FILM,
                         people = null,
-                        film = null,
-                        planet = planet,
+                        film = film,
+                        planet = null,
                         registrationDate = DateFormatter.getTodayDateStringYYYYMMDDHHMMSS()
                     )
                 )
             } else {
                 favoriteRepository.delete(favorite)
             }
-            getFavoriteState(planet.name)
+            getFavoriteState(film.title)
         }
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean =
         favoriteRepository.getFavoriteState(name) != null
-
 }

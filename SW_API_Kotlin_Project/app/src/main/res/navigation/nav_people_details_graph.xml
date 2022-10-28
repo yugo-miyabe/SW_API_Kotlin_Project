@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_people_detail"
-        android:name="com.sw.sw_api_kotlin_project.fragment.people_details.PeopleDetailsFragment"
+        android:name="com.sw.sw_api_kotlin_project.screen.people_details.PeopleDetailsFragment"
         android:label="PeopleDetailsFragment"
         tools:layout="@layout/fragment_people_details">
         <argument

@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.home
+package com.sw.sw_api_kotlin_project.screen.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

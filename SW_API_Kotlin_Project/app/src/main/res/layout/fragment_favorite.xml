@@ -7,7 +7,7 @@
 
         <variable
             name="fragment_favorite"
-            type="com.sw.sw_api_kotlin_project.fragment.favorite.FavoriteViewModel" />
+            type="com.sw.sw_api_kotlin_project.screen.favorite.FavoriteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.search
+package com.sw.sw_api_kotlin_project.screen.search
 
 import android.os.Bundle
 import android.os.Parcelable

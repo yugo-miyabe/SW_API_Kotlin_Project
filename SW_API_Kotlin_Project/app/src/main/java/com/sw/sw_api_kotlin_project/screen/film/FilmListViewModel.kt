@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.film
+package com.sw.sw_api_kotlin_project.screen.film
 
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.base.BaseViewModel

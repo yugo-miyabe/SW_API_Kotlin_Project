@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.favorite
+package com.sw.sw_api_kotlin_project.screen.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater

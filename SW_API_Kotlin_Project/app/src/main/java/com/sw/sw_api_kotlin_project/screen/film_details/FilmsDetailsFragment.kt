@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.fragment.film_details
+package com.sw.sw_api_kotlin_project.screen.film_details
 
 import android.os.Bundle
 import android.view.LayoutInflater
