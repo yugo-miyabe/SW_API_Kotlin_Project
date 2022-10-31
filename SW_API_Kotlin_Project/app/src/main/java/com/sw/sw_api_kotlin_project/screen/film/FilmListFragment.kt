@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
+import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Film
-import com.sw.sw_api_kotlin_project.data.model.Results
+import com.sw.sw_api_kotlin_project.network.model.Film
+import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
-import com.sw.sw_api_kotlin_project.utils.PageType
+import com.sw.sw_api_kotlin_project.model.entity.PageType
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

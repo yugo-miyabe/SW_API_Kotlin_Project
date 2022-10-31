@@ -1,6 +1,6 @@
 package com.sw.sw_api_kotlin_project.di
 
-import com.sw.sw_api_kotlin_project.api.network.SWService
+import com.sw.sw_api_kotlin_project.network.SWService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.screen.planet.PlanetActivity
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.Planet
+import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.screen.base.PlanetNavListener
 import dagger.hilt.android.AndroidEntryPoint

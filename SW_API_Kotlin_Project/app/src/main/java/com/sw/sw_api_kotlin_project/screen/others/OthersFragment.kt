@@ -10,9 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.data.model.WebViewInfo
+import com.sw.sw_api_kotlin_project.model.entity.WebViewInfo
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
-import com.sw.sw_api_kotlin_project.utils.WebViewURL
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -33,6 +32,8 @@ class OthersFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        val swApiDocumentation = "https://swapi.dev/documentation"
+
         binding.othersAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_others)
         binding.deleteFavorite.setOnClickListener {
@@ -45,7 +46,7 @@ class OthersFragment : BaseFragment() {
             val action = OthersFragmentDirections.actionNavOtherToNavWebView(
                 WebViewInfo(
                     title = getString(R.string.other_api_document),
-                    url = WebViewURL.swApiDocumentation,
+                    url = swApiDocumentation,
                 )
             )
             findNavController().navigate(action)

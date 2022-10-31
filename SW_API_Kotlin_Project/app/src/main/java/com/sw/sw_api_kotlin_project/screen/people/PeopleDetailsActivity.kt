@@ -3,7 +3,7 @@ package com.sw.sw_api_kotlin_project.screen.people
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
-import com.sw.sw_api_kotlin_project.data.model.People
+import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.databinding.ActivityPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.screen.base.PeopleNavListener
 import dagger.hilt.android.AndroidEntryPoint

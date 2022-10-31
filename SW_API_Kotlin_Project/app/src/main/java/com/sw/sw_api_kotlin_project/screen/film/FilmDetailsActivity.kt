@@ -3,7 +3,7 @@ package com.sw.sw_api_kotlin_project.screen.film
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
-import com.sw.sw_api_kotlin_project.data.model.Film
+import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.databinding.ActivityFilmDetailsBinding
 import com.sw.sw_api_kotlin_project.screen.base.FilmNavListener
 import dagger.hilt.android.AndroidEntryPoint

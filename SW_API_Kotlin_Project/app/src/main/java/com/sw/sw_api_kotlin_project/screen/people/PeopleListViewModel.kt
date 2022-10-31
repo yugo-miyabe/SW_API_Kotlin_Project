@@ -2,9 +2,9 @@ package com.sw.sw_api_kotlin_project.screen.people
 
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.repository.PeopleRepository
-import com.sw.sw_api_kotlin_project.utils.PageType
-import com.sw.sw_api_kotlin_project.utils.Resource
+import com.sw.sw_api_kotlin_project.model.repository.PeopleRepository
+import com.sw.sw_api_kotlin_project.model.entity.PageType
+import com.sw.sw_api_kotlin_project.model.entity.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject

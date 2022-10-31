@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.data.database.Favorite
-import com.sw.sw_api_kotlin_project.data.model.Film
-import com.sw.sw_api_kotlin_project.data.model.People
-import com.sw.sw_api_kotlin_project.data.model.Planet
-import com.sw.sw_api_kotlin_project.utils.ListType
+import com.sw.sw_api_kotlin_project.database.Favorite
+import com.sw.sw_api_kotlin_project.network.model.Film
+import com.sw.sw_api_kotlin_project.network.model.People
+import com.sw.sw_api_kotlin_project.network.model.Planet
+import com.sw.sw_api_kotlin_project.model.entity.ListType
 
 class FavoriteAdapter(
     private val favoriteList: List<Favorite>,
