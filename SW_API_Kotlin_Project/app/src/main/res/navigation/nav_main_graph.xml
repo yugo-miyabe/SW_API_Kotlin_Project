@@ -88,7 +88,7 @@
         tools:layout="@layout/activity_people_details">
         <argument
             android:name="people_details"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
+            app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
     </activity>
 
     <activity
@@ -98,7 +98,7 @@
         tools:layout="@layout/activity_film_details">
         <argument
             android:name="film_details"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.Film" />
+            app:argType="com.sw.sw_api_kotlin_project.network.model.Film" />
     </activity>
 
     <activity
@@ -108,7 +108,7 @@
         tools:layout="@layout/activity_planet_details">
         <argument
             android:name="people_details"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.Planet" />
+            app:argType="com.sw.sw_api_kotlin_project.network.model.Planet" />
     </activity>
 
     <activity
@@ -118,6 +118,6 @@
         tools:layout="@layout/activity_web_view">
         <argument
             android:name="web_view_info"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.WebViewInfo" />
+            app:argType="com.sw.sw_api_kotlin_project.model.entity.WebViewInfo" />
     </activity>
 </navigation>

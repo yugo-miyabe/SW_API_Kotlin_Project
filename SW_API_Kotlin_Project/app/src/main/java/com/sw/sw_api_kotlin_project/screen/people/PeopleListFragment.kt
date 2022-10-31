@@ -71,7 +71,6 @@ class PeopleListFragment : BaseFragment() {
                     findNavController().navigate(action)
                 }
                 binding.peopleRecyclerView.adapter = adapter
-                binding.peopleRecyclerView.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {

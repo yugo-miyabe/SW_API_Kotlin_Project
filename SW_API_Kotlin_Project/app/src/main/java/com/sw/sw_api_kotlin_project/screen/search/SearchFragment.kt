@@ -66,7 +66,6 @@ class SearchFragment : BaseFragment() {
                     },
                 )
                 binding.searchResultRecyclerView.adapter = adapter
-                binding.searchResultRecyclerView.layoutManager = LinearLayoutManager(context)
                 binding.searchButton.isEnabled = true
                 binding.searchResultRecyclerView.visibility = View.VISIBLE
                 if (data[ListType.PEOPLE.ordinal].count == 0 && data[ListType.FILM.ordinal].count == 0 && data[ListType.PLANETS.ordinal].count == 0) {

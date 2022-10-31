@@ -66,7 +66,6 @@ class PlanetListFragment : BaseFragment() {
                     findNavController().navigate(action)
                 }
                 binding.planetRecycler.adapter = adapter
-                binding.planetRecycler.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {
