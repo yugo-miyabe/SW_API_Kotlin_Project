@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.activity.people.PeopleActivity
+import com.sw.sw_api_kotlin_project.screen.people.PeopleActivity
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding

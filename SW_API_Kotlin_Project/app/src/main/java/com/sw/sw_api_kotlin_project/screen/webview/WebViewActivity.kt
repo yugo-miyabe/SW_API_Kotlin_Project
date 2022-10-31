@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.activity.webview
+package com.sw.sw_api_kotlin_project.screen.webview
 
 import android.os.Bundle
 import android.view.KeyEvent

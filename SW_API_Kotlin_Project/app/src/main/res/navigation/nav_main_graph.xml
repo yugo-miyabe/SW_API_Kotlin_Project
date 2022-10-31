@@ -23,19 +23,19 @@
 
     <activity
         android:id="@+id/nav_people_activity"
-        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleActivity"
         android:label="PeopleListActivity"
         tools:layout="@layout/activity_people" />
 
     <activity
         android:id="@+id/nav_film_activity"
-        android:name="com.sw.sw_api_kotlin_project.activity.film.FilmActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmActivity"
         android:label="FilmActivity"
         tools:layout="@layout/activity_film" />
 
     <activity
         android:id="@+id/nav_planet_activity"
-        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.PlanetActivity"
         android:label="PlanetActivity"
         tools:layout="@layout/activity_planet" />
 
@@ -83,7 +83,7 @@
 
     <activity
         android:id="@+id/nav_people_details"
-        android:name="com.sw.sw_api_kotlin_project.activity.people.PeopleDetailsActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleDetailsActivity"
         android:label="PeopleDetailsActivity"
         tools:layout="@layout/activity_people_details">
         <argument
@@ -93,7 +93,7 @@
 
     <activity
         android:id="@+id/nav_film_details"
-        android:name="com.sw.sw_api_kotlin_project.activity.film.FilmDetailsActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmDetailsActivity"
         android:label="FilmDetailsActivity"
         tools:layout="@layout/activity_film_details">
         <argument
@@ -103,7 +103,7 @@
 
     <activity
         android:id="@+id/nav_planet_details"
-        android:name="com.sw.sw_api_kotlin_project.activity.planet.PlanetDetailsActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.PlanetDetailsActivity"
         android:label="PlanetDetailsActivity"
         tools:layout="@layout/activity_planet_details">
         <argument
@@ -113,7 +113,7 @@
 
     <activity
         android:id="@+id/nav_web_view"
-        android:name="com.sw.sw_api_kotlin_project.activity.webview.WebViewActivity"
+        android:name="com.sw.sw_api_kotlin_project.screen.webview.WebViewActivity"
         android:label="WebViewActivity"
         tools:layout="@layout/activity_web_view">
         <argument

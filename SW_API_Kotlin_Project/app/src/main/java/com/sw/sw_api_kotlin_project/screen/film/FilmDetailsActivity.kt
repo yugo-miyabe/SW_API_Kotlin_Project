@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.activity.film
+package com.sw.sw_api_kotlin_project.screen.film
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

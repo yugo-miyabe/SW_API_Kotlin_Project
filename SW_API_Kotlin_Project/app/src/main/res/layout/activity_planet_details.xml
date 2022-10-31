@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.planet.PlanetDetailsActivity">
+        tools:context=".screen.planet.PlanetDetailsActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_planet_details_host_fragment"
