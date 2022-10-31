@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.adapter
+package com.sw.sw_api_kotlin_project.screen.film
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.Film
 
-class FilmsAdapter(
+class FilmAdapter(
     private val filmList: List<Film>,
     private val onClick: (Film) -> Unit
-) : RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     class ViewHolder(private val view: View, private val onClick: (Film) -> Unit) :
         RecyclerView.ViewHolder(view) {

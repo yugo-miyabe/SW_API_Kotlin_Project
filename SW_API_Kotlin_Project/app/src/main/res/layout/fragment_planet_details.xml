@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.sw.sw_api_kotlin_project.screen.planet_details.PlanetDetailsViewModel" />
+            type="com.sw.sw_api_kotlin_project.screen.planet.details.PlanetDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

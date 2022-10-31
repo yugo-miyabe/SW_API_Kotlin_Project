@@ -1,11 +1,11 @@
-package com.sw.sw_api_kotlin_project.screen.people_details
+package com.sw.sw_api_kotlin_project.screen.planet.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.database.Favorite
-import com.sw.sw_api_kotlin_project.data.model.People
+import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import com.sw.sw_api_kotlin_project.utils.ListType
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PeopleDetailsViewModel @Inject constructor(
+class PlanetDetailsViewModel @Inject constructor(
     private val favoriteRepository: FavoriteRepository
 ) : BaseViewModel() {
     private val _favoriteStatus = MutableLiveData<Boolean>()
@@ -26,28 +26,29 @@ class PeopleDetailsViewModel @Inject constructor(
         }
     }
 
-    fun addOrDeleteFavorite(people: People) {
+    fun addOrDeleteFavorite(planet: Planet) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFavoriteState(people.name)
+            val favorite: Favorite? = favoriteRepository.getFavoriteState(planet.name)
             if (favorite == null) {
                 favoriteRepository.insert(
                     Favorite(
                         id = 0,
-                        name = people.name,
-                        listType = ListType.PEOPLE,
-                        people = people,
+                        name = planet.name,
+                        listType = ListType.PLANETS,
+                        people = null,
                         film = null,
-                        planet = null,
+                        planet = planet,
                         registrationDate = DateFormatter.getTodayDateStringYYYYMMDDHHMMSS()
                     )
                 )
             } else {
                 favoriteRepository.delete(favorite)
             }
-            getFavoriteState(people.name)
+            getFavoriteState(planet.name)
         }
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean =
         favoriteRepository.getFavoriteState(name) != null
+
 }

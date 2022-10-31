@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.sw.sw_api_kotlin_project.screen.film_details.FilmDetailsViewModel" />
+            type="com.sw.sw_api_kotlin_project.screen.film.detail.FilmDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

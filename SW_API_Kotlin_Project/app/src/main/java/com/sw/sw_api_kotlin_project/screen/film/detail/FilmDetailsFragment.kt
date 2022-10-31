@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.screen.film_details
+package com.sw.sw_api_kotlin_project.screen.film.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.activity.film.FilmActivity
-import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
 import com.sw.sw_api_kotlin_project.utils.FilmNavListener
@@ -21,11 +21,11 @@ import dagger.hilt.android.AndroidEntryPoint
  * 映画詳細画面
  */
 @AndroidEntryPoint
-class FilmsDetailsFragment : BaseFragment() {
+class FilmDetailsFragment : BaseFragment() {
     private val viewModel: FilmDetailsViewModel by viewModels()
     private var _binding: FragmentFilmDetailsBinding? = null
     private val binding get() = checkNotNull(_binding)
-    private val args: FilmsDetailsFragmentArgs by navArgs()
+    private val args: FilmDetailsFragmentArgs by navArgs()
     private lateinit var film: Film
 
     override fun onCreateView(

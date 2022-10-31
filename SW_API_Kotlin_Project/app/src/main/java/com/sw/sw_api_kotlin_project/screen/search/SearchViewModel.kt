@@ -2,7 +2,7 @@ package com.sw.sw_api_kotlin_project.screen.search
 
 import android.os.Parcelable
 import androidx.lifecycle.liveData
-import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.repository.FilmsRepository
 import com.sw.sw_api_kotlin_project.repository.PeopleRepository

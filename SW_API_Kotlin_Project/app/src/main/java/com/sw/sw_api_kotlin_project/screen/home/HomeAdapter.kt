@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.adapter
+package com.sw.sw_api_kotlin_project.screen.home
 
 import android.view.LayoutInflater
 import android.view.View

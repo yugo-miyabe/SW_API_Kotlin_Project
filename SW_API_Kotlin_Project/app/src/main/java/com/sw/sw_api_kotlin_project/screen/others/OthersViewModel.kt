@@ -1,7 +1,7 @@
 package com.sw.sw_api_kotlin_project.screen.others
 
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.repository.FavoriteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

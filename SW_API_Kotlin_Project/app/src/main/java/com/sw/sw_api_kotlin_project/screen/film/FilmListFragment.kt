@@ -10,9 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.adapter.FilmsAdapter
 import com.sw.sw_api_kotlin_project.api.liveData.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.base.BaseFragment
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.data.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
@@ -62,7 +61,7 @@ class FilmListFragment : BaseFragment() {
                 val films = data!!
                 binding.previousButton.isEnabled = films.previous != null
                 binding.nextButton.isEnabled = films.next != null
-                val adapter = FilmsAdapter(films.results) {
+                val adapter = FilmAdapter(films.results) {
                     val action = FilmListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
                     findNavController().navigate(action)
                 }

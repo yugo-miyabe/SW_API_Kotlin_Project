@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.adapter
+package com.sw.sw_api_kotlin_project.screen.search
 
 import android.os.Parcelable
 import android.view.LayoutInflater
