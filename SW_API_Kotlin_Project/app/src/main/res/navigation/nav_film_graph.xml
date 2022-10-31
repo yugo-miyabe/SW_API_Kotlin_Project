@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_films_list"
-        android:name="com.sw.sw_api_kotlin_project.fragment.film.FilmListFragment"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmListFragment"
         android:label="FilmsFragment"
         tools:layout="@layout/fragment_film_list">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/nav_films_detail"
-        android:name="com.sw.sw_api_kotlin_project.fragment.film_details.FilmsDetailsFragment"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.detail.FilmDetailsFragment"
         android:label="FilmsDetailsFragment"
         tools:layout="@layout/fragment_film_details">
         <argument

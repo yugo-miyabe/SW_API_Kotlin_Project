@@ -7,7 +7,7 @@
 
         <variable
             name="fragment_planets"
-            type="com.sw.sw_api_kotlin_project.fragment.planet.PlanetViewModel" />
+            type="com.sw.sw_api_kotlin_project.screen.planet.PlanetViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

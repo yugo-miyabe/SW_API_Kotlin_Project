@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_planet_list"
-        android:name="com.sw.sw_api_kotlin_project.fragment.planet.PlanetListFragment"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.PlanetListFragment"
         android:label="PlanetFragment"
         tools:layout="@layout/fragment_planet_list">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/nav_planet_detail"
-        android:name="com.sw.sw_api_kotlin_project.fragment.planet_details.PlanetDetailsFragment"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.details.PlanetDetailsFragment"
         android:label="PlanetDetailsFragment"
         tools:layout="@layout/fragment_planet_details">
         <argument
