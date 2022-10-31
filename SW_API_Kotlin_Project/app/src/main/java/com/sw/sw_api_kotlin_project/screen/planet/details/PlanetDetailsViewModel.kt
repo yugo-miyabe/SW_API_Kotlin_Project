@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.database.Favorite
+import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.utils.DateFormatter
@@ -28,11 +28,10 @@ class PlanetDetailsViewModel @Inject constructor(
 
     fun addOrDeleteFavorite(planet: Planet) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFavoriteState(planet.name)
+            val favorite: Favorite? = favoriteRepository.getFavorite(planet.name)
             if (favorite == null) {
-                favoriteRepository.insert(
+                favoriteRepository.add(
                     Favorite(
-                        id = 0,
                         name = planet.name,
                         listType = ListType.PLANETS,
                         people = null,
@@ -49,6 +48,6 @@ class PlanetDetailsViewModel @Inject constructor(
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean =
-        favoriteRepository.getFavoriteState(name) != null
+        favoriteRepository.getFavorite(name) != null
 
 }

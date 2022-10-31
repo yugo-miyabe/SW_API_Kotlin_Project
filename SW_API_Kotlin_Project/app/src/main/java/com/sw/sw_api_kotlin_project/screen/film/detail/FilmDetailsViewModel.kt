@@ -3,12 +3,12 @@ package com.sw.sw_api_kotlin_project.screen.film.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.database.Favorite
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.utils.DateFormatter
+import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.model.entity.ListType
+import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.network.model.Film
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,11 +28,10 @@ class FilmDetailsViewModel @Inject constructor(
 
     fun addOrDeleteFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFavoriteState(film.title)
+            val favorite: Favorite? = favoriteRepository.getFavorite(film.title)
             if (favorite == null) {
-                favoriteRepository.insert(
+                favoriteRepository.add(
                     Favorite(
-                        id = 0,
                         name = film.title,
                         listType = ListType.FILM,
                         people = null,
@@ -49,5 +48,5 @@ class FilmDetailsViewModel @Inject constructor(
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean =
-        favoriteRepository.getFavoriteState(name) != null
+        favoriteRepository.getFavorite(name) != null
 }

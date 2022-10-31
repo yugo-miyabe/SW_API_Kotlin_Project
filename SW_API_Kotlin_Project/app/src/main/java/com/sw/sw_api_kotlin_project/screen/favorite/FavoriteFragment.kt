@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.database.Favorite
+import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 

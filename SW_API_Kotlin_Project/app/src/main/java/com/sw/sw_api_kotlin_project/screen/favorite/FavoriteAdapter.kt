@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.database.Favorite
+import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.network.model.Planet

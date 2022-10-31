@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.database
+package com.sw.sw_api_kotlin_project.model.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,7 +10,7 @@ import com.sw.sw_api_kotlin_project.model.entity.ListType
 @Entity(tableName = "favorite_table")
 data class Favorite(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     val name: String,
     val listType: ListType,
     val people: People?,
