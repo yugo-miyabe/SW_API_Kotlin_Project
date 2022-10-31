@@ -13,7 +13,7 @@ import com.sw.sw_api_kotlin_project.activity.film.FilmActivity
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
-import com.sw.sw_api_kotlin_project.utils.FilmNavListener
+import com.sw.sw_api_kotlin_project.screen.base.FilmNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 

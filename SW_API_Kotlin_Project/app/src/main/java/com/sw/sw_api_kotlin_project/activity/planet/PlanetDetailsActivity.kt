@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
 import com.sw.sw_api_kotlin_project.data.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.ActivityPlanetDetailsBinding
-import com.sw.sw_api_kotlin_project.utils.PlanetNavListener
+import com.sw.sw_api_kotlin_project.screen.base.PlanetNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.ActivityPeopleDetailsBinding
-import com.sw.sw_api_kotlin_project.utils.PeopleNavListener
+import com.sw.sw_api_kotlin_project.screen.base.PeopleNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

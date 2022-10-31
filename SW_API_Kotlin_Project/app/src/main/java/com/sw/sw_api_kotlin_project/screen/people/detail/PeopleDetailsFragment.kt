@@ -13,7 +13,7 @@ import com.sw.sw_api_kotlin_project.activity.people.PeopleActivity
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
-import com.sw.sw_api_kotlin_project.utils.PeopleNavListener
+import com.sw.sw_api_kotlin_project.screen.base.PeopleNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
