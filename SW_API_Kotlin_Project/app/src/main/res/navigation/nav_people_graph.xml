@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_people_details">
         <argument
             android:name="people"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.People" />
+            app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
     </fragment>
 
 </navigation>

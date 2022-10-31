@@ -51,7 +51,6 @@ class HomeFragment : BaseFragment() {
             findNavController().navigate(action)
         }
         binding.homeRecyclerView.adapter = adapter
-        binding.homeRecyclerView.layoutManager = LinearLayoutManager(context)
 
     }
 

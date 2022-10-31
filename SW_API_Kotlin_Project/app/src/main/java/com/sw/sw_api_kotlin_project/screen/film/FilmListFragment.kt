@@ -66,7 +66,6 @@ class FilmListFragment : BaseFragment() {
                     findNavController().navigate(action)
                 }
                 binding.recyclerView.adapter = adapter
-                binding.recyclerView.layoutManager = LinearLayoutManager(context)
             }
 
             override fun onError(errorMessage: String) {

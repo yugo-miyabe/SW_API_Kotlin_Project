@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_planet_details">
         <argument
             android:name="planet"
-            app:argType="com.sw.sw_api_kotlin_project.data.model.Planet" />
+            app:argType="com.sw.sw_api_kotlin_project.network.model.Planet" />
     </fragment>
 
 </navigation>
