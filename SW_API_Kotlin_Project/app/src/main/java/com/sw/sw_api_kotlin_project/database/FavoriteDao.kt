@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoriteDao {
