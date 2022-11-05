@@ -63,7 +63,7 @@ class PeopleDetailsFragment : BaseFragment() {
             binding.massText.text = mass
         }
         binding.peopleFavoriteMark.setOnClickListener {
-            viewModel.addOrDeleteFavorite(people)
+            viewModel.addFavorite(people)
         }
         viewModel.getFavoriteState(people.name)
     }
