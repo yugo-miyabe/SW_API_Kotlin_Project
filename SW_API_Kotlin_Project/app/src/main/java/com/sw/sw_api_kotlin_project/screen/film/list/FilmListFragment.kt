@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.screen.film
+package com.sw.sw_api_kotlin_project.screen.film.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
@@ -16,6 +15,7 @@ import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
 import com.sw.sw_api_kotlin_project.model.entity.PageType
+import com.sw.sw_api_kotlin_project.screen.film.FilmAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
