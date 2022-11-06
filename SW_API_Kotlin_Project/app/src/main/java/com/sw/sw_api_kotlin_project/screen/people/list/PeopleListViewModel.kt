@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.screen.people
+package com.sw.sw_api_kotlin_project.screen.people.list
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.screen.people
+package com.sw.sw_api_kotlin_project.screen.people.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,7 @@ import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.model.entity.PageType
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
+import com.sw.sw_api_kotlin_project.screen.people.PeopleAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
