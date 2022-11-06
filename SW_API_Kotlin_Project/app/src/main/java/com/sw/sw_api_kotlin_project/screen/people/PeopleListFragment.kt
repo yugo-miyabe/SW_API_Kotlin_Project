@@ -7,15 +7,11 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.network.model.People
-import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.model.entity.PageType
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -28,8 +24,7 @@ class PeopleListFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
         return binding.root
@@ -45,56 +40,44 @@ class PeopleListFragment : BaseFragment() {
                 title = getString(R.string.people_list_title)
             }
             nextButton.setOnClickListener {
-                getPeople(PageType.NEXT_PAGE)
+                viewModel.getPeople(viewLifecycleOwner, PageType.NEXT_PAGE)
             }
             previousButton.setOnClickListener {
-                getPeople(PageType.PREVIOUS_PAGE)
+                viewModel.getPeople(viewLifecycleOwner, PageType.PREVIOUS_PAGE)
             }
             retryButton.setOnClickListener {
-                getPeople(PageType.CURRENT_PAGE)
+                viewModel.getPeople(viewLifecycleOwner, PageType.CURRENT_PAGE)
             }
         }
-        getPeople(PageType.FIRST_PAGE)
+        viewModel.getPeople(viewLifecycleOwner, PageType.FIRST_PAGE)
     }
 
-    private fun getPeople(pageType: PageType) {
-        val peopleObserver = object : SWLiveDataObserver<Results<People>>() {
-            override fun onSuccess(data: Results<People>?) {
-                val people = data!!
-                binding.previousButton.isEnabled = people.previous != null
-                binding.nextButton.isEnabled = people.next != null
-                val adapter = PeopleAdapter(
-                    people.results,
-                ) {
-                    val action =
-                        PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
-                    findNavController().navigate(action)
-                }
-                binding.peopleRecyclerView.adapter = adapter
-            }
-
-            override fun onError(errorMessage: String) {
-                binding.progressBar.isVisible = false
-                binding.retryButton.isVisible = true
-                binding.errorText.isVisible = true
-                binding.errorText.text = errorMessage
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                binding.retryButton.isVisible = false
-                binding.errorText.isVisible = false
-            }
-
-            override fun onViewChange(shouldListShow: Boolean) {
-                super.onViewChange(shouldListShow)
-                binding.progressBar.isVisible = !shouldListShow
-                binding.peopleRecyclerView.isVisible = shouldListShow
-                binding.previousButton.isVisible = shouldListShow
-                binding.nextButton.isVisible = shouldListShow
+    override fun addObservers() {
+        super.addObservers()
+        viewModel.peopleList.observe(viewLifecycleOwner) { people ->
+            binding.peopleRecyclerView.isVisible = true
+            binding.previousButton.isEnabled = people.previous != null
+            binding.nextButton.isEnabled = people.next != null
+            binding.peopleRecyclerView.adapter = PeopleAdapter(
+                peopleList = people.results
+            ) {
+                val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
+                findNavController().navigate(action)
             }
         }
-        viewModel.getPeople(pageType).observe(viewLifecycleOwner, peopleObserver)
+        viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->
+            binding.peopleRecyclerView.adapter = null
+            binding.peopleRecyclerView.isVisible = false
+            binding.errorText.isVisible = true
+            binding.errorText.text = failureMessage
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isVisible ->
+            binding.progressBar.isVisible = isVisible
+            binding.errorText.isVisible = isVisible
+            binding.peopleRecyclerView.isVisible = !isVisible
+            binding.previousButton.isVisible = !isVisible
+            binding.nextButton.isVisible = !isVisible
+        }
     }
 
     override fun onDestroy() {
