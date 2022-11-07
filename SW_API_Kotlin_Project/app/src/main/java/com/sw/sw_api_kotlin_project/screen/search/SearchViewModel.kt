@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.network.model.Results
-import com.sw.sw_api_kotlin_project.model.repository.FilmsRepository
+import com.sw.sw_api_kotlin_project.model.repository.FilmRepository
 import com.sw.sw_api_kotlin_project.model.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.model.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.model.entity.Resource
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository,
-    private val filmsRepository: FilmsRepository,
+    private val filmRepository: FilmRepository,
     private val planetRepository: PlanetRepository,
 ) : BaseViewModel() {
 
@@ -23,7 +23,7 @@ class SearchViewModel @Inject constructor(
         emit(Resource.loading(null))
         try {
             val searchResponse = peopleRepository.getPeopleSearch(searchString)
-            val filmsResponse = filmsRepository.getFilmsSearch(searchString)
+            val filmsResponse = filmRepository.getFilmsSearch(searchString)
             val planetResponse = planetRepository.getPlanetsSearch(searchString)
             val response: List<Results<out Parcelable>> =
                 listOf(searchResponse, filmsResponse, planetResponse)

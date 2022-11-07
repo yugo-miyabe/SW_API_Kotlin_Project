@@ -9,12 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
 import com.sw.sw_api_kotlin_project.model.entity.PageType
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.screen.film.FilmAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,53 +41,45 @@ class FilmListFragment : BaseFragment() {
             title = getString(R.string.film_title)
         }
         binding.nextButton.setOnClickListener {
-            getFilms(PageType.NEXT_PAGE)
+            viewModel.getFilm(viewLifecycleOwner, PageType.NEXT_PAGE)
         }
         binding.previousButton.setOnClickListener {
-            getFilms(PageType.PREVIOUS_PAGE)
+            viewModel.getFilm(viewLifecycleOwner, PageType.PREVIOUS_PAGE)
         }
         binding.retryButton.setOnClickListener {
-            getFilms(PageType.CURRENT_PAGE)
+            viewModel.getFilm(viewLifecycleOwner, PageType.CURRENT_PAGE)
         }
-        getFilms(PageType.FIRST_PAGE)
+        viewModel.getFilm(viewLifecycleOwner, PageType.FIRST_PAGE)
     }
 
-    private fun getFilms(pageType: PageType) {
-        val filmObserver = object : SWLiveDataObserver<Results<Film>>() {
-            override fun onSuccess(data: Results<Film>?) {
-                val films = data!!
-                binding.previousButton.isEnabled = films.previous != null
-                binding.nextButton.isEnabled = films.next != null
-                val adapter = FilmAdapter(films.results) {
-                    val action = FilmListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
-                    findNavController().navigate(action)
-                }
-                binding.recyclerView.adapter = adapter
-            }
-
-            override fun onError(errorMessage: String) {
-                binding.progressBar.isVisible = false
-                binding.retryButton.isVisible = true
-                binding.errorText.isVisible = true
-                binding.errorText.text = errorMessage
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                binding.retryButton.isVisible = false
-                binding.errorText.isVisible = false
-            }
-
-            override fun onViewChange(shouldListShow: Boolean) {
-                super.onViewChange(shouldListShow)
-                binding.progressBar.isVisible = !shouldListShow
-                binding.recyclerView.isVisible = shouldListShow
-                binding.previousButton.isVisible = shouldListShow
-                binding.nextButton.isVisible = shouldListShow
+    override fun addObservers() {
+        super.addObservers()
+        viewModel.filmList.observe(viewLifecycleOwner) { film ->
+            binding.filmRecyclerView.isVisible = true
+            binding.previousButton.isEnabled = film.previous != null
+            binding.nextButton.isEnabled = film.next != null
+            binding.filmRecyclerView.adapter = FilmAdapter(
+                filmList = film.results
+            ) {
+                val action = FilmListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
+                findNavController().navigate(action)
             }
         }
-        viewModel.getFilms(pageType).observe(viewLifecycleOwner, filmObserver)
+        viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->
+            binding.filmRecyclerView.adapter = null
+            binding.filmRecyclerView.isVisible = false
+            binding.errorText.isVisible = true
+            binding.errorText.text = failureMessage
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isVisible ->
+            binding.progressBar.isVisible = isVisible
+            binding.errorText.isVisible = isVisible
+            binding.filmRecyclerView.isVisible = !isVisible
+            binding.previousButton.isVisible = !isVisible
+            binding.nextButton.isVisible = !isVisible
+        }
     }
+
 
     override fun onDestroy() {
         _binding = null
