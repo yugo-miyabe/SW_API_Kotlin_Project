@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.screen.planet
+package com.sw.sw_api_kotlin_project.screen.planet.list
 
 import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
