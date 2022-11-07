@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FilmListViewModel @Inject constructor(
-    private val filmsRepository: FilmRepository
+    private val filmRepository: FilmRepository
 ) : BaseViewModel() {
     private val _filmList = MutableLiveData<Results<Film>>()
     val filmList: LiveData<Results<Film>> get() = _filmList
@@ -45,7 +45,7 @@ class FilmListViewModel @Inject constructor(
             }
         }
         viewModelScope.launch {
-            filmsRepository.getFilm(page).observe(viewLifecycleOwner, peopleObserver)
+            filmRepository.getFilm(page).observe(viewLifecycleOwner, peopleObserver)
         }
     }
 }

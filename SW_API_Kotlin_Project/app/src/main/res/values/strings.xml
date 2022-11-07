@@ -8,7 +8,7 @@
     <!--　ホーム画面 -->
     <string name="home_people">登場人物</string>
     <string name="home_planet">惑星</string>
-    <string name="home_films">映画</string>
+    <string name="home_film">映画</string>
     <string name="home_species">種族</string>
     <string name="home_vehicles">車両</string>
     <string name="home_star_ships">宇宙船</string>
