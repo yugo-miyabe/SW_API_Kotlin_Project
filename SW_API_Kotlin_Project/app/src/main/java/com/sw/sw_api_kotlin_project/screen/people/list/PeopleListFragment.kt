@@ -72,12 +72,12 @@ class PeopleListFragment : BaseFragment() {
             binding.errorText.isVisible = true
             binding.errorText.text = failureMessage
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) { isVisible ->
-            binding.progressBar.isVisible = isVisible
-            binding.errorText.isVisible = isVisible
-            binding.peopleRecyclerView.isVisible = !isVisible
-            binding.previousButton.isVisible = !isVisible
-            binding.nextButton.isVisible = !isVisible
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressBar.isVisible = isLoading
+            binding.errorText.isVisible = isLoading
+            binding.peopleRecyclerView.isVisible = !isLoading
+            binding.previousButton.isVisible = !isLoading
+            binding.nextButton.isVisible = !isLoading
         }
     }
 
