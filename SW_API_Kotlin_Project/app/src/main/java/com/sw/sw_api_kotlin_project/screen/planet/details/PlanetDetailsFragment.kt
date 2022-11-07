@@ -61,7 +61,7 @@ class PlanetDetailsFragment : BaseFragment() {
             binding.terrainText.text = terrain
         }
         binding.planetFavoriteMark.setOnClickListener {
-            viewModel.addOrDeleteFavorite(planet)
+            viewModel.toggleFavorite(planet)
         }
         viewModel.getFavoriteState(planet.name)
     }

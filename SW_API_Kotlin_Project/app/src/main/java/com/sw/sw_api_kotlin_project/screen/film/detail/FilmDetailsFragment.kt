@@ -59,7 +59,7 @@ class FilmDetailsFragment : BaseFragment() {
             binding.openingCrawlText.text = openingCrawl
         }
         binding.filmFavoriteMark.setOnClickListener {
-            viewModel.addOrDeleteFavorite(film)
+            viewModel.toggleFavorite(film)
         }
         viewModel.getFavoriteState(film.title)
     }

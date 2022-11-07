@@ -3,12 +3,10 @@ package com.sw.sw_api_kotlin_project.screen.planet.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
-import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.utils.DateFormatter
-import com.sw.sw_api_kotlin_project.model.entity.ListType
+import com.sw.sw_api_kotlin_project.network.model.Planet
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,20 +24,11 @@ class PlanetDetailsViewModel @Inject constructor(
         }
     }
 
-    fun addOrDeleteFavorite(planet: Planet) {
+    fun toggleFavorite(planet: Planet) {
         viewModelScope.launch {
             val favorite: Favorite? = favoriteRepository.getFavorite(planet.name)
             if (favorite == null) {
-                favoriteRepository.add(
-                    Favorite(
-                        name = planet.name,
-                        listType = ListType.PLANETS,
-                        people = null,
-                        film = null,
-                        planet = planet,
-                        registrationDate = DateFormatter.getTodayDateStringYYYYMMDDHHMMSS()
-                    )
-                )
+                favoriteRepository.add(planet)
             } else {
                 favoriteRepository.delete(favorite)
             }
