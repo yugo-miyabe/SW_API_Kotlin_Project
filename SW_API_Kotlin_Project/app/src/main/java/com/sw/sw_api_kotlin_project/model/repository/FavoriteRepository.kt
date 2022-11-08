@@ -10,9 +10,6 @@ import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import javax.inject.Inject
 
 class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDao) {
-    suspend fun add(favorite: Favorite) {
-        favoriteDao.insert(favorite)
-    }
 
     suspend fun add(people: People) {
         favoriteDao.insert(
