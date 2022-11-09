@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_people_list"
-        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleListFragment"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.list.PeopleListFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_people_list">
 

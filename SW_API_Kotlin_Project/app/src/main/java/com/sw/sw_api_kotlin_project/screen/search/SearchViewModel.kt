@@ -1,35 +1,50 @@
 package com.sw.sw_api_kotlin_project.screen.search
 
 import android.os.Parcelable
-import androidx.lifecycle.liveData
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
+import com.sw.sw_api_kotlin_project.model.repository.SearchRepository
 import com.sw.sw_api_kotlin_project.network.model.Results
-import com.sw.sw_api_kotlin_project.model.repository.FilmsRepository
-import com.sw.sw_api_kotlin_project.model.repository.PeopleRepository
-import com.sw.sw_api_kotlin_project.model.repository.PlanetRepository
-import com.sw.sw_api_kotlin_project.model.entity.Resource
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val peopleRepository: PeopleRepository,
-    private val filmsRepository: FilmsRepository,
-    private val planetRepository: PlanetRepository,
+    private val searchRepository: SearchRepository
 ) : BaseViewModel() {
+    private val _searchResultList = MutableLiveData<List<Results<out Parcelable>>>()
+    val searchResultList: LiveData<List<Results<out Parcelable>>> get() = _searchResultList
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage get() = _errorMessage
 
-    fun getSearchResult(searchString: String) = liveData(Dispatchers.IO) {
-        emit(Resource.loading(null))
-        try {
-            val searchResponse = peopleRepository.getPeopleSearch(searchString)
-            val filmsResponse = filmsRepository.getFilmsSearch(searchString)
-            val planetResponse = planetRepository.getPlanetsSearch(searchString)
-            val response: List<Results<out Parcelable>> =
-                listOf(searchResponse, filmsResponse, planetResponse)
-            emit(Resource.success(response))
-        } catch (e: Exception) {
-            emit(Resource.error(data = null, message = e.message ?: "error"))
+    fun getSearchResult(viewLifecycleOwner: LifecycleOwner, searchString: String) {
+        val searchObserver = object : SWLiveDataObserver<List<Results<out Parcelable>>>() {
+            override fun onSuccess(data: List<Results<out Parcelable>>?) {
+                _isLoading.value = false
+                _searchResultList.value = data!!
+            }
+
+            override fun onError(errorMessage: String) {
+                _isLoading.value = false
+                _errorMessage.value = errorMessage
+            }
+
+            override fun onLoading() {
+                super.onLoading()
+                _isLoading.value = true
+            }
+        }
+
+        viewModelScope.launch {
+            searchRepository.getSearchResult(searchString)
+                .observe(viewLifecycleOwner, searchObserver)
         }
     }
 

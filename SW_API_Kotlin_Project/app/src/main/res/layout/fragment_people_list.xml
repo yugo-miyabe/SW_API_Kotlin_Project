@@ -7,7 +7,7 @@
 
         <variable
             name="fragment_people"
-            type="com.sw.sw_api_kotlin_project.screen.people.PeopleListViewModel" />
+            type="com.sw.sw_api_kotlin_project.screen.people.list.PeopleListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

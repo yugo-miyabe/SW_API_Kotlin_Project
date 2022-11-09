@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -37,58 +35,50 @@ class FavoriteFragment : BaseFragment() {
             getString(R.string.navigation_favorite)
     }
 
-    override fun onResume() {
-        super.onResume()
-        getFavoriteList()
-    }
+    override fun addObservers() {
+        super.addObservers()
+        viewModel.favoriteList.observe(viewLifecycleOwner) { favoriteList ->
+            if (favoriteList.isNotEmpty()) {
+                binding.favoriteMessage.isVisible = false
+                binding.favoriteRecyclerView.isVisible = true
+                binding.favoriteRecyclerView.adapter = FavoriteAdapter(
+                    favoriteList,
+                    { people ->
+                        val action =
+                            FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetails(
+                                people
+                            )
+                        findNavController().navigate(action)
+                    },
+                    { film ->
+                        val action =
+                            FavoriteFragmentDirections.actionNavFavoriteListToNavFilmDetails(film)
+                        findNavController().navigate(action)
 
-    private fun getFavoriteList() {
-        val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
-            override fun onSuccess(data: List<Favorite>?) {
-                if (data!!.isNotEmpty()) {
-                    binding.favoriteRecyclerView.visibility = View.VISIBLE
-                    binding.favoriteRecyclerView.adapter = FavoriteAdapter(
-                        data,
-                        {
-                            val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetails(
-                                    it
-                                )
-                            findNavController().navigate(action)
-                        },
-                        {
-                            val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavFilmDetails(it)
-                            findNavController().navigate(action)
-
-                        },
-                        {
-                            val action =
-                                FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetails(
-                                    it
-                                )
-                            findNavController().navigate(action)
-
-                        },
-                    )
-                } else {
-                    binding.favoriteMessage.visibility = View.VISIBLE
-                    binding.favoriteMessage.text = getString(R.string.favorite_not_in_favorites)
-                }
-            }
-
-            override fun onError(errorMessage: String) {
-                binding.favoriteMessage.visibility = View.VISIBLE
-                binding.favoriteMessage.text = errorMessage
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                binding.favoriteMessage.visibility = View.GONE
-                binding.favoriteRecyclerView.visibility = View.GONE
+                    },
+                    { planet ->
+                        val action =
+                            FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetails(
+                                planet
+                            )
+                        findNavController().navigate(action)
+                    },
+                )
+            } else {
+                binding.favoriteRecyclerView.isVisible = false
+                binding.favoriteMessage.isVisible = true
+                binding.favoriteMessage.text = getString(R.string.favorite_not_in_favorites)
             }
         }
-        viewModel.getFavoriteList().observe(viewLifecycleOwner, favoriteListObserver)
+
+        viewModel.favoriteMessage.observe(viewLifecycleOwner) { message ->
+            binding.favoriteMessage.text = message
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFavoriteList(viewLifecycleOwner)
     }
 
     override fun onDestroy() {

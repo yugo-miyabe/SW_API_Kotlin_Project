@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
@@ -62,7 +61,7 @@ class HomeFragment : BaseFragment() {
                 listType = ListType.PEOPLE
             ), HomeItem(
                 image = getDrawable(requireContext(), R.drawable.ic_baseline_film_24),
-                title = getString(R.string.home_films),
+                title = getString(R.string.home_film),
                 listType = ListType.FILM
             ), HomeItem(
                 image = getDrawable(requireContext(), R.drawable.ic_baseline_planets_24),

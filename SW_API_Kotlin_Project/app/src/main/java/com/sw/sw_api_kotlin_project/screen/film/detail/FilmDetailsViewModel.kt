@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
-import com.sw.sw_api_kotlin_project.model.entity.ListType
 import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,20 +24,11 @@ class FilmDetailsViewModel @Inject constructor(
         }
     }
 
-    fun addOrDeleteFavorite(film: Film) {
+    fun toggleFavorite(film: Film) {
         viewModelScope.launch {
             val favorite: Favorite? = favoriteRepository.getFavorite(film.title)
             if (favorite == null) {
-                favoriteRepository.add(
-                    Favorite(
-                        name = film.title,
-                        listType = ListType.FILM,
-                        people = null,
-                        film = film,
-                        planet = null,
-                        registrationDate = DateFormatter.getTodayDateStringYYYYMMDDHHMMSS()
-                    )
-                )
+                favoriteRepository.add(film)
             } else {
                 favoriteRepository.delete(favorite)
             }

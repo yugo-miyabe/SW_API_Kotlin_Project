@@ -1,21 +1,17 @@
 package com.sw.sw_api_kotlin_project.screen.search
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.model.entity.ListType
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -28,9 +24,7 @@ class SearchFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,17 +35,20 @@ class SearchFragment : BaseFragment() {
         binding.searchAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_search)
         binding.searchButton.setOnClickListener {
-            val searchString = binding.searchBar.text.toString()
-            getSearchResult(searchString)
+            viewModel.getSearchResult(viewLifecycleOwner, binding.searchBar.text.toString())
         }
     }
 
-    private fun getSearchResult(searchString: String) {
-        val searchResultObserver = object : SWLiveDataObserver<List<Results<out Parcelable>>>() {
-            override fun onSuccess(data: List<Results<out Parcelable>>?) {
-                binding.progressBar.visibility = View.GONE
-                val adapter = SearchResultsAdapter(
-                    searchResults = data!!,
+    override fun addObservers() {
+        super.addObservers()
+        viewModel.searchResultList.observe(viewLifecycleOwner) { searchResult ->
+            if (searchResult[ListType.PEOPLE.ordinal].count != 0 &&
+                searchResult[ListType.FILM.ordinal].count != 0 &&
+                searchResult[ListType.PLANETS.ordinal].count != 0
+            ) {
+                binding.searchResultMessage.isVisible = false
+                binding.searchResultRecyclerView.adapter = SearchResultsAdapter(
+                    searchResults = searchResult!!,
                     onPeopleClick = {
                         val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
                         findNavController().navigate(action)
@@ -65,34 +62,19 @@ class SearchFragment : BaseFragment() {
                         findNavController().navigate(action)
                     },
                 )
-                binding.searchResultRecyclerView.adapter = adapter
-                binding.searchButton.isEnabled = true
-                binding.searchResultRecyclerView.visibility = View.VISIBLE
-                if (data[ListType.PEOPLE.ordinal].count == 0 && data[ListType.FILM.ordinal].count == 0 && data[ListType.PLANETS.ordinal].count == 0) {
-                    binding.searchResultMessage.visibility = View.VISIBLE
-                    binding.searchResultMessage.text = getString(R.string.search_result_does_not)
-
-                }
-            }
-
-            override fun onError(errorMessage: String) {
-                binding.searchButton.isEnabled = true
+            } else {
                 binding.searchResultMessage.isVisible = true
-                binding.searchResultMessage.text = errorMessage
-                binding.searchResultRecyclerView.isVisible = false
-                binding.progressBar.visibility = View.GONE
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                binding.searchButton.isEnabled = false
-                binding.progressBar.visibility = View.VISIBLE
-                binding.searchResultRecyclerView.visibility = View.GONE
-                binding.searchResultMessage.visibility = View.GONE
+                binding.searchResultMessage.text = getString(R.string.search_result_does_not)
             }
         }
-        viewModel.getSearchResult(searchString)
-            .observe(viewLifecycleOwner, searchResultObserver)
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressBar.isVisible = isLoading
+            binding.searchResultMessage.isVisible = !isLoading
+        }
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMassage ->
+            binding.searchResultMessage.isVisible = true
+            binding.searchResultMessage.text = errorMassage
+        }
     }
 
     override fun onDestroy() {

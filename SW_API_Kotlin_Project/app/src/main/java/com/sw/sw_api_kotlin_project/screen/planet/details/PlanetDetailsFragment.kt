@@ -9,11 +9,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.screen.planet.PlanetActivity
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
+import com.sw.sw_api_kotlin_project.network.model.Planet
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.screen.base.PlanetNavListener
+import com.sw.sw_api_kotlin_project.screen.planet.PlanetActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -61,15 +61,15 @@ class PlanetDetailsFragment : BaseFragment() {
             binding.terrainText.text = terrain
         }
         binding.planetFavoriteMark.setOnClickListener {
-            viewModel.addOrDeleteFavorite(planet)
+            viewModel.toggleFavorite(planet)
         }
         viewModel.getFavoriteState(planet.name)
     }
 
     override fun addObservers() {
         super.addObservers()
-        viewModel.favoriteStatus.observe(viewLifecycleOwner) {
-            if (it) {
+        viewModel.favoriteStatus.observe(viewLifecycleOwner) { isFavorite ->
+            if (isFavorite) {
                 binding.planetFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
             } else {
                 binding.planetFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
