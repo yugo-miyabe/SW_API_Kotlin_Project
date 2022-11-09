@@ -18,8 +18,8 @@ interface FavoriteDao {
     suspend fun getFavorite(name: String): Favorite?
 
     @Query("SELECT * FROM favorite_table")
-    suspend fun getAll(): List<Favorite>?
+    suspend fun getFavoriteAll(): List<Favorite>?
 
     @Query("DELETE FROM favorite_table")
-    suspend fun deleteAll()
+    suspend fun deleteFavoriteAll()
 }
