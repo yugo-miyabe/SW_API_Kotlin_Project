@@ -70,6 +70,9 @@ class SearchFragment : BaseFragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.isVisible = isLoading
             binding.searchResultMessage.isVisible = !isLoading
+            binding.searchResultRecyclerView.isVisible = !isLoading
+            binding.searchButton.isEnabled = !isLoading
+            binding.searchResultRecyclerView.adapter = null
         }
         viewModel.errorMessage.observe(viewLifecycleOwner) { errorMassage ->
             binding.searchResultMessage.isVisible = true
