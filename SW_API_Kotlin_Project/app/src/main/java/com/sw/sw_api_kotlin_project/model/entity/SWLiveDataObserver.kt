@@ -8,14 +8,12 @@ abstract class SWLiveDataObserver<T> : Observer<Resource<T?>> {
             when (resource.status) {
                 RequestStatus.SUCCESS -> {
                     onSuccess(resource.data)
-                    onViewChange(true)
                 }
                 RequestStatus.ERROR -> {
                     onError(resource.message ?: "Unknown error")
                 }
                 RequestStatus.LOADING -> {
                     onLoading()
-                    onViewChange(false)
                 }
             }
         }
@@ -24,5 +22,4 @@ abstract class SWLiveDataObserver<T> : Observer<Resource<T?>> {
     abstract fun onSuccess(data: T?)
     abstract fun onError(errorMessage: String)
     open fun onLoading() {}
-    open fun onViewChange(shouldListShow: Boolean) {}
 }
