@@ -55,15 +55,15 @@ class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDa
     }
 
     suspend fun delete(favorite: Favorite) = favoriteDao.delete(favorite)
-    suspend fun getFavorite(name: String) = favoriteDao.getFavorite(name)
+    suspend fun get(name: String) = favoriteDao.get(name)
     suspend fun getAll(): LiveData<Resource<List<Favorite>?>> = liveData(Dispatchers.IO) {
         try {
-            val response = favoriteDao.getFavoriteAll()
+            val response = favoriteDao.getAll()
             emit(Resource.success(response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
     }
 
-    suspend fun deleteAll() = favoriteDao.deleteFavoriteAll()
+    suspend fun deleteAll() = favoriteDao.deleteAll()
 }

@@ -26,7 +26,7 @@ class PlanetDetailsViewModel @Inject constructor(
 
     fun toggleFavorite(planet: Planet) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFavorite(planet.name)
+            val favorite: Favorite? = favoriteRepository.get(planet.name)
             if (favorite == null) {
                 favoriteRepository.add(planet)
             } else {
@@ -37,6 +37,6 @@ class PlanetDetailsViewModel @Inject constructor(
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean =
-        favoriteRepository.getFavorite(name) != null
+        favoriteRepository.get(name) != null
 
 }

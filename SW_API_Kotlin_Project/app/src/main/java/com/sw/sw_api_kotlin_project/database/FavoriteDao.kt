@@ -15,11 +15,11 @@ interface FavoriteDao {
     suspend fun delete(favorite: Favorite)
 
     @Query("SELECT * FROM favorite_table WHERE name = :name LIMIT 1")
-    suspend fun getFavorite(name: String): Favorite?
+    suspend fun get(name: String): Favorite?
 
     @Query("SELECT * FROM favorite_table")
-    suspend fun getFavoriteAll(): List<Favorite>?
+    suspend fun getAll(): List<Favorite>?
 
     @Query("DELETE FROM favorite_table")
-    suspend fun deleteFavoriteAll()
+    suspend fun deleteAll()
 }

@@ -26,7 +26,7 @@ class FilmDetailsViewModel @Inject constructor(
 
     fun toggleFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFavorite(film.title)
+            val favorite: Favorite? = favoriteRepository.get(film.title)
             if (favorite == null) {
                 favoriteRepository.add(film)
             } else {
@@ -37,5 +37,5 @@ class FilmDetailsViewModel @Inject constructor(
     }
 
     private suspend fun checkFavoriteState(name: String): Boolean =
-        favoriteRepository.getFavorite(name) != null
+        favoriteRepository.get(name) != null
 }
