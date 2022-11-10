@@ -8,6 +8,7 @@ import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +29,7 @@ class FilmDetailsViewModel @Inject constructor(
 
     fun toggleFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.get(film.title)
+            val favorite: Favorite? = favoriteRepository.getFlow(film.title).first()
             if (favorite == null) {
                 favoriteRepository.add(film)
             } else {
@@ -38,6 +39,4 @@ class FilmDetailsViewModel @Inject constructor(
         }
     }
 
-    private suspend fun checkFavoriteState(name: String): Boolean =
-        favoriteRepository.get(name) != null
 }
