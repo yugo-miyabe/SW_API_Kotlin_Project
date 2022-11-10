@@ -16,18 +16,12 @@ interface FavoriteDao {
     suspend fun delete(favorite: Favorite)
 
     @Query("SELECT * FROM favorite_table WHERE name = :name LIMIT 1")
-    suspend fun get(name: String): Favorite?
+    fun get(name: String): Flow<Favorite?>
 
     @Query("SELECT * FROM favorite_table")
-    suspend fun getAll(): List<Favorite>?
+    fun getAll(): Flow<List<Favorite>?>
 
     @Query("DELETE FROM favorite_table")
     suspend fun deleteAll()
-
-    @Query("SELECT * FROM favorite_table WHERE name = :name LIMIT 1")
-    fun getFlow(name: String): Flow<Favorite?>
-
-    @Query("SELECT * FROM favorite_table")
-    fun getAllFlow(): Flow<List<Favorite>?>
 
 }
