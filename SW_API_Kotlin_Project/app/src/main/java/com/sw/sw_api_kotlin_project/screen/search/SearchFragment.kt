@@ -35,17 +35,14 @@ class SearchFragment : BaseFragment() {
         binding.searchAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_search)
         binding.searchButton.setOnClickListener {
-            viewModel.getSearchResult(viewLifecycleOwner, binding.searchBar.text.toString())
+            viewModel.getSearchResult(binding.searchBar.text.toString())
         }
     }
 
     override fun addObservers() {
         super.addObservers()
         viewModel.searchResultList.observe(viewLifecycleOwner) { searchResult ->
-            if (searchResult[ListType.PEOPLE.ordinal].count != 0 &&
-                searchResult[ListType.FILM.ordinal].count != 0 &&
-                searchResult[ListType.PLANETS.ordinal].count != 0
-            ) {
+            if (searchResult[ListType.PEOPLE.ordinal].count != 0 && searchResult[ListType.FILM.ordinal].count != 0 && searchResult[ListType.PLANETS.ordinal].count != 0) {
                 binding.searchResultMessage.isVisible = false
                 binding.searchResultRecyclerView.adapter = SearchResultsAdapter(
                     searchResults = searchResult!!,

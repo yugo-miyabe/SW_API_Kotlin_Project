@@ -1,11 +1,10 @@
 package com.sw.sw_api_kotlin_project.screen.search
 
 import android.os.Parcelable
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
+import com.sw.sw_api_kotlin_project.model.entity.RequestStatus
 import com.sw.sw_api_kotlin_project.model.repository.SearchRepository
 import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
@@ -24,27 +23,24 @@ class SearchViewModel @Inject constructor(
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage get() = _errorMessage
 
-    fun getSearchResult(viewLifecycleOwner: LifecycleOwner, searchString: String) {
-        val searchObserver = object : SWLiveDataObserver<List<Results<out Parcelable>>>() {
-            override fun onSuccess(data: List<Results<out Parcelable>>?) {
-                _isLoading.value = false
-                _searchResultList.value = data!!
-            }
-
-            override fun onError(errorMessage: String) {
-                _isLoading.value = false
-                _errorMessage.value = errorMessage
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                _isLoading.value = true
-            }
-        }
-
+    fun getSearchResult(searchString: String) {
         viewModelScope.launch {
-            searchRepository.getSearchResult(searchString)
-                .observe(viewLifecycleOwner, searchObserver)
+            searchRepository.getSearchResult(searchString).collect { response ->
+                when (response.status) {
+                    RequestStatus.SUCCESS -> {
+                        _isLoading.value = false
+                        _searchResultList.value = response.data!!
+                    }
+                    RequestStatus.ERROR -> {
+                        _isLoading.value = false
+                        _errorMessage.value = response.message!!
+                    }
+                    RequestStatus.LOADING -> {
+                        _isLoading.value = true
+                        _errorMessage.value = ""
+                    }
+                }
+            }
         }
     }
 
