@@ -55,7 +55,9 @@ class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDa
     }
 
     suspend fun delete(favorite: Favorite) = favoriteDao.delete(favorite)
+
     suspend fun get(name: String) = favoriteDao.get(name)
+
     suspend fun getAll(): LiveData<Resource<List<Favorite>?>> = liveData(Dispatchers.IO) {
         try {
             val response = favoriteDao.getAll()
@@ -66,4 +68,8 @@ class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDa
     }
 
     suspend fun deleteAll() = favoriteDao.deleteAll()
+
+    fun getFlow(name: String) = favoriteDao.getFlow(name)
+
+    fun getAllFlow() = favoriteDao.getAllFlow()
 }
