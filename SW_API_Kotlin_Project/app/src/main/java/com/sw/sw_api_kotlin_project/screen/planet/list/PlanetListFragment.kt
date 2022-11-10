@@ -40,15 +40,15 @@ class PlanetListFragment : BaseFragment() {
             title = getString(R.string.planet_title)
         }
         binding.nextButton.setOnClickListener {
-            viewModel.getPlanets(viewLifecycleOwner, PageType.NEXT_PAGE)
+            viewModel.getPlanets(PageType.NEXT_PAGE)
         }
         binding.previousButton.setOnClickListener {
-            viewModel.getPlanets(viewLifecycleOwner, PageType.PREVIOUS_PAGE)
+            viewModel.getPlanets(PageType.PREVIOUS_PAGE)
         }
         binding.retryButton.setOnClickListener {
-            viewModel.getPlanets(viewLifecycleOwner, PageType.CURRENT_PAGE)
+            viewModel.getPlanets(PageType.CURRENT_PAGE)
         }
-        viewModel.getPlanets(viewLifecycleOwner, PageType.FIRST_PAGE)
+        viewModel.getPlanets(PageType.FIRST_PAGE)
     }
 
     override fun addObservers() {

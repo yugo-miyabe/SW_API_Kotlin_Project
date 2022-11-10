@@ -1,16 +1,13 @@
 package com.sw.sw_api_kotlin_project.model.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
 import com.sw.sw_api_kotlin_project.database.FavoriteDao
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.model.entity.ListType
-import com.sw.sw_api_kotlin_project.model.entity.Resource
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.utils.DateFormatter
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDao) {
@@ -54,16 +51,12 @@ class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDa
         )
     }
 
+    fun get(name: String): Flow<Favorite?> = favoriteDao.get(name)
+
     suspend fun delete(favorite: Favorite) = favoriteDao.delete(favorite)
-    suspend fun getFavorite(name: String) = favoriteDao.getFavorite(name)
-    suspend fun getAll(): LiveData<Resource<List<Favorite>?>> = liveData(Dispatchers.IO) {
-        try {
-            val response = favoriteDao.getAll()
-            emit(Resource.success(response))
-        } catch (e: Exception) {
-            emit(Resource.error(data = null, message = e.message ?: "error"))
-        }
-    }
+
+    val favoriteList: Flow<List<Favorite>?> get() = favoriteDao.getAll()
 
     suspend fun deleteAll() = favoriteDao.deleteAll()
+
 }

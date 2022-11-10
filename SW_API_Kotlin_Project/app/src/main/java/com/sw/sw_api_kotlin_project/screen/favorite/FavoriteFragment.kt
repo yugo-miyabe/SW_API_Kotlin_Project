@@ -76,11 +76,6 @@ class FavoriteFragment : BaseFragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getFavoriteList(viewLifecycleOwner)
-    }
-
     override fun onDestroy() {
         _binding = null
         super.onDestroy()

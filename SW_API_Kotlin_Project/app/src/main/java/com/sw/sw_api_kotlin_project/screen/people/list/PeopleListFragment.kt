@@ -41,16 +41,16 @@ class PeopleListFragment : BaseFragment() {
                 title = getString(R.string.people_list_title)
             }
             nextButton.setOnClickListener {
-                viewModel.getPeople(viewLifecycleOwner, PageType.NEXT_PAGE)
+                viewModel.getPeople(PageType.NEXT_PAGE)
             }
             previousButton.setOnClickListener {
-                viewModel.getPeople(viewLifecycleOwner, PageType.PREVIOUS_PAGE)
+                viewModel.getPeople(PageType.PREVIOUS_PAGE)
             }
             retryButton.setOnClickListener {
-                viewModel.getPeople(viewLifecycleOwner, PageType.CURRENT_PAGE)
+                viewModel.getPeople(PageType.CURRENT_PAGE)
             }
         }
-        viewModel.getPeople(viewLifecycleOwner, PageType.FIRST_PAGE)
+        viewModel.getPeople(PageType.FIRST_PAGE)
     }
 
     override fun addObservers() {

@@ -1,11 +1,10 @@
 package com.sw.sw_api_kotlin_project.screen.people.list
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.model.entity.PageType
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
+import com.sw.sw_api_kotlin_project.model.entity.RequestStatus
 import com.sw.sw_api_kotlin_project.model.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.network.model.Results
@@ -25,29 +24,25 @@ class PeopleListViewModel @Inject constructor(
     private val _failureMessage = MutableLiveData<String>()
     val failureMessage: LiveData<String> get() = _failureMessage
 
-    fun getPeople(viewLifecycleOwner: LifecycleOwner, pageType: PageType) {
+    fun getPeople(pageType: PageType) {
         pageParameterFormat(pageType)
-
-        val peopleObserver = object : SWLiveDataObserver<Results<People>>() {
-            override fun onSuccess(data: Results<People>?) {
-                _peopleList.value = data!!
-                _isLoading.value = false
-            }
-
-            override fun onError(errorMessage: String) {
-                _isLoading.value = false
-                _failureMessage.value = errorMessage
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                _isLoading.value = true
-                _failureMessage.value = ""
-            }
-        }
-
         viewModelScope.launch {
-            peopleRepository.getPeople(page).observe(viewLifecycleOwner, peopleObserver)
+            peopleRepository.getPeople(page).collect { response ->
+                when (response.status) {
+                    RequestStatus.SUCCESS -> {
+                        _isLoading.value = false
+                        _peopleList.value = response.data!!
+                    }
+                    RequestStatus.ERROR -> {
+                        _isLoading.value = false
+                        _failureMessage.value = response.message!!
+                    }
+                    RequestStatus.LOADING -> {
+                        _isLoading.value = true
+                        _failureMessage.value = ""
+                    }
+                }
+            }
         }
     }
 

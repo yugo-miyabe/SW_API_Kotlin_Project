@@ -1,11 +1,10 @@
 package com.sw.sw_api_kotlin_project.screen.film.list
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.model.entity.PageType
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
+import com.sw.sw_api_kotlin_project.model.entity.RequestStatus
 import com.sw.sw_api_kotlin_project.model.repository.FilmRepository
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.network.model.Results
@@ -25,27 +24,25 @@ class FilmListViewModel @Inject constructor(
     private val _failureMessage = MutableLiveData<String>()
     val failureMessage: LiveData<String> get() = _failureMessage
 
-    fun getFilm(viewLifecycleOwner: LifecycleOwner, pageType: PageType) {
+    fun getFilm(pageType: PageType) {
         pageParameterFormat(pageType)
-        val peopleObserver = object : SWLiveDataObserver<Results<Film>>() {
-            override fun onSuccess(data: Results<Film>?) {
-                _filmList.value = data!!
-                _isLoading.value = false
-            }
-
-            override fun onError(errorMessage: String) {
-                _isLoading.value = false
-                _failureMessage.value = errorMessage
-            }
-
-            override fun onLoading() {
-                super.onLoading()
-                _isLoading.value = true
-                _failureMessage.value = ""
-            }
-        }
         viewModelScope.launch {
-            filmRepository.getFilm(page).observe(viewLifecycleOwner, peopleObserver)
+            filmRepository.getFilm(page).collect { response ->
+                when (response.status) {
+                    RequestStatus.SUCCESS -> {
+                        _isLoading.value = false
+                        _filmList.value = response.data!!
+                    }
+                    RequestStatus.ERROR -> {
+                        _isLoading.value = false
+                        _failureMessage.value = response.message!!
+                    }
+                    RequestStatus.LOADING -> {
+                        _isLoading.value = true
+                        _failureMessage.value = ""
+                    }
+                }
+            }
         }
     }
 }

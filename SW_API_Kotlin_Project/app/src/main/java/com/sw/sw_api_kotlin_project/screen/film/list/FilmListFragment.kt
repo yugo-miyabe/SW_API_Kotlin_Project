@@ -41,15 +41,15 @@ class FilmListFragment : BaseFragment() {
             title = getString(R.string.film_title)
         }
         binding.nextButton.setOnClickListener {
-            viewModel.getFilm(viewLifecycleOwner, PageType.NEXT_PAGE)
+            viewModel.getFilm(PageType.NEXT_PAGE)
         }
         binding.previousButton.setOnClickListener {
-            viewModel.getFilm(viewLifecycleOwner, PageType.PREVIOUS_PAGE)
+            viewModel.getFilm(PageType.PREVIOUS_PAGE)
         }
         binding.retryButton.setOnClickListener {
-            viewModel.getFilm(viewLifecycleOwner, PageType.CURRENT_PAGE)
+            viewModel.getFilm(PageType.CURRENT_PAGE)
         }
-        viewModel.getFilm(viewLifecycleOwner, PageType.FIRST_PAGE)
+        viewModel.getFilm(PageType.FIRST_PAGE)
     }
 
     override fun addObservers() {
