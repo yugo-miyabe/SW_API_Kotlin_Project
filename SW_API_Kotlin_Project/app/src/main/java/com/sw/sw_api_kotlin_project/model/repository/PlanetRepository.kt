@@ -10,10 +10,10 @@ import javax.inject.Inject
 
 class PlanetRepository @Inject constructor(private val swService: SWService) {
     suspend fun getPlanets(page: Int): Flow<Resource<Results<Planet>>> = flow {
-        emit(Resource.loading(null))
+        emit(Resource.loading(data = null))
         try {
             val response = swService.getPlanets(page)
-            emit(Resource.success(response))
+            emit(Resource.success(data = response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }

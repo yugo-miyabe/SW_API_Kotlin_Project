@@ -10,10 +10,10 @@ import javax.inject.Inject
 
 class PeopleRepository @Inject constructor(private val swService: SWService) {
     suspend fun getPeople(page: Int): Flow<Resource<Results<People>>> = flow {
-        emit(Resource.loading(null))
+        emit(Resource.loading(data = null))
         try {
             val response = swService.getPeople(page)
-            emit(Resource.success(response))
+            emit(Resource.success(data = response))
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
