@@ -27,15 +27,15 @@ class PeopleListViewModel @Inject constructor(
     fun getPeople(pageType: PageType) {
         pageParameterFormat(pageType)
         viewModelScope.launch {
-            peopleRepository.getPeople(page).collect { resource ->
-                when (resource.status) {
+            peopleRepository.getPeople(page).collect { response ->
+                when (response.status) {
                     RequestStatus.SUCCESS -> {
                         _isLoading.value = false
-                        _peopleList.value = resource.data!!
+                        _peopleList.value = response.data!!
                     }
                     RequestStatus.ERROR -> {
                         _isLoading.value = false
-                        _failureMessage.value = resource.message!!
+                        _failureMessage.value = response.message!!
                     }
                     RequestStatus.LOADING -> {
                         _isLoading.value = true
