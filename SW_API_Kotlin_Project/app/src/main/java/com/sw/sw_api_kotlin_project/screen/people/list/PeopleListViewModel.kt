@@ -24,7 +24,7 @@ class PeopleListViewModel @Inject constructor(
     private val _failureMessage = MutableLiveData<String>()
     val failureMessage: LiveData<String> get() = _failureMessage
 
-    fun getPeopleFlow(pageType: PageType) {
+    fun getPeople(pageType: PageType) {
         pageParameterFormat(pageType)
         viewModelScope.launch {
             peopleRepository.getPeople(page).collect { resource ->
