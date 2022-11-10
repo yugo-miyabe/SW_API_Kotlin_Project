@@ -21,7 +21,7 @@ class FilmDetailsViewModel @Inject constructor(
 
     fun getFavoriteState(name: String) {
         viewModelScope.launch {
-            favoriteRepository.getFlow(name).collect { favorite ->
+            favoriteRepository.get(name).collect { favorite ->
                 _favoriteStatus.value = favorite != null
             }
         }
@@ -29,7 +29,7 @@ class FilmDetailsViewModel @Inject constructor(
 
     fun toggleFavorite(film: Film) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFlow(film.title).first()
+            val favorite: Favorite? = favoriteRepository.get(film.title).first()
             if (favorite == null) {
                 favoriteRepository.add(film)
             } else {

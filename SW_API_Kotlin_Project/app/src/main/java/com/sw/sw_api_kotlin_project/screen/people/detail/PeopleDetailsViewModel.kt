@@ -21,7 +21,7 @@ class PeopleDetailsViewModel @Inject constructor(
 
     fun getFavoriteState(name: String) {
         viewModelScope.launch {
-            favoriteRepository.getFlow(name).collect { favorite ->
+            favoriteRepository.get(name).collect { favorite ->
                 _favoriteStatus.value = favorite != null
             }
         }
@@ -29,7 +29,7 @@ class PeopleDetailsViewModel @Inject constructor(
 
     fun toggleFavorite(people: People) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.getFlow(people.name).first()
+            val favorite: Favorite? = favoriteRepository.get(people.name).first()
             if (favorite == null) {
                 favoriteRepository.add(people)
             } else {
