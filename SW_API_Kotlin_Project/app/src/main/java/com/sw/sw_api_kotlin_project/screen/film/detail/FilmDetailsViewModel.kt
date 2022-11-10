@@ -20,7 +20,9 @@ class FilmDetailsViewModel @Inject constructor(
 
     fun getFavoriteState(name: String) {
         viewModelScope.launch {
-            _favoriteStatus.value = checkFavoriteState(name)
+            favoriteRepository.getFlow(name).collect { favorite ->
+                _favoriteStatus.value = favorite != null
+            }
         }
     }
 

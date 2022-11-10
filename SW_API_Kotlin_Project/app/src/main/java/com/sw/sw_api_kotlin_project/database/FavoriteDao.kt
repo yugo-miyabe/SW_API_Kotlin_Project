@@ -25,7 +25,7 @@ interface FavoriteDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM favorite_table WHERE name = :name LIMIT 1")
-    fun getFlow(name: String): Flow<Favorite>?
+    fun getFlow(name: String): Flow<Favorite?>
 
     @Query("SELECT * FROM favorite_table")
     fun getAllFlow(): Flow<List<Favorite>?>
