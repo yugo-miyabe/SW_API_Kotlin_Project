@@ -51,11 +51,9 @@ class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDa
         )
     }
 
-    suspend fun delete(favorite: Favorite) = favoriteDao.delete(favorite)
-
-    suspend fun get(name: String) = favoriteDao.get(name)
-
     fun getFlow(name: String): Flow<Favorite?> = favoriteDao.getFlow(name)
+
+    suspend fun delete(favorite: Favorite) = favoriteDao.delete(favorite)
 
     val favoriteList: Flow<List<Favorite>?> get() = favoriteDao.getAllFlow()
 

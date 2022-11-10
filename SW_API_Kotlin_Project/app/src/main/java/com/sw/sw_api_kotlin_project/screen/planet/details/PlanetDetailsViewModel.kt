@@ -8,6 +8,7 @@ import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,13 +21,15 @@ class PlanetDetailsViewModel @Inject constructor(
 
     fun getFavoriteState(name: String) {
         viewModelScope.launch {
-            _favoriteStatus.value = checkFavoriteState(name)
+            favoriteRepository.getFlow(name).collect { favorite ->
+                _favoriteStatus.value = favorite != null
+            }
         }
     }
 
     fun toggleFavorite(planet: Planet) {
         viewModelScope.launch {
-            val favorite: Favorite? = favoriteRepository.get(planet.name)
+            val favorite: Favorite? = favoriteRepository.getFlow(planet.name).first()
             if (favorite == null) {
                 favoriteRepository.add(planet)
             } else {
@@ -35,8 +38,5 @@ class PlanetDetailsViewModel @Inject constructor(
             getFavoriteState(planet.name)
         }
     }
-
-    private suspend fun checkFavoriteState(name: String): Boolean =
-        favoriteRepository.get(name) != null
 
 }
