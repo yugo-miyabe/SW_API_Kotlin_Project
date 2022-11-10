@@ -1,11 +1,9 @@
 package com.sw.sw_api_kotlin_project.screen.favorite
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
-import com.sw.sw_api_kotlin_project.model.entity.SWLiveDataObserver
 import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,20 +19,15 @@ class FavoriteViewModel @Inject constructor(
     private val _favoriteMessage = MutableLiveData<String>()
     val favoriteMessage get() = _favoriteMessage
 
-    fun getFavoriteList(viewLifecycleOwner: LifecycleOwner) {
-        val favoriteListObserver = object : SWLiveDataObserver<List<Favorite>>() {
-            override fun onSuccess(data: List<Favorite>?) {
-                _favoriteList.value = data!!
-            }
-
-            override fun onError(errorMessage: String) {
-                _favoriteMessage.value = errorMessage
-            }
-        }
-
+    init {
         viewModelScope.launch {
-            favoriteRepository.getAll().observe(viewLifecycleOwner, favoriteListObserver)
+            try {
+                favoriteRepository.favoriteList.collect { favoriteList ->
+                    _favoriteList.value = favoriteList
+                }
+            } catch (exception: Exception) {
+                _favoriteMessage.value = exception.message
+            }
         }
     }
-
 }

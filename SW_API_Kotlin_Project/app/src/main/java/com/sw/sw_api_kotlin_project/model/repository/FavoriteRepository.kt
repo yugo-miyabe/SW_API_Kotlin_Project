@@ -11,6 +11,7 @@ import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.utils.DateFormatter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDao) {
@@ -69,7 +70,5 @@ class FavoriteRepository @Inject constructor(private val favoriteDao: FavoriteDa
 
     suspend fun deleteAll() = favoriteDao.deleteAll()
 
-    fun getFlow(name: String) = favoriteDao.getFlow(name)
-
-    fun getAllFlow() = favoriteDao.getAllFlow()
+    val favoriteList: Flow<List<Favorite>?> = favoriteDao.getAllFlow()
 }
