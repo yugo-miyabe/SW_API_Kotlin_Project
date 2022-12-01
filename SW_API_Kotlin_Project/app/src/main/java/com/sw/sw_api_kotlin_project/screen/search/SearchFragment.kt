@@ -44,21 +44,25 @@ class SearchFragment : BaseFragment() {
         viewModel.searchResultList.observe(viewLifecycleOwner) { searchResult ->
             if (searchResult[ListType.PEOPLE.ordinal].count != 0 && searchResult[ListType.FILM.ordinal].count != 0 && searchResult[ListType.PLANETS.ordinal].count != 0) {
                 binding.searchResultMessage.isVisible = false
-                binding.searchResultRecyclerView.adapter = SearchResultsAdapter(
+                val adapter = SearchResultsAdapter(
                     searchResults = searchResult!!,
                     onPeopleClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
+                        val action =
+                            SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
                         findNavController().navigate(action)
                     },
                     onFilmClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavFilmDetails(it)
+                        val action =
+                            SearchFragmentDirections.actionNavSearchToNavFilmDetails(it)
                         findNavController().navigate(action)
                     },
                     onPlanetClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetails(it)
+                        val action =
+                            SearchFragmentDirections.actionNavSearchToNavPlanetDetails(it)
                         findNavController().navigate(action)
                     },
                 )
+                binding.bindAdapter(searchResultsAdapter = adapter)
             } else {
                 binding.searchResultMessage.isVisible = true
                 binding.searchResultMessage.text = getString(R.string.search_result_does_not)
@@ -82,4 +86,8 @@ class SearchFragment : BaseFragment() {
         super.onDestroy()
     }
 
+}
+
+private fun FragmentSearchBinding.bindAdapter(searchResultsAdapter: SearchResultsAdapter) {
+    searchResultRecyclerView.adapter = searchResultsAdapter
 }
