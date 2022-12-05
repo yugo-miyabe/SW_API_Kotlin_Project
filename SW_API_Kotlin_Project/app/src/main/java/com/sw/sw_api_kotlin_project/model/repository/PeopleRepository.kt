@@ -1,5 +1,9 @@
 package com.sw.sw_api_kotlin_project.model.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.sw.sw_api_kotlin_project.model.PeoplePagingSource
 import com.sw.sw_api_kotlin_project.model.entity.Resource
 import com.sw.sw_api_kotlin_project.network.SWService
 import com.sw.sw_api_kotlin_project.network.model.People
@@ -17,6 +21,17 @@ class PeopleRepository @Inject constructor(private val swService: SWService) {
         } catch (e: Exception) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
+    }
+
+    fun getPeopleStream(): Flow<PagingData<People>> {
+        val pageSize = 82
+        return Pager(
+            config = PagingConfig(
+                pageSize = pageSize,
+                enablePlaceholders = false,
+            ),
+            pagingSourceFactory = { PeoplePagingSource(swService) }
+        ).flow
     }
 
     suspend fun getPeopleSearch(search: String) = swService.getPeopleSearch(search)
