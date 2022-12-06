@@ -3,7 +3,7 @@ package com.sw.sw_api_kotlin_project.model.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.sw.sw_api_kotlin_project.model.PeoplePagingSource
+import com.sw.sw_api_kotlin_project.model.data.PeoplePagingSource
 import com.sw.sw_api_kotlin_project.model.entity.Resource
 import com.sw.sw_api_kotlin_project.network.SWService
 import com.sw.sw_api_kotlin_project.network.model.People
