@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
@@ -13,7 +14,6 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.screen.base.PeopleNavListener
-import com.sw.sw_api_kotlin_project.screen.people.PeopleActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -37,6 +37,13 @@ class PeopleDetailsFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
+            setOnClickListener {
+                findNavController().popBackStack()
+            }
+            title = getString(R.string.people_details_title)
+        }
+        /*
+        binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener { view ->
                 if (activity is PeopleActivity) {
                     view.findNavController().navigateUp()
@@ -46,12 +53,16 @@ class PeopleDetailsFragment : BaseFragment() {
             }
             title = getString(R.string.people_details_title)
         }
+        */
+        /*
         people = if (activity is PeopleActivity) {
             args.people
         } else {
             val navListener = activity as PeopleNavListener
             navListener.getPeopleValue()
         }
+        */
+        people = args.people
         people.run {
             binding.fullNameText.text = name
             binding.birthYearText.text = birthYear

@@ -11,8 +11,8 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_list_to_nav_people_activity"
-            app:destination="@id/nav_people_activity" />
+            android:id="@+id/action_nav_home_list_to_nav_people_list"
+            app:destination="@id/nav_people_list" />
         <action
             android:id="@+id/action_nav_home_list_to_nav_film_activity"
             app:destination="@id/nav_film_activity" />
@@ -21,11 +21,26 @@
             app:destination="@id/nav_planet_activity" />
     </fragment>
 
-    <activity
-        android:id="@+id/nav_people_activity"
-        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleActivity"
-        android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people" />
+    <fragment
+        android:id="@+id/nav_people_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.list.PeopleListFragment"
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_people_list">
+
+        <action
+            android:id="@+id/action_nav_people_list_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_people_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.detail.PeopleDetailsFragment"
+        android:label="PeopleDetailsFragment"
+        tools:layout="@layout/fragment_people_details">
+        <argument
+            android:name="people"
+            app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
+    </fragment>
 
     <activity
         android:id="@+id/nav_film_activity"
