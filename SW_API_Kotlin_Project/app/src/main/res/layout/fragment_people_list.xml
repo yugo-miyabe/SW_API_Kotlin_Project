@@ -68,15 +68,6 @@
             tools:listitem="@layout/item_common" />
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/prepend_progress"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/people_list_appbar" />
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/append_progress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

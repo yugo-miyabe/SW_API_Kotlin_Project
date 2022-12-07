@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
@@ -62,7 +63,13 @@ class PeopleListFragment : BaseFragment() {
                     adapter.submitData(it)
                 }
             }
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                adapter.loadStateFlow.collect {
+                    binding.appendProgress.isVisible = it.source.append is LoadState.Loading
+                }
+            }
         }
+
         binding.peopleRecyclerView.adapter = adapter
 
         viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->

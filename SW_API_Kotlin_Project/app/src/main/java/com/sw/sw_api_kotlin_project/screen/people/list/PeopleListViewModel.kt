@@ -29,20 +29,12 @@ class PeopleListViewModel @Inject constructor(
     private val _failureMessage = MutableLiveData<String>()
     val failureMessage: LiveData<String> get() = _failureMessage
 
-    val peopleItems: Flow<PagingData<People>> = Pager(
-        config = PagingConfig(
-            pageSize = 82,
-            enablePlaceholders = false,
-        ),
-        pagingSourceFactory = { peopleRepository.peopleListPagingSource() }
-    )
-        .flow
-        .cachedIn(viewModelScope)
-
-    init {
-
-    }
-
+    val peopleItems: Flow<PagingData<People>> = Pager(config = PagingConfig(
+        pageSize = 3,
+        enablePlaceholders = false,
+    ), pagingSourceFactory = {
+        peopleRepository.peopleListPagingSource()
+    }).flow.cachedIn(viewModelScope)
 
     fun getPeople(pageType: PageType) {
         pageParameterFormat(pageType)

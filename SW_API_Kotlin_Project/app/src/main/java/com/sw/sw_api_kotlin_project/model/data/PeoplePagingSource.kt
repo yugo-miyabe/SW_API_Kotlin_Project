@@ -6,11 +6,10 @@ import com.sw.sw_api_kotlin_project.network.SWService
 import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.network.model.Results
 import okio.IOException
-import javax.inject.Inject
 
 private const val FIRST_PAGE_KEY = 1
 
-class PeoplePagingSource @Inject constructor(private val swService: SWService) :
+class PeoplePagingSource(private val swService: SWService) :
     PagingSource<Int, People>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, People> {
