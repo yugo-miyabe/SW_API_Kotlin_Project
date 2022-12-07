@@ -12,8 +12,6 @@ import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.network.model.Planet
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.screen.base.PlanetNavListener
-import com.sw.sw_api_kotlin_project.screen.planet.PlanetActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -37,21 +35,12 @@ class PlanetDetailsFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.planetDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                if (activity is PlanetActivity) {
-                    view.findNavController().navigateUp()
-                } else {
-                    activity?.finish()
-                }
+            setOnClickListener {
+                findNavController().popBackStack()
             }
             title = getString(R.string.films_details_title)
         }
-        planet = if (activity is PlanetActivity) {
-            args.planet
-        } else {
-            val navListener = activity as PlanetNavListener
-            navListener.getPlanetValue()
-        }
+        planet = args.planet
         planet.run {
             binding.nameText.text = name
             binding.rotationPeriodText.text = rotationPeriod
