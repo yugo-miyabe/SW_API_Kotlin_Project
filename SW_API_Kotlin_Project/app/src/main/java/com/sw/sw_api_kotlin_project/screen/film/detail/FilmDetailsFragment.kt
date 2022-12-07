@@ -13,7 +13,6 @@ import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.screen.base.FilmNavListener
-import com.sw.sw_api_kotlin_project.screen.film.FilmActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -38,21 +37,10 @@ class FilmDetailsFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.filmDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                if (activity is FilmActivity) {
-                    view.findNavController().navigateUp()
-                } else {
-                    activity?.finish()
-                }
-            }
+            findNavController().popBackStack()
             title = getString(R.string.films_details_title)
         }
-        film = if (activity is FilmActivity) {
-            args.film
-        } else {
-            val navListener = activity as FilmNavListener
-            navListener.getFilmValue()
-        }
+        film = args.film
         film.run {
             binding.titleText.text = title
             binding.releaseDateText.text = releaseDate

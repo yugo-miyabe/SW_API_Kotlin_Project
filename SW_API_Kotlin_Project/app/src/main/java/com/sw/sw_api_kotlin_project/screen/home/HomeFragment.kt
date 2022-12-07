@@ -41,7 +41,7 @@ class HomeFragment : BaseFragment() {
                     HomeFragmentDirections.actionNavHomeListToNavPeopleList()
                 }
                 ListType.FILM -> {
-                    HomeFragmentDirections.actionNavHomeListToNavFilmActivity()
+                    HomeFragmentDirections.actionNavHomeListToNavFilmsList()
                 }
                 ListType.PLANETS -> {
                     HomeFragmentDirections.actionNavHomeListToNavPlanetActivity()

@@ -14,8 +14,8 @@
             android:id="@+id/action_nav_home_list_to_nav_people_list"
             app:destination="@id/nav_people_list" />
         <action
-            android:id="@+id/action_nav_home_list_to_nav_film_activity"
-            app:destination="@id/nav_film_activity" />
+            android:id="@+id/action_nav_home_list_to_nav_films_list"
+            app:destination="@id/nav_films_list" />
         <action
             android:id="@+id/action_nav_home_list_to_nav_planet_activity"
             app:destination="@id/nav_planet_activity" />
@@ -42,11 +42,26 @@
             app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
     </fragment>
 
-    <activity
-        android:id="@+id/nav_film_activity"
-        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmActivity"
-        android:label="FilmActivity"
-        tools:layout="@layout/activity_film" />
+    <fragment
+        android:id="@+id/nav_films_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.list.FilmListFragment"
+        android:label="FilmsFragment"
+        tools:layout="@layout/fragment_film_list">
+        <action
+            android:id="@+id/action_nav_films_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_films_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.detail.FilmDetailsFragment"
+        android:label="FilmsDetailsFragment"
+        tools:layout="@layout/fragment_film_details">
+        <argument
+            android:name="film"
+            app:argType="com.sw.sw_api_kotlin_project.network.model.Film" />
+    </fragment>
+
 
     <activity
         android:id="@+id/nav_planet_activity"
