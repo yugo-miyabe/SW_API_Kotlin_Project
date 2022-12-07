@@ -12,7 +12,6 @@ import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
 import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.screen.base.FilmNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -37,7 +36,9 @@ class FilmDetailsFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.filmDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            findNavController().popBackStack()
+            setOnClickListener {
+                findNavController().popBackStack()
+            }
             title = getString(R.string.films_details_title)
         }
         film = args.film
