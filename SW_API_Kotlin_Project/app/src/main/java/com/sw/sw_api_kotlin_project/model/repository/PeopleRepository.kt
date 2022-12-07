@@ -34,5 +34,7 @@ class PeopleRepository @Inject constructor(private val swService: SWService) {
         ).flow
     }
 
+    fun peopleListPagingSource() = PeoplePagingSource(swService)
+
     suspend fun getPeopleSearch(search: String) = swService.getPeopleSearch(search)
 }

@@ -4,19 +4,20 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.sw.sw_api_kotlin_project.network.SWService
 import com.sw.sw_api_kotlin_project.network.model.People
+import com.sw.sw_api_kotlin_project.network.model.Results
 import okio.IOException
+import javax.inject.Inject
 
 private const val FIRST_PAGE_KEY = 1
 
-class PeoplePagingSource(
-    private val swService: SWService,
-) : PagingSource<Int, People>() {
+class PeoplePagingSource @Inject constructor(private val swService: SWService) :
+    PagingSource<Int, People>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, People> {
         val position: Int = params.key ?: FIRST_PAGE_KEY
 
         return try {
-            val response = swService.getPeople(position)
+            val response: Results<People> = swService.getPeople(position)
             val nextKey = if (response.next == null) null else position + 1
             LoadResult.Page(
                 data = response.results,
