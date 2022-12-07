@@ -15,7 +15,6 @@ class PeoplePagingSource @Inject constructor(private val swService: SWService) :
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, People> {
         val position: Int = params.key ?: FIRST_PAGE_KEY
-
         return try {
             val response: Results<People> = swService.getPeople(position)
             val nextKey = if (response.next == null) null else position + 1
