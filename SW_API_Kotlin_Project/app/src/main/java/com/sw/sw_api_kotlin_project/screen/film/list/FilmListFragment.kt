@@ -36,7 +36,9 @@ class FilmListFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            findNavController().popBackStack()
+            setOnClickListener {
+                findNavController().popBackStack()
+            }
             title = getString(R.string.film_title)
         }
         binding.nextButton.setOnClickListener {
