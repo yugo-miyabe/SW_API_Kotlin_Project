@@ -69,13 +69,12 @@ class PeopleListFragment : BaseFragment() {
         lifecycleScope.launch {
             adapter.loadStateFlow.collect { loadStates ->
                 binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
-                binding.progressBar.isVisible = loadStates.refresh is LoadState.Loading
-                val loadState: LoadState = loadStates.refresh
-                binding.errorText.isVisible = loadState is LoadState.Error
-                binding.retryButton.isVisible = loadState is LoadState.Error
-                if (loadState is LoadState.Error) {
-                    binding.errorText.text = loadState.error.localizedMessage
-                }
+                val loadStateRefresh: LoadState = loadStates.refresh
+                binding.progressBar.isVisible = loadStateRefresh is LoadState.Loading
+                binding.errorText.isVisible = loadStateRefresh is LoadState.Error
+                binding.retryButton.isVisible = loadStateRefresh is LoadState.Error
+                if (loadStateRefresh is LoadState.Error)
+                    binding.errorText.text = loadStateRefresh.error.localizedMessage
             }
         }
 

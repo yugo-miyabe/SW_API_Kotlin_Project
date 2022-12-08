@@ -64,10 +64,18 @@ class FilmListFragment : BaseFragment() {
 
         lifecycleScope.launch {
             adapter.loadStateFlow.collect { loadStates ->
-                binding.progressBar.isVisible = loadStates.refresh is LoadState.Loading
                 binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
-                binding.errorText.isVisible = loadStates.refresh is LoadState.Error
+                val loadStateRefresh: LoadState = loadStates.refresh
+                binding.progressBar.isVisible = loadStateRefresh is LoadState.Loading
+                binding.errorText.isVisible = loadStateRefresh is LoadState.Error
+                binding.retryButton.isVisible = loadStateRefresh is LoadState.Error
+                if (loadStateRefresh is LoadState.Error)
+                    binding.errorText.text = loadStateRefresh.error.localizedMessage
             }
+        }
+        
+        binding.retryButton.setOnClickListener {
+            adapter.retry()
         }
 
         binding.filmRecyclerView.adapter = adapter
