@@ -26,7 +26,6 @@
         android:name="com.sw.sw_api_kotlin_project.screen.people.list.PeopleListFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_people_list">
-
         <action
             android:id="@+id/action_nav_people_list_to_nav_people_detail"
             app:destination="@id/nav_people_detail" />
@@ -62,7 +61,6 @@
             app:argType="com.sw.sw_api_kotlin_project.network.model.Film" />
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_planet_list"
         android:name="com.sw.sw_api_kotlin_project.screen.planet.list.PlanetListFragment"
@@ -83,21 +81,20 @@
             app:argType="com.sw.sw_api_kotlin_project.network.model.Planet" />
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_search"
         android:name="com.sw.sw_api_kotlin_project.screen.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_nav_search_to_nav_people_details"
-            app:destination="@id/nav_people_details" />
+            android:id="@+id/action_nav_search_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
         <action
-            android:id="@+id/action_nav_search_to_nav_film_details"
-            app:destination="@id/nav_film_details" />
+            android:id="@+id/action_nav_search_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
         <action
-            android:id="@+id/action_nav_search_to_nav_planet_details"
-            app:destination="@id/nav_planet_details" />
+            android:id="@+id/action_nav_search_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
     </fragment>
 
     <fragment
@@ -106,14 +103,14 @@
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite">
         <action
-            android:id="@+id/action_nav_favorite_list_to_nav_people_details"
-            app:destination="@id/nav_people_details" />
+            android:id="@+id/action_nav_favorite_list_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
         <action
-            android:id="@+id/action_nav_favorite_list_to_nav_film_details"
-            app:destination="@id/nav_film_details" />
+            android:id="@+id/action_nav_favorite_list_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
         <action
-            android:id="@+id/action_nav_favorite_list_to_nav_planet_details"
-            app:destination="@id/nav_planet_details" />
+            android:id="@+id/action_nav_favorite_list_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
     </fragment>
 
     <fragment
@@ -125,36 +122,6 @@
             android:id="@+id/action_nav_other_to_nav_web_view"
             app:destination="@id/nav_web_view" />
     </fragment>
-
-    <activity
-        android:id="@+id/nav_people_details"
-        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleDetailsActivity"
-        android:label="PeopleDetailsActivity"
-        tools:layout="@layout/activity_people_details">
-        <argument
-            android:name="people_details"
-            app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
-    </activity>
-
-    <activity
-        android:id="@+id/nav_film_details"
-        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmDetailsActivity"
-        android:label="FilmDetailsActivity"
-        tools:layout="@layout/activity_film_details">
-        <argument
-            android:name="film_details"
-            app:argType="com.sw.sw_api_kotlin_project.network.model.Film" />
-    </activity>
-
-    <activity
-        android:id="@+id/nav_planet_details"
-        android:name="com.sw.sw_api_kotlin_project.screen.planet.PlanetDetailsActivity"
-        android:label="PlanetDetailsActivity"
-        tools:layout="@layout/activity_planet_details">
-        <argument
-            android:name="people_details"
-            app:argType="com.sw.sw_api_kotlin_project.network.model.Planet" />
-    </activity>
 
     <activity
         android:id="@+id/nav_web_view"
