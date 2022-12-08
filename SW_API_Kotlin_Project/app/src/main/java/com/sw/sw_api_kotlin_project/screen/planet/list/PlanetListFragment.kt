@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
@@ -35,7 +36,7 @@ class PlanetListFragment : BaseFragment() {
         super.initView()
         binding.planetListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener {
-                activity?.finish()
+                findNavController().popBackStack()
             }
             title = getString(R.string.planet_title)
         }

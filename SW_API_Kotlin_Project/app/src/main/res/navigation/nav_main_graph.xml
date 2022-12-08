@@ -11,33 +11,75 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_nav_home_list_to_nav_people_activity"
-            app:destination="@id/nav_people_activity" />
+            android:id="@+id/action_nav_home_list_to_nav_people_list"
+            app:destination="@id/nav_people_list" />
         <action
-            android:id="@+id/action_nav_home_list_to_nav_film_activity"
-            app:destination="@id/nav_film_activity" />
+            android:id="@+id/action_nav_home_list_to_nav_films_list"
+            app:destination="@id/nav_films_list" />
         <action
-            android:id="@+id/action_nav_home_list_to_nav_planet_activity"
-            app:destination="@id/nav_planet_activity" />
+            android:id="@+id/action_nav_home_list_to_nav_planet_list"
+            app:destination="@id/nav_planet_list" />
     </fragment>
 
-    <activity
-        android:id="@+id/nav_people_activity"
-        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleActivity"
-        android:label="PeopleListActivity"
-        tools:layout="@layout/activity_people" />
+    <fragment
+        android:id="@+id/nav_people_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.list.PeopleListFragment"
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_people_list">
+        <action
+            android:id="@+id/action_nav_people_list_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
+    </fragment>
 
-    <activity
-        android:id="@+id/nav_film_activity"
-        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmActivity"
-        android:label="FilmActivity"
-        tools:layout="@layout/activity_film" />
+    <fragment
+        android:id="@+id/nav_people_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.detail.PeopleDetailsFragment"
+        android:label="PeopleDetailsFragment"
+        tools:layout="@layout/fragment_people_details">
+        <argument
+            android:name="people"
+            app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
+    </fragment>
 
-    <activity
-        android:id="@+id/nav_planet_activity"
-        android:name="com.sw.sw_api_kotlin_project.screen.planet.PlanetActivity"
-        android:label="PlanetActivity"
-        tools:layout="@layout/activity_planet" />
+    <fragment
+        android:id="@+id/nav_films_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.list.FilmListFragment"
+        android:label="FilmsFragment"
+        tools:layout="@layout/fragment_film_list">
+        <action
+            android:id="@+id/action_nav_films_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_films_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.detail.FilmDetailsFragment"
+        android:label="FilmsDetailsFragment"
+        tools:layout="@layout/fragment_film_details">
+        <argument
+            android:name="film"
+            app:argType="com.sw.sw_api_kotlin_project.network.model.Film" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_planet_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.list.PlanetListFragment"
+        android:label="PlanetFragment"
+        tools:layout="@layout/fragment_planet_list">
+        <action
+            android:id="@+id/action_nav_planet_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_planet_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.details.PlanetDetailsFragment"
+        android:label="PlanetDetailsFragment"
+        tools:layout="@layout/fragment_planet_details">
+        <argument
+            android:name="planet"
+            app:argType="com.sw.sw_api_kotlin_project.network.model.Planet" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_search"
@@ -45,14 +87,14 @@
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_nav_search_to_nav_people_details"
-            app:destination="@id/nav_people_details" />
+            android:id="@+id/action_nav_search_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
         <action
-            android:id="@+id/action_nav_search_to_nav_film_details"
-            app:destination="@id/nav_film_details" />
+            android:id="@+id/action_nav_search_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
         <action
-            android:id="@+id/action_nav_search_to_nav_planet_details"
-            app:destination="@id/nav_planet_details" />
+            android:id="@+id/action_nav_search_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
     </fragment>
 
     <fragment
@@ -61,14 +103,14 @@
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite">
         <action
-            android:id="@+id/action_nav_favorite_list_to_nav_people_details"
-            app:destination="@id/nav_people_details" />
+            android:id="@+id/action_nav_favorite_list_to_nav_people_detail"
+            app:destination="@id/nav_people_detail" />
         <action
-            android:id="@+id/action_nav_favorite_list_to_nav_film_details"
-            app:destination="@id/nav_film_details" />
+            android:id="@+id/action_nav_favorite_list_to_nav_films_detail"
+            app:destination="@id/nav_films_detail" />
         <action
-            android:id="@+id/action_nav_favorite_list_to_nav_planet_details"
-            app:destination="@id/nav_planet_details" />
+            android:id="@+id/action_nav_favorite_list_to_nav_planet_detail"
+            app:destination="@id/nav_planet_detail" />
     </fragment>
 
     <fragment
@@ -80,36 +122,6 @@
             android:id="@+id/action_nav_other_to_nav_web_view"
             app:destination="@id/nav_web_view" />
     </fragment>
-
-    <activity
-        android:id="@+id/nav_people_details"
-        android:name="com.sw.sw_api_kotlin_project.screen.people.PeopleDetailsActivity"
-        android:label="PeopleDetailsActivity"
-        tools:layout="@layout/activity_people_details">
-        <argument
-            android:name="people_details"
-            app:argType="com.sw.sw_api_kotlin_project.network.model.People" />
-    </activity>
-
-    <activity
-        android:id="@+id/nav_film_details"
-        android:name="com.sw.sw_api_kotlin_project.screen.film.FilmDetailsActivity"
-        android:label="FilmDetailsActivity"
-        tools:layout="@layout/activity_film_details">
-        <argument
-            android:name="film_details"
-            app:argType="com.sw.sw_api_kotlin_project.network.model.Film" />
-    </activity>
-
-    <activity
-        android:id="@+id/nav_planet_details"
-        android:name="com.sw.sw_api_kotlin_project.screen.planet.PlanetDetailsActivity"
-        android:label="PlanetDetailsActivity"
-        tools:layout="@layout/activity_planet_details">
-        <argument
-            android:name="people_details"
-            app:argType="com.sw.sw_api_kotlin_project.network.model.Planet" />
-    </activity>
 
     <activity
         android:id="@+id/nav_web_view"

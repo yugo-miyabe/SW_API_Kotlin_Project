@@ -47,15 +47,15 @@ class SearchFragment : BaseFragment() {
                 binding.searchResultRecyclerView.adapter = SearchResultsAdapter(
                     searchResults = searchResult!!,
                     onPeopleClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetails(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetail(it)
                         findNavController().navigate(action)
                     },
                     onFilmClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavFilmDetails(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavFilmsDetail(it)
                         findNavController().navigate(action)
                     },
                     onPlanetClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetails(it)
+                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetail(it)
                         findNavController().navigate(action)
                     },
                 )

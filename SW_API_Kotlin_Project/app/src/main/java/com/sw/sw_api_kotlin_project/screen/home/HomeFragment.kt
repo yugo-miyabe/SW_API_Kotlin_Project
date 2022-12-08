@@ -38,13 +38,13 @@ class HomeFragment : BaseFragment() {
         val adapter = HomeAdapter( getHomeList()) {
              val action = when (it) {
                 ListType.PEOPLE -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPeopleActivity()
+                    HomeFragmentDirections.actionNavHomeListToNavPeopleList()
                 }
                 ListType.FILM -> {
-                    HomeFragmentDirections.actionNavHomeListToNavFilmActivity()
+                    HomeFragmentDirections.actionNavHomeListToNavFilmsList()
                 }
                 ListType.PLANETS -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPlanetActivity()
+                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
                 }
             }
             findNavController().navigate(action)
