@@ -1,5 +1,6 @@
 package com.sw.sw_api_kotlin_project.model.repository
 
+import com.sw.sw_api_kotlin_project.model.data.FilmPagingSource
 import com.sw.sw_api_kotlin_project.model.entity.Resource
 import com.sw.sw_api_kotlin_project.network.SWService
 import com.sw.sw_api_kotlin_project.network.model.Film
@@ -18,6 +19,8 @@ class FilmRepository @Inject constructor(private val swService: SWService) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
     }
+
+    fun filmListPagingSource() = FilmPagingSource(swService = swService)
 
     suspend fun getFilmsSearch(search: String) = swService.getFilmsSearch(search)
 }

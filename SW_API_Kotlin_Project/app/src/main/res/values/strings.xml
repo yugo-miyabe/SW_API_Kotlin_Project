@@ -55,4 +55,5 @@
     <string name="common_next">次ページへ</string>
     <string name="common_previous">前ページへ</string>
     <string name="common_retry">再試行</string>
+    <string name="loading_error">読み込みエラー</string>
 </resources>

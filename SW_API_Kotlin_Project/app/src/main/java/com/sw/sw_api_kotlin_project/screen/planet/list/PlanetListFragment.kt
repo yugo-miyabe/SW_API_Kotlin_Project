@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
-import com.sw.sw_api_kotlin_project.model.entity.PageType
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.screen.planet.PlanetAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 /**
  * 惑星一覧画面
@@ -40,44 +43,42 @@ class PlanetListFragment : BaseFragment() {
             }
             title = getString(R.string.planet_title)
         }
-        binding.nextButton.setOnClickListener {
-            viewModel.getPlanets(PageType.NEXT_PAGE)
-        }
-        binding.previousButton.setOnClickListener {
-            viewModel.getPlanets(PageType.PREVIOUS_PAGE)
-        }
-        binding.retryButton.setOnClickListener {
-            viewModel.getPlanets(PageType.CURRENT_PAGE)
-        }
-        viewModel.getPlanets(PageType.FIRST_PAGE)
     }
 
     override fun addObservers() {
         super.addObservers()
-        viewModel.planetList.observe(viewLifecycleOwner) { planet ->
-            binding.planetRecyclerView.isVisible = true
-            binding.previousButton.isEnabled = planet.previous != null
-            binding.nextButton.isEnabled = planet.next != null
-            binding.planetRecyclerView.adapter = PlanetAdapter(
-                planetList = planet.results
-            ) {
-                val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
-                findNavController().navigate(action)
+
+        val adapter = PlanetListAdapter {
+            val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
+            findNavController().navigate(action)
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.planetItems.collect {
+                    adapter.submitData(it)
+                }
             }
         }
-        viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->
-            binding.planetRecyclerView.adapter = null
-            binding.planetRecyclerView.isVisible = false
-            binding.errorText.isVisible = true
-            binding.errorText.text = failureMessage
+
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadStates ->
+                binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
+                val loadStateRefresh: LoadState = loadStates.refresh
+                binding.progressBar.isVisible = loadStateRefresh is LoadState.Loading
+                binding.errorText.isVisible = loadStateRefresh is LoadState.Error
+                binding.retryButton.isVisible = loadStateRefresh is LoadState.Error
+                if (loadStateRefresh is LoadState.Error)
+                    binding.errorText.text = loadStateRefresh.error.localizedMessage
+            }
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            binding.progressBar.isVisible = isLoading
-            binding.errorText.isVisible = isLoading
-            binding.planetRecyclerView.isVisible = !isLoading
-            binding.previousButton.isVisible = !isLoading
-            binding.nextButton.isVisible = !isLoading
+
+        binding.retryButton.setOnClickListener {
+            adapter.retry()
         }
+
+        binding.planetRecyclerView.adapter = adapter
+
     }
 
     override fun onDestroy() {

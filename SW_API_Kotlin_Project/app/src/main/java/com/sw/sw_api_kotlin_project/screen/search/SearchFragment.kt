@@ -44,7 +44,7 @@ class SearchFragment : BaseFragment() {
         viewModel.searchResultList.observe(viewLifecycleOwner) { searchResult ->
             if (searchResult[ListType.PEOPLE.ordinal].count != 0 && searchResult[ListType.FILM.ordinal].count != 0 && searchResult[ListType.PLANETS.ordinal].count != 0) {
                 binding.searchResultMessage.isVisible = false
-                binding.searchResultRecyclerView.adapter = SearchResultsAdapter(
+                val adapter = SearchResultsAdapter(
                     searchResults = searchResult!!,
                     onPeopleClick = {
                         val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetail(it)
@@ -59,6 +59,7 @@ class SearchFragment : BaseFragment() {
                         findNavController().navigate(action)
                     },
                 )
+                binding.bindAdapter(searchResultsAdapter = adapter)
             } else {
                 binding.searchResultMessage.isVisible = true
                 binding.searchResultMessage.text = getString(R.string.search_result_does_not)
@@ -82,4 +83,7 @@ class SearchFragment : BaseFragment() {
         super.onDestroy()
     }
 
+    private fun FragmentSearchBinding.bindAdapter(searchResultsAdapter: SearchResultsAdapter) {
+        searchResultRecyclerView.adapter = searchResultsAdapter
+    }
 }

@@ -75,5 +75,9 @@ dependencies {
     // dagger
     implementation "com.google.dagger:hilt-android:$dagger_version"
     kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
+    // paging
+    implementation "androidx.paging:paging-common-ktx:$paging_version"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation 'androidx.leanback:leanback-paging:1.1.0-alpha09'
 
 }

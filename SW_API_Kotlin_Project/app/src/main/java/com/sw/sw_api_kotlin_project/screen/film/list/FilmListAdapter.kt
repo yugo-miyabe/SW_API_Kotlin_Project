@@ -1,18 +1,18 @@
-package com.sw.sw_api_kotlin_project.screen.film
+package com.sw.sw_api_kotlin_project.screen.film.list
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.network.model.Film
 
-class FilmAdapter(
-    private val filmList: List<Film>,
-    private val onClick: (Film) -> Unit
-) : RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
+class FilmListAdapter(private val onClick: (Film) -> Unit) :
+    PagingDataAdapter<Film, FilmListAdapter.ViewHolder>(FILM_DIFF_CALLBACK) {
 
     class ViewHolder(private val view: View, private val onClick: (Film) -> Unit) :
         RecyclerView.ViewHolder(view) {
@@ -34,11 +34,19 @@ class FilmAdapter(
         return ViewHolder(view, onClick)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(filmList[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val film = getItem(position)
+        if (film != null) holder.bind(film)
+    }
 
+    companion object {
+        private val FILM_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Film>() {
+            override fun areItemsTheSame(oldItem: Film, newItem: Film): Boolean =
+                oldItem.title == newItem.title
 
-    override fun getItemCount() = filmList.size
-
+            override fun areContentsTheSame(oldItem: Film, newItem: Film): Boolean =
+                oldItem == newItem
+        }
+    }
 
 }

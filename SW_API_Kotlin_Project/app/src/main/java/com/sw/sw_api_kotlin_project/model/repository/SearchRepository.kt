@@ -11,14 +11,14 @@ import javax.inject.Inject
 class SearchRepository @Inject constructor(private val swService: SWService) {
     fun getSearchResult(searchString: String): Flow<Resource<List<Results<out Parcelable>>>> =
         flow {
-            emit(Resource.loading(null))
+            emit(Resource.loading(data = null))
             try {
                 val searchResponse = swService.getPeopleSearch(searchString)
                 val filmsResponse = swService.getFilmsSearch(searchString)
                 val planetResponse = swService.getPlanetsSearch(searchString)
                 val response: List<Results<out Parcelable>> =
                     listOf(searchResponse, filmsResponse, planetResponse)
-                emit(Resource.success(response))
+                emit(Resource.success(data = response))
             } catch (e: Exception) {
                 emit(Resource.error(data = null, message = e.message ?: "error"))
             }

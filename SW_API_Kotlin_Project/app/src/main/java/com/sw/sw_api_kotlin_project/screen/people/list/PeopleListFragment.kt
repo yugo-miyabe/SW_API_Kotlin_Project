@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.model.entity.PageType
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.screen.people.PeopleAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
  * 登場人物一覧画面
@@ -40,45 +44,46 @@ class PeopleListFragment : BaseFragment() {
                 }
                 title = getString(R.string.people_list_title)
             }
-            nextButton.setOnClickListener {
-                viewModel.getPeople(PageType.NEXT_PAGE)
-            }
-            previousButton.setOnClickListener {
-                viewModel.getPeople(PageType.PREVIOUS_PAGE)
-            }
             retryButton.setOnClickListener {
-                viewModel.getPeople(PageType.CURRENT_PAGE)
+                binding.retryButton.isVisible = false
             }
         }
-        viewModel.getPeople(PageType.FIRST_PAGE)
     }
 
     override fun addObservers() {
         super.addObservers()
-        viewModel.peopleList.observe(viewLifecycleOwner) { people ->
-            binding.peopleRecyclerView.isVisible = true
-            binding.previousButton.isEnabled = people.previous != null
-            binding.nextButton.isEnabled = people.next != null
-            binding.peopleRecyclerView.adapter = PeopleAdapter(
-                peopleList = people.results
-            ) {
-                val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
-                findNavController().navigate(action)
+
+        val adapter = PeopleListAdapter {
+            val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
+            findNavController().navigate(action)
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.peopleItems.collectLatest {
+                    adapter.submitData(it)
+                }
             }
         }
-        viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->
-            binding.peopleRecyclerView.adapter = null
-            binding.peopleRecyclerView.isVisible = false
-            binding.errorText.isVisible = true
-            binding.errorText.text = failureMessage
+
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadStates ->
+                binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
+                val loadStateRefresh: LoadState = loadStates.refresh
+                binding.progressBar.isVisible = loadStateRefresh is LoadState.Loading
+                binding.errorText.isVisible = loadStateRefresh is LoadState.Error
+                binding.retryButton.isVisible = loadStateRefresh is LoadState.Error
+                if (loadStateRefresh is LoadState.Error)
+                    binding.errorText.text = loadStateRefresh.error.localizedMessage
+            }
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            binding.progressBar.isVisible = isLoading
-            binding.errorText.isVisible = isLoading
-            binding.peopleRecyclerView.isVisible = !isLoading
-            binding.previousButton.isVisible = !isLoading
-            binding.nextButton.isVisible = !isLoading
+
+        binding.retryButton.setOnClickListener {
+            adapter.retry()
         }
+
+        binding.peopleRecyclerView.adapter = adapter
+
     }
 
     override fun onDestroy() {
