@@ -2,10 +2,10 @@
 buildscript {
 
     ext {
-        navigation_version = "2.5.2"
+        navigation_version = "2.6.0-alpha04"
         retrofit2_version = "2.9.0"
         room_version = "2.4.3"
-        view_model_scope_version = "2.6.0-alpha02"
+        view_model_scope_version = "2.5.1"
         dagger_version= "2.44"
     }
 
