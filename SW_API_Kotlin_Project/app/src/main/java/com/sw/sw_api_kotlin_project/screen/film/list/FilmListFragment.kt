@@ -64,9 +64,10 @@ class FilmListFragment : BaseFragment() {
         }
 
         lifecycleScope.launch {
-            adapter.loadStateFlow.collect {
-                binding.progressBar.isVisible = it.refresh is LoadState.Loading
-                binding.appendProgress.isVisible = it.refresh is LoadState.Loading
+            adapter.loadStateFlow.collect { loadStates ->
+                binding.progressBar.isVisible = loadStates.refresh is LoadState.Loading
+                binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
+                binding.errorText.isVisible = loadStates.refresh is LoadState.Error
             }
         }
 

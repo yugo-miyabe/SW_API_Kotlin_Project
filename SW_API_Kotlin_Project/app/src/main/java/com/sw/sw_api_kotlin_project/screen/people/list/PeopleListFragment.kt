@@ -57,6 +57,7 @@ class PeopleListFragment : BaseFragment() {
             val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
             findNavController().navigate(action)
         }
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.peopleItems.collectLatest {
@@ -64,6 +65,7 @@ class PeopleListFragment : BaseFragment() {
                 }
             }
         }
+
         lifecycleScope.launch {
             adapter.loadStateFlow.collect { loadStates ->
                 binding.progressBar.isVisible = loadStates.refresh is LoadState.Loading
@@ -74,17 +76,6 @@ class PeopleListFragment : BaseFragment() {
 
         binding.peopleRecyclerView.adapter = adapter
 
-        viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->
-            binding.peopleRecyclerView.adapter = null
-            binding.peopleRecyclerView.isVisible = false
-            binding.errorText.isVisible = true
-            binding.errorText.text = failureMessage
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            binding.progressBar.isVisible = isLoading
-            binding.errorText.isVisible = isLoading
-            binding.peopleRecyclerView.isVisible = !isLoading
-        }
     }
 
     override fun onDestroy() {

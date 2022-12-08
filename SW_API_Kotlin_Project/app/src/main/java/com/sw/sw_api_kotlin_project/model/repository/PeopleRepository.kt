@@ -19,7 +19,7 @@ class PeopleRepository @Inject constructor(private val swService: SWService) {
             emit(Resource.error(data = null, message = e.message ?: "error"))
         }
     }
-    
+
     fun peopleListPagingSource() = PeoplePagingSource(swService)
 
     suspend fun getPeopleSearch(search: String) = swService.getPeopleSearch(search)
