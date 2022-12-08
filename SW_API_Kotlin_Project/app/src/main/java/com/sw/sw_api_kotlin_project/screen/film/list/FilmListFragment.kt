@@ -16,7 +16,6 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.screen.film.FilmAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -50,7 +49,7 @@ class FilmListFragment : BaseFragment() {
 
     override fun addObservers() {
         super.addObservers()
-        val adapter = FilmAdapter {
+        val adapter = FilmListAdapter {
             val action = FilmListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
             findNavController().navigate(action)
         }
@@ -73,17 +72,6 @@ class FilmListFragment : BaseFragment() {
 
         binding.filmRecyclerView.adapter = adapter
 
-        viewModel.failureMessage.observe(viewLifecycleOwner) { failureMessage ->
-            binding.filmRecyclerView.adapter = null
-            binding.filmRecyclerView.isVisible = false
-            binding.errorText.isVisible = true
-            binding.errorText.text = failureMessage
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner) { isVisible ->
-            binding.progressBar.isVisible = isVisible
-            binding.errorText.isVisible = isVisible
-            binding.filmRecyclerView.isVisible = !isVisible
-        }
     }
 
 

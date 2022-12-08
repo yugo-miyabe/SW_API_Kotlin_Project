@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.screen.film
+package com.sw.sw_api_kotlin_project.screen.film.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.network.model.Film
 
-class FilmAdapter(private val onClick: (Film) -> Unit) :
-    PagingDataAdapter<Film, FilmAdapter.ViewHolder>(FILM_DIFF_CALLBACK) {
+class FilmListAdapter(private val onClick: (Film) -> Unit) :
+    PagingDataAdapter<Film, FilmListAdapter.ViewHolder>(FILM_DIFF_CALLBACK) {
 
     class ViewHolder(private val view: View, private val onClick: (Film) -> Unit) :
         RecyclerView.ViewHolder(view) {
