@@ -30,7 +30,7 @@ class PeopleListViewModel @Inject constructor(
     val failureMessage: LiveData<String> get() = _failureMessage
 
     val peopleItems: Flow<PagingData<People>> = Pager(config = PagingConfig(
-        pageSize = 3,
+        pageSize = 1,
         enablePlaceholders = false,
     ), pagingSourceFactory = {
         peopleRepository.peopleListPagingSource()

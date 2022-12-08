@@ -63,10 +63,12 @@ class PeopleListFragment : BaseFragment() {
                     adapter.submitData(it)
                 }
             }
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                adapter.loadStateFlow.collect {
-                    binding.appendProgress.isVisible = it.source.append is LoadState.Loading
-                }
+        }
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collect { loadStates ->
+                binding.progressBar.isVisible = loadStates.refresh is LoadState.Loading
+                binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
+                binding.errorText.isVisible = loadStates.refresh is LoadState.Error
             }
         }
 

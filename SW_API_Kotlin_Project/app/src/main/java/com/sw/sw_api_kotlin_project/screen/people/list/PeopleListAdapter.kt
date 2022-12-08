@@ -12,17 +12,14 @@ class PeopleListAdapter(
 ) : PagingDataAdapter<People, PeopleListViewHolder>(PE0PLE_DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeopleListViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_common, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_common, parent, false)
 
         return PeopleListViewHolder(view, onClick)
     }
 
     override fun onBindViewHolder(holder: PeopleListViewHolder, position: Int) {
         val people = getItem(position)
-        if (people != null) {
-            holder.bind(people)
-        }
+        if (people != null) holder.bind(people)
     }
 
     companion object {
