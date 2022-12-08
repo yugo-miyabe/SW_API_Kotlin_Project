@@ -40,7 +40,7 @@ class PeopleListFragment : BaseFragment() {
         binding.apply {
             peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
                 setOnClickListener {
-                    activity?.finish()
+                    findNavController().popBackStack()
                 }
                 title = getString(R.string.people_list_title)
             }

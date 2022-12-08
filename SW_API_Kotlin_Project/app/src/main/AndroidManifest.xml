@@ -16,30 +16,6 @@
         android:theme="@style/Theme.SW_API_Kotlin_Project"
         tools:ignore="LockedOrientationActivity">
         <activity
-            android:name=".screen.film.FilmDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".screen.planet.PlanetDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".screen.people.PeopleDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".screen.people.PeopleActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".screen.film.FilmActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".screen.planet.PlanetActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".screen.webview.WebViewActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
