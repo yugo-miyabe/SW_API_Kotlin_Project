@@ -17,7 +17,7 @@ class PeoplePagingSource(private val swService: SWService) : PagingSource<Int, P
             val response: Results<People> = swService.getPeople(position)
             LoadResult.Page(
                 data = response.results,
-                prevKey = if (position == firstPageKey) null else position - 1,
+                prevKey = if (response.previous == null) null else position - 1,
                 nextKey = if (response.next == null) null else position + 1
             )
         } catch (exception: IOException) {
