@@ -14,11 +14,10 @@ class FilmPagingSource(private val swService: SWService) : PagingSource<Int, Fil
         val position: Int = params.key ?: firstPageKey
         return try {
             val response: Results<Film> = swService.getFilms(position)
-            val nextKey = if (response.next == null) null else position + 1
             LoadResult.Page(
                 data = response.results,
-                prevKey = if (position == firstPageKey) null else position - 1,
-                nextKey = nextKey
+                prevKey = if (response.previous == null) null else position - 1,
+                nextKey = if (response.next == null) null else position + 1
             )
         } catch (exception: IOException) {
             return LoadResult.Error(exception)
@@ -26,7 +25,6 @@ class FilmPagingSource(private val swService: SWService) : PagingSource<Int, Fil
             return LoadResult.Error(exception)
         }
     }
-
 
     override fun getRefreshKey(state: PagingState<Int, Film>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

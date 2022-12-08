@@ -3,6 +3,10 @@ package com.sw.sw_api_kotlin_project.screen.film.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.sw.sw_api_kotlin_project.model.entity.PageType
 import com.sw.sw_api_kotlin_project.model.entity.RequestStatus
 import com.sw.sw_api_kotlin_project.model.repository.FilmRepository
@@ -10,6 +14,7 @@ import com.sw.sw_api_kotlin_project.network.model.Film
 import com.sw.sw_api_kotlin_project.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,6 +28,13 @@ class FilmListViewModel @Inject constructor(
     val isLoading: LiveData<Boolean> get() = _isLoading
     private val _failureMessage = MutableLiveData<String>()
     val failureMessage: LiveData<String> get() = _failureMessage
+
+    val filmItems: Flow<PagingData<Film>> = Pager(config = PagingConfig(
+        pageSize = 1,
+        enablePlaceholders = false,
+    ), pagingSourceFactory = {
+        filmRepository.filmListPagingSource()
+    }).flow.cachedIn(viewModelScope)
 
     fun getFilm(pageType: PageType) {
         pageParameterFormat(pageType)
