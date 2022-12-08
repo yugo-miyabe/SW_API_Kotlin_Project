@@ -54,7 +54,6 @@ class FavoriteFragment : BaseFragment() {
                         val action =
                             FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(film)
                         findNavController().navigate(action)
-
                     },
                     { planet ->
                         val action =
