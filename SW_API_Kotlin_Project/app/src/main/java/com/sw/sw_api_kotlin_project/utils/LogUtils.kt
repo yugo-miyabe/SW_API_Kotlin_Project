@@ -2,7 +2,7 @@ package com.sw.sw_api_kotlin_project.utils
 
 import timber.log.Timber
 
-object Timber {
+object LogUtils {
 
     /**
      * ログ出力
@@ -13,6 +13,10 @@ object Timber {
             instance.simpleName,
             Thread.currentThread().stackTrace[2].methodName
         )
+    }
+
+    fun apiLog(url: String) {
+        Timber.v(url)
     }
 
 }

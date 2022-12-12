@@ -61,6 +61,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
     // okhttp3
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
     // viewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$view_model_scope_version"
     // livedata
