@@ -27,12 +27,9 @@
 ## パッケージ構成
 | パッケージ名 | 説明 |
 |--|--|
-| activity | Activity |
-| adapter | RecyclerView の Adapter |
-| api | API処理の基盤 |
-| base | BaseFragment、BaseViewModel |
-| data | データクラス、データベースのレスポンスなど |
+| database |  |
 | di | Hilt モジュール |
-| fragment | Fragment及び各FragmentのViewModel |
-| repository | APIのリクエスト、データベースの操作などを行う |
-| utils | Enum、Listener、WebViewのリンク、Date型の処理など |
+| model | Reositoryやそのデータクラス |
+| network | API関連 |
+| screen | Activity、Fragment、Adapter |
+| utils | DateFormatter、ログの出力など |
