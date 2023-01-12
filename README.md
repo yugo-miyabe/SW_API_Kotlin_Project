@@ -27,7 +27,7 @@
 ## パッケージ構成
 | パッケージ名 | 説明 |
 |--|--|
-| database |  |
+| database | データベース |
 | di | Hilt モジュール |
 | model | Reositoryやそのデータクラス |
 | network | API関連 |
