@@ -21,7 +21,7 @@
 | Lifecycle | 2.5.1 | LiveData|
 | Navigation | 2.9.0 | 画面遷移 |
 | Hilt | 2.44 | DI |
-
+| Paging | 3.1.1 | ページング |
 
 
 ## パッケージ構成
