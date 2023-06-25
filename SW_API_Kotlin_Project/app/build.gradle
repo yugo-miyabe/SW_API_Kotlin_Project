@@ -8,6 +8,7 @@ plugins {
 }
 
 android {
+    namespace 'com.sw.sw_api_kotlin_project'
     compileSdk 33
 
     defaultConfig {
