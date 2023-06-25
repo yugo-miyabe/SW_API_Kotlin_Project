@@ -32,6 +32,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+    productFlavors {
+        // ダミー
+        dummy {
+            dimension "version"
+            applicationId "com.sw.sw_api_kotlin_project.dummy"
+        }
+        // 開発
+        dev {
+            dimension "version"
+            applicationId "com.sw.sw_api_kotlin_project.dev"
+        }
+        // 本番
+        prod {
+            dimension "version"
+            applicationId "com.sw.sw_api_kotlin_project"
+        }
+    }
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
