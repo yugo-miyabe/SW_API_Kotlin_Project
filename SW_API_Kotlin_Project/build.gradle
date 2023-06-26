@@ -23,6 +23,26 @@ plugins {
     id 'io.gitlab.arturbosch.detekt' version "1.23.0" apply false
 }
 
+allprojects {
+    subprojects {
+        apply plugin: "io.gitlab.arturbosch.detekt"
+        dependencies {
+            detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.0"
+        }
+
+        detekt {
+            config = files("$rootDir/config/detekt/detekt.yml")
+            autoCorrect true
+        }
+    }
+}
+
+gradle.projectsEvaluated {
+    subprojects {
+        preBuild.dependsOn('detekt')
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
