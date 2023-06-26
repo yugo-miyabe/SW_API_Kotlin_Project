@@ -10,11 +10,28 @@ config: # すべてのファーストパーティのルール セット、ルー
   warningsAsErrors: false
   excludes: ''
 
+processors:
+  active: true
+  exclude:
+    - 'DetektProgressListener'
+    # - 'KtFileCountProcessor'
+    # - 'PackageCountProcessor'
+    # - 'ClassCountProcessor'
+    # - 'FunctionCountProcessor'
+    # - 'PropertyCountProcessor'
+    # - 'ProjectComplexityProcessor'
+    # - 'ProjectCognitiveComplexityProcessor'
+    # - 'ProjectLLOCProcessor'
+    # - 'ProjectCLOCProcessor'
+    # - 'ProjectLOCProcessor'
+    # - 'ProjectSLOCProcessor'
+    # - 'LicenseHeaderLoaderExtension'
+
 complexity:
   TooManyFunctions:
     active: true
     excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
-    thresholdInFiles: 15 # 最大20個の関数を許可
+    thresholdInFiles: 15 # 最大15個の関数を許可
     thresholdInClasses: 15
     thresholdInInterfaces: 15
     thresholdInObjects: 15
@@ -22,3 +39,10 @@ complexity:
     ignoreDeprecated: false
     ignorePrivate: false
     ignoreOverridden: false
+
+style:
+  active: true
+  WildcardImport:
+    active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    excludeImports: [ 'java.util.*', 'kotlinx.android.synthetic.*' ]
