@@ -25,7 +25,9 @@ class HomeFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,7 +37,7 @@ class HomeFragment : BaseFragment() {
         super.initView()
         binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_home)
-        val adapter = HomeAdapter( getHomeList()) {
+        val adapter = HomeAdapter(getHomeList()) {
              val action = when (it) {
                 ListType.PEOPLE -> {
                     HomeFragmentDirections.actionNavHomeListToNavPeopleList()

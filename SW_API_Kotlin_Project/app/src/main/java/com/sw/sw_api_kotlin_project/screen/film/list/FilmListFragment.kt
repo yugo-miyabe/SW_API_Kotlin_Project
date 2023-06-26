@@ -30,7 +30,8 @@ class FilmListFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFilmListBinding.inflate(inflater, container, false)

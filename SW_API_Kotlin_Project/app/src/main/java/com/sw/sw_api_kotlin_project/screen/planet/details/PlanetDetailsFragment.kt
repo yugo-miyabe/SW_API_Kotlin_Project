@@ -26,7 +26,9 @@ class PlanetDetailsFragment : BaseFragment() {
     private lateinit var planet: Planet
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPlanetDetailsBinding.inflate(inflater, container, false)
         return binding.root

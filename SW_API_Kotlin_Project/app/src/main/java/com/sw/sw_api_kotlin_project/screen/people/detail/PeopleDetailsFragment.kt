@@ -13,7 +13,6 @@ import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.network.model.People
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
-import com.sw.sw_api_kotlin_project.screen.base.PeopleNavListener
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -28,7 +27,9 @@ class PeopleDetailsFragment : BaseFragment() {
     private lateinit var people: People
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPeopleDetailsBinding.inflate(inflater, container, false)
         return binding.root

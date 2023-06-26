@@ -29,7 +29,9 @@ class PeopleListFragment : BaseFragment() {
     private val binding get() = checkNotNull(_binding)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
         return binding.root
