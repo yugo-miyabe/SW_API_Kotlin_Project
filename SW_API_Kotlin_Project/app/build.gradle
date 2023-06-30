@@ -94,9 +94,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
     implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
     // room
-    implementation "androidx.room:room-runtime:${versions.room}"
-    kapt "androidx.room:room-compiler:${versions.room}"
-    implementation "androidx.room:room-ktx:${versions.room}"
+    implementation "androidx.room:room-runtime:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
     // dagger
     implementation "com.google.dagger:hilt-android:${versions.dagger}"
     kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"

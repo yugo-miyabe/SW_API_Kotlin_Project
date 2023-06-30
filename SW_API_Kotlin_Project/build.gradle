@@ -4,14 +4,17 @@ buildscript {
                        'minSdk'     : 30,
                        'targetSdk'  : 33,
                        'versionCode': 1,
-                       'versionName': '1.0']
+                       'versionName': "1.0"
+    ]
 
-    ext.versions = ['navigation'    : '2.6.0',
-                    'retrofit'      : '2.9.0',
-                    'room'          : '2.4.3',
-                    'viewModelScope': '2.5.1',
-                    'dagger'        : '2.44',
-                    'paging'        : '3.1.1',]
+    ext.versions = [
+            'navigation'    : '2.6.0',
+            'retrofit'      : '2.9.0',
+            'room'          : '2.4.3',
+            'viewModelScope': '2.5.1',
+            'dagger'        : '2.44',
+            'paging'        : '3.1.1'
+    ]
 
 
     dependencies {
@@ -29,6 +32,13 @@ plugins {
 }
 
 allprojects {
+    // JVM のバージョンを固定
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile)
+            .configureEach {
+                kotlinOptions {
+                    jvmTarget = JavaVersion.VERSION_11.toString()
+                }
+            }
     subprojects {
         apply plugin: "io.gitlab.arturbosch.detekt"
         dependencies {
