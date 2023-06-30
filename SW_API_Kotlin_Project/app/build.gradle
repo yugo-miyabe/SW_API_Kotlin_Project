@@ -9,14 +9,15 @@ plugins {
 
 android {
     namespace 'com.sw.sw_api_kotlin_project'
-    compileSdk 33
+    compileSdk buildConfig.compileSdk
 
     defaultConfig {
         applicationId "com.sw.sw_api_kotlin_project"
-        minSdk 28
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
+        versionCode buildConfig.versionCode
+        versionName buildConfig.versionName
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -80,28 +81,28 @@ dependencies {
     // timber
     implementation "com.jakewharton.timber:timber:5.0.1"
     // retrofit2
-    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     // okhttp3
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
     // viewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$view_model_scope_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
     // livedata
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     // navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
     // room
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:${versions.room}"
+    kapt "androidx.room:room-compiler:${versions.room}"
+    implementation "androidx.room:room-ktx:${versions.room}"
     // dagger
-    implementation "com.google.dagger:hilt-android:$dagger_version"
-    kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
     // paging
-    implementation "androidx.paging:paging-common-ktx:$paging_version"
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation "androidx.paging:paging-common-ktx:${versions.paging}"
+    implementation "androidx.paging:paging-runtime-ktx:${versions.paging}"
     implementation 'androidx.leanback:leanback-paging:1.1.0-alpha09'
 
 }
