@@ -1,0 +1,48 @@
+build:
+  maxIssues: 0 # 問題が1つ以上見つかった場合、ビルドを中断する
+  weights:
+  # complexity: 2 # every rule of the complexity rule set should count as if two issues were found...
+  # LongParameterList: 1 # ...with the exception of the LongParameterList rule.
+  # comments: 0 # comment rules are just a nice to know?!
+
+config: # すべてのファーストパーティのルール セット、ルール、および構成オプションが有効であり、非推奨としてマークされていないことを検証する
+  validation: true
+  warningsAsErrors: false
+  excludes: ''
+
+processors:
+  active: true
+  exclude:
+    - 'DetektProgressListener'
+    # - 'KtFileCountProcessor'
+    # - 'PackageCountProcessor'
+    # - 'ClassCountProcessor'
+    # - 'FunctionCountProcessor'
+    # - 'PropertyCountProcessor'
+    # - 'ProjectComplexityProcessor'
+    # - 'ProjectCognitiveComplexityProcessor'
+    # - 'ProjectLLOCProcessor'
+    # - 'ProjectCLOCProcessor'
+    # - 'ProjectLOCProcessor'
+    # - 'ProjectSLOCProcessor'
+    # - 'LicenseHeaderLoaderExtension'
+
+complexity:
+  TooManyFunctions:
+    active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    thresholdInFiles: 15 # 最大15個の関数を許可
+    thresholdInClasses: 15
+    thresholdInInterfaces: 15
+    thresholdInObjects: 15
+    thresholdInEnums: 11
+    ignoreDeprecated: false
+    ignorePrivate: false
+    ignoreOverridden: false
+
+style:
+  active: true
+  WildcardImport:
+    active: true
+    excludes: [ '**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**' ]
+    excludeImports: [ 'java.util.*', 'kotlinx.android.synthetic.*' ]

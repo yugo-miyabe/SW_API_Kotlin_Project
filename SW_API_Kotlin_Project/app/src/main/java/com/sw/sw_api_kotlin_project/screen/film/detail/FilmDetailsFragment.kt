@@ -27,7 +27,9 @@ class FilmDetailsFragment : BaseFragment() {
     private lateinit var film: Film
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFilmDetailsBinding.inflate(inflater, container, false)
         return binding.root
