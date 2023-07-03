@@ -1,5 +1,6 @@
 package com.sw.sw_api_kotlin_project.di
 
+import com.sw.sw_api_kotlin_project.BuildConfig.BASE_URL
 import com.sw.sw_api_kotlin_project.network.SWService
 import dagger.Module
 import dagger.Provides
@@ -12,12 +13,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    private const val BASE_URL = "https://swapi.dev/api/"
 
     @Singleton
     @Provides

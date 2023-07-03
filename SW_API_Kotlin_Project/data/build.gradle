@@ -25,19 +25,26 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     flavorDimensions "version"
     productFlavors {
         // ダミー
         dummy {
             dimension "version"
+            buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
         }
         // 開発
         dev {
             dimension "version"
+            buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
         }
         // 本番
         prod {
             dimension "version"
+            buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
         }
     }
 
