@@ -1,6 +1,6 @@
-package com.sw.sw_api_kotlin_project.model.repository
+package com.sw.sw_api_kotlin_project.data.model.repository
 
-import com.sw.sw_api_kotlin_project.network.SWService
+import com.sw.sw_api_kotlin_project.data.network.model.SWService
 import javax.inject.Inject
 
 // TODO 宇宙船一覧作成時に使用

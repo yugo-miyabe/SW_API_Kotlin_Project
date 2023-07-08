@@ -1,8 +1,8 @@
-package com.sw.sw_api_kotlin_project.model.repository
+package com.sw.sw_api_kotlin_project.data.model.repository
 
-import com.sw.sw_api_kotlin_project.model.data.PeoplePagingSource
-import com.sw.sw_api_kotlin_project.model.entity.Resource
-import com.sw.sw_api_kotlin_project.network.SWService
+import com.sw.sw_api_kotlin_project.data.model.data.PeoplePagingSource
+import com.sw.sw_api_kotlin_project.data.model.entity.Resource
+import com.sw.sw_api_kotlin_project.data.network.model.SWService
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import kotlinx.coroutines.flow.Flow

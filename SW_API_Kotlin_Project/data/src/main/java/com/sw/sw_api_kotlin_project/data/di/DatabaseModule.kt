@@ -1,9 +1,9 @@
-package com.sw.sw_api_kotlin_project.di
+package com.sw.sw_api_kotlin_project.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.sw.sw_api_kotlin_project.database.FavoriteDao
-import com.sw.sw_api_kotlin_project.database.FavoriteDatabase
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDao
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

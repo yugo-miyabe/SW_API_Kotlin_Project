@@ -1,21 +1,19 @@
-package com.sw.sw_api_kotlin_project.model.data
+package com.sw.sw_api_kotlin_project.data.model.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.sw.sw_api_kotlin_project.network.SWService
-import com.sw.sw_api_kotlin_project.data.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.SWService
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import okio.IOException
 
-
-class PeoplePagingSource(private val swService: SWService) : PagingSource<Int, People>() {
+class PlanetPagingSource(private val swService: SWService) : PagingSource<Int, Planet>() {
     private val firstPageKey = 1
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, People> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Planet> {
         val position: Int = params.key ?: firstPageKey
         return try {
-            val response: Results<People> = swService.getPeople(position)
-
+            val response: Results<Planet> = swService.getPlanets(position)
             LoadResult.Page(
                 data = response.results,
                 prevKey = if (response.previous == null) null else position - 1,
@@ -28,7 +26,7 @@ class PeoplePagingSource(private val swService: SWService) : PagingSource<Int, P
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, People>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Planet>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)

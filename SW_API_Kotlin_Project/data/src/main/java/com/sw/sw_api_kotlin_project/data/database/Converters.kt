@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.database
+package com.sw.sw_api_kotlin_project.data.database
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

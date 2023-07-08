@@ -1,8 +1,8 @@
-package com.sw.sw_api_kotlin_project.model.data
+package com.sw.sw_api_kotlin_project.data.model.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.sw.sw_api_kotlin_project.network.SWService
+import com.sw.sw_api_kotlin_project.data.network.model.SWService
 import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import okio.IOException

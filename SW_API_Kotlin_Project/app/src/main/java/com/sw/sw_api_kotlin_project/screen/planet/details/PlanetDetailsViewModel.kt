@@ -3,8 +3,8 @@ package com.sw.sw_api_kotlin_project.screen.planet.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.model.entity.Favorite
-import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.data.model.entity.Favorite
+import com.sw.sw_api_kotlin_project.data.model.repository.FavoriteRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

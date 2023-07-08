@@ -1,8 +1,8 @@
-package com.sw.sw_api_kotlin_project.model.repository
+package com.sw.sw_api_kotlin_project.data.model.repository
 
-import com.sw.sw_api_kotlin_project.database.FavoriteDao
-import com.sw.sw_api_kotlin_project.model.entity.Favorite
-import com.sw.sw_api_kotlin_project.model.entity.ListType
+import com.sw.sw_api_kotlin_project.data.database.FavoriteDao
+import com.sw.sw_api_kotlin_project.data.model.entity.Favorite
+import com.sw.sw_api_kotlin_project.data.model.entity.ListType
 import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.data.network.model.Planet

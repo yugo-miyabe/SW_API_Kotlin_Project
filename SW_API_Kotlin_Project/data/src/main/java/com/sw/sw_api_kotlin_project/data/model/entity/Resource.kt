@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.model.entity
+package com.sw.sw_api_kotlin_project.data.model.entity
 
 
 data class Resource<out T>(val status: RequestStatus, val data: T?, val message: String?) {

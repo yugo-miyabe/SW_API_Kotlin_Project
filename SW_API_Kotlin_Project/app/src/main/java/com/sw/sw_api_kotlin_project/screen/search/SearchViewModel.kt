@@ -4,8 +4,8 @@ import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw.sw_api_kotlin_project.model.entity.RequestStatus
-import com.sw.sw_api_kotlin_project.model.repository.SearchRepository
+import com.sw.sw_api_kotlin_project.data.model.entity.RequestStatus
+import com.sw.sw_api_kotlin_project.data.model.repository.SearchRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

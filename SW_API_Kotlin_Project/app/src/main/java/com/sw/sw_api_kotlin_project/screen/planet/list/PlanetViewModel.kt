@@ -7,7 +7,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.sw.sw_api_kotlin_project.model.repository.PlanetRepository
+import com.sw.sw_api_kotlin_project.data.model.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel

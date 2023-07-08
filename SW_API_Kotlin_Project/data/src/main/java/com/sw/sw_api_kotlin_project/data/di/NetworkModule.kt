@@ -1,7 +1,7 @@
-package com.sw.sw_api_kotlin_project.di
+package com.sw.sw_api_kotlin_project.data.di
 
 import com.sw.sw_api_kotlin_project.data.BuildConfig.BASE_URL
-import com.sw.sw_api_kotlin_project.network.SWService
+import com.sw.sw_api_kotlin_project.data.network.model.SWService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

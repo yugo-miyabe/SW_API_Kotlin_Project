@@ -1,6 +1,6 @@
-package com.sw.sw_api_kotlin_project.network
+package com.sw.sw_api_kotlin_project.data.network.model
 
-import com.sw.sw_api_kotlin_project.network.model.APIRoot
+import com.sw.sw_api_kotlin_project.data.network.model.APIRoot
 import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
