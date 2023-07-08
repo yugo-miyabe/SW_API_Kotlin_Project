@@ -16,18 +16,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     buildFeatures {
         buildConfig = true
     }
-
     flavorDimensions "version"
     productFlavors {
         // ダミー
@@ -46,12 +43,10 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-
     kotlinOptions {
         jvmTarget = '11'
     }
@@ -62,9 +57,10 @@ dependencies {
     implementation "androidx.core:core-ktx:${versions.core}"
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation 'com.google.android.material:material:1.9.0'
+    // test
     testImplementation "junit:junit:${versions.junit}"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitExt}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
     // timber
     implementation "com.jakewharton.timber:timber:${versions.timber}"
     // Hilt
