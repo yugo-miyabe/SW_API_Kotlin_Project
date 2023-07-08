@@ -130,6 +130,6 @@
         tools:layout="@layout/activity_web_view">
         <argument
             android:name="web_view_info"
-            app:argType="com.sw.sw_api_kotlin_project.model.entity.WebViewInfo" />
+            app:argType="com.sw.sw_api_kotlin_project.data.model.entity.WebViewInfo" />
     </activity>
 </navigation>
