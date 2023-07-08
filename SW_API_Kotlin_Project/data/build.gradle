@@ -63,10 +63,23 @@ dependencies {
     implementation "androidx.core:core-ktx:${versions.core}"
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation 'com.google.android.material:material:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation "junit:junit:${versions.junit}"
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // timber
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
     // Hilt
     implementation "com.google.dagger:hilt-android:${versions.hilt}"
     kapt "com.google.dagger:hilt-compiler:${versions.hilt}"
+    // room
+    implementation "androidx.room:room-runtime:${versions.room}"
+    kapt "androidx.room:room-compiler:${versions.room}"
+    implementation "androidx.room:room-ktx:${versions.room}"
+    // dagger
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    kapt "com.google.dagger:hilt-android-compiler:${versions.hilt}"
+    // paging
+    implementation "androidx.paging:paging-common-ktx:${versions.paging}"
+    implementation "androidx.paging:paging-runtime-ktx:${versions.paging}"
+    implementation 'androidx.leanback:leanback-paging:1.1.0-alpha09'
 }

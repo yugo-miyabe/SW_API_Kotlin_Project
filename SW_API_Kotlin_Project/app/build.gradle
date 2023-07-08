@@ -80,8 +80,6 @@ dependencies {
     testImplementation "junit:junit:${versions.junit}"
     androidTestImplementation "androidx.test.ext:junit:${versions.junitExt}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
-    // timber
-    implementation "com.jakewharton.timber:timber:${versions.timber}"
     // retrofit2
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"

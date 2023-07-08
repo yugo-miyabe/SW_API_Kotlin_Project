@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.utils
+package com.sw.sw_api_kotlin_project.data.utils
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat

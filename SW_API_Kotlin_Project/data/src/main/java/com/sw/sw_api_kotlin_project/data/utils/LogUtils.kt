@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.utils
+package com.sw.sw_api_kotlin_project.data.utils
 
 import timber.log.Timber
 
@@ -14,9 +14,4 @@ object LogUtils {
             Thread.currentThread().stackTrace[2].methodName
         )
     }
-
-    fun apiLog(url: String) {
-        Timber.v(url)
-    }
-
 }

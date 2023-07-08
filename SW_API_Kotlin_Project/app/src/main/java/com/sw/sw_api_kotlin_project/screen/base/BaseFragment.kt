@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sw.sw_api_kotlin_project.utils.LogUtils
+import com.sw.sw_api_kotlin_project.data.utils.LogUtils
 
 
 open class BaseFragment : Fragment() {
