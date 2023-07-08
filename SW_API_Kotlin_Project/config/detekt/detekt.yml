@@ -40,6 +40,14 @@ complexity:
     ignorePrivate: false
     ignoreOverridden: false
 
+formatting:
+  PackageName:
+    active: false
+    autoCorrect: true
+  FinalNewline:
+    active: true
+    autoCorrect: true
+
 style:
   active: true
   WildcardImport:
