@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first

@@ -3,8 +3,8 @@ package com.sw.sw_api_kotlin_project.model.data
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.sw.sw_api_kotlin_project.network.SWService
-import com.sw.sw_api_kotlin_project.network.model.Planet
-import com.sw.sw_api_kotlin_project.network.model.Results
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
+import com.sw.sw_api_kotlin_project.data.network.model.Results
 import okio.IOException
 
 class PlanetPagingSource(private val swService: SWService) : PagingSource<Int, Planet>() {

@@ -9,7 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.Film
 
 class FilmListAdapter(private val onClick: (Film) -> Unit) :
     PagingDataAdapter<Film, FilmListAdapter.ViewHolder>(FILM_DIFF_CALLBACK) {

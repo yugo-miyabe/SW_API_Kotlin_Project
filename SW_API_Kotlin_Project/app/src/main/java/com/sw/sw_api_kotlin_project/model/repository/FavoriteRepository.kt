@@ -3,9 +3,9 @@ package com.sw.sw_api_kotlin_project.model.repository
 import com.sw.sw_api_kotlin_project.database.FavoriteDao
 import com.sw.sw_api_kotlin_project.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.model.entity.ListType
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.network.model.People
-import com.sw.sw_api_kotlin_project.network.model.Planet
+import com.sw.sw_api_kotlin_project.data.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.data.utils.DateFormatter
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

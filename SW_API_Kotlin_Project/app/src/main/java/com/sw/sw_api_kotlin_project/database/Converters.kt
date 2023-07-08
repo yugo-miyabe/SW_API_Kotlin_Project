@@ -3,9 +3,9 @@ package com.sw.sw_api_kotlin_project.database
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.network.model.People
-import com.sw.sw_api_kotlin_project.network.model.Planet
+import com.sw.sw_api_kotlin_project.data.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
 
 class Converters {
     @TypeConverter

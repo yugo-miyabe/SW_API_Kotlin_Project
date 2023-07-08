@@ -1,12 +1,12 @@
 package com.sw.sw_api_kotlin_project.network
 
 import com.sw.sw_api_kotlin_project.network.model.APIRoot
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.network.model.People
-import com.sw.sw_api_kotlin_project.network.model.Planet
-import com.sw.sw_api_kotlin_project.network.model.Results
-import com.sw.sw_api_kotlin_project.network.model.Starships
-import com.sw.sw_api_kotlin_project.network.model.Vehicles
+import com.sw.sw_api_kotlin_project.data.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
+import com.sw.sw_api_kotlin_project.data.network.model.Results
+import com.sw.sw_api_kotlin_project.data.network.model.Starships
+import com.sw.sw_api_kotlin_project.data.network.model.Vehicles
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

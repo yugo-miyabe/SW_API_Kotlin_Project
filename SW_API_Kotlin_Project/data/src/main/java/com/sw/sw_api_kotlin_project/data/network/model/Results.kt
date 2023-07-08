@@ -1,4 +1,4 @@
-package com.sw.sw_api_kotlin_project.network.model
+package com.sw.sw_api_kotlin_project.data.network.model
 
 data class Results<T>(
     val count: Int,
