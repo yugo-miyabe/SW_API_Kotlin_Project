@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
@@ -82,4 +81,7 @@ dependencies {
     implementation "androidx.paging:paging-common-ktx:${versions.paging}"
     implementation "androidx.paging:paging-runtime-ktx:${versions.paging}"
     implementation 'androidx.leanback:leanback-paging:1.1.0-alpha09'
+    // retrofit2
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
 }
