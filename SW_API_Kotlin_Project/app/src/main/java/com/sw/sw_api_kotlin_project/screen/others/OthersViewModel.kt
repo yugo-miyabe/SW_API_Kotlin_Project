@@ -2,7 +2,7 @@ package com.sw.sw_api_kotlin_project.screen.others
 
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.model.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.data.model.repository.FavoriteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

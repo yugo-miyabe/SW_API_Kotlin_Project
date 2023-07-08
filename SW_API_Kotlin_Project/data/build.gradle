@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.sw.sw_api_kotlin_project.data'
+    compileSdk buildConfig.compileSdk
+
+    defaultConfig {
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        buildConfig = true
+    }
+    flavorDimensions "version"
+    productFlavors {
+        // ダミー
+        dummy {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
+        }
+        // 開発
+        dev {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
+        }
+        // 本番
+        prod {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", "\"https://swapi.dev/api/\"")
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:${versions.core}"
+    // test
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitExt}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
+    // timber
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+    // Hilt
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${versions.hilt}"
+    // retrofit2
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    // okhttp3
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.interceptor}"
+    // room
+    implementation "androidx.room:room-runtime:${versions.room}"
+    kapt "androidx.room:room-compiler:${versions.room}"
+    implementation "androidx.room:room-ktx:${versions.room}"
+    // dagger
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    kapt "com.google.dagger:hilt-android-compiler:${versions.hilt}"
+    // paging
+    implementation "androidx.paging:paging-common-ktx:${versions.paging}"
+    implementation "androidx.paging:paging-runtime-ktx:${versions.paging}"
+    implementation 'androidx.leanback:leanback-paging:1.1.0-alpha09'
+}

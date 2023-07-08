@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.network.model.People
-import com.sw.sw_api_kotlin_project.network.model.Planet
-import com.sw.sw_api_kotlin_project.network.model.Results
-import com.sw.sw_api_kotlin_project.model.entity.ListType
+import com.sw.sw_api_kotlin_project.data.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
+import com.sw.sw_api_kotlin_project.data.network.model.Results
+import com.sw.sw_api_kotlin_project.data.model.entity.ListType
 
 class SearchResultsAdapter(
     private val searchResults: List<Results<out Parcelable>>,

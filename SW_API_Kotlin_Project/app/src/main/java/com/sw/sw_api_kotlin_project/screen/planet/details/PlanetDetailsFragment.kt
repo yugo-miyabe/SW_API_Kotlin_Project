@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
-import com.sw.sw_api_kotlin_project.network.model.Planet
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -5,8 +5,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.sw.sw_api_kotlin_project.model.repository.PeopleRepository
-import com.sw.sw_api_kotlin_project.network.model.People
+import com.sw.sw_api_kotlin_project.data.model.repository.PeopleRepository
+import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow

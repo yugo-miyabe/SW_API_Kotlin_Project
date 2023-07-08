@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.sw.sw_api_kotlin_project.domain'
+    compileSdk buildConfig.compileSdk
+
+    defaultConfig {
+        minSdk buildConfig.minSdk
+        targetSdk buildConfig.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        // ダミー
+        dummy {
+            dimension "version"
+        }
+        // 開発
+        dev {
+            dimension "version"
+        }
+        // 本番
+        prod {
+            dimension "version"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:${versions.core}"
+    // test
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitExt}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espresso}"
+    // Hilt
+    implementation "com.google.dagger:hilt-android:${versions.hilt}"
+    kapt "com.google.dagger:hilt-compiler:${versions.hilt}"
+}

@@ -9,7 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.People
 
 class PeopleListAdapter(
     private val onClick: (People) -> Unit,

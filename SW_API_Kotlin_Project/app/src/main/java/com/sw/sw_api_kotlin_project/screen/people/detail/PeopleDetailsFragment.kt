@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
-import com.sw.sw_api_kotlin_project.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -7,11 +7,11 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.sw.sw_api_kotlin_project.model.entity.PageType
-import com.sw.sw_api_kotlin_project.model.entity.RequestStatus
-import com.sw.sw_api_kotlin_project.model.repository.FilmRepository
-import com.sw.sw_api_kotlin_project.network.model.Film
-import com.sw.sw_api_kotlin_project.network.model.Results
+import com.sw.sw_api_kotlin_project.data.model.entity.PageType
+import com.sw.sw_api_kotlin_project.data.model.entity.RequestStatus
+import com.sw.sw_api_kotlin_project.data.model.repository.FilmRepository
+import com.sw.sw_api_kotlin_project.data.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
