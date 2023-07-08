@@ -10,35 +10,24 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * お気に入り画面
  */
 @AndroidEntryPoint
-class FavoriteFragment : BaseFragment() {
-    private val viewModel: FavoriteViewModel by viewModels()
-    private var _binding: FragmentFavoriteBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class FavoriteFragment : BaseFragmentTest<FavoriteViewModel, FragmentFavoriteBinding>() {
+    override val viewModel: FavoriteViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun initView() {
-        super.initView()
+    override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentFavoriteBinding =
+        FragmentFavoriteBinding.inflate(inflater, container, false)
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.favoriteAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_favorite)
-    }
 
-    override fun addObservers() {
-        super.addObservers()
         viewModel.favoriteList.observe(viewLifecycleOwner) { favoriteList ->
             if (favoriteList.isNotEmpty()) {
                 binding.favoriteMessage.isVisible = false
@@ -75,10 +64,5 @@ class FavoriteFragment : BaseFragment() {
         viewModel.favoriteMessage.observe(viewLifecycleOwner) { message ->
             binding.favoriteMessage.text = message
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 }
