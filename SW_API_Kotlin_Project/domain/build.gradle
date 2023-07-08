@@ -53,8 +53,6 @@ android {
 dependencies {
 
     implementation "androidx.core:core-ktx:${versions.core}"
-    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
-    implementation 'com.google.android.material:material:1.9.0'
     // test
     testImplementation "junit:junit:${versions.junit}"
     androidTestImplementation "androidx.test.ext:junit:${versions.junitExt}"
