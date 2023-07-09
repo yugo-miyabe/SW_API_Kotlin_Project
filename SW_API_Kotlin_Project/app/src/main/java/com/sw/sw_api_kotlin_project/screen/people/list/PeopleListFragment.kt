@@ -6,15 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -23,22 +22,15 @@ import kotlinx.coroutines.launch
  * 登場人物一覧画面
  */
 @AndroidEntryPoint
-class PeopleListFragment : BaseFragment() {
-    private val viewModel: PeopleListViewModel by viewModels()
-    private var _binding: FragmentPeopleListBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class PeopleListFragment : BaseFragmentTest<PeopleListViewModel, FragmentPeopleListBinding>() {
+    override val viewModel: PeopleListViewModel by viewModels()
+    override fun inflate(
+        inflater: LayoutInflater, container: ViewGroup?
+    ): FragmentPeopleListBinding = FragmentPeopleListBinding.inflate(inflater, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentPeopleListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    override fun initView() {
-        super.initView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.apply {
             peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
                 setOnClickListener {
@@ -50,24 +42,17 @@ class PeopleListFragment : BaseFragment() {
                 binding.retryButton.isVisible = false
             }
         }
-    }
-
-    override fun addObservers() {
-        super.addObservers()
-
         val adapter = PeopleListAdapter {
             val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
             findNavController().navigate(action)
         }
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.peopleItems.collectLatest {
-                    adapter.submitData(it)
-                }
+        viewModel.viewModelScope.launch {
+            viewModel.peopleItems.collectLatest {
+                adapter.submitData(it)
             }
         }
-
+        
         lifecycleScope.launch {
             adapter.loadStateFlow.collect { loadStates ->
                 binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
@@ -75,8 +60,8 @@ class PeopleListFragment : BaseFragment() {
                 binding.progressBar.isVisible = loadStateRefresh is LoadState.Loading
                 binding.errorText.isVisible = loadStateRefresh is LoadState.Error
                 binding.retryButton.isVisible = loadStateRefresh is LoadState.Error
-                if (loadStateRefresh is LoadState.Error)
-                    binding.errorText.text = loadStateRefresh.error.localizedMessage
+                if (loadStateRefresh is LoadState.Error) binding.errorText.text =
+                    loadStateRefresh.error.localizedMessage
             }
         }
 
@@ -88,8 +73,4 @@ class PeopleListFragment : BaseFragment() {
 
     }
 
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
-    }
 }

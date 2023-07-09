@@ -8,6 +8,7 @@ import androidx.paging.cachedIn
 import com.sw.sw_api_kotlin_project.data.model.repository.PeopleRepository
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModelTest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PeopleListViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository,
-) : BaseViewModel() {
+) : BaseViewModelTest() {
 
     val peopleItems: Flow<PagingData<People>> = Pager(config = PagingConfig(
         pageSize = 1,
