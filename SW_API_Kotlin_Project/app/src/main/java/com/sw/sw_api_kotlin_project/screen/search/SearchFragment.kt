@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.entity.ListType
@@ -37,17 +36,14 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                 binding.searchResultMessage.isVisible = false
                 val adapter = SearchResultsAdapter(
                     searchResults = searchResult!!,
-                    onPeopleClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPeopleDetail(it)
-                        findNavController().navigate(action)
+                    onPeopleClick = { people ->
+                        viewModel.onTapPeople(people)
                     },
-                    onFilmClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavFilmsDetail(it)
-                        findNavController().navigate(action)
+                    onFilmClick = { film ->
+                        viewModel.onTapFilm(film)
                     },
-                    onPlanetClick = {
-                        val action = SearchFragmentDirections.actionNavSearchToNavPlanetDetail(it)
-                        findNavController().navigate(action)
+                    onPlanetClick = { planet ->
+                        viewModel.onTapPlanet(planet)
                     },
                 )
                 binding.bindAdapter(searchResultsAdapter = adapter)
