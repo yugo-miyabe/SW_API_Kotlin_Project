@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.data.model.entity.RequestStatus
 import com.sw.sw_api_kotlin_project.data.model.repository.SearchRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Results
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModelTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val searchRepository: SearchRepository
-) : BaseViewModelTest() {
+) : BaseViewModel() {
     private val _searchResultList = MutableLiveData<List<Results<out Parcelable>>>()
     val searchResultList: LiveData<List<Results<out Parcelable>>> get() = _searchResultList
     private val _isLoading = MutableLiveData<Boolean>()

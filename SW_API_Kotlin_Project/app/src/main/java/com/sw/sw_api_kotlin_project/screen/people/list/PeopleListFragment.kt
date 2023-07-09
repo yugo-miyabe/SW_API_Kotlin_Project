@@ -13,7 +13,7 @@ import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
  * 登場人物一覧画面
  */
 @AndroidEntryPoint
-class PeopleListFragment : BaseFragmentTest<PeopleListViewModel, FragmentPeopleListBinding>() {
+class PeopleListFragment : BaseFragment<PeopleListViewModel, FragmentPeopleListBinding>() {
     override val viewModel: PeopleListViewModel by viewModels()
     override fun inflate(
         inflater: LayoutInflater, container: ViewGroup?
@@ -52,7 +52,7 @@ class PeopleListFragment : BaseFragmentTest<PeopleListViewModel, FragmentPeopleL
                 adapter.submitData(it)
             }
         }
-        
+
         lifecycleScope.launch {
             adapter.loadStateFlow.collect { loadStates ->
                 binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading

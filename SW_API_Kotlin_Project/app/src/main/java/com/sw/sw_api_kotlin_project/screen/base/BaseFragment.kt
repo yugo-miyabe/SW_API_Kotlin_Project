@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.sw.sw_api_kotlin_project.extnsions.collectIn
 
-abstract class BaseFragmentTest<VM : BaseViewModelTest, B : ViewBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
 
     abstract val viewModel: VM
     private var _binding: B? = null
@@ -39,15 +39,15 @@ abstract class BaseFragmentTest<VM : BaseViewModelTest, B : ViewBinding> : Fragm
         viewModel.uiEventList.collectIn(viewLifecycleOwner) { uiEvents ->
             uiEvents.forEach { event ->
                 when (event) {
-                    is BaseViewModelTest.UiEvent.Navigate -> {
+                    is BaseViewModel.UiEvent.Navigate -> {
 
                     }
 
-                    is BaseViewModelTest.UiEvent.Dialog -> {
+                    is BaseViewModel.UiEvent.Dialog -> {
 
                     }
 
-                    is BaseViewModelTest.UiEvent.ToastMessage -> {
+                    is BaseViewModel.UiEvent.ToastMessage -> {
 
                     }
                 }

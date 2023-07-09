@@ -14,7 +14,7 @@ import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmListBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
  * 映画一覧画面
  */
 @AndroidEntryPoint
-class FilmListFragment : BaseFragmentTest<FilmListViewModel, FragmentFilmListBinding>() {
+class FilmListFragment : BaseFragment<FilmListViewModel, FragmentFilmListBinding>() {
     override val viewModel: FilmListViewModel by viewModels()
     override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentFilmListBinding =
         FragmentFilmListBinding.inflate(inflater, container, false)

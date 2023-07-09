@@ -10,7 +10,7 @@ import androidx.paging.cachedIn
 import com.sw.sw_api_kotlin_project.data.model.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.data.network.model.Results
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModelTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PlanetViewModel @Inject constructor(
     private val planetRepository: PlanetRepository
-) : BaseViewModelTest() {
+) : BaseViewModel() {
     private val _planetList = MutableLiveData<Results<Planet>>()
     val planetList: LiveData<Results<Planet>> get() = _planetList
     private val _isLoading = MutableLiveData<Boolean>()

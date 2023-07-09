@@ -10,14 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * お気に入り画面
  */
 @AndroidEntryPoint
-class FavoriteFragment : BaseFragmentTest<FavoriteViewModel, FragmentFavoriteBinding>() {
+class FavoriteFragment : BaseFragment<FavoriteViewModel, FragmentFavoriteBinding>() {
     override val viewModel: FavoriteViewModel by viewModels()
 
     override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentFavoriteBinding =

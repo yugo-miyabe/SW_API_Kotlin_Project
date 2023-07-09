@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
-abstract class BaseViewModelTest : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
     sealed interface UiEvent {
         data class Navigate(val navDirections: NavDirections) : UiEvent
         data class Dialog(val isDoShowing: Boolean) : UiEvent

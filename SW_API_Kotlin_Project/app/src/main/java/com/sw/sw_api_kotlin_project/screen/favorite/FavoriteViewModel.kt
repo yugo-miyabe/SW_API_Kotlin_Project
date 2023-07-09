@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.data.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.data.model.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModelTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val favoriteRepository: FavoriteRepository
-) : BaseViewModelTest() {
+) : BaseViewModel() {
     private val _favoriteList = MutableLiveData<List<Favorite>>()
     val favoriteList: LiveData<List<Favorite>> get() = _favoriteList
     private val _favoriteMessage = MutableLiveData<String>()

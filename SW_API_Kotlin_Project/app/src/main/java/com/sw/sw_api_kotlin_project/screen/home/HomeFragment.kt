@@ -12,14 +12,14 @@ import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.entity.HomeItem
 import com.sw.sw_api_kotlin_project.data.model.entity.ListType
 import com.sw.sw_api_kotlin_project.databinding.FragmentHomeBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ホーム画面
  */
 @AndroidEntryPoint
-class HomeFragment : BaseFragmentTest<HomeViewModel, FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     override val viewModel: HomeViewModel by viewModels()
 
     override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentHomeBinding =

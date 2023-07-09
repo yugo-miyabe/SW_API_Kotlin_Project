@@ -11,14 +11,14 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.entity.WebViewInfo
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * その他画面
  */
 @AndroidEntryPoint
-class OthersFragment : BaseFragmentTest<OthersViewModel, FragmentOthersBinding>() {
+class OthersFragment : BaseFragment<OthersViewModel, FragmentOthersBinding>() {
     override val viewModel: OthersViewModel by viewModels()
 
     override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentOthersBinding =

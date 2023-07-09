@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PeopleDetailsFragment :
-    BaseFragmentTest<PeopleDetailsViewModel, FragmentPeopleDetailsBinding>() {
+    BaseFragment<PeopleDetailsViewModel, FragmentPeopleDetailsBinding>() {
     override val viewModel: PeopleDetailsViewModel by viewModels()
     private val args: PeopleDetailsFragmentArgs by navArgs()
     private lateinit var people: People

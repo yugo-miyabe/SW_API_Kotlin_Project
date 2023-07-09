@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PlanetDetailsFragment :
-    BaseFragmentTest<PlanetDetailsViewModel, FragmentPlanetDetailsBinding>() {
+    BaseFragment<PlanetDetailsViewModel, FragmentPlanetDetailsBinding>() {
     override val viewModel: PlanetDetailsViewModel by viewModels()
     private val args: PlanetDetailsFragmentArgs by navArgs()
     private lateinit var planet: Planet

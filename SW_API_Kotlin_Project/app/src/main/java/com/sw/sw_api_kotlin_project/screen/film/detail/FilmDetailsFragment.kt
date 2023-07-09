@@ -11,7 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * 映画詳細画面
  */
 @AndroidEntryPoint
-class FilmDetailsFragment : BaseFragmentTest<FilmDetailsViewModel, FragmentFilmDetailsBinding>() {
+class FilmDetailsFragment : BaseFragment<FilmDetailsViewModel, FragmentFilmDetailsBinding>() {
     override val viewModel: FilmDetailsViewModel by viewModels()
     private val args: FilmDetailsFragmentArgs by navArgs()
     private lateinit var film: Film

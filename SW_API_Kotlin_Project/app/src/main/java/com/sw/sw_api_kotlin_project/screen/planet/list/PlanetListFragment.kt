@@ -14,7 +14,7 @@ import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetListBinding
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
  * 惑星一覧画面
  */
 @AndroidEntryPoint
-class PlanetListFragment : BaseFragmentTest<PlanetViewModel, FragmentPlanetListBinding>() {
+class PlanetListFragment : BaseFragment<PlanetViewModel, FragmentPlanetListBinding>() {
     override val viewModel: PlanetViewModel by viewModels()
 
     override fun inflate(
