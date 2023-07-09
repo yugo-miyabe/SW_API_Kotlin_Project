@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.data.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.data.model.repository.FavoriteRepository
-import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModelTest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
