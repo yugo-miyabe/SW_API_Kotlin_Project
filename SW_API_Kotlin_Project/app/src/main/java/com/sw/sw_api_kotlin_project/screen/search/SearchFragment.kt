@@ -9,40 +9,29 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
 import com.sw.sw_api_kotlin_project.data.model.entity.ListType
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
+import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 検索画面
  */
 @AndroidEntryPoint
-class SearchFragment : BaseFragment() {
-    private val viewModel: SearchViewModel by viewModels()
-    private var _binding: FragmentSearchBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class SearchFragment : BaseFragmentTest<SearchViewModel, FragmentSearchBinding>() {
+    override val viewModel: SearchViewModel by viewModels()
+    override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentSearchBinding =
+        FragmentSearchBinding.inflate(inflater, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    override fun initView() {
-        super.initView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.searchAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_search)
         binding.searchButton.setOnClickListener {
             viewModel.getSearchResult(binding.searchBar.text.toString())
         }
-    }
 
-    override fun addObservers() {
-        super.addObservers()
         viewModel.searchResultList.observe(viewLifecycleOwner) { searchResult ->
             if (searchResult[ListType.PEOPLE.ordinal].count != 0 && searchResult[ListType.FILM.ordinal].count != 0 && searchResult[ListType.PLANETS.ordinal].count != 0) {
                 binding.searchResultMessage.isVisible = false
@@ -78,11 +67,6 @@ class SearchFragment : BaseFragment() {
             binding.searchResultMessage.isVisible = true
             binding.searchResultMessage.text = errorMassage
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 
     private fun FragmentSearchBinding.bindAdapter(searchResultsAdapter: SearchResultsAdapter) {
