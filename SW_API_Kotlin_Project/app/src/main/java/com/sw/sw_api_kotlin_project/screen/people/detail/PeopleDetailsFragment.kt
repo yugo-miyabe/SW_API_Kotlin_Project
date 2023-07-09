@@ -9,59 +9,35 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
 import com.sw.sw_api_kotlin_project.data.network.model.People
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
+import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * 登場人物詳細画面
  */
 @AndroidEntryPoint
-class PeopleDetailsFragment : BaseFragment() {
-    private val viewModel: PeopleDetailsViewModel by viewModels()
-    private var _binding: FragmentPeopleDetailsBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class PeopleDetailsFragment :
+    BaseFragmentTest<PeopleDetailsViewModel, FragmentPeopleDetailsBinding>() {
+    override val viewModel: PeopleDetailsViewModel by viewModels()
     private val args: PeopleDetailsFragmentArgs by navArgs()
     private lateinit var people: People
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentPeopleDetailsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun inflate(
+        inflater: LayoutInflater, container: ViewGroup?
+    ): FragmentPeopleDetailsBinding =
+        FragmentPeopleDetailsBinding.inflate(inflater, container, false)
 
-    override fun initView() {
-        super.initView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener {
                 findNavController().popBackStack()
             }
             title = getString(R.string.people_details_title)
         }
-        /*
-        binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener { view ->
-                if (activity is PeopleActivity) {
-                    view.findNavController().navigateUp()
-                } else {
-                    activity?.finish()
-                }
-            }
-            title = getString(R.string.people_details_title)
-        }
-        */
-        /*
-        people = if (activity is PeopleActivity) {
-            args.people
-        } else {
-            val navListener = activity as PeopleNavListener
-            navListener.getPeopleValue()
-        }
-        */
         people = args.people
         people.run {
             binding.fullNameText.text = name
@@ -77,10 +53,6 @@ class PeopleDetailsFragment : BaseFragment() {
             viewModel.toggleFavorite(people)
         }
         viewModel.getFavoriteState(people.name)
-    }
-
-    override fun addObservers() {
-        super.addObservers()
         viewModel.favoriteStatus.observe(viewLifecycleOwner) { isFavorite ->
             if (isFavorite) {
                 binding.peopleFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
@@ -88,10 +60,5 @@ class PeopleDetailsFragment : BaseFragment() {
                 binding.peopleFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
             }
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 }
