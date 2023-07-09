@@ -55,9 +55,7 @@ class SearchViewModel @Inject constructor(
         addNavigationEvent(FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetail(people))
 
     fun onTapFilm(film: Film) = addNavigationEvent(
-        FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(
-            film
-        )
+        FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(film)
     )
 
     fun onTapPlanet(planet: Planet) =
