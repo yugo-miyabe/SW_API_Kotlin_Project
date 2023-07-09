@@ -40,7 +40,8 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
             uiEvents.forEach { event ->
                 when (event) {
                     is BaseViewModel.UiEvent.Navigate -> {
-
+                        navigateTo(event.navDirections)
+                        viewModel.consumeEvent(event)
                     }
 
                     is BaseViewModel.UiEvent.Dialog -> {

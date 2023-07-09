@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
@@ -37,9 +36,8 @@ class FilmListFragment : BaseFragment<FilmListViewModel, FragmentFilmListBinding
             title = getString(R.string.film_title)
         }
 
-        val adapter = FilmListAdapter {
-            val action = FilmListFragmentDirections.actionNavFilmsToNavFilmsDetail(it)
-            findNavController().navigate(action)
+        val adapter = FilmListAdapter { film ->
+            viewModel.onTapFilm(film)
         }
 
         viewModel.viewModelScope.launch {
