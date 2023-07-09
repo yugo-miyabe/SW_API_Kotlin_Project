@@ -9,9 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
 import com.sw.sw_api_kotlin_project.data.network.model.Film
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
+import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,44 +19,39 @@ import dagger.hilt.android.AndroidEntryPoint
  * 映画詳細画面
  */
 @AndroidEntryPoint
-class FilmDetailsFragment : BaseFragment() {
-    private val viewModel: FilmDetailsViewModel by viewModels()
-    private var _binding: FragmentFilmDetailsBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class FilmDetailsFragment : BaseFragmentTest<FilmDetailsViewModel, FragmentFilmDetailsBinding>() {
+    override val viewModel: FilmDetailsViewModel by viewModels()
     private val args: FilmDetailsFragmentArgs by navArgs()
     private lateinit var film: Film
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFilmDetailsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun inflate(
+        inflater: LayoutInflater, container: ViewGroup?
+    ): FragmentFilmDetailsBinding = FragmentFilmDetailsBinding.inflate(inflater, container, false)
 
-    override fun initView() {
-        super.initView()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.filmDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener {
                 findNavController().popBackStack()
             }
             title = getString(R.string.films_details_title)
         }
+
         film = args.film
         film.run {
             binding.titleText.text = title
             binding.releaseDateText.text = releaseDate
             binding.openingCrawlText.text = openingCrawl
         }
+
         binding.filmFavoriteMark.setOnClickListener {
             viewModel.toggleFavorite(film)
         }
-        viewModel.getFavoriteState(film.title)
-    }
 
-    override fun addObservers() {
-        super.addObservers()
+        viewModel.getFavoriteState(film.title)
+
         viewModel.favoriteStatus.observe(viewLifecycleOwner) { isFavorite ->
             if (isFavorite) {
                 binding.filmFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
@@ -64,11 +59,6 @@ class FilmDetailsFragment : BaseFragment() {
                 binding.filmFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
             }
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 
 }
