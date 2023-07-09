@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
@@ -49,7 +50,8 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
                     }
 
                     is BaseViewModel.UiEvent.ToastMessage -> {
-
+                        Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
+                        viewModel.consumeEvent(event)
                     }
                 }
             }

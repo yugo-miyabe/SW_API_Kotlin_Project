@@ -30,9 +30,9 @@ class OthersFragment : BaseFragment<OthersViewModel, FragmentOthersBinding>() {
             getString(R.string.navigation_others)
         binding.deleteFavorite.setOnClickListener {
             viewModel.delete()
-            Toast.makeText(
-                context, getString(R.string.other_delete_favorite_item), Toast.LENGTH_SHORT
-            ).show()
+
+            viewModel.addToastEvent(getString(R.string.other_delete_favorite_item))
+
         }
 
         binding.webViewDocumentation.setOnClickListener {

@@ -18,7 +18,13 @@ abstract class BaseViewModel : ViewModel() {
 
     fun addNavigationEvent(destination: NavDirections) {
         _uiEventList.update { uiEventList ->
-            uiEventList + UiEvent.Navigate(destination)
+            uiEventList + UiEvent.Navigate(navDirections = destination)
+        }
+    }
+
+    fun addToastEvent(message: String) {
+        _uiEventList.update { uiEvents ->
+            uiEvents + UiEvent.ToastMessage(message = message)
         }
     }
 
