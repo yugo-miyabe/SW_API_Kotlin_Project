@@ -43,8 +43,7 @@ class PeopleListFragment : BaseFragment<PeopleListViewModel, FragmentPeopleListB
             }
         }
         val adapter = PeopleListAdapter {
-            val action = PeopleListFragmentDirections.actionNavPeopleListToNavPeopleDetail(it)
-            findNavController().navigate(action)
+            viewModel.onTapPeople(it)
         }
 
         viewModel.viewModelScope.launch {
