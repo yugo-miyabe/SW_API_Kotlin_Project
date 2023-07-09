@@ -9,42 +9,38 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import com.sw.sw_api_kotlin_project.data.model.entity.HomeItem
-import com.sw.sw_api_kotlin_project.databinding.FragmentHomeBinding
 import com.sw.sw_api_kotlin_project.data.model.entity.ListType
+import com.sw.sw_api_kotlin_project.databinding.FragmentHomeBinding
+import com.sw.sw_api_kotlin_project.screen.base.BaseFragmentTest
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * ホーム画面
  */
 @AndroidEntryPoint
-class HomeFragment : BaseFragment() {
-    private val viewModel: HomeViewModel by viewModels()
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class HomeFragment : BaseFragmentTest<HomeViewModel, FragmentHomeBinding>() {
+    override val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentHomeBinding =
+        FragmentHomeBinding.inflate(inflater, container, false)
 
-    override fun initView() {
-        super.initView()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_home)
         val adapter = HomeAdapter(getHomeList()) {
-             val action = when (it) {
+            val action = when (it) {
                 ListType.PEOPLE -> {
                     HomeFragmentDirections.actionNavHomeListToNavPeopleList()
                 }
+
                 ListType.FILM -> {
                     HomeFragmentDirections.actionNavHomeListToNavFilmsList()
                 }
+
                 ListType.PLANETS -> {
                     HomeFragmentDirections.actionNavHomeListToNavPlanetList()
                 }
@@ -73,8 +69,4 @@ class HomeFragment : BaseFragment() {
         )
     }
 
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
-    }
 }
