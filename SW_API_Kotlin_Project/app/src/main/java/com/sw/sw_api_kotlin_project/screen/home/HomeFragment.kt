@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.entity.HomeItem
@@ -32,23 +31,13 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
             getString(R.string.navigation_home)
         val adapter = HomeAdapter(getHomeList()) {
-            val action = when (it) {
-                ListType.PEOPLE -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPeopleList()
-                }
-
-                ListType.FILM -> {
-                    HomeFragmentDirections.actionNavHomeListToNavFilmsList()
-                }
-
-                ListType.PLANETS -> {
-                    HomeFragmentDirections.actionNavHomeListToNavPlanetList()
-                }
+            when (it) {
+                ListType.PEOPLE -> viewModel.onTapPeopleList()
+                ListType.FILM -> viewModel.onTapFilmList()
+                ListType.PLANETS -> viewModel.onTapPlanetList()
             }
-            findNavController().navigate(action)
         }
         binding.homeRecyclerView.adapter = adapter
-
     }
 
     private fun getHomeList(): List<HomeItem> {
