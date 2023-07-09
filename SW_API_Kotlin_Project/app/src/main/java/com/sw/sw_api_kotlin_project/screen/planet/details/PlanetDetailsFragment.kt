@@ -9,8 +9,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
+import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,24 +18,20 @@ import dagger.hilt.android.AndroidEntryPoint
  * 惑星詳細画面
  */
 @AndroidEntryPoint
-class PlanetDetailsFragment : BaseFragment() {
-    private val viewModel: PlanetDetailsViewModel by viewModels()
-    private var _binding: FragmentPlanetDetailsBinding? = null
-    private val binding get() = checkNotNull(_binding)
+class PlanetDetailsFragment :
+    BaseFragment<PlanetDetailsViewModel, FragmentPlanetDetailsBinding>() {
+    override val viewModel: PlanetDetailsViewModel by viewModels()
     private val args: PlanetDetailsFragmentArgs by navArgs()
     private lateinit var planet: Planet
 
-    override fun onCreateView(
+    override fun inflate(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentPlanetDetailsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+        container: ViewGroup?
+    ): FragmentPlanetDetailsBinding =
+        FragmentPlanetDetailsBinding.inflate(inflater, container, false)
 
-    override fun initView() {
-        super.initView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.planetDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
             setOnClickListener {
                 findNavController().popBackStack()
@@ -54,11 +50,9 @@ class PlanetDetailsFragment : BaseFragment() {
         binding.planetFavoriteMark.setOnClickListener {
             viewModel.toggleFavorite(planet)
         }
-        viewModel.getFavoriteState(planet.name)
-    }
 
-    override fun addObservers() {
-        super.addObservers()
+        viewModel.getFavoriteState(planet.name)
+
         viewModel.favoriteStatus.observe(viewLifecycleOwner) { isFavorite ->
             if (isFavorite) {
                 binding.planetFavoriteMark.setImageResource(R.drawable.ic_baseline_star_24)
@@ -66,10 +60,5 @@ class PlanetDetailsFragment : BaseFragment() {
                 binding.planetFavoriteMark.setImageResource(R.drawable.ic_baseline_star_border_24)
             }
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 }

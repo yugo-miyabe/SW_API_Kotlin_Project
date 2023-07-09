@@ -4,68 +4,64 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
-import com.sw.sw_api_kotlin_project.data.utils.LogUtils
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
+import com.sw.sw_api_kotlin_project.extnsions.collectIn
 
+abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
 
-open class BaseFragment : Fragment() {
+    abstract val viewModel: VM
+    private var _binding: B? = null
+    val binding: B
+        get() = checkNotNull(_binding) {
+            "bindingはonCreateView - onDestroyView間でのみアクセス可能"
+        }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        LogUtils.timberTrace(this::class.java)
-    }
-
-    override fun onCreateView(
+    abstract fun inflate(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        LogUtils.timberTrace(this::class.java)
+    ): B
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        _binding = inflate(inflater, container)
+        return binding.root
     }
 
+    @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
-        addObservers()
+
+        viewModel.uiEventList.collectIn(viewLifecycleOwner) { uiEvents ->
+            uiEvents.forEach { event ->
+                when (event) {
+                    is BaseViewModel.UiEvent.Navigate -> {
+
+                    }
+
+                    is BaseViewModel.UiEvent.Dialog -> {
+
+                    }
+
+                    is BaseViewModel.UiEvent.ToastMessage -> {
+
+                    }
+                }
+            }
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
-        LogUtils.timberTrace(this::class.java)
+    private fun navigateTo(actionId: NavDirections) {
+        findNavController().navigate(actionId)
     }
 
-    override fun onResume() {
-        super.onResume()
-        LogUtils.timberTrace(this::class.java)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        LogUtils.timberTrace(this::class.java)
-    }
-
+    @CallSuper
     override fun onDestroyView() {
+        _binding = null
         super.onDestroyView()
-        LogUtils.timberTrace(this::class.java)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        LogUtils.timberTrace(this::class.java)
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        LogUtils.timberTrace(this::class.java)
-    }
-
-    open fun initView() {
-        LogUtils.timberTrace(this::class.java)
-    }
-
-    open fun addObservers() {
-        LogUtils.timberTrace(this::class.java)
     }
 }

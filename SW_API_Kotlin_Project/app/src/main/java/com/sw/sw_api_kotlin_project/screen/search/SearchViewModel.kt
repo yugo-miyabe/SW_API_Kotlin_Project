@@ -31,10 +31,12 @@ class SearchViewModel @Inject constructor(
                         _isLoading.value = false
                         _searchResultList.value = response.data!!
                     }
+
                     RequestStatus.ERROR -> {
                         _isLoading.value = false
                         _errorMessage.value = response.message!!
                     }
+
                     RequestStatus.LOADING -> {
                         _isLoading.value = true
                         _errorMessage.value = ""
