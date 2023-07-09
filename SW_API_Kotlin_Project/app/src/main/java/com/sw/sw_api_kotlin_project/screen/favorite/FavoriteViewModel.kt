@@ -5,7 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sw.sw_api_kotlin_project.data.model.entity.Favorite
 import com.sw.sw_api_kotlin_project.data.model.repository.FavoriteRepository
+import com.sw.sw_api_kotlin_project.data.network.model.Film
+import com.sw.sw_api_kotlin_project.data.network.model.People
+import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionNavFavoriteListToNavFilmsDetail
+import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionNavFavoriteListToNavPeopleDetail
+import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionNavFavoriteListToNavPlanetDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,4 +36,13 @@ class FavoriteViewModel @Inject constructor(
             }
         }
     }
+
+    fun onTapPeople(people: People) =
+        addNavigationEvent(actionNavFavoriteListToNavPeopleDetail(people))
+
+    fun onTapFilm(film: Film) = addNavigationEvent(actionNavFavoriteListToNavFilmsDetail(film))
+
+    fun onTapPlanet(planet: Planet) =
+        addNavigationEvent(actionNavFavoriteListToNavPlanetDetail(planet))
+
 }

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
@@ -22,7 +21,7 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel, FragmentFavoriteBinding
 
     override fun inflate(inflater: LayoutInflater, container: ViewGroup?): FragmentFavoriteBinding =
         FragmentFavoriteBinding.inflate(inflater, container, false)
-    
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.favoriteAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
@@ -34,25 +33,9 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel, FragmentFavoriteBinding
                 binding.favoriteRecyclerView.isVisible = true
                 binding.favoriteRecyclerView.adapter = FavoriteAdapter(
                     favoriteList,
-                    { people ->
-                        val action =
-                            FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetail(
-                                people
-                            )
-                        findNavController().navigate(action)
-                    },
-                    { film ->
-                        val action =
-                            FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(film)
-                        findNavController().navigate(action)
-                    },
-                    { planet ->
-                        val action =
-                            FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetail(
-                                planet
-                            )
-                        findNavController().navigate(action)
-                    },
+                    { people -> viewModel.onTapPeople(people) },
+                    { film -> viewModel.onTapFilm(film) },
+                    { planet -> viewModel.onTapPlanet(planet) },
                 )
             } else {
                 binding.favoriteRecyclerView.isVisible = false
