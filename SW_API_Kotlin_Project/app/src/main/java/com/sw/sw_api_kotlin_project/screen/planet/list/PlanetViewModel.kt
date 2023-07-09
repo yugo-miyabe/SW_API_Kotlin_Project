@@ -11,6 +11,7 @@ import com.sw.sw_api_kotlin_project.data.model.repository.PlanetRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
+import com.sw.sw_api_kotlin_project.screen.planet.list.PlanetListFragmentDirections.Companion.actionNavPlanetToNavPlanetDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -32,5 +33,11 @@ class PlanetViewModel @Inject constructor(
     ), pagingSourceFactory = {
         planetRepository.planetListPagingSource()
     }).flow.cachedIn(viewModelScope)
+
+    fun onTapPlanet(planet: Planet) {
+        addNavigationEvent(
+            actionNavPlanetToNavPlanetDetail(planet = planet)
+        )
+    }
 
 }

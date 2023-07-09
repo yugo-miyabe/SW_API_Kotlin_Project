@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
@@ -42,8 +41,7 @@ class PlanetListFragment : BaseFragment<PlanetViewModel, FragmentPlanetListBindi
 
 
         val adapter = PlanetListAdapter {
-            val action = PlanetListFragmentDirections.actionNavPlanetToNavPlanetDetail(it)
-            findNavController().navigate(action)
+            viewModel.onTapPlanet(it)
         }
 
         viewModel.viewModelScope.launch {
