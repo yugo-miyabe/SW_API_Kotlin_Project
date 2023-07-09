@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
-import com.sw.sw_api_kotlin_project.data.model.entity.WebViewInfo
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,14 +34,9 @@ class OthersFragment : BaseFragment<OthersViewModel, FragmentOthersBinding>() {
                 context, getString(R.string.other_delete_favorite_item), Toast.LENGTH_SHORT
             ).show()
         }
+
         binding.webViewDocumentation.setOnClickListener {
-            val action = OthersFragmentDirections.actionNavOtherToNavWebView(
-                WebViewInfo(
-                    title = getString(R.string.other_api_document),
-                    url = swApiDocumentation,
-                )
-            )
-            findNavController().navigate(action)
+            viewModel.onTapDirection(getString(R.string.other_api_document))
         }
     }
 }
