@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.update
 abstract class BaseViewModel : ViewModel() {
     sealed interface UiEvent {
         data class Navigate(val navDirections: NavDirections) : UiEvent
-        data class Dialog(val isDoShowing: Boolean) : UiEvent
+        data class ProgressDialog(val isDoShowing: Boolean) : UiEvent
         data class ToastMessage(val message: String) : UiEvent
     }
 

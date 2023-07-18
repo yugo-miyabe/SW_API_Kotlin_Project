@@ -11,6 +11,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.sw.sw_api_kotlin_project.extnsions.collectIn
+import com.sw.sw_api_kotlin_project.screen.dialog.ProgressDialogFragment
 
 abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
 
@@ -45,8 +46,13 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding> : Fragment() {
                         viewModel.consumeEvent(event)
                     }
 
-                    is BaseViewModel.UiEvent.Dialog -> {
-
+                    is BaseViewModel.UiEvent.ProgressDialog -> {
+                        if (event.isDoShowing) {
+                            ProgressDialogFragment.show(this)
+                        } else {
+                            ProgressDialogFragment.dismiss(this)
+                        }
+                        viewModel.consumeEvent(event)
                     }
 
                     is BaseViewModel.UiEvent.ToastMessage -> {
