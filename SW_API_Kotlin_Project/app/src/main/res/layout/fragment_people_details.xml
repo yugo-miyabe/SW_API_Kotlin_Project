@@ -1,268 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
+    <include
+        android:id="@+id/people_detail_appbar"
+        layout="@layout/include_back_arrow_appbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <variable
-            name="viewModel"
-            type="com.sw.sw_api_kotlin_project.screen.people.detail.PeopleDetailsViewModel" />
-    </data>
+    <ImageView
+        android:id="@+id/image_details_icon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_face_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
+        app:tint="@color/teal_700"
+        tools:ignore="contentDescription" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/full_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/image_details_icon"
+        app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
+        tools:text="Luke Skywalker" />
 
-        <include
-            android:id="@+id/people_detail_appbar"
-            layout="@layout/include_back_arrow_appbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/birth_year_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_birth_year"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/image_details_icon"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_text" />
 
-        <ImageView
-            android:id="@+id/image_details_icon"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_baseline_face_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
-            app:tint="@color/teal_700"
-            tools:ignore="contentDescription" />
+    <TextView
+        android:id="@+id/birth_year_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/birth_year_label"
+        app:layout_constraintTop_toBottomOf="@+id/full_name_text"
+        tools:text="19BBY" />
 
-        <TextView
-            android:id="@+id/full_name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
-            tools:text="Luke Skywalker" />
+    <ImageView
+        android:id="@+id/people_favorite_mark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_baseline_star_border_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
+        tools:ignore="contentDescription" />
 
-        <TextView
-            android:id="@+id/birth_year_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_birth_year"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/full_name_text" />
+    <TextView
+        android:id="@+id/text_label_for_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_gender"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/image_details_icon"
+        app:layout_constraintTop_toBottomOf="@+id/image_details_icon" />
 
-        <TextView
-            android:id="@+id/birth_year_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/birth_year_label"
-            app:layout_constraintTop_toBottomOf="@+id/full_name_text"
-            tools:text="19BBY" />
+    <TextView
+        android:id="@+id/gender_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/text_label_for_gender"
+        app:layout_constraintTop_toBottomOf="@+id/image_details_icon"
+        tools:text="male" />
 
-        <ImageView
-            android:id="@+id/people_favorite_mark"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:foregroundGravity="center"
-            android:src="@drawable/ic_baseline_star_border_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
-            tools:ignore="contentDescription" />
+    <TextView
+        android:id="@+id/skin_color_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_skin_color"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/skin_color_text"
+        app:layout_constraintTop_toBottomOf="@+id/image_details_icon" />
 
-        <TextView
-            android:id="@+id/text_label_for_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_gender"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/image_details_icon" />
-
-        <TextView
-            android:id="@+id/gender_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/text_label_for_gender"
-            app:layout_constraintTop_toBottomOf="@+id/image_details_icon"
-            tools:text="male" />
-
-        <TextView
-            android:id="@+id/skin_color_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_skin_color"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/skin_color_text"
-            app:layout_constraintTop_toBottomOf="@+id/image_details_icon" />
-
-        <TextView
-            android:id="@+id/skin_color_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_details_icon"
-            tools:text="fair" />
+    <TextView
+        android:id="@+id/skin_color_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_details_icon"
+        tools:text="fair" />
 
 
-        <TextView
-            android:id="@+id/eye_color_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_eye_color"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/gender_text" />
+    <TextView
+        android:id="@+id/eye_color_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_eye_color"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/image_details_icon"
+        app:layout_constraintTop_toBottomOf="@+id/gender_text" />
 
-        <TextView
-            android:id="@+id/eye_color_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/eye_color_label"
-            app:layout_constraintTop_toBottomOf="@+id/gender_text"
-            tools:text="blue" />
+    <TextView
+        android:id="@+id/eye_color_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/eye_color_label"
+        app:layout_constraintTop_toBottomOf="@+id/gender_text"
+        tools:text="blue" />
 
-        <TextView
-            android:id="@+id/height_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_height"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/height_text"
-            app:layout_constraintTop_toBottomOf="@+id/gender_text" />
+    <TextView
+        android:id="@+id/height_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_height"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/height_text"
+        app:layout_constraintTop_toBottomOf="@+id/gender_text" />
 
-        <TextView
-            android:id="@+id/height_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender_text"
-            tools:text="172" />
+    <TextView
+        android:id="@+id/height_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_text"
+        tools:text="172" />
 
-        <TextView
-            android:id="@+id/hair_color_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_hair_color"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/eye_color_text" />
+    <TextView
+        android:id="@+id/hair_color_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_hair_color"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/image_details_icon"
+        app:layout_constraintTop_toBottomOf="@+id/eye_color_text" />
 
-        <TextView
-            android:id="@+id/hair_color_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/hair_color_label"
-            app:layout_constraintTop_toBottomOf="@+id/eye_color_text"
-            tools:text="blond" />
+    <TextView
+        android:id="@+id/hair_color_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/hair_color_label"
+        app:layout_constraintTop_toBottomOf="@+id/eye_color_text"
+        tools:text="blond" />
 
-        <TextView
-            android:id="@+id/mass_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_mass"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/mass_text"
-            app:layout_constraintTop_toBottomOf="@+id/height_text" />
+    <TextView
+        android:id="@+id/mass_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_mass"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/mass_text"
+        app:layout_constraintTop_toBottomOf="@+id/height_text" />
 
-        <TextView
-            android:id="@+id/mass_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/height_text"
-            tools:text="77" />
+    <TextView
+        android:id="@+id/mass_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height_text"
+        tools:text="77" />
 
-        <TextView
-            android:id="@+id/species_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/people_details_species"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/image_details_icon"
-            app:layout_constraintTop_toBottomOf="@+id/hair_color_text" />
+    <TextView
+        android:id="@+id/species_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/people_details_species"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/image_details_icon"
+        app:layout_constraintTop_toBottomOf="@+id/hair_color_text" />
 
-        <TextView
-            android:id="@+id/species_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/species_label"
-            app:layout_constraintTop_toBottomOf="@+id/hair_color_text"
-            tools:text="Human" />
+    <TextView
+        android:id="@+id/species_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/species_label"
+        app:layout_constraintTop_toBottomOf="@+id/hair_color_text"
+        tools:text="Human" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

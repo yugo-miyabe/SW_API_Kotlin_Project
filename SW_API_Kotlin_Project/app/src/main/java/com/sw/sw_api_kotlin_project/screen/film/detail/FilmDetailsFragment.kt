@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.databinding.FragmentFilmDetailsBinding
@@ -31,13 +29,6 @@ class FilmDetailsFragment : BaseFragment<FilmDetailsViewModel, FragmentFilmDetai
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.filmDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener {
-                findNavController().popBackStack()
-            }
-            title = getString(R.string.films_details_title)
-        }
 
         film = args.film
         film.run {

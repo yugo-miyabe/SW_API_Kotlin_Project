@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleDetailsBinding
@@ -32,12 +30,6 @@ class PeopleDetailsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.peopleDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener {
-                findNavController().popBackStack()
-            }
-            title = getString(R.string.people_details_title)
-        }
         people = args.people
         people.run {
             binding.fullNameText.text = name

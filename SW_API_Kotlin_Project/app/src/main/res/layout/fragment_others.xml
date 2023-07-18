@@ -1,70 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
+    <include
+        android:id="@+id/others_appbar"
+        layout="@layout/include_appbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <variable
-            name="fragment_others"
-            type="com.sw.sw_api_kotlin_project.screen.others.OthersViewModel" />
-    </data>
+    <TextView
+        android:id="@+id/delete_favorite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="start"
+        android:text="@string/other_remove_all_favorites"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/others_appbar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <View
+        android:id="@+id/delete_favorite_divider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delete_favorite" />
 
-        <include
-            android:id="@+id/others_appbar"
-            layout="@layout/include_appbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/web_view_documentation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="start"
+        android:text="@string/other_api_document"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delete_favorite_divider" />
 
-        <TextView
-            android:id="@+id/delete_favorite"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:gravity="start"
-            android:text="@string/other_remove_all_favorites"
-            android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/others_appbar" />
-
-        <View
-            android:id="@+id/delete_favorite_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/delete_favorite" />
-
-        <TextView
-            android:id="@+id/web_view_documentation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:gravity="start"
-            android:text="@string/other_api_document"
-            android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/delete_favorite_divider" />
-
-        <View
-            android:id="@+id/web_view_documentation_divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/web_view_documentation" />
+    <View
+        android:id="@+id/web_view_documentation_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/web_view_documentation" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

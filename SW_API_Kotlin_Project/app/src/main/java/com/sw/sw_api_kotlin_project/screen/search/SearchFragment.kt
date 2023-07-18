@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.entity.ListType
 import com.sw.sw_api_kotlin_project.databinding.FragmentSearchBinding
@@ -25,8 +24,6 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.searchAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
-            getString(R.string.navigation_search)
         binding.searchButton.setOnClickListener {
             viewModel.getSearchResult(binding.searchBar.text.toString())
         }

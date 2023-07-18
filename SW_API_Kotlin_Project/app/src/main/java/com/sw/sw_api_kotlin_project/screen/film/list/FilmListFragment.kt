@@ -29,12 +29,6 @@ class FilmListFragment : BaseFragment<FilmListViewModel, FragmentFilmListBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.filmListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener {
-                findNavController().popBackStack()
-            }
-            title = getString(R.string.film_title)
-        }
 
         val adapter = FilmListAdapter { film ->
             viewModel.onTapFilm(film)

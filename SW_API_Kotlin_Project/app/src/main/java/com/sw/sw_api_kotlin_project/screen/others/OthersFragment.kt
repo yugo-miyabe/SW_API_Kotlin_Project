@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentOthersBinding
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
@@ -24,10 +22,6 @@ class OthersFragment : BaseFragment<OthersViewModel, FragmentOthersBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val swApiDocumentation = "https://swapi.dev/documentation"
-
-        binding.othersAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
-            getString(R.string.navigation_others)
         binding.deleteFavorite.setOnClickListener {
             viewModel.delete()
 

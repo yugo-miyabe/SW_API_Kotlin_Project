@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.databinding.FragmentPlanetDetailsBinding
@@ -32,12 +30,6 @@ class PlanetDetailsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.planetDetailAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener {
-                findNavController().popBackStack()
-            }
-            title = getString(R.string.films_details_title)
-        }
         planet = args.planet
         planet.run {
             binding.nameText.text = name

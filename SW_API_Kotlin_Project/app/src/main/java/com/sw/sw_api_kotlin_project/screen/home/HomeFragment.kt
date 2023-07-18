@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.data.model.entity.HomeItem
 import com.sw.sw_api_kotlin_project.data.model.entity.ListType
@@ -28,8 +27,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.homeAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
-            getString(R.string.navigation_home)
         val adapter = HomeAdapter(getHomeList()) {
             when (it) {
                 ListType.PEOPLE -> viewModel.onTapPeopleList()

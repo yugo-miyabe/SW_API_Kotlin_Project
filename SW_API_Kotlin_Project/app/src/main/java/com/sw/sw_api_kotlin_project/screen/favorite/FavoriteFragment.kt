@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.google.android.material.appbar.MaterialToolbar
 import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentFavoriteBinding
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
@@ -24,8 +23,6 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel, FragmentFavoriteBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.favoriteAppbar.findViewById<MaterialToolbar>(R.id.toolbar).title =
-            getString(R.string.navigation_favorite)
 
         viewModel.favoriteList.observe(viewLifecycleOwner) { favoriteList ->
             if (favoriteList.isNotEmpty()) {

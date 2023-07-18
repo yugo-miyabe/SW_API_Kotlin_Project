@@ -23,12 +23,6 @@ class WebViewActivity : AppCompatActivity() {
         _binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val webViewInfo = args.webViewInfo
-        binding.webViewAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener {
-                finish()
-            }
-            title = webViewInfo.title
-        }
         binding.webView.loadUrl(webViewInfo.url)
         binding.webView.setOnKeyListener { _, keyCode, event ->
             (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN).apply {

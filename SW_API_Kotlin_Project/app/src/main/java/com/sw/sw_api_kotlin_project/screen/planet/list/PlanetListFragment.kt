@@ -32,12 +32,6 @@ class PlanetListFragment : BaseFragment<PlanetViewModel, FragmentPlanetListBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.planetListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-            setOnClickListener {
-                findNavController().popBackStack()
-            }
-            title = getString(R.string.planet_title)
-        }
 
 
         val adapter = PlanetListAdapter {

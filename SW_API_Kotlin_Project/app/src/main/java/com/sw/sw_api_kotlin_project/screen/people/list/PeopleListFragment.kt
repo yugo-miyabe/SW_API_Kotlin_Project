@@ -8,10 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import com.google.android.material.appbar.MaterialToolbar
-import com.sw.sw_api_kotlin_project.R
 import com.sw.sw_api_kotlin_project.databinding.FragmentPeopleListBinding
 import com.sw.sw_api_kotlin_project.screen.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,12 +29,6 @@ class PeopleListFragment : BaseFragment<PeopleListViewModel, FragmentPeopleListB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            peopleListAppbar.findViewById<MaterialToolbar>(R.id.toolbar).apply {
-                setOnClickListener {
-                    findNavController().popBackStack()
-                }
-                title = getString(R.string.people_list_title)
-            }
             retryButton.setOnClickListener {
                 binding.retryButton.isVisible = false
             }
