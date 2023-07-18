@@ -6,13 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/people_detail_appbar"
-        layout="@layout/include_back_arrow_appbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/image_details_icon"
         android:layout_width="72dp"
@@ -75,7 +68,7 @@
         android:foregroundGravity="center"
         android:src="@drawable/ic_baseline_star_border_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/people_detail_appbar"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="contentDescription" />
 
     <TextView
