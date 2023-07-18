@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_favorite">
+
+
+    <fragment
+        android:id="@+id/favorite_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragment"
+        android:label="お気に入り"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favorite_list_to_people_detail"
+            app:destination="@id/people_detail" />
+        <action
+            android:id="@+id/action_favorite_list_to_films_detail"
+            app:destination="@id/films_detail" />
+        <action
+            android:id="@+id/action_favorite_list_to_planet_detail"
+            app:destination="@id/planet_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/people_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.detail.PeopleDetailsFragment"
+        android:label="登場人物詳細"
+        tools:layout="@layout/fragment_people_details">
+        <argument
+            android:name="people"
+            app:argType="com.sw.sw_api_kotlin_project.data.network.model.People" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/films_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.detail.FilmDetailsFragment"
+        android:label="映画詳細"
+        tools:layout="@layout/fragment_film_details">
+        <argument
+            android:name="film"
+            app:argType="com.sw.sw_api_kotlin_project.data.network.model.Film" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/planet_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.details.PlanetDetailsFragment"
+        android:label="惑星詳細"
+        tools:layout="@layout/fragment_planet_details">
+        <argument
+            android:name="planet"
+            app:argType="com.sw.sw_api_kotlin_project.data.network.model.Planet" />
+    </fragment>
+
+</navigation>

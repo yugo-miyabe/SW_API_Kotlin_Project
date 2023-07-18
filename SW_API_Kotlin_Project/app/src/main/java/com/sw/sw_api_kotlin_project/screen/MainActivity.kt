@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-
         binding.bottomNavigationView.apply {
             setupWithNavController(navController)
             setOnItemReselectedListener { item ->

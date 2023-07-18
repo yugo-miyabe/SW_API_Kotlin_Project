@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/home_list">
+
+    <fragment
+        android:id="@+id/home_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.home.HomeFragment"
+        android:label="ホーム"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_list_to_people_list"
+            app:destination="@id/people_list" />
+        <action
+            android:id="@+id/action_home_list_to_films_list"
+            app:destination="@id/films_list" />
+        <action
+            android:id="@+id/action_home_list_to_planet_list"
+            app:destination="@id/planet_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/people_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.list.PeopleListFragment"
+        android:label="登場人物リスト"
+        tools:layout="@layout/fragment_people_list">
+        <action
+            android:id="@+id/action_people_list_to_people_detail"
+            app:destination="@id/people_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/people_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.people.detail.PeopleDetailsFragment"
+        android:label="登場人物詳細"
+        tools:layout="@layout/fragment_people_details">
+        <argument
+            android:name="people"
+            app:argType="com.sw.sw_api_kotlin_project.data.network.model.People" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/films_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.list.FilmListFragment"
+        android:label="映画リスト"
+        tools:layout="@layout/fragment_film_list">
+        <action
+            android:id="@+id/action_films_to_films_detail"
+            app:destination="@id/films_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/films_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.film.detail.FilmDetailsFragment"
+        android:label="映画詳細"
+        tools:layout="@layout/fragment_film_details">
+        <argument
+            android:name="film"
+            app:argType="com.sw.sw_api_kotlin_project.data.network.model.Film" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/planet_list"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.list.PlanetListFragment"
+        android:label="惑星リスト"
+        tools:layout="@layout/fragment_planet_list">
+        <action
+            android:id="@+id/action_planet_to_planet_detail"
+            app:destination="@id/planet_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/planet_detail"
+        android:name="com.sw.sw_api_kotlin_project.screen.planet.details.PlanetDetailsFragment"
+        android:label="惑星詳細"
+        tools:layout="@layout/fragment_planet_details">
+        <argument
+            android:name="planet"
+            app:argType="com.sw.sw_api_kotlin_project.data.network.model.Planet" />
+    </fragment>
+
+</navigation>

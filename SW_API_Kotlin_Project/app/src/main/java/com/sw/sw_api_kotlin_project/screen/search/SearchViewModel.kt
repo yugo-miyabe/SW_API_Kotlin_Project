@@ -11,7 +11,9 @@ import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.data.network.model.Results
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections
+import com.sw.sw_api_kotlin_project.screen.search.SearchFragmentDirections.Companion.actionSearchToFilmsDetail
+import com.sw.sw_api_kotlin_project.screen.search.SearchFragmentDirections.Companion.actionSearchToPeopleDetail
+import com.sw.sw_api_kotlin_project.screen.search.SearchFragmentDirections.Companion.actionSearchToPlanetDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -52,12 +54,12 @@ class SearchViewModel @Inject constructor(
 
 
     fun onTapPeople(people: People) =
-        addNavigationEvent(FavoriteFragmentDirections.actionNavFavoriteListToNavPeopleDetail(people))
+        addNavigationEvent(actionSearchToPeopleDetail(people))
 
     fun onTapFilm(film: Film) = addNavigationEvent(
-        FavoriteFragmentDirections.actionNavFavoriteListToNavFilmsDetail(film)
+        actionSearchToFilmsDetail(film)
     )
 
     fun onTapPlanet(planet: Planet) =
-        addNavigationEvent(FavoriteFragmentDirections.actionNavFavoriteListToNavPlanetDetail(planet))
+        addNavigationEvent(actionSearchToPlanetDetail(planet))
 }

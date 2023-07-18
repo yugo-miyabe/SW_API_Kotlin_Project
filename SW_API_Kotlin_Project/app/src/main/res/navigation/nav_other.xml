@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_other"
+    app:startDestination="@id/other">
+
+    <fragment
+        android:id="@+id/other"
+        android:name="com.sw.sw_api_kotlin_project.screen.others.OthersFragment"
+        android:label="その他"
+        tools:layout="@layout/fragment_others">
+        <action
+            android:id="@+id/action_nav_other_to_nav_web_view"
+            app:destination="@id/nav_web_view" />
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_web_view"
+        android:name="com.sw.sw_api_kotlin_project.screen.webview.WebViewActivity"
+        android:label="WebView"
+        tools:layout="@layout/activity_web_view">
+        <argument
+            android:name="web_view_info"
+            app:argType="com.sw.sw_api_kotlin_project.data.model.entity.WebViewInfo" />
+    </activity>
+</navigation>

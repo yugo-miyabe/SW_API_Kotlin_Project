@@ -9,9 +9,9 @@ import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.data.network.model.People
 import com.sw.sw_api_kotlin_project.data.network.model.Planet
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionNavFavoriteListToNavFilmsDetail
-import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionNavFavoriteListToNavPeopleDetail
-import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionNavFavoriteListToNavPlanetDetail
+import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionFavoriteListToPeopleDetail
+import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionFavoriteListToFilmsDetail
+import com.sw.sw_api_kotlin_project.screen.favorite.FavoriteFragmentDirections.Companion.actionFavoriteListToPlanetDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,11 +38,11 @@ class FavoriteViewModel @Inject constructor(
     }
 
     fun onTapPeople(people: People) =
-        addNavigationEvent(actionNavFavoriteListToNavPeopleDetail(people))
+        addNavigationEvent(actionFavoriteListToPeopleDetail(people))
 
-    fun onTapFilm(film: Film) = addNavigationEvent(actionNavFavoriteListToNavFilmsDetail(film))
+    fun onTapFilm(film: Film) = addNavigationEvent(actionFavoriteListToFilmsDetail(film))
 
     fun onTapPlanet(planet: Planet) =
-        addNavigationEvent(actionNavFavoriteListToNavPlanetDetail(planet))
+        addNavigationEvent(actionFavoriteListToPlanetDetail(planet))
 
 }

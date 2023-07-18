@@ -8,7 +8,7 @@ import androidx.paging.cachedIn
 import com.sw.sw_api_kotlin_project.data.model.repository.FilmRepository
 import com.sw.sw_api_kotlin_project.data.network.model.Film
 import com.sw.sw_api_kotlin_project.screen.base.BaseViewModel
-import com.sw.sw_api_kotlin_project.screen.film.list.FilmListFragmentDirections.Companion.actionNavFilmsToNavFilmsDetail
+import com.sw.sw_api_kotlin_project.screen.film.list.FilmListFragmentDirections.Companion.actionFilmsToFilmsDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -26,6 +26,6 @@ class FilmListViewModel @Inject constructor(
     }).flow.cachedIn(viewModelScope)
 
     fun onTapFilm(film: Film) {
-        addNavigationEvent(actionNavFilmsToNavFilmsDetail(film = film))
+        addNavigationEvent(actionFilmsToFilmsDetail(film = film))
     }
 }
