@@ -16,6 +16,13 @@ abstract class BaseViewModel : ViewModel() {
     private val _uiEventList = MutableStateFlow<List<UiEvent>>(emptyList())
     val uiEventList: StateFlow<List<UiEvent>> = _uiEventList
 
+
+    fun addProgressDialogEvent(isDoShowing: Boolean) {
+        _uiEventList.update { uiEventList ->
+            uiEventList + UiEvent.ProgressDialog(isDoShowing = isDoShowing)
+        }
+    }
+
     fun addNavigationEvent(destination: NavDirections) {
         _uiEventList.update { uiEventList ->
             uiEventList + UiEvent.Navigate(navDirections = destination)
